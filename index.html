@@ -1,27 +1,33 @@
 ---
 layout: default
 hero: true
-description: Keval Joshi is a solution architect designing secure, scalable enterprise platforms. Case studies and technical writing.
+description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT® specialising in enterprise Adobe Experience Manager (AEM) platforms, AEM as a Cloud Service migrations and integration architecture.
 ---
 {%- assign p = site.data.profile -%}
+{%- assign cases = site.work | where_exp: "c", "c.draft != true" -%}
 <section class="hero">
   <div class="wrap">
-    <h1 class="sr-only">{{ p.name }}</h1>
-    <p class="eyebrow">{{ p.title }}</p>
+    <p class="eyebrow">{{ p.title }} · {{ p.location }}</p>
+    <h1 class="sr-only">{{ p.name }}, {{ p.title }}</h1>
     <div class="name-stage" id="stage">
       <canvas id="name-canvas" data-name="{{ p.name }}" aria-hidden="true"></canvas>
     </div>
     <p class="hint" id="hint"><i></i><span id="hintText">Move your cursor through my name</span></p>
     <div class="hero-foot">
       <div>
-        <p class="role-line">{{ p.tagline }}</p>
+        <p class="tagline">{{ p.tagline }}</p>
         <p class="intro">{{ p.intro }}</p>
       </div>
       <div class="cta-row">
-        <a class="btn solid" href="{{ '/work/' | relative_url }}">See my work</a>
-        <a class="btn ghost" href="{{ '/blog/' | relative_url }}">Read the blog</a>
+        <a class="btn solid" href="{{ '/contact/' | relative_url }}">Start a conversation</a>
+        <a class="btn ghost" href="{{ '/experience/' | relative_url }}">View experience</a>
       </div>
     </div>
+    <ul class="proof" aria-label="Highlights">
+      {%- for item in p.proof %}
+      <li><strong>{{ item.value }}</strong><span>{{ item.label }}</span></li>
+      {%- endfor %}
+    </ul>
   </div>
 </section>
 
@@ -29,7 +35,7 @@ description: Keval Joshi is a solution architect designing secure, scalable ente
   <div class="wrap">
     <div class="sec-head">
       <h2 data-split>What I do</h2>
-      <a class="more" href="{{ '/about/' | relative_url }}">More about me →</a>
+      <a class="more" href="{{ '/about/' | relative_url }}">How I work →</a>
     </div>
     <div class="grid">
       {%- for c in p.capabilities %}
@@ -39,6 +45,35 @@ description: Keval Joshi is a solution architect designing secure, scalable ente
   </div>
 </section>
 
+{%- if cases.size > 0 %}
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-split>Selected work</h2>
+      <a class="more" href="{{ '/work/' | relative_url }}">All case studies →</a>
+    </div>
+    <div class="case-list">
+      {%- for c in cases limit: 3 %}{% include case-card.html case=c %}{% endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}
+
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-split>Credentials</h2>
+      <a class="more" href="{{ '/certifications/' | relative_url }}">All certifications →</a>
+    </div>
+    <ul class="cred-row">
+      {%- for c in p.certifications limit: 4 %}
+      <li><span class="cert-issuer">{{ c.issuer }}{% if c.issued != "" %} · {{ c.issued | split: ' ' | last }}{% endif %}</span>{{ c.name }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+{%- if site.posts.size > 0 %}
 <section class="block">
   <div class="wrap">
     <div class="sec-head">
@@ -51,23 +86,22 @@ description: Keval Joshi is a solution architect designing secure, scalable ente
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
         <div>
           <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <p>{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 30 }}</p>
+          <p>{{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncatewords: 30 }}</p>
         </div>
       </article>
-      {%- else %}
-      <p class="empty">First post coming soon.</p>
       {%- endfor %}
     </div>
   </div>
 </section>
+{%- endif %}
 
 <section class="block">
   <div class="wrap">
-    <h2 data-split>Let’s talk architecture</h2>
-    <p class="lede">Have a platform to design, review or rescue? I’d like to hear about it.</p>
+    <h2 data-split>Planning an AEM platform?</h2>
+    <p class="lede">Whether it’s a migration to AEM as a Cloud Service, a new build or an architecture review, I’m happy to talk it through.</p>
     <div class="cta-row">
       <a class="btn solid" href="{{ '/contact/' | relative_url }}">Get in touch</a>
-      <a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener">Connect on LinkedIn</a>
     </div>
   </div>
 </section>

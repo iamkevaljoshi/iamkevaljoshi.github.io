@@ -25,7 +25,7 @@
     var font = function (s) { return '800 ' + s + 'px ' + getComputedStyle(document.body).fontFamily; };
     o.font = font(200);
     var widest = Math.max.apply(null, lines.map(function (l) { return o.measureText(l).width; }));
-    fontSize = Math.min(200 * (W * 0.99) / widest, 280);
+    fontSize = Math.min(200 * (W * 0.99) / widest, 170);
     var lh = fontSize * 0.9;
     H = Math.ceil(lh * (lines.length - 1) + fontSize * 0.98);
     dpr = Math.min(devicePixelRatio || 1, 2);

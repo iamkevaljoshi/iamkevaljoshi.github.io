@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article class="post case">
+  <header class="post-head">
+    <div class="wrap narrow">
+      <a class="back" href="{{ '/work/' | relative_url }}">← All case studies</a>
+      <p class="eyebrow" style="margin-top:1.5rem">{{ page.industry }}{% if page.year %} · {{ page.year }}{% endif %}</p>
+      <h1>{{ page.title }}</h1>
+      <p class="lede">{{ page.summary }}</p>
+      <dl class="case-facts">
+        {%- if page.role %}<div><dt>My role</dt><dd>{{ page.role }}</dd></div>{% endif %}
+        {%- if page.client %}<div><dt>Client</dt><dd>{{ page.client }}</dd></div>{% endif %}
+        {%- if page.duration %}<div><dt>Duration</dt><dd>{{ page.duration }}</dd></div>{% endif %}
+        {%- if page.stack %}<div><dt>Stack</dt><dd>{{ page.stack | join: ', ' }}</dd></div>{% endif %}
+      </dl>
+      {%- if page.metrics.size > 0 %}
+      <ul class="proof">{% for m in page.metrics %}<li><strong>{{ m.value }}</strong><span>{{ m.label }}</span></li>{% endfor %}</ul>
+      {%- endif %}
+    </div>
+  </header>
+  <div class="wrap narrow prose">
+    {{ content }}
+  </div>
+  <footer class="wrap narrow post-foot">
+    <p class="muted">Client details are anonymised. <a href="{{ '/contact/' | relative_url }}">Ask me about a similar project</a>.</p>
+  </footer>
+</article>

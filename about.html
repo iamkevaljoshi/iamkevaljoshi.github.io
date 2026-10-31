@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about/
 lede: Background, working style and the principles I design by.
-description: About Keval Joshi, solution architect. Background, approach and architecture principles.
+description: About Keval Joshi, a Mumbai-based Solutions Architect at DEPT® with 12+ years in software engineering and Adobe-certified AEM Architect.
 ---
 {%- assign p = site.data.profile -%}
 {%- assign initials = p.name | split: ' ' -%}
@@ -11,16 +11,21 @@ description: About Keval Joshi, solution architect. Background, approach and arc
   <div class="portrait">
     <div class="ring"></div>
     {%- if p.photo != "" %}
-    <img src="{{ p.photo | relative_url }}" alt="Portrait of {{ p.name }}">
+    <img src="{{ p.photo | relative_url }}" alt="Portrait of {{ p.name }}" width="800" height="1000">
     {%- else %}
     <span class="initials" aria-hidden="true">{{ initials[0] | slice: 0, 1 }}{{ initials[1] | slice: 0, 1 }}</span>
     {%- endif %}
   </div>
   <div class="about-text">
-    {%- for para in p.about %}<p>{{ para }}</p>{% endfor %}
+    <p class="summary">{{ p.summary }}</p>
+    {%- for para in p.about %}{% unless para contains '[' %}<p>{{ para }}</p>{% endunless %}{% endfor %}
     <dl class="facts">
       {%- for f in p.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
     </dl>
+    <div class="cta-row" style="margin-top:2rem">
+      {%- if p.cv != "" %}<a class="btn solid" href="{{ p.cv | relative_url }}" download>Download CV</a>{% endif %}
+      <a class="btn {% if p.cv != '' %}ghost{% else %}solid{% endif %}" href="{{ p.linkedin }}" target="_blank" rel="noopener">LinkedIn profile</a>
+    </div>
   </div>
 </div>
 
@@ -35,5 +40,15 @@ description: About Keval Joshi, solution architect. Background, approach and arc
 <div class="grid">
   {%- for c in p.capabilities %}
   <div class="card"><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div>
+  {%- endfor %}
+</div>
+
+<h2 class="sub" id="faq">Frequently asked</h2>
+<div class="faq">
+  {%- for f in p.faq %}
+  <details{% if forloop.first %} open{% endif %}>
+    <summary>{{ f.q }}</summary>
+    <p>{{ f.a }}</p>
+  </details>
   {%- endfor %}
 </div>

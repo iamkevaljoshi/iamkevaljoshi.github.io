@@ -10,7 +10,7 @@ description: Certifications held by Keval Joshi, including Adobe Experience Mana
 <div class="certs">
   {%- for c in p.certifications %}
   <article class="cert">
-    <p class="cert-issuer">{{ c.issuer }}</p>
+    {%- unless c.issuer contains '[' %}<p class="cert-issuer">{{ c.issuer }}</p>{% endunless %}
     <h3>{{ c.name }}</h3>
     <dl class="cert-meta">
       {%- if c.issued != "" %}<div><dt>Issued</dt><dd>{{ c.issued }}</dd></div>{% endif %}

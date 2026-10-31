@@ -1,9 +1,8 @@
 ---
 title: "Architecture decision records: the smallest useful habit"
+description: "What an architecture decision record is, a minimal ADR template, and why ADRs are the smallest documentation habit that keeps architecture reasoning alive."
 tags: [architecture, documentation]
 ---
-Sample post: replace or delete this file. Every Markdown file in `_posts/` named `YYYY-MM-DD-title.md` becomes a blog post.
-
 Diagrams show what a system looks like. They rarely say *why*. An architecture decision record (ADR) is a short document that captures a single decision, so the reasoning survives after the team changes.
 
 ## A minimal template

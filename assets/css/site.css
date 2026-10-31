@@ -235,3 +235,50 @@ footer{border-top:1px solid var(--line);padding:2rem 0 calc(2rem + env(safe-area
   *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
   [data-split] .w>span{transform:none}
 }
+
+/* ---------- v2: positioning, proof, case studies, FAQ ---------- */
+.tagline{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:700;line-height:1.15;letter-spacing:-.025em;margin:0 0 .9rem;max-width:24ch}
+.hero .intro{color:var(--muted);max-width:52ch;font-size:clamp(1.05rem,1.6vw,1.25rem)}
+.proof{list-style:none;margin:clamp(2rem,5vh,3rem) 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof li{padding:1.1rem 1.25rem 1.1rem 0;display:flex;flex-direction:column;gap:.15rem}
+.proof li+li{padding-left:1.25rem;border-left:1px solid var(--line)}
+.proof strong{font-size:clamp(1.15rem,2vw,1.45rem);letter-spacing:-.02em;line-height:1.2}
+.proof span{color:var(--muted);font-size:.92rem}
+@media (max-width:640px){.proof{grid-template-columns:1fr 1fr}.proof li:nth-child(odd){padding-left:0;border-left:0}.proof li:nth-child(n+3){border-top:1px solid var(--line)}}
+
+.cred-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.cred-row li{border:1px solid var(--line);border-radius:1rem;padding:1.25rem;display:flex;flex-direction:column;gap:.5rem;font-weight:600;line-height:1.35}
+
+.case-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(20rem,1fr));gap:1.25rem}
+.case-card{display:flex;flex-direction:column;gap:.6rem;text-decoration:none;border:1px solid var(--line);border-radius:1.25rem;padding:1.6rem;
+  transition:border-color .25s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.case-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.case-card h3{margin:0;font-size:1.4rem}
+.case-card p{margin:0;color:var(--muted)}
+.metrics{list-style:none;margin:.25rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;font-size:.95rem}
+.metrics strong{color:var(--accent)}
+.case-card .tags{margin-top:auto;padding-top:.5rem}
+.case-facts{display:flex;flex-wrap:wrap;gap:.5rem 2.5rem;margin:1.5rem 0 0}
+.case-facts dt{color:var(--muted);font-size:.85rem}
+.case-facts dd{margin:0;font-weight:600}
+.case .proof{margin-top:1.75rem}
+
+.summary{font-size:1.3rem;line-height:1.5;font-weight:500;letter-spacing:-.01em}
+.faq{border-top:1px solid var(--line);max-width:52rem}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:1.15rem 2.5rem 1.15rem 0;font-weight:600;font-size:1.15rem;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.25rem;top:50%;transform:translateY(-50%);font-size:1.5rem;color:var(--gold);transition:transform .3s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq details p{margin:0 0 1.25rem;color:var(--muted);max-width:62ch}
+
+.author-box{display:flex;gap:1rem;align-items:flex-start}
+.author-box p{margin:0 0 .25rem}
+.avatar{flex:none;width:3rem;height:3rem;border-radius:50%;background:var(--ink);color:var(--gold-soft);display:grid;place-items:center;font-weight:800;font-size:.95rem}
+.meta a{color:inherit}
+
+/* typography polish */
+h1,h2,h3{text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+.prose{max-width:46rem}

@@ -1,0 +1,41 @@
+---
+layout: null
+sitemap: false
+---
+{%- assign p = site.data.profile -%}
+# {{ p.name }}
+
+> {{ p.summary }}
+
+## Key facts
+- Role: {{ p.title }} at {{ p.employer.name }} ({{ p.employer.url }})
+- Location: {{ p.city }}, {{ p.region }}, India
+- Specialisation: {{ p.knows_about | join: ', ' }}
+{%- for j in p.experience %}
+- {{ j.from }} – {{ j.to }}: {{ j.role }}, {{ j.org }}
+{%- endfor %}
+{%- for e in p.education %}{% if e.degree %}
+- Education: {{ e.title }}, {{ e.org }} ({{ e.from }}–{{ e.to }})
+{%- endif %}{% endfor %}
+
+## Certifications
+{%- for c in p.certifications %}
+- {{ c.name }}{% unless c.issuer contains '[' %}, {{ c.issuer }}{% endunless %}{% if c.issued != "" %} ({{ c.issued }}){% endif %}
+{%- endfor %}
+
+## Pages
+- [About]({{ '/about/' | absolute_url }}): background, principles and FAQ
+- [Experience]({{ '/experience/' | absolute_url }}): career history, skills and education
+- [Certifications]({{ '/certifications/' | absolute_url }}): professional certifications with credential IDs
+- [Work]({{ '/work/' | absolute_url }}): case studies
+- [Blog]({{ '/blog/' | absolute_url }}): technical writing
+- [Contact]({{ '/contact/' | absolute_url }})
+
+## Blog posts
+{%- for post in site.posts %}
+- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 140 }}
+{%- endfor %}
+
+## Profiles
+- LinkedIn: {{ p.linkedin }}
+- GitHub: {{ p.github }}

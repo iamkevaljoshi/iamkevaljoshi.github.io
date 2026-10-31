@@ -1,0 +1,134 @@
+{%- assign p = site.data.profile -%}
+{%- assign home = '/' | absolute_url -%}
+{%- assign page_url = page.url | absolute_url -%}
+{%- capture person_image -%}{% if p.photo != "" %}{{ p.photo | absolute_url }}{% else %}{{ '/assets/img/og.png' | absolute_url }}{% endif %}{%- endcapture -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ home }}#person",
+      "name": {{ p.name | jsonify }},
+      "url": "{{ home }}",
+      "image": "{{ person_image }}",
+      "jobTitle": {{ p.title | jsonify }},
+      "description": {{ p.summary | jsonify }},
+      {%- unless p.email contains '[' %}
+      "email": "mailto:{{ p.email }}",
+      {%- endunless %}
+      "address": { "@type": "PostalAddress", "addressLocality": {{ p.city | jsonify }}, "addressRegion": {{ p.region | jsonify }}, "addressCountry": {{ p.country | jsonify }} },
+      "homeLocation": { "@type": "Place", "name": {{ p.location | jsonify }} },
+      "worksFor": { "@type": "Organization", "name": {{ p.employer.name | jsonify }}, "url": {{ p.employer.url | jsonify }} },
+      "alumniOf": [
+        {%- assign degrees = p.education | where: "degree", true -%}
+        {%- for e in degrees %}
+        { "@type": "CollegeOrUniversity", "name": {{ e.org | jsonify }} }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ],
+      "hasCredential": [
+        {%- for c in p.certifications %}
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": {{ c.name | jsonify }},
+          "credentialCategory": "certification"
+          {%- unless c.issuer contains '[' %},
+          "recognizedBy": { "@type": "Organization", "name": {{ c.issuer | jsonify }} }{% endunless %}
+          {%- if c.url != "" %},
+          "url": {{ c.url | jsonify }}{% endif %}
+        }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ],
+      "knowsAbout": {{ p.knows_about | jsonify }},
+      "knowsLanguage": ["en", "hi", "gu"],
+      "sameAs": [{{ p.linkedin | jsonify }}, {{ p.github | jsonify }}]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ home }}#website",
+      "url": "{{ home }}",
+      "name": {{ site.title | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "inLanguage": "en",
+      "publisher": { "@id": "{{ home }}#person" }
+    },
+    {%- if page.layout == 'post' %}
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ page_url }}#article",
+      "mainEntityOfPage": "{{ page_url }}",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.description | default: page.excerpt | strip_html | normalize_whitespace | truncate: 200 | jsonify }},
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+      "author": { "@id": "{{ home }}#person" },
+      "publisher": { "@id": "{{ home }}#person" },
+      "image": "{{ '/assets/img/og.png' | absolute_url }}",
+      "keywords": {{ page.tags | join: ', ' | jsonify }},
+      "wordCount": {{ page.content | strip_html | number_of_words }},
+      "inLanguage": "en",
+      "isPartOf": { "@id": "{{ home }}#website" }
+    },
+    {%- elsif page.layout == 'case-study' %}
+    {
+      "@type": "Article",
+      "@id": "{{ page_url }}#article",
+      "mainEntityOfPage": "{{ page_url }}",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.summary | default: page.excerpt | strip_html | normalize_whitespace | truncate: 200 | jsonify }},
+      "author": { "@id": "{{ home }}#person" },
+      "about": {{ page.tags | jsonify }},
+      "inLanguage": "en",
+      "isPartOf": { "@id": "{{ home }}#website" }
+    },
+    {%- elsif page.url == '/' or page.url == '/about/' %}
+    {
+      "@type": "ProfilePage",
+      "@id": "{{ page_url }}#webpage",
+      "url": "{{ page_url }}",
+      "name": {{ page.title | default: site.title | jsonify }},
+      "mainEntity": { "@id": "{{ home }}#person" },
+      "isPartOf": { "@id": "{{ home }}#website" },
+      "inLanguage": "en"
+    },
+    {%- else %}
+    {
+      "@type": "{% if page.url == '/blog/' %}Blog{% else %}WebPage{% endif %}",
+      "@id": "{{ page_url }}#webpage",
+      "url": "{{ page_url }}",
+      "name": {{ page.title | jsonify }},
+      "about": { "@id": "{{ home }}#person" },
+      "isPartOf": { "@id": "{{ home }}#website" },
+      "inLanguage": "en"
+    },
+    {%- endif %}
+    {%- if page.url == '/about/' %}
+    {
+      "@type": "FAQPage",
+      "@id": "{{ page_url }}#faq",
+      "mainEntity": [
+        {%- for f in p.faq %}
+        { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} } }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ]
+    },
+    {%- endif %}
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ page_url }}#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ home }}" }
+        {%- if page.layout == 'post' %},
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "{{ '/blog/' | absolute_url }}" },
+        { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ page_url }}" }
+        {%- elsif page.layout == 'case-study' %},
+        { "@type": "ListItem", "position": 2, "name": "Work", "item": "{{ '/work/' | absolute_url }}" },
+        { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ page_url }}" }
+        {%- elsif page.url != '/' %},
+        { "@type": "ListItem", "position": 2, "name": {{ page.title | jsonify }}, "item": "{{ page_url }}" }
+        {%- endif %}
+      ]
+    }
+  ]
+}
+</script>

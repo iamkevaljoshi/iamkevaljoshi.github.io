@@ -1,23 +1,61 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 {%- assign p = site.data.profile -%}
-{%- if page.url == '/' -%}
-  {%- assign page_title = p.name | append: ' · ' | append: p.title -%}
+{%- if page.seo_title -%}
+  {%- assign page_title = page.seo_title -%}
+{%- elsif page.url == '/' -%}
+  {%- assign page_title = p.name | append: ' · ' | append: p.title | append: ', AEM · ' | append: p.city -%}
 {%- elsif page.title -%}
   {%- assign page_title = page.title | append: ' · ' | append: p.name -%}
 {%- else -%}
   {%- assign page_title = p.name -%}
 {%- endif -%}
+{%- assign desc = page.description | default: page.summary | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 -%}
+{%- assign share_img = page.image | default: '/assets/img/og.png' | absolute_url -%}
 <title>{{ page_title | escape }}</title>
-<meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+<meta name="description" content="{{ desc | escape }}">
+<meta name="author" content="{{ p.name }}">
+<meta name="robots" content="{{ page.robots | default: 'index, follow, max-image-preview:large, max-snippet:-1' }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta name="theme-color" content="#F3F4F8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#10182B" media="(prefers-color-scheme: dark)">
+
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:locale" content="{{ site.locale }}">
 <meta property="og:title" content="{{ page_title | escape }}">
-<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta property="og:description" content="{{ desc | escape }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ share_img }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ p.name }}, {{ p.title }}">
+{%- if page.layout == 'post' %}
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+<meta property="article:author" content="{{ p.linkedin }}">
+{%- for t in page.tags %}<meta property="article:tag" content="{{ t }}">{% endfor %}
+{%- elsif page.url == '/' or page.url == '/about/' %}
+<meta property="og:type" content="profile">
+<meta property="profile:first_name" content="{{ p.name | split: ' ' | first }}">
+<meta property="profile:last_name" content="{{ p.name | split: ' ' | last }}">
+{%- else %}
+<meta property="og:type" content="website">
+{%- endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title | escape }}">
+<meta name="twitter:description" content="{{ desc | escape }}">
+<meta name="twitter:image" content="{{ share_img }}">
+
+<meta name="geo.region" content="{{ p.country }}-MH">
+<meta name="geo.placename" content="{{ p.city }}">
+<link rel="me" href="{{ p.linkedin }}">
+<link rel="me" href="{{ p.github }}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2317203A'/><text x='50' y='66' font-size='46' font-family='Arial' font-weight='800' fill='%23F4B63F' text-anchor='middle'>KJ</text></svg>">
 {% feed_meta %}
+<link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | relative_url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
 <script>try{var t=localStorage.getItem('kj-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+{% include schema.html %}

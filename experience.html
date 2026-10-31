@@ -2,8 +2,8 @@
 layout: page
 title: Experience
 permalink: /experience/
-lede: Roles, outcomes and the skills behind them.
-description: Professional experience, education, certifications and skills of Keval Joshi, solution architect.
+lede: 12+ years across software engineering and solution architecture, most recently on enterprise Adobe Experience Manager platforms.
+description: Career history of Keval Joshi, Solutions Architect at DEPT®, previously Software Solutions Architect at Tekno Point. Education, skills and certifications.
 ---
 {%- assign p = site.data.profile -%}
 <div class="timeline" id="timeline">
@@ -15,8 +15,9 @@ description: Professional experience, education, certifications and skills of Ke
       <div>
         <h3>{{ j.role }}</h3>
         <div class="org">{{ j.org }}</div>
-        <p>{{ j.summary }}</p>
-        {%- if j.points.size > 0 %}<ul>{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+        {%- unless j.summary contains '[' %}<p>{{ j.summary }}</p>{% endunless %}
+        {%- capture real_pts -%}{% for pt in j.points %}{% unless pt contains '[' %}<li>{{ pt }}</li>{% endunless %}{% endfor %}{%- endcapture -%}
+        {%- if real_pts != "" %}<ul>{{ real_pts }}</ul>{% endif %}
       </div>
     </div>
   </article>
@@ -26,7 +27,10 @@ description: Professional experience, education, certifications and skills of Ke
 <h2 class="sub">Skills</h2>
 <div>
   {%- for g in p.skills %}
-  <div class="skill-grp"><h4>{{ g.group }}</h4><div class="tags" style="margin:0">{% for i in g.items %}<span class="tag">{{ i }}</span>{% endfor %}</div></div>
+  {%- capture items -%}{% for i in g.items %}{% unless i contains '[' %}<span class="tag">{{ i }}</span>{% endunless %}{% endfor %}{%- endcapture -%}
+  {%- if items != "" %}
+  <div class="skill-grp"><h4>{{ g.group }}</h4><div class="tags" style="margin:0">{{ items }}</div></div>
+  {%- endif %}
   {%- endfor %}
 </div>
 
@@ -43,4 +47,7 @@ description: Professional experience, education, certifications and skills of Ke
 </ul>
 <p style="margin-top:1rem"><a class="more" href="{{ '/certifications/' | relative_url }}">All {{ p.certifications.size }} certifications →</a></p>
 
-<p style="margin-top:2.5rem"><a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener">Full profile on LinkedIn</a></p>
+<div class="cta-row" style="margin-top:2.5rem">
+  {%- if p.cv != "" %}<a class="btn solid" href="{{ p.cv | relative_url }}" download>Download CV</a>{% endif %}
+  <a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener">Full profile on LinkedIn</a>
+</div>

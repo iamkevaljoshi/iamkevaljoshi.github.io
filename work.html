@@ -2,36 +2,24 @@
 layout: page
 title: Work
 permalink: /work/
-lede: Selected case studies, each with the context, the architecture and the outcome.
-description: Selected solution architecture case studies by Keval Joshi.
+eyebrow: Case studies
+lede: Selected engagements, each written up as context, constraints, decision and outcome.
+description: AEM and digital platform architecture case studies by Keval Joshi, Solutions Architect in Mumbai.
 ---
 {%- assign p = site.data.profile -%}
-{%- assign all_tags = p.projects | map: 'tags' | join: '|' | split: '|' | uniq -%}
-<div class="filters" id="filters" role="group" aria-label="Filter case studies by skill">
-  <button class="chip" type="button" aria-pressed="true" data-skill="All">All</button>
-  {%- for t in all_tags %}<button class="chip" type="button" aria-pressed="false" data-skill="{{ t }}">{{ t }}</button>{% endfor %}
+{%- assign cases = site.work | where_exp: "c", "c.draft != true" -%}
+{%- if cases.size > 0 %}
+<div class="case-list">
+  {%- for c in cases %}{% include case-card.html case=c %}{% endfor %}
 </div>
-<div class="projects">
-  {%- for pr in p.projects %}
-  <div class="project" data-tags="{{ pr.tags | join: '|' }}">
-    <button class="p-row" type="button" aria-expanded="false" aria-controls="pp{{ forloop.index }}">
-      <span class="p-title">{{ pr.title }}</span>
-      <span class="p-year">{{ pr.year }}</span>
-      <span class="p-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-    </button>
-    <div class="p-panel" id="pp{{ forloop.index }}"><div>
-      <div class="p-body">
-        <div>
-          <dl>
-            <dt>Context</dt><dd>{{ pr.context }}</dd>
-            <dt>Approach</dt><dd>{{ pr.approach }}</dd>
-            <dt>Outcome</dt><dd>{{ pr.outcome }}</dd>
-          </dl>
-          <div class="tags">{% for t in pr.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
-        </div>
-        {%- if pr.link != "" %}<a class="btn ghost p-link" href="{{ pr.link }}" target="_blank" rel="noopener">View project</a>{% endif %}
-      </div>
-    </div></div>
-  </div>
-  {%- endfor %}
+{%- else %}
+<p class="empty">Detailed case studies are being written up. Most of my work is under client confidentiality, so they will be anonymised by industry.</p>
+<h2 class="sub">Typical engagements</h2>
+<div class="grid">
+  <div class="card"><h3>AEM as a Cloud Service migration</h3><p>Assessment, code and content refactoring, migration sequencing and cut-over planning from AEM 6.x on-premise or Managed Services.</p></div>
+  <div class="card"><h3>Enterprise AEM platform build</h3><p>Multi-site, multi-language architecture, component strategy, authoring experience and delivery governance.</p></div>
+  <div class="card"><h3>Integration architecture</h3><p>Connecting AEM with commerce, CRM, search, DAM and identity platforms through clean, versioned contracts.</p></div>
+  <div class="card"><h3>Architecture review</h3><p>An independent look at performance, caching, security and maintainability, with a prioritised remediation plan.</p></div>
 </div>
+{%- endif %}
+<p style="margin-top:2.5rem"><a class="btn solid" href="{{ '/contact/' | relative_url }}">Discuss a project</a></p>

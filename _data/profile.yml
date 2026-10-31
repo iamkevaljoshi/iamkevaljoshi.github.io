@@ -2,19 +2,49 @@
 # Edit this file to change the content of every page.
 # Anything in [square brackets] is a placeholder: replace it with your own.
 # ---------------------------------------------------------------------
+# Placeholders in [square brackets] are hidden on the live site until you replace them.
 name: Keval Joshi
 title: Solutions Architect
+specialty: Adobe Experience Manager (AEM)
 location: Mumbai, India
+city: Mumbai
+region: Maharashtra
+country: IN
 email: "[your-email@example.com]"
 linkedin: https://www.linkedin.com/in/keval-joshi-36b8393b
 github: https://github.com/iamkevaljoshi
 photo: ""   # e.g. /assets/img/keval.jpg (add the file to the repo). Empty shows initials.
+cv: ""      # e.g. /assets/keval-joshi-cv.pdf. Empty hides the Download CV button.
+employer: { name: "DEPT®", url: "https://www.deptagency.com" }
 
-tagline: "I turn business goals into platform architectures that are secure, scalable and simple to run."
-intro: "I’m Keval, a solutions architect based in Mumbai, India. I design and deliver enterprise digital platforms, with deep experience in Adobe Experience Manager, and I care about clear trade-offs, sound integration design and teams that can run what they build."
+# One sentence that search and AI engines can quote verbatim. Keep it factual.
+summary: "Keval Joshi is a Mumbai-based Solutions Architect at DEPT® with 12+ years in software engineering, specialising in enterprise Adobe Experience Manager (AEM) platforms, AEM as a Cloud Service migrations and digital experience architecture. He is an Adobe-certified AEM Architect and AEM as a Cloud Service Migration Expert."
+
+tagline: "Solutions Architect for enterprise Adobe Experience Manager platforms."
+intro: "I design and deliver AEM-based digital experience platforms for enterprise brands, from AEM as a Cloud Service migrations to integration architecture, with clear trade-offs and platforms teams can actually run."
+
+# Short proof points shown under the home hero.
+proof:
+  - { value: "12+ yrs", label: "in software engineering" }
+  - { value: "AEM Architect", label: "Adobe certified" }
+  - { value: "Cloud Service", label: "Migration Expert, Adobe" }
+  - { value: "DEPT®", label: "Solutions Architect" }
+
+knows_about:
+  - Adobe Experience Manager
+  - AEM as a Cloud Service
+  - AEM Sites
+  - AEM Assets
+  - Edge Delivery Services
+  - Solution architecture
+  - Content management systems
+  - Digital experience platforms
+  - System integration
+  - Cloud migration
+  - Scaled Agile Framework
 
 about:
-  - "I’m a solutions architect with 12+ years in software engineering, the last several years focused on enterprise web and CMS platforms built on Adobe Experience Manager (AEM). I’m currently a Solutions Architect at DEPT®, working with enterprise clients."
+  - "Most of my career has been spent on enterprise web and CMS platforms built on Adobe Experience Manager: first as an engineer, then as an architect at Tekno Point, and now at DEPT®, where I translate business requirements into technical architecture, implementation plans and integration designs for enterprise clients."
   - "I work with stakeholders and engineering teams to frame the problem, weigh options openly, and document decisions so they outlast the project. I favour pragmatic designs: the simplest architecture that meets the quality attributes that matter."
   - "[One sentence on what you are focused on now, or what you are looking for next.]"
 
@@ -89,6 +119,7 @@ education:
     to: "2011"
     title: "Bachelor of Engineering, Electronics & Telecom (First Class)"
     org: "Smt. Indira Gandhi College of Engineering, Navi Mumbai"
+    degree: true
   - from: "2005"
     to: "2007"
     title: "HSC, Information Technology (First Class)"
@@ -153,26 +184,17 @@ skills:
   - group: Engineering
     items: ["[Language]", "[Framework]", "[Databases]", "[Testing]"]
 
-# Case studies. Each opens as an expandable row on the Work page.
-projects:
-  - title: "[AEM platform modernisation]"
-    year: "[2025]"
-    tags: ["AEM", "Architecture"]
-    context: "[The client or business problem, in one or two sentences.]"
-    approach: "[The architecture you designed and the key trade-offs you made.]"
-    outcome: "[Measured result: performance, cost, delivery speed, reliability.]"
-    link: ""
-  - title: "[Migration to AEM as a Cloud Service]"
-    year: "[2026]"
-    tags: ["AEM", "Cloud"]
-    context: "[The client or business problem.]"
-    approach: "[The migration approach and patterns.]"
-    outcome: "[Measured result.]"
-    link: ""
-  - title: "[Enterprise integration layer]"
-    year: "[2024]"
-    tags: ["Integration", "Architecture"]
-    context: "[The client or business problem.]"
-    approach: "[The integration approach and patterns.]"
-    outcome: "[Measured result.]"
-    link: ""
+# Case studies live in _work/ as Markdown files (one page each). See README.md.
+
+# Questions answered on the About page (also published as FAQ structured data).
+faq:
+  - q: "What does Keval Joshi do?"
+    a: "Keval Joshi is a Solutions Architect at DEPT® in Mumbai, India. He designs and delivers scalable digital platform solutions for enterprise clients, translating business requirements into technical architecture and implementation plans, with a focus on Adobe Experience Manager (AEM)."
+  - q: "What is Keval Joshi’s area of specialisation?"
+    a: "Enterprise web and CMS platforms built on Adobe Experience Manager, including AEM as a Cloud Service migrations, AEM Sites and Assets, and the integration architecture around them."
+  - q: "Which certifications does Keval Joshi hold?"
+    a: "Adobe Certified Expert: AEM as a Cloud Service Migration; Adobe Certified Professional: AEM Digital Librarian; Adobe AEM 6 Architect; Adobe AEM 6 Developer; Certified SAFe® 6 Agilist; and ITIL V3 Foundation."
+  - q: "How much experience does Keval Joshi have?"
+    a: "More than 12 years in software engineering since 2014, including over seven years as a solutions architect at Tekno Point and DEPT®."
+  - q: "Where is Keval Joshi based?"
+    a: "Mumbai, Maharashtra, India."

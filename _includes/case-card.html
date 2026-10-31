@@ -1,0 +1,10 @@
+{%- assign c = include.case -%}
+<a class="case-card" href="{{ c.url | relative_url }}">
+  <span class="cert-issuer">{{ c.industry }}{% if c.year %} · {{ c.year }}{% endif %}</span>
+  <h3>{{ c.title }}</h3>
+  <p>{{ c.summary }}</p>
+  {%- if c.metrics.size > 0 %}
+  <ul class="metrics">{% for m in c.metrics limit: 2 %}<li><strong>{{ m.value }}</strong> {{ m.label }}</li>{% endfor %}</ul>
+  {%- endif %}
+  <span class="tags">{% for t in c.tags %}<span class="tag">{{ t }}</span>{% endfor %}</span>
+</a>

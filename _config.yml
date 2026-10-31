@@ -1,6 +1,7 @@
 title: Keval Joshi
-description: Solution architect. Notes on architecture, platforms and delivery.
+description: Keval Joshi, Mumbai-based Solutions Architect specialising in enterprise Adobe Experience Manager (AEM) platforms and AEM as a Cloud Service migrations.
 lang: en
+locale: en_IN
 
 # User site: https://iamkevaljoshi.github.io/
 # (If this becomes a project repo again, set baseurl to "/repo-name".)
@@ -11,11 +12,24 @@ markdown: kramdown
 highlighter: rouge
 permalink: /blog/:year/:month/:title/
 
+collections:
+  work:
+    output: true
+    permalink: /work/:name/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "", type: work }
+    values: { layout: case-study }
+
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
   - vendor
+  - tools
