@@ -179,6 +179,11 @@ document.querySelectorAll('.prose img[src$=".svg"]').forEach(function (img) {
         if (!s) return null;            // every term must match somewhere
         score += s;
       }
+      var phrase = terms.join(' ');
+      if (terms.length > 1) {          // reward the exact phrase over scattered words
+        if (r.lt.indexOf(phrase) >= 0) score += 20;
+        if (r.lx.indexOf(phrase) >= 0) score += 8;
+      }
       if (r.s === 'Page') score += 1;
       return { r: r, score: score };
     }).filter(Boolean).sort(function (a, b) { return b.score - a.score; }).slice(0, 12).map(function (o) { return o.r; });
