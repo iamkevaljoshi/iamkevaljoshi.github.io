@@ -23,7 +23,7 @@ Body in Markdown. Fenced code blocks are highlighted.
 Commit and push; the post appears under **Blog** and in the RSS feed (`/feed.xml`).
 
 ## Publish
-Repo **Settings → Pages → Deploy from a branch → `main` / root**. The site is served at `https://iamkevaljoshi.github.io/iamkevaljoshi/`. If you rename the repo to `iamkevaljoshi.github.io`, set `baseurl: ""` in `_config.yml`.
+Repo **Settings → Pages → Deploy from a branch → `main` / root**. The site is served at `https://iamkevaljoshi.github.io/`.
 
 ## Preview locally (optional)
 Needs a recent Ruby: `gem install bundler jekyll jekyll-feed && jekyll serve`.

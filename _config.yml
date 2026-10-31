@@ -2,10 +2,10 @@ title: Keval Joshi
 description: Solution architect. Notes on architecture, platforms and delivery.
 lang: en
 
-# Project site URL: https://iamkevaljoshi.github.io/iamkevaljoshi/
-# If you rename the repo to iamkevaljoshi.github.io, set baseurl to "".
+# User site: https://iamkevaljoshi.github.io/
+# (If this becomes a project repo again, set baseurl to "/repo-name".)
 url: "https://iamkevaljoshi.github.io"
-baseurl: "/iamkevaljoshi"
+baseurl: ""
 
 markdown: kramdown
 highlighter: rouge
