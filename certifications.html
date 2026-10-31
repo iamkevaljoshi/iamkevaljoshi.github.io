@@ -1,14 +1,21 @@
 ---
 layout: page
 title: Certifications
+seo_title: "Adobe AEM Certifications – Keval Joshi"
 permalink: /certifications/
 eyebrow: Credentials
 lede: Professional certifications in Adobe Experience Manager, scaled agile delivery and IT service management.
 description: Certifications held by Keval Joshi, including Adobe Experience Manager Architect, Cloud Service Migration, SAFe 6 Agilist and ITIL.
 ---
 {%- assign p = site.data.profile -%}
+<p class="about-text" style="margin-bottom:2.5rem">Keval Joshi holds four Adobe Experience Manager certifications, covering AEM architecture, development, AEM as a Cloud Service migration and digital asset management, plus SAFe® 6 Agilist and ITIL V3 Foundation. Credential IDs are listed where available.</p>
+{%- assign adobe = p.certifications | where: "issuer", "Adobe" -%}
+{%- assign other = p.certifications | where_exp: "c", "c.issuer != 'Adobe'" -%}
+{%- for grp in (1..2) %}
+{%- if grp == 1 %}{% assign list = adobe %}{% assign gname = "Adobe Experience Manager" %}{% else %}{% assign list = other %}{% assign gname = "Agile delivery and IT service management" %}{% endif %}
+<h2 class="sub"{% if grp == 1 %} style="margin-top:0"{% endif %}>{{ gname }}</h2>
 <div class="certs">
-  {%- for c in p.certifications %}
+  {%- for c in list %}
   <article class="cert">
     {%- unless c.issuer contains '[' %}<p class="cert-issuer">{{ c.issuer }}</p>{% endunless %}
     <h3>{{ c.name }}</h3>
@@ -22,3 +29,5 @@ description: Certifications held by Keval Joshi, including Adobe Experience Mana
   </article>
   {%- endfor %}
 </div>
+{%- endfor %}
+<p style="margin-top:2.5rem">See how these apply in practice on the <a class="more" href="{{ '/experience/' | relative_url }}">experience page</a>, or <a class="more" href="{{ '/contact/' | relative_url }}">get in touch</a>.</p>

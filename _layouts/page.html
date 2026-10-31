@@ -4,7 +4,7 @@ layout: default
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">{{ page.eyebrow | default: site.data.profile.title }}</p>
-    <h1 data-split>{{ page.title }}</h1>
+    <h1 data-split>{{ page.heading | default: page.title }}</h1>
     {%- if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
   </div>
 </section>

@@ -1,6 +1,8 @@
 ---
 layout: page
 title: About
+heading: About Keval Joshi
+seo_title: "About Keval Joshi – AEM Solutions Architect, Mumbai"
 permalink: /about/
 lede: Background, working style and the principles I design by.
 description: About Keval Joshi, a Mumbai-based Solutions Architect at DEPT® with 12+ years in software engineering and Adobe-certified AEM Architect.
@@ -19,6 +21,7 @@ description: About Keval Joshi, a Mumbai-based Solutions Architect at DEPT® wit
   <div class="about-text">
     <p class="summary">{{ p.summary }}</p>
     {%- for para in p.about %}{% unless para contains '[' %}<p>{{ para }}</p>{% endunless %}{% endfor %}
+    <p>You can read my full <a href="{{ '/experience/' | relative_url }}">career history</a>, see my <a href="{{ '/certifications/' | relative_url }}">Adobe AEM certifications</a>, or read my <a href="{{ '/blog/' | relative_url }}">writing on architecture</a>.</p>
     <dl class="facts">
       {%- for f in p.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
     </dl>
