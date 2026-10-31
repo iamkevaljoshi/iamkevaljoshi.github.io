@@ -1,43 +1,42 @@
 # ---------------------------------------------------------------------
 # Edit this file to change the content of every page.
 # Anything in [square brackets] is a placeholder: replace it with your own.
-# LinkedIn could not be read automatically, so copy facts from there.
 # ---------------------------------------------------------------------
 name: Keval Joshi
-title: Solution Architect
-location: "[City], India"
+title: Solutions Architect
+location: Mumbai, India
 email: "[your-email@example.com]"
 linkedin: https://www.linkedin.com/in/keval-joshi-36b8393b
 github: https://github.com/iamkevaljoshi
 photo: ""   # e.g. /assets/img/keval.jpg (add the file to the repo). Empty shows initials.
 
 tagline: "I turn business goals into platform architectures that are secure, scalable and simple to run."
-intro: "I’m Keval, a solution architect based in [City], India. I design and deliver enterprise digital platforms, and I care about clear trade-offs, sound integration design and teams that can run what they build."
+intro: "I’m Keval, a solutions architect based in Mumbai, India. I design and deliver enterprise digital platforms, with deep experience in Adobe Experience Manager, and I care about clear trade-offs, sound integration design and teams that can run what they build."
 
 about:
-  - "[Two or three sentences on your background: years of experience, industries, the kinds of platforms you architect.]"
+  - "I’m a solutions architect with 12+ years in software engineering, the last several years focused on enterprise web and CMS platforms built on Adobe Experience Manager (AEM). I’m currently a Solutions Architect at DEPT®, working with enterprise clients."
   - "I work with stakeholders and engineering teams to frame the problem, weigh options openly, and document decisions so they outlast the project. I favour pragmatic designs: the simplest architecture that meets the quality attributes that matter."
   - "[One sentence on what you are focused on now, or what you are looking for next.]"
 
 facts:
-  - { label: "Based in", value: "[City], India" }
-  - { label: "Currently", value: "Solution Architect, [Company]" }
-  - { label: "Experience", value: "[N]+ years" }
+  - { label: "Based in", value: "Mumbai, India" }
+  - { label: "Currently", value: "Solutions Architect, DEPT®" }
+  - { label: "Experience", value: "12+ years" }
   - { label: "Languages", value: "English, Hindi, Gujarati" }
 
 capabilities:
   - title: Solution & enterprise architecture
     text: Target-state design, reference architectures, roadmaps and architecture decision records tied to business outcomes.
-  - title: Cloud & platform engineering
-    text: Cloud-native and hybrid designs, environments, CI/CD and operability built in from day one.
+  - title: Adobe Experience Manager
+    text: AEM architecture and implementation, including migration to AEM as a Cloud Service, for enterprise web and CMS platforms.
   - title: Integration & API design
     text: API-led and event-driven integration, contract-first design, and clean boundaries between systems.
-  - title: Digital experience platforms
-    text: Content, commerce and customer-experience platforms, from selection and migration to build.
+  - title: Cloud & platform engineering
+    text: Cloud-native and hybrid designs, environments, CI/CD and operability built in from day one.
   - title: Security, performance & governance
     text: Non-functional requirements, threat modelling, performance budgets and review gates teams can live with.
   - title: Delivery leadership
-    text: Technical leadership across squads, estimation, risk management and mentoring engineers.
+    text: Technical leadership across squads, implementation planning, risk management and mentoring engineers.
 
 principles:
   - title: Start with the decision
@@ -51,69 +50,92 @@ principles:
 
 # Most recent first
 experience:
-  - from: "[2023]"
+  - from: "Apr 2024"
     to: Present
-    role: "[Solution Architect]"
-    org: "[Company]"
-    summary: "[What you own: the platforms, clients or domains you architect.]"
+    role: Solutions Architect
+    org: "DEPT® · Mumbai, India"
+    summary: "Design and deliver scalable digital platform solutions for enterprise clients. Translate business requirements into technical architecture and implementation plans. Platform focus: Adobe Experience Manager (AEM)."
     points:
-      - "[Outcome with a number, e.g. cut page load time by 40% across the platform.]"
-      - "[Architecture you led, e.g. designed the integration layer connecting X, Y and Z.]"
-      - "[Leadership, e.g. mentored a team of N engineers; introduced ADRs and design reviews.]"
-  - from: "[2019]"
-    to: "[2023]"
-    role: "[Technical Lead / Senior Engineer]"
-    org: "[Company]"
-    summary: "[Scope of the role and the stack you led.]"
+      - "[Add a measurable outcome, e.g. cut page load time by 40% across the platform.]"
+      - "[Add an architecture you led, e.g. designed the integration layer connecting X, Y and Z.]"
+  - from: "Mar 2019"
+    to: "May 2024"
+    role: Software Solutions Architect
+    org: Tekno Point
+    summary: "Architected and implemented enterprise web and CMS solutions using Adobe Experience Manager and related technologies."
     points:
-      - "[Outcome with a number.]"
-      - "[Technical contribution.]"
-  - from: "[2014]"
-    to: "[2019]"
-    role: "[Software Engineer]"
-    org: "[Company]"
-    summary: "[Where you built your engineering foundation.]"
-    points:
-      - "[Highlight.]"
+      - "[Add a measurable outcome.]"
+  - from: "Aug 2018"
+    to: "Mar 2019"
+    role: Senior Software Engineer
+    org: "Chalo · Seawoods"
+    summary: "Developed and maintained backend and web application features for business-critical systems. Worked with engineering teams on implementation, debugging, optimization and release support."
+    points: []
+  - from: "Aug 2015"
+    to: "Jul 2018"
+    role: Software Engineer
+    org: "Datamatics HR & Consultancy Pvt Ltd · Powai"
+    summary: "[Add a line about your work here.]"
+    points: []
+  - from: "Jul 2014"
+    to: "Jun 2015"
+    role: Software Engineer
+    org: "Trimax IT and Infrastructure Ltd · Airoli, Navi Mumbai"
+    summary: "Software developer for the design and development of software packages."
+    points: []
 
 education:
-  - from: "[2010]"
-    to: "[2014]"
-    title: "[Degree, Field]"
-    org: "[University]"
+  - from: "2007"
+    to: "2011"
+    title: "Bachelor of Engineering, Electronics & Telecom (First Class)"
+    org: "Smt. Indira Gandhi College of Engineering, Navi Mumbai"
+  - from: "2005"
+    to: "2007"
+    title: "HSC, Information Technology (First Class)"
+    org: "Changu Kana Thakur College"
+  - from: "2003"
+    to: "2005"
+    title: "SSC, Information Technology (First Class)"
+    org: "Changu Kana Thakur High School"
 
 certifications:
-  - "[Certification name, issuer, year]"
-  - "[Certification name, issuer, year]"
+  - "Adobe Certified Professional: Adobe Experience Manager Digital Librarian, Adobe (Aug 2026, expires Aug 2028)"
+  - "Adobe Certified Expert: Adobe Experience Manager as a Cloud Service Migration, Adobe (Aug 2026, expires Aug 2028)"
+  - "Certified SAFe® 6 Agilist, SAFe by Scaled Agile, Inc. (Jun 2025, expires Jun 2035)"
+  - "Adobe AEM 6 Architect, Adobe (Dec 2022)"
+  - "Adobe AEM 6 Developer, Adobe (Feb 2020)"
+  - "ITIL V3 Foundation"
 
 skills:
+  - group: Platforms
+    items: ["Adobe Experience Manager (AEM)", "AEM as a Cloud Service", "[Cloud provider]", "[CI/CD]"]
   - group: Architecture
-    items: ["[Solution design]", "[Integration patterns]", "[Domain-driven design]", "[Architecture decision records]"]
-  - group: Platforms & cloud
-    items: ["[Cloud provider]", "[Containers]", "[CI/CD]", "[Infrastructure as code]"]
+    items: ["Solution design", "Integration patterns", "[Domain-driven design]", "Architecture decision records"]
+  - group: Delivery
+    items: ["SAFe Agile", "ITIL", "[Estimation]", "[Mentoring]"]
   - group: Engineering
     items: ["[Language]", "[Framework]", "[Databases]", "[Testing]"]
 
 # Case studies. Each opens as an expandable row on the Work page.
 projects:
-  - title: "[Platform modernisation]"
+  - title: "[AEM platform modernisation]"
     year: "[2025]"
-    tags: ["[Architecture]", "[Cloud]"]
+    tags: ["AEM", "Architecture"]
     context: "[The client or business problem, in one or two sentences.]"
     approach: "[The architecture you designed and the key trade-offs you made.]"
     outcome: "[Measured result: performance, cost, delivery speed, reliability.]"
     link: ""
-  - title: "[Enterprise integration layer]"
-    year: "[2024]"
-    tags: ["[Integration]", "[API]"]
+  - title: "[Migration to AEM as a Cloud Service]"
+    year: "[2026]"
+    tags: ["AEM", "Cloud"]
     context: "[The client or business problem.]"
-    approach: "[The integration approach and patterns.]"
+    approach: "[The migration approach and patterns.]"
     outcome: "[Measured result.]"
     link: ""
-  - title: "[Digital experience platform build]"
-    year: "[2023]"
-    tags: ["[Architecture]", "[API]"]
+  - title: "[Enterprise integration layer]"
+    year: "[2024]"
+    tags: ["Integration", "Architecture"]
     context: "[The client or business problem.]"
-    approach: "[The platform architecture and delivery approach.]"
+    approach: "[The integration approach and patterns.]"
     outcome: "[Measured result.]"
     link: ""
