@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 590" role="img" aria-label="JSON2HTML architecture: dynamic pages rendered at preview and publish time">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .arrb{stroke:#2563EB;stroke-width:2;fill:none;marker-end:url(#ab)}
+  .arro{stroke:#EA580C;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#ao)}
+  .dash{stroke:#94A3B8;stroke-width:1.5;fill:none;stroke-dasharray:5 4;marker-end:url(#a)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/></marker>
+  <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#EA580C"/></marker>
+</defs>
+<rect width="1200" height="590" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">JSON2HTML: dynamic pages rendered at preview/publish time</text>
+<text class="sub" x="30" y="72">The worker only runs when a page is previewed. Visitors get a normal, cached Edge Delivery page.</text>
+
+<!-- row 1 -->
+<rect class="box" x="30" y="120" width="190" height="96" rx="10"/>
+<text class="t" x="125" y="157" text-anchor="middle">Trigger</text>
+<text class="s" x="125" y="178" text-anchor="middle">author preview,</text>
+<text class="s" x="125" y="195" text-anchor="middle">webhook or bulk job</text>
+
+<rect class="box" x="320" y="120" width="190" height="96" rx="10"/>
+<text class="t" x="415" y="164" text-anchor="middle">Admin API</text>
+<text class="s" x="415" y="185" text-anchor="middle">admin.hlx.page</text>
+
+<rect class="blue" x="610" y="120" width="230" height="96" rx="10"/>
+<text class="t" x="725" y="157" text-anchor="middle">json2html worker</text>
+<text class="s" x="725" y="178" text-anchor="middle">Adobe-hosted</text>
+<text class="s" x="725" y="195" text-anchor="middle">BYOM overlay (type: markup)</text>
+
+<rect class="box" x="940" y="120" width="230" height="96" rx="10"/>
+<text class="t" x="1055" y="157" text-anchor="middle">Backend JSON</text>
+<text class="s" x="1055" y="178" text-anchor="middle">REST API · Content Fragments</text>
+<text class="s" x="1055" y="195" text-anchor="middle">PIM · or an EDS sheet</text>
+
+<path class="arr" d="M224,168 H316"/>
+<text class="lbl" x="270" y="158" text-anchor="middle">① preview</text>
+<path class="arr" d="M514,150 H606"/>
+<text class="lbl" x="560" y="140" text-anchor="middle">② overlay</text>
+<path class="arr" d="M606,190 H514"/>
+<text class="lbl" x="560" y="208" text-anchor="middle">⑥ HTML</text>
+<path class="arr" d="M844,150 H936"/>
+<text class="lbl" x="890" y="140" text-anchor="middle">③ GET</text>
+<path class="arr" d="M936,190 H844"/>
+<text class="lbl" x="890" y="208" text-anchor="middle">④ JSON</text>
+
+<text class="s" x="405" y="246" text-anchor="end" style="font-style:italic">overlay 404 / 401 / 403 →</text>
+<text class="s" x="405" y="263" text-anchor="end" style="font-style:italic">falls back to primary source</text>
+
+<!-- inputs to worker -->
+<rect class="box" x="610" y="280" width="230" height="80" rx="10"/>
+<text class="t" x="725" y="309" text-anchor="middle">Mustache template</text>
+<text class="s" x="725" y="329" text-anchor="middle">/templates/event.html</text>
+<text class="s" x="725" y="346" text-anchor="middle">in your code repo</text>
+<path class="arr" d="M680,278 V220"/>
+<text class="lbl" x="672" y="254" text-anchor="end">⑤ template</text>
+
+<rect class="box" x="940" y="280" width="230" height="80" rx="10" style="stroke-dasharray:6 4"/>
+<text class="t" x="1055" y="309" text-anchor="middle">Config per branch</text>
+<text class="s" x="1055" y="329" text-anchor="middle">path · endpoint · regex</text>
+<text class="s" x="1055" y="346" text-anchor="middle">template · arrayKey · pathKey</text>
+<path class="dash" d="M1055,278 V250 H800 V220"/>
+<text class="lbl" x="928" y="244" text-anchor="middle">POST /config/org/site/branch</text>
+
+<!-- row 3 -->
+<path class="arr" d="M415,220 V416"/>
+<text class="lbl" x="425" y="350">⑦ ingest (html2md)</text>
+<text class="s" x="425" y="368">images → Media Bus</text>
+
+<rect class="green" x="320" y="420" width="190" height="80" rx="10"/>
+<text class="t" x="415" y="455" text-anchor="middle">Content Bus</text>
+<text class="s" x="415" y="476" text-anchor="middle">+ Media Bus</text>
+
+<rect class="green" x="610" y="420" width="230" height="80" rx="10"/>
+<text class="t" x="725" y="455" text-anchor="middle">aem.page → aem.live</text>
+<text class="s" x="725" y="476" text-anchor="middle">real page · sitemap · query-index</text>
+
+<rect class="box" x="940" y="420" width="230" height="80" rx="10"/>
+<text class="t" x="1055" y="455" text-anchor="middle">CDN → Browser</text>
+<text class="s" x="1055" y="476" text-anchor="middle">cached HTML, no runtime API call</text>
+
+<path class="arr" d="M514,460 H606"/>
+<text class="lbl" x="560" y="450" text-anchor="middle">⑧ publish</text>
+<path class="arr" d="M844,460 H936"/>
+<text class="lbl" x="890" y="450" text-anchor="middle">⑨ serve</text>
+
+<text class="lo" x="600" y="550" text-anchor="middle" style="font-size:13px">Backend data changed? Nothing updates until the page is previewed and published again, so automate that trigger.</text>
+</svg>

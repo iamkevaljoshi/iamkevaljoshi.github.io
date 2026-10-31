@@ -127,3 +127,8 @@
     }).observe(el);
   });
 })();
+
+/* open blog diagrams full size */
+document.querySelectorAll('.prose img[src$=".svg"]').forEach(function (img) {
+  img.addEventListener('click', function () { window.open(img.src, '_blank', 'noopener'); });
+});

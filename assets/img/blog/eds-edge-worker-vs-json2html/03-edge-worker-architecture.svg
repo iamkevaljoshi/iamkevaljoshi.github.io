@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 545" role="img" aria-label="Edge worker architecture: dynamic logic on every request at the CDN">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .arrb{stroke:#2563EB;stroke-width:2;fill:none;marker-end:url(#ab)}
+  .arro{stroke:#EA580C;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#ao)}
+  .dash{stroke:#94A3B8;stroke-width:1.5;fill:none;stroke-dasharray:5 4;marker-end:url(#a)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/></marker>
+  <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#EA580C"/></marker>
+</defs>
+<rect width="1200" height="545" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Edge worker: dynamic logic on every request</text>
+<text class="sub" x="30" y="72">Your code sits between the visitor and aem.live, so it can see who is asking and change the answer.</text>
+
+<rect class="box" x="30" y="205" width="170" height="90" rx="10"/>
+<text class="t" x="115" y="245" text-anchor="middle">Browser</text>
+<text class="s" x="115" y="266" text-anchor="middle">visitor request</text>
+<path class="arr" d="M204,235 H276"/>
+<text class="lbl" x="240" y="226" text-anchor="middle">request</text>
+<path class="arr" d="M276,265 H204"/>
+<text class="lbl" x="240" y="284" text-anchor="middle">response</text>
+
+<rect class="orange" x="280" y="100" width="440" height="325" rx="14"/>
+<text class="t" x="500" y="130" text-anchor="middle">Edge worker on your CDN</text>
+<text class="s" x="500" y="150" text-anchor="middle">Cloudflare · Fastly · Akamai · CloudFront · AEM Edge Functions</text>
+
+<g>
+<rect x="305" y="170" width="390" height="30" rx="8" fill="#FFFFFF" stroke="#F3C6A8"/>
+<text class="s" x="320" y="190" style="fill:#10182B">①  auth, geo, device or A/B decision</text>
+<rect x="305" y="208" width="390" height="30" rx="8" fill="#FFFFFF" stroke="#F3C6A8"/>
+<text class="s" x="320" y="228" style="fill:#10182B">②  cache lookup with your own cache key</text>
+<rect x="305" y="246" width="390" height="30" rx="8" fill="#FFFFFF" stroke="#F3C6A8"/>
+<text class="s" x="320" y="266" style="fill:#10182B">③  fetch the page shell from aem.live</text>
+<rect x="305" y="284" width="390" height="30" rx="8" fill="#FFFFFF" stroke="#F3C6A8"/>
+<text class="s" x="320" y="304" style="fill:#10182B">④  call APIs with server-side secrets</text>
+<rect x="305" y="322" width="390" height="30" rx="8" fill="#FFFFFF" stroke="#F3C6A8"/>
+<text class="s" x="320" y="342" style="fill:#10182B">⑤  HTMLRewriter: inject, compose or strip</text>
+<rect x="305" y="360" width="390" height="30" rx="8" fill="#FFFFFF" stroke="#F3C6A8"/>
+<text class="s" x="320" y="380" style="fill:#10182B">⑥  set cache headers and respond</text>
+</g>
+
+<rect class="box" x="820" y="110" width="350" height="80" rx="10"/>
+<text class="t" x="995" y="145" text-anchor="middle">Identity provider</text>
+<text class="s" x="995" y="166" text-anchor="middle">OAuth / OIDC · JWT validation</text>
+
+<rect class="green" x="820" y="221" width="350" height="80" rx="10"/>
+<text class="t" x="995" y="256" text-anchor="middle">aem.live origin</text>
+<text class="s" x="995" y="277" text-anchor="middle">authored pages, blocks and code</text>
+
+<rect class="box" x="820" y="332" width="350" height="80" rx="10"/>
+<text class="t" x="995" y="367" text-anchor="middle">Backend APIs</text>
+<text class="s" x="995" y="388" text-anchor="middle">pricing · inventory · CRM · search</text>
+
+<path class="arr" d="M697,185 L816,150"/>
+<path class="arr" d="M697,261 L816,261"/>
+<path class="arr" d="M697,299 L816,372"/>
+
+<text class="lo" x="600" y="475" text-anchor="middle" style="font-size:13px">Every request it handles pays for the logic: latency, invocations, and a backend outage becomes a page outage.</text>
+<text class="s" x="600" y="500" text-anchor="middle">The composed HTML lives only in CDN cache. It is not in the Content Bus, sitemap or query-index.</text>
+</svg>

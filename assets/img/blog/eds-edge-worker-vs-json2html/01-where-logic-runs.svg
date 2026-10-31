@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 530" role="img" aria-label="Where the dynamic logic runs: json2html at publish time versus edge worker at request time">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .arrb{stroke:#2563EB;stroke-width:2;fill:none;marker-end:url(#ab)}
+  .arro{stroke:#EA580C;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#ao)}
+  .dash{stroke:#94A3B8;stroke-width:1.5;fill:none;stroke-dasharray:5 4;marker-end:url(#a)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/></marker>
+  <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#EA580C"/></marker>
+</defs>
+<rect width="1200" height="530" rx="16" fill="#F7F8FB"/>
+<text class="h" x="35" y="48">Where does the dynamic logic run?</text>
+<text class="sub" x="35" y="72">Same building blocks, two very different moments in the page lifecycle</text>
+
+<!-- upstream sources -->
+<rect class="box" x="365" y="95" width="140" height="66" rx="10"/>
+<text class="t" x="435" y="123" text-anchor="middle">Primary source</text>
+<text class="s" x="435" y="143" text-anchor="middle">DA · UE · SharePoint</text>
+<path class="arr" d="M435,163 V205"/>
+<text class="lbl" x="443" y="190">fallback</text>
+
+<rect class="box" x="695" y="95" width="140" height="66" rx="10"/>
+<text class="t" x="765" y="123" text-anchor="middle">GitHub repo</text>
+<text class="s" x="765" y="143" text-anchor="middle">blocks · JS · CSS</text>
+<path class="arr" d="M765,163 V205"/>
+
+<!-- main pipeline -->
+<rect class="box" x="35" y="210" width="140" height="90" rx="10"/>
+<text class="t" x="105" y="250" text-anchor="middle">Backend data</text>
+<text class="s" x="105" y="271" text-anchor="middle">APIs · PIM · CFs</text>
+
+<rect class="blue" x="200" y="210" width="140" height="90" rx="10"/>
+<text class="t" x="270" y="250" text-anchor="middle">json2html</text>
+<text class="s" x="270" y="271" text-anchor="middle">BYOM overlay</text>
+
+<rect class="box" x="365" y="210" width="140" height="90" rx="10"/>
+<text class="t" x="435" y="250" text-anchor="middle">Admin API</text>
+<text class="s" x="435" y="271" text-anchor="middle">preview · publish</text>
+
+<rect class="green" x="530" y="210" width="140" height="90" rx="10"/>
+<text class="t" x="600" y="250" text-anchor="middle">Content Bus</text>
+<text class="s" x="600" y="271" text-anchor="middle">+ Media Bus</text>
+
+<rect class="green" x="695" y="210" width="140" height="90" rx="10"/>
+<text class="t" x="765" y="250" text-anchor="middle">aem.live</text>
+<text class="s" x="765" y="271" text-anchor="middle">origin</text>
+
+<rect class="orange" x="860" y="210" width="140" height="90" rx="10"/>
+<text class="t" x="930" y="250" text-anchor="middle">Your CDN</text>
+<text class="s" x="930" y="271" text-anchor="middle">+ edge worker</text>
+
+<rect class="box" x="1025" y="210" width="140" height="90" rx="10"/>
+<text class="t" x="1095" y="250" text-anchor="middle">Browser</text>
+<text class="s" x="1095" y="271" text-anchor="middle">visitor</text>
+
+<path class="arr" d="M177,255 H197"/>
+<path class="arr" d="M342,255 H362"/>
+<path class="arr" d="M507,255 H527"/>
+<path class="arr" d="M672,255 H692"/>
+<path class="arr" d="M837,255 H857"/>
+<path class="arr" d="M1002,255 H1022"/>
+
+<!-- request-time call -->
+<path class="arro" d="M930,302 V345 H105 V306"/>
+<text class="lo" x="517" y="337" text-anchor="middle">request-time API call (edge worker pattern)</text>
+
+<!-- brackets -->
+<path d="M35,383 v12 h635 v-12" stroke="#2563EB" stroke-width="2" fill="none"/>
+<text class="lb" x="352" y="422" text-anchor="middle" style="font-size:13px;letter-spacing:.08em">PUBLISH TIME</text>
+<text class="s" x="352" y="443" text-anchor="middle">json2html renders once per preview/publish and the result is stored as a real page</text>
+
+<path d="M695,383 v12 h470 v-12" stroke="#EA580C" stroke-width="2" fill="none"/>
+<text class="lo" x="930" y="422" text-anchor="middle" style="font-size:13px;letter-spacing:.08em">REQUEST TIME</text>
+<text class="s" x="930" y="443" text-anchor="middle">an edge worker runs on every request it intercepts</text>
+
+<text class="s" x="600" y="497" text-anchor="middle" style="font-style:italic">json2html is itself a Cloudflare worker; the real decision is where in the lifecycle your logic sits.</text>
+</svg>

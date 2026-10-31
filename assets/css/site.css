@@ -416,3 +416,23 @@ img.avatar{object-fit:cover;padding:0}
 .portrait .ring{z-index:1}
 h1.tagline{max-width:24ch}
 .about-text a,.contact .about-text a{color:var(--accent);text-underline-offset:.2em}
+
+/* ---------- blog: wide figures, contents, code highlighting ---------- */
+.prose p:has(> img:only-child){margin:2.25rem 0}
+.prose img[src$=".svg"]{display:block;position:relative;left:50%;transform:translateX(-50%);max-width:none;
+  width:min(72rem,calc(100vw - 2 * var(--pad)));height:auto;border:1px solid var(--line);border-radius:1rem;cursor:zoom-in;
+  box-shadow:0 18px 40px -28px color-mix(in srgb,var(--ink) 45%,transparent)}
+.toc{border:1px solid var(--line);border-radius:1rem;padding:1.1rem 1.4rem;margin:2rem 0;background:color-mix(in srgb,var(--bg) 70%,transparent);font-size:1.02rem}
+.toc p{margin:0 0 .4rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.toc ul{margin:0;padding-left:1.1rem}
+.toc li{margin:.2rem 0}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a:hover{color:var(--accent);text-decoration:underline}
+.prose h2,.prose h3{scroll-margin-top:5.5rem}
+.prose pre{font-size:.92rem}
+.highlight .c,.highlight .c1,.highlight .cm{color:var(--muted);font-style:italic}
+.highlight .k,.highlight .kd,.highlight .kn,.highlight .kr,.highlight .nt{color:var(--violet)}
+.highlight .s,.highlight .s1,.highlight .s2,.highlight .sb,.highlight .se,.highlight .dl{color:var(--accent)}
+.highlight .na,.highlight .nx,.highlight .nf,.highlight .py{color:color-mix(in srgb,var(--gold) 80%,var(--ink))}
+.highlight .m,.highlight .mi,.highlight .kc{color:var(--coral)}
+.highlight .o,.highlight .p{color:var(--muted)}

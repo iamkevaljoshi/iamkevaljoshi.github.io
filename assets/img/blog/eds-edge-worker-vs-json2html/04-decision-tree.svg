@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Decision tree: json2html, custom renderer, hybrid, client-side block or edge worker">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .arrb{stroke:#2563EB;stroke-width:2;fill:none;marker-end:url(#ab)}
+  .arro{stroke:#EA580C;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#ao)}
+  .dash{stroke:#94A3B8;stroke-width:1.5;fill:none;stroke-dasharray:5 4;marker-end:url(#a)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/></marker>
+  <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#EA580C"/></marker>
+</defs>
+<rect width="1200" height="630" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="46">Which one should I use?</text>
+
+<rect x="390" y="72" width="420" height="50" rx="25" fill="#10182B"/>
+<text class="t" x="600" y="102" text-anchor="middle" style="fill:#FFFFFF">Page needs data that is not authored in EDS</text>
+<path class="arr" d="M600,124 V156"/>
+
+<rect class="box" x="270" y="160" width="660" height="64" rx="10" style="stroke:#10182B"/>
+<text class="t" x="600" y="187" text-anchor="middle">Is the page the same for every visitor, and should it be indexable?</text>
+<text class="s" x="600" y="208" text-anchor="middle">(SEO, sitemap, query-index, readable by LLMs and crawlers)</text>
+
+<path class="arr" d="M440,226 V248 H330 V266"/>
+<text class="lbl" x="448" y="244">Yes</text>
+<path class="arr" d="M760,226 V248 H900 V266"/>
+<text class="lbl" x="768" y="244">No</text>
+
+<rect class="box" x="120" y="270" width="420" height="70" rx="10" style="stroke:#10182B"/>
+<text class="t" x="330" y="298" text-anchor="middle">Can you re-publish when the data changes?</text>
+<text class="s" x="330" y="319" text-anchor="middle">(changes per hour or day, not per second)</text>
+
+<rect class="box" x="680" y="270" width="440" height="70" rx="10" style="stroke:#10182B"/>
+<text class="t" x="900" y="298" text-anchor="middle">Can the browser call the API directly?</text>
+<text class="s" x="900" y="319" text-anchor="middle">(CORS allowed, no secrets, no server-side auth)</text>
+
+<path class="arr" d="M240,342 V362 H200 V381"/>
+<text class="lbl" x="248" y="358">Yes</text>
+<path class="arr" d="M460,342 V362 H525 V381"/>
+<text class="lbl" x="468" y="358">No</text>
+
+<rect class="box" x="30" y="385" width="340" height="70" rx="10" style="stroke:#10182B"/>
+<text class="t" x="200" y="413" text-anchor="middle">Can a logic-less Mustache template</text>
+<text class="t" x="200" y="434" text-anchor="middle">map the JSON to blocks?</text>
+
+<rect class="blue" x="400" y="385" width="250" height="110" rx="10" style="stroke-dasharray:0"/>
+<rect x="400" y="385" width="250" height="110" rx="10" fill="none" stroke="#EA580C" stroke-width="2" stroke-dasharray="8 6"/>
+<text class="t" x="525" y="415" text-anchor="middle">Hybrid</text>
+<text class="s" x="525" y="438" text-anchor="middle">json2html for the page, plus a</text>
+<text class="s" x="525" y="456" text-anchor="middle">client-side block or edge worker</text>
+<text class="s" x="525" y="474" text-anchor="middle">for the volatile fields</text>
+
+<path class="arr" d="M102,457 V506"/>
+<text class="lbl" x="110" y="485">Yes</text>
+<path class="arr" d="M300,457 V506"/>
+<text class="lbl" x="308" y="485">No</text>
+
+<rect class="blue" x="15" y="510" width="175" height="90" rx="10"/>
+<text class="t" x="102" y="545" text-anchor="middle">json2html</text>
+<text class="s" x="102" y="567" text-anchor="middle">BYOM overlay,</text>
+<text class="s" x="102" y="585" text-anchor="middle">config only</text>
+
+<rect class="blue" x="210" y="510" width="180" height="90" rx="10"/>
+<text class="t" x="300" y="540" text-anchor="middle">Custom renderer</text>
+<text class="s" x="300" y="562" text-anchor="middle">own worker / App Builder</text>
+<text class="s" x="300" y="580" text-anchor="middle">as a BYOM overlay</text>
+
+<path class="arr" d="M800,342 V362 H780 V381"/>
+<text class="lbl" x="808" y="358">Yes</text>
+<path class="arr" d="M1000,342 V362 H1030 V381"/>
+<text class="lbl" x="1008" y="358">No</text>
+
+<rect class="green" x="680" y="385" width="200" height="90" rx="10"/>
+<text class="t" x="780" y="420" text-anchor="middle">Block fetch</text>
+<text class="s" x="780" y="442" text-anchor="middle">client-side in block JS,</text>
+<text class="s" x="780" y="460" text-anchor="middle">the default for most needs</text>
+
+<rect class="orange" x="900" y="385" width="260" height="90" rx="10"/>
+<text class="t" x="1030" y="420" text-anchor="middle">Edge worker</text>
+<text class="s" x="1030" y="442" text-anchor="middle">on your own CDN, or</text>
+<text class="s" x="1030" y="460" text-anchor="middle">AEM Edge Functions (Adobe CDN)</text>
+
+<!-- legend -->
+<rect x="680" y="560" width="14" height="14" rx="3" fill="#EFF4FF" stroke="#2563EB" stroke-width="2"/>
+<text class="s" x="702" y="572">publish time</text>
+<rect x="800" y="560" width="14" height="14" rx="3" fill="#FFF4EC" stroke="#EA580C" stroke-width="2"/>
+<text class="s" x="822" y="572">request time (edge)</text>
+<rect x="960" y="560" width="14" height="14" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+<text class="s" x="982" y="572">request time (browser)</text>
+</svg>
