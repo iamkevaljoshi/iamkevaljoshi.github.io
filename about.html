@@ -30,7 +30,7 @@ description: About Keval Joshi, a Mumbai-based Solutions Architect at DEPT® wit
 </div>
 
 <h2 class="sub">How I approach architecture</h2>
-<div class="grid">
+<div class="grid two">
   {%- for c in p.principles %}
   <div class="card"><span class="num">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div>
   {%- endfor %}

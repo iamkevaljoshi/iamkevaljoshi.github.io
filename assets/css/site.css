@@ -282,3 +282,4 @@ footer{border-top:1px solid var(--line);padding:2rem 0 calc(2rem + env(safe-area
 h1,h2,h3{text-wrap:balance}
 p,li,dd{text-wrap:pretty}
 .prose{max-width:46rem}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr))}
