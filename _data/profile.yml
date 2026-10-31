@@ -10,7 +10,7 @@ location: Mumbai, India
 city: Mumbai
 region: Maharashtra
 country: IN
-email: "[your-email@example.com]"
+email: "iamkevaljoshi@gmail.com"
 linkedin: https://www.linkedin.com/in/keval-joshi-36b8393b
 github: https://github.com/iamkevaljoshi
 photo: ""   # e.g. /assets/img/keval.jpg (add the file to the repo). Empty shows initials.
@@ -52,7 +52,7 @@ facts:
   - { label: "Based in", value: "Mumbai, India" }
   - { label: "Currently", value: "Solutions Architect, DEPT®" }
   - { label: "Experience", value: "12+ years" }
-  - { label: "Languages", value: "English, Hindi, Gujarati" }
+  - { label: "Languages", value: "English, Hindi" }
 
 capabilities:
   - title: Solution & enterprise architecture
