@@ -11,7 +11,7 @@ description: About Keval Joshi, a Mumbai-based Solutions Architect at DEPT® wit
   <div class="portrait">
     <div class="ring"></div>
     {%- if p.photo != "" %}
-    <img src="{{ p.photo | relative_url }}" alt="Portrait of {{ p.name }}" width="800" height="1000">
+    <img src="{{ p.photo | relative_url }}" alt="{{ p.name }}, {{ p.title }}, in the Himalayas" width="476" height="476" loading="eager">
     {%- else %}
     <span class="initials" aria-hidden="true">{{ initials[0] | slice: 0, 1 }}{{ initials[1] | slice: 0, 1 }}</span>
     {%- endif %}

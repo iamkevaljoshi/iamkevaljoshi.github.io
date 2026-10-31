@@ -8,7 +8,7 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT® special
 <section class="hero">
   <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap">
-    <p class="eyebrow">{{ p.title }} · {{ p.location }}</p>
+    <p class="eyebrow hero-id">{%- if p.photo != "" %}<img src="{{ p.photo | relative_url }}" alt="" width="44" height="44">{% endif %}<span>{{ p.title }} · {{ p.location }}</span></p>
     <h1 class="sr-only">{{ p.name }}, {{ p.title }}</h1>
     <div class="name-stage" id="stage">
       <canvas id="name-canvas" data-name="{{ p.name }}" aria-hidden="true"></canvas>

@@ -13,7 +13,7 @@ country: IN
 email: "iamkevaljoshi@gmail.com"
 linkedin: https://www.linkedin.com/in/keval-joshi-36b8393b
 github: https://github.com/iamkevaljoshi
-photo: ""   # e.g. /assets/img/keval.jpg (add the file to the repo). Empty shows initials.
+photo: /assets/img/keval-joshi.jpg   # Empty shows initials.
 cv: ""      # e.g. /assets/keval-joshi-cv.pdf. Empty hides the Download CV button.
 employer: { name: "DEPT®", url: "https://www.deptagency.com" }
 

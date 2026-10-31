@@ -23,7 +23,7 @@ layout: default
   </div>
   <footer class="wrap narrow post-foot">
     <div class="author-box">
-      <span class="avatar" aria-hidden="true">KJ</span>
+      {%- if p.photo != "" %}<img class="avatar" src="{{ p.photo | relative_url }}" alt="" width="48" height="48" loading="lazy">{% else %}<span class="avatar" aria-hidden="true">KJ</span>{% endif %}
       <div>
         <p><strong>{{ p.name }}</strong>, {{ p.title }} at {{ p.employer.name }}, {{ p.city }}.</p>
         <p class="muted">Adobe-certified AEM Architect with 12+ years in software engineering. <a href="{{ '/about/' | relative_url }}">About me</a> · <a href="{{ p.linkedin }}" target="_blank" rel="noopener">Discuss on LinkedIn</a></p>
