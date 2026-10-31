@@ -98,13 +98,50 @@ education:
     title: "SSC, Information Technology (First Class)"
     org: "Changu Kana Thakur High School"
 
+# Add `url:` to link a certification to its credential page ("Show credential" on LinkedIn).
 certifications:
-  - "Adobe Certified Professional: Adobe Experience Manager Digital Librarian, Adobe (Aug 2026, expires Aug 2028)"
-  - "Adobe Certified Expert: Adobe Experience Manager as a Cloud Service Migration, Adobe (Aug 2026, expires Aug 2028)"
-  - "Certified SAFe® 6 Agilist, SAFe by Scaled Agile, Inc. (Jun 2025, expires Jun 2035)"
-  - "Adobe AEM 6 Architect, Adobe (Dec 2022)"
-  - "Adobe AEM 6 Developer, Adobe (Feb 2020)"
-  - "ITIL V3 Foundation"
+  - name: "Adobe Certified Expert: Adobe Experience Manager as a Cloud Service Migration"
+    issuer: Adobe
+    issued: "Aug 2026"
+    expires: "Aug 2028"
+    credential_id: "284b0663-96df-11f1-bdd6-42010a400002"
+    skills: ["Adobe Experience Manager (AEM)", "AEM as a Cloud Service"]
+    url: ""
+  - name: "Adobe Certified Professional: Adobe Experience Manager Digital Librarian"
+    issuer: Adobe
+    issued: "Aug 2026"
+    expires: "Aug 2028"
+    credential_id: "60b4dfd0-96e8-11f1-bdd6-42010a400002"
+    skills: ["Adobe Experience Manager (AEM)", "Digital asset management"]
+    url: ""
+  - name: "Certified SAFe® 6 Agilist"
+    issuer: "SAFe by Scaled Agile, Inc."
+    issued: "Jun 2025"
+    expires: "Jun 2035"
+    credential_id: ""
+    skills: ["SAFe", "Agile at scale"]
+    url: ""
+  - name: "Adobe AEM 6 Architect"
+    issuer: Adobe
+    issued: "Dec 2022"
+    expires: ""
+    credential_id: ""
+    skills: ["Adobe Experience Manager (AEM)", "Architecture"]
+    url: ""
+  - name: "Adobe AEM 6 Developer"
+    issuer: Adobe
+    issued: "Feb 2020"
+    expires: ""
+    credential_id: ""
+    skills: ["Adobe Experience Manager (AEM)"]
+    url: ""
+  - name: "ITIL V3 Foundation"
+    issuer: "[Issuer]"
+    issued: ""
+    expires: ""
+    credential_id: ""
+    skills: ["ITIL", "IT service management"]
+    url: ""
 
 skills:
   - group: Platforms

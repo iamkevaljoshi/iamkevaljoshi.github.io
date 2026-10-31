@@ -7,6 +7,7 @@
       <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
       <a href="{{ '/about/' | relative_url }}"{% if page.url contains '/about/' %} aria-current="page"{% endif %}>About</a>
       <a href="{{ '/experience/' | relative_url }}"{% if page.url contains '/experience/' %} aria-current="page"{% endif %}>Experience</a>
+      <a href="{{ '/certifications/' | relative_url }}"{% if page.url contains '/certifications/' %} aria-current="page"{% endif %}>Certifications</a>
       <a href="{{ '/work/' | relative_url }}"{% if page.url contains '/work/' %} aria-current="page"{% endif %}>Work</a>
       <a href="{{ '/blog/' | relative_url }}"{% if page.url == '/blog/' or page.layout == 'post' %} aria-current="page"{% endif %}>Blog</a>
       <a href="{{ '/contact/' | relative_url }}"{% if page.url contains '/contact/' %} aria-current="page"{% endif %}>Contact</a>

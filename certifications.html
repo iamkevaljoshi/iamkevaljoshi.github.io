@@ -1,0 +1,24 @@
+---
+layout: page
+title: Certifications
+permalink: /certifications/
+eyebrow: Credentials
+lede: Professional certifications in Adobe Experience Manager, scaled agile delivery and IT service management.
+description: Certifications held by Keval Joshi, including Adobe Experience Manager Architect, Cloud Service Migration, SAFe 6 Agilist and ITIL.
+---
+{%- assign p = site.data.profile -%}
+<div class="certs">
+  {%- for c in p.certifications %}
+  <article class="cert">
+    <p class="cert-issuer">{{ c.issuer }}</p>
+    <h3>{{ c.name }}</h3>
+    <dl class="cert-meta">
+      {%- if c.issued != "" %}<div><dt>Issued</dt><dd>{{ c.issued }}</dd></div>{% endif %}
+      {%- if c.expires != "" %}<div><dt>Expires</dt><dd>{{ c.expires }}</dd></div>{% endif %}
+      {%- if c.credential_id != "" %}<div class="wide"><dt>Credential ID</dt><dd class="mono">{{ c.credential_id }}</dd></div>{% endif %}
+    </dl>
+    {%- if c.skills.size > 0 %}<div class="tags">{% for s in c.skills %}<span class="tag">{{ s }}</span>{% endfor %}</div>{% endif %}
+    {%- if c.url != "" %}<p class="cert-link"><a class="btn ghost" href="{{ c.url }}" target="_blank" rel="noopener">Show credential</a></p>{% endif %}
+  </article>
+  {%- endfor %}
+</div>

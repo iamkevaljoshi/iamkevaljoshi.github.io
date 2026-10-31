@@ -39,7 +39,8 @@ description: Professional experience, education, certifications and skills of Ke
 
 <h2 class="sub">Certifications</h2>
 <ul class="list">
-  {%- for c in p.certifications %}<li>{{ c }}</li>{% endfor %}
+  {%- for c in p.certifications limit: 3 %}<li><strong>{{ c.name }}</strong> <span class="muted">· {{ c.issuer }}{% if c.issued != "" %}, {{ c.issued }}{% endif %}</span></li>{% endfor %}
 </ul>
+<p style="margin-top:1rem"><a class="more" href="{{ '/certifications/' | relative_url }}">All {{ p.certifications.size }} certifications →</a></p>
 
 <p style="margin-top:2.5rem"><a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener">Full profile on LinkedIn</a></p>
