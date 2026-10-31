@@ -1,0 +1,46 @@
+---
+layout: null
+sitemap: false
+---
+{%- assign p = site.data.profile -%}
+[
+  {"t": "Home", "u": "{{ '/' | relative_url }}", "s": "Page", "x": {{ p.tagline | append: ' ' | append: p.intro | jsonify }}},
+  {%- capture ab %}{{ p.summary }} {% for a in p.about %}{% unless a contains '[' %}{{ a }} {% endunless %}{% endfor %}{% endcapture %}
+  {"t": "About Keval Joshi", "u": "{{ '/about/' | relative_url }}", "s": "Page", "x": {{ ab | strip | jsonify }}},
+  {"t": "Experience", "u": "{{ '/experience/' | relative_url }}", "s": "Page", "x": "Career history, skills, education and certifications."},
+  {"t": "Certifications", "u": "{{ '/certifications/' | relative_url }}", "s": "Page", "x": "Adobe Experience Manager, SAFe and ITIL certifications with credential IDs."},
+  {"t": "Work", "u": "{{ '/work/' | relative_url }}", "s": "Page", "x": "AEM architecture case studies and typical engagements: AEM as a Cloud Service migration, platform builds, integration architecture, architecture reviews."},
+  {"t": "Blog", "u": "{{ '/blog/' | relative_url }}", "s": "Page", "x": "Technical writing on Adobe Experience Manager, Edge Delivery Services and solution architecture."},
+  {"t": "Contact", "u": "{{ '/contact/' | relative_url }}", "s": "Page", "x": {{ 'Email ' | append: p.email | append: ', LinkedIn, GitHub. Based in ' | append: p.location | jsonify }}},
+{%- for post in site.posts %}
+  {"t": {{ post.title | jsonify }}, "u": "{{ post.url | relative_url }}", "s": "Blog post", "g": {{ post.tags | join: ' ' | jsonify }}, "x": {{ post.description | default: post.excerpt | strip_html | normalize_whitespace | jsonify }}},
+  {%- assign parts = post.content | split: '<h2 id="' -%}
+  {%- for part in parts offset: 1 %}
+    {%- assign id = part | split: '"' | first -%}
+    {%- assign head = part | split: '</h2>' | first | remove_first: id | remove_first: '">' | strip_html | strip -%}
+    {%- assign body = part | split: '</h2>' | last | strip_html | normalize_whitespace -%}
+  {"t": {{ head | jsonify }}, "u": "{{ post.url | relative_url }}#{{ id }}", "s": {{ post.title | truncate: 48 | jsonify }}, "g": {{ post.tags | join: ' ' | jsonify }}, "x": {{ body | jsonify }}},
+  {%- endfor %}
+{%- endfor %}
+{%- for c in p.capabilities %}
+  {"t": {{ c.title | jsonify }}, "u": "{{ '/about/' | relative_url }}", "s": "Expertise", "x": {{ c.text | jsonify }}},
+{%- endfor %}
+{%- for c in p.principles %}
+  {"t": {{ c.title | jsonify }}, "u": "{{ '/about/' | relative_url }}", "s": "Principle", "x": {{ c.text | jsonify }}},
+{%- endfor %}
+{%- for f in p.faq %}
+  {"t": {{ f.q | jsonify }}, "u": "{{ '/about/' | relative_url }}#faq", "s": "FAQ", "x": {{ f.a | jsonify }}},
+{%- endfor %}
+{%- for j in p.experience %}
+  {%- capture jx -%}{{ j.from }} – {{ j.to }}. {% unless j.summary contains '[' %}{{ j.summary }}{% endunless %}{%- endcapture -%}
+  {"t": {{ j.role | append: ', ' | append: j.org | jsonify }}, "u": "{{ '/experience/' | relative_url }}", "s": "Experience", "x": {{ jx | jsonify }}},
+{%- endfor %}
+{%- for c in p.certifications %}
+  {%- capture cx -%}{% unless c.issuer contains '[' %}{{ c.issuer }}. {% endunless %}{% if c.issued != "" %}Issued {{ c.issued }}. {% endif %}{% if c.expires != "" %}Expires {{ c.expires }}. {% endif %}{{ c.skills | join: ', ' }}{%- endcapture -%}
+  {"t": {{ c.name | jsonify }}, "u": "{{ '/certifications/' | relative_url }}", "s": "Certification", "x": {{ cx | jsonify }}},
+{%- endfor %}
+{%- for e in p.education %}
+  {"t": {{ e.title | jsonify }}, "u": "{{ '/experience/' | relative_url }}", "s": "Education", "x": {{ e.org | append: ', ' | append: e.from | append: '–' | append: e.to | jsonify }}},
+{%- endfor %}
+  {"t": "Skills", "u": "{{ '/experience/' | relative_url }}", "s": "Experience", "x": {% capture sk %}{% for g in p.skills %}{% for i in g.items %}{% unless i contains '[' %}{{ i }}, {% endunless %}{% endfor %}{% endfor %}{% endcapture %}{{ sk | jsonify }}}
+]

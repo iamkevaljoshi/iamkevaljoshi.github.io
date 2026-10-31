@@ -132,3 +132,108 @@
 document.querySelectorAll('.prose img[src$=".svg"]').forEach(function (img) {
   img.addEventListener('click', function () { window.open(img.src, '_blank', 'noopener'); });
 });
+
+/* global search: index built by Jekyll at /search.json, loaded on first open */
+(function () {
+  var dlg = document.getElementById('searchDlg'), btn = document.getElementById('searchBtn');
+  if (!dlg || !btn) return;
+  var input = document.getElementById('searchInput'), list = document.getElementById('searchResults');
+  var indexUrl = (document.querySelector('link[rel="stylesheet"][href*="site.css"]').getAttribute('href') || '').replace(/assets\/css\/site\.css.*$/, '') + 'search.json';
+  var data = null, loading = null, active = -1, results = [];
+  var isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+  document.getElementById('searchKbd').textContent = isMac ? '⌘K' : 'Ctrl K';
+
+  function load() {
+    if (!loading) loading = fetch(indexUrl).then(function (r) { return r.json(); }).then(function (d) {
+      data = d.map(function (r) {
+        r.lt = r.t.toLowerCase(); r.ls = (r.s + ' ' + (r.g || '')).toLowerCase(); r.lx = (r.x || '').toLowerCase();
+        return r;
+      });
+    }).catch(function () { data = []; });
+    return loading;
+  }
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function mark(s, terms) {
+    var out = esc(s);
+    terms.forEach(function (t) { out = out.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>'); });
+    return out;
+  }
+  function snippet(x, terms) {
+    var lx = x.toLowerCase(), i = -1;
+    terms.some(function (t) { i = lx.indexOf(t); return i >= 0; });
+    if (i < 0) return x.length > 150 ? x.slice(0, 150) + '…' : x;
+    var start = Math.max(0, i - 60), end = Math.min(x.length, i + 110);
+    return (start ? '…' : '') + x.slice(start, end) + (end < x.length ? '…' : '');
+  }
+  function search(q) {
+    var terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!terms.length) return [];
+    return data.map(function (r) {
+      var score = 0;
+      for (var k = 0; k < terms.length; k++) {
+        var t = terms[k], s = 0;
+        if (r.lt.indexOf(t) >= 0) s += r.lt.indexOf(t) === 0 || r.lt.indexOf(' ' + t) >= 0 ? 12 : 8;
+        if (r.ls.indexOf(t) >= 0) s += 4;
+        var n = r.lx.split(t).length - 1;
+        if (n) s += Math.min(n, 4);
+        if (!s) return null;            // every term must match somewhere
+        score += s;
+      }
+      if (r.s === 'Page') score += 1;
+      return { r: r, score: score };
+    }).filter(Boolean).sort(function (a, b) { return b.score - a.score; }).slice(0, 12).map(function (o) { return o.r; });
+  }
+  function render() {
+    var q = input.value.trim(), terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!data) { list.innerHTML = '<li class="search-empty">Loading…</li>'; return; }
+    results = q ? search(q) : data.filter(function (r) { return r.s === 'Page' || r.s === 'Blog post'; });
+    active = results.length ? 0 : -1;
+    if (!results.length) {
+      list.innerHTML = '<li class="search-empty">No results for “' + esc(q) + '”. Try “AEM”, “Edge Delivery”, “migration” or “certification”.</li>';
+      return;
+    }
+    list.innerHTML = (q ? '' : '<li class="search-label" role="presentation">Jump to</li>') + results.map(function (r, i) {
+      return '<li role="option" id="sr' + i + '" aria-selected="' + (i === active) + '"><a href="' + esc(r.u) + '">' +
+        '<span class="sr-type">' + esc(r.s) + '</span>' +
+        '<span class="sr-title">' + mark(r.t, terms) + '</span>' +
+        (q && r.x ? '<span class="sr-text">' + mark(snippet(r.x, terms), terms) + '</span>' : '') + '</a></li>';
+    }).join('');
+    input.setAttribute('aria-activedescendant', 'sr0');
+  }
+  function move(d) {
+    if (!results.length) return;
+    var items = list.querySelectorAll('[role="option"]');
+    items[active].setAttribute('aria-selected', 'false');
+    active = (active + d + results.length) % results.length;
+    items[active].setAttribute('aria-selected', 'true');
+    items[active].scrollIntoView({ block: 'nearest' });
+    input.setAttribute('aria-activedescendant', 'sr' + active);
+  }
+  function open() {
+    if (dlg.open) return;
+    dlg.showModal(); input.value = ''; render(); input.focus();
+    load().then(render);
+  }
+  function close() { if (dlg.open) dlg.close(); }
+
+  btn.addEventListener('click', open);
+  document.getElementById('searchClose').addEventListener('click', close);
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });   // backdrop click
+  list.addEventListener('click', function (e) { if (e.target.closest('a')) close(); });
+  input.addEventListener('input', render);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+    else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); close(); location.href = results[active].u; }
+  });
+  document.addEventListener('keydown', function (e) {
+    var typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) || document.activeElement.isContentEditable;
+    if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) { e.preventDefault(); dlg.open ? close() : open(); }
+    else if (e.key === '/' && !typing && !dlg.open) { e.preventDefault(); open(); }
+  });
+  btn.addEventListener('pointerenter', load, { once: true });   // warm the index on hover
+
+  // ?q=term opens search pre-filled (shareable searches, SearchAction target)
+  var qp = new URLSearchParams(location.search).get('q');
+  if (qp) { open(); input.value = qp; load().then(render); }
+})();
