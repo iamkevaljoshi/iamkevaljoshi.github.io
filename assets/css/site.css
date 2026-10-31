@@ -377,3 +377,5 @@ p,li,dd{text-wrap:pretty}
 .aurora{-webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 70%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 70%,transparent)}
 .page-head::before{top:-40%;background:radial-gradient(closest-side,color-mix(in srgb,var(--violet) 26%,transparent),color-mix(in srgb,var(--accent) 12%,transparent) 55%,transparent)}
 .page-head{-webkit-mask-image:none}
+.page-head::before{width:26rem;height:26rem;top:calc(50% - 13rem);right:6%;filter:blur(30px);
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--violet) 30%,transparent),color-mix(in srgb,var(--accent) 14%,transparent) 35%,transparent 62%)}
