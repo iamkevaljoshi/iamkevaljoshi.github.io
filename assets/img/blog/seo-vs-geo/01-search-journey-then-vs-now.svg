@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 510" role="img" aria-label="How the search journey changed from ranked links to AI answers">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lr{font-size:12px;font-weight:700;fill:#B91C1C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .q{fill:#FFFFFF;stroke:#10182B;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .line{stroke:#64748B;stroke-width:2;fill:none}
+  .red{stroke:#DC2626;stroke-width:2;fill:none;stroke-dasharray:5 4;marker-end:url(#ar);marker-start:url(#ar)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker>
+</defs>
+<rect width="1200" height="510" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The search journey, then and now</text>
+<text class="sub" x="30" y="72">The click used to be the default outcome. Now it is one possible outcome.</text>
+
+<text class="lbl" x="30" y="108" style="letter-spacing:.06em">CLASSIC SEARCH</text>
+<rect class="box" x="30" y="118" width="230" height="64" rx="10"/>
+<text class="t" x="145" y="146" text-anchor="middle">Short keyword query</text>
+<text class="s" x="145" y="166" text-anchor="middle">"cms comparison"</text>
+<rect class="box" x="320" y="118" width="230" height="64" rx="10"/>
+<text class="t" x="435" y="146" text-anchor="middle">Ranked list of links</text>
+<text class="s" x="435" y="166" text-anchor="middle">ten blue links + ads</text>
+<rect class="box" x="610" y="118" width="230" height="64" rx="10"/>
+<text class="t" x="725" y="146" text-anchor="middle">User clicks and compares</text>
+<text class="s" x="725" y="166" text-anchor="middle">opens several tabs</text>
+<rect class="green" x="900" y="118" width="270" height="64" rx="10"/>
+<text class="t" x="1035" y="146" text-anchor="middle">Your website</text>
+<text class="s" x="1035" y="166" text-anchor="middle">the visit is the default outcome</text>
+<path class="arr" d="M264,150 H316"/><path class="arr" d="M554,150 H606"/><path class="arr" d="M844,150 H896"/>
+
+<text class="lbl" x="30" y="234" style="letter-spacing:.06em;fill:#1D4ED8">AI SEARCH</text>
+<rect class="box" x="30" y="244" width="230" height="96" rx="10"/>
+<text class="t" x="145" y="276" text-anchor="middle">Conversational prompt</text>
+<text class="s" x="145" y="297" text-anchor="middle">long, contextual,</text>
+<text class="s" x="145" y="314" text-anchor="middle">with follow-up questions</text>
+<rect class="blue" x="320" y="244" width="230" height="96" rx="10"/>
+<text class="t" x="435" y="276" text-anchor="middle">Query fan-out</text>
+<text class="s" x="435" y="297" text-anchor="middle">engine runs many</text>
+<text class="s" x="435" y="314" text-anchor="middle">related sub-searches</text>
+<rect class="blue" x="610" y="244" width="230" height="96" rx="10"/>
+<text class="t" x="725" y="276" text-anchor="middle">Synthesised answer</text>
+<text class="s" x="725" y="297" text-anchor="middle">summarises sources,</text>
+<text class="s" x="725" y="314" text-anchor="middle">cites a handful of them</text>
+<path class="arr" d="M264,292 H316"/><path class="arr" d="M554,292 H606"/>
+<rect class="grey" x="900" y="244" width="270" height="42" rx="10"/>
+<text class="t" x="1035" y="270" text-anchor="middle">Answer is enough: zero-click</text>
+<rect class="green" x="900" y="298" width="270" height="42" rx="10"/>
+<text class="t" x="1035" y="324" text-anchor="middle">Clicks a citation or agent acts</text>
+<path class="arr" d="M844,284 L896,266"/><path class="arr" d="M844,300 L896,318"/>
+
+<rect class="box" x="30" y="380" width="360" height="96" rx="12"/>
+<text x="55" y="420" style="font-size:30px;font-weight:700;fill:#C2410C">68%</text>
+<text class="s" x="55" y="446">of US Google searches ended without a click</text>
+<text class="s" x="55" y="464">(Jan–Apr 2026, SparkToro)</text>
+<rect class="box" x="420" y="380" width="360" height="96" rx="12"/>
+<text x="445" y="420" style="font-size:30px;font-weight:700;fill:#C2410C">~60%</text>
+<text class="s" x="445" y="446">lower click-through when an AI Overview</text>
+<text class="s" x="445" y="464">appears (Ahrefs data)</text>
+<rect class="box" x="810" y="380" width="360" height="96" rx="12"/>
+<text x="835" y="420" style="font-size:30px;font-weight:700;fill:#1D4ED8">~900M</text>
+<text class="s" x="835" y="446">ChatGPT weekly active users (Feb 2026);</text>
+<text class="s" x="835" y="464">Google AI Mode passed 1B monthly users</text>
+</svg>

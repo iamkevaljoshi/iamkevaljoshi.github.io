@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 530" role="img" aria-label="How generative search engines choose which sources to cite">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lr{font-size:12px;font-weight:700;fill:#B91C1C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .q{fill:#FFFFFF;stroke:#10182B;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .line{stroke:#64748B;stroke-width:2;fill:none}
+  .red{stroke:#DC2626;stroke-width:2;fill:none;stroke-dasharray:5 4;marker-end:url(#ar);marker-start:url(#ar)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker>
+</defs>
+<rect width="1200" height="530" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">How an AI answer picks its sources</text>
+<text class="sub" x="30" y="72">Retrieval-augmented generation with query fan-out, simplified</text>
+
+<rect class="box" x="30" y="190" width="200" height="110" rx="10"/>
+<text class="t" x="130" y="228" text-anchor="middle">User prompt</text>
+<text class="s" x="130" y="250" text-anchor="middle">"which CMS suits a</text>
+<text class="s" x="130" y="267" text-anchor="middle">multi-brand enterprise?"</text>
+<path class="arr" d="M234,245 H286"/>
+
+<rect class="navy" x="290" y="100" width="250" height="290" rx="12"/>
+<text class="t" x="415" y="132" text-anchor="middle">Query fan-out</text>
+<text class="s" x="415" y="152" text-anchor="middle">model writes related searches</text>
+<rect x="305" y="175" width="220" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="415" y="195" text-anchor="middle" style="fill:#10182B">multi-site CMS comparison</text>
+<rect x="305" y="215" width="220" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="415" y="235" text-anchor="middle" style="fill:#10182B">headless vs hybrid CMS</text>
+<rect x="305" y="255" width="220" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="415" y="275" text-anchor="middle" style="fill:#10182B">CMS for multiple brands 2026</text>
+<rect x="305" y="295" width="220" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="415" y="315" text-anchor="middle" style="fill:#10182B">CMS total cost of ownership</text>
+<rect x="305" y="335" width="220" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="415" y="355" text-anchor="middle" style="fill:#10182B">… more sub-queries</text>
+<path class="arr" d="M544,245 H596"/>
+<rect class="green" x="600" y="100" width="260" height="290" rx="12"/>
+<text class="t" x="730" y="132" text-anchor="middle">Retrieve from an index</text>
+<text class="s" x="730" y="152" text-anchor="middle">Google index · Bing · own crawler</text>
+<rect x="615" y="185" width="230" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="730" y="205" text-anchor="middle" style="fill:#10182B">Can the crawler fetch it?</text>
+<rect x="615" y="230" width="230" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="730" y="250" text-anchor="middle" style="fill:#10182B">Is the text in raw HTML?</text>
+<rect x="615" y="275" width="230" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="730" y="295" text-anchor="middle" style="fill:#10182B">Does it rank for a sub-query?</text>
+<rect x="615" y="320" width="230" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="730" y="340" text-anchor="middle" style="fill:#10182B">Is it fresh and trusted?</text>
+<path class="arr" d="M864,245 H906"/>
+<rect class="blue" x="910" y="100" width="260" height="290" rx="12"/>
+<text class="t" x="1040" y="132" text-anchor="middle">Generate the answer</text>
+<text class="s" x="1040" y="152" text-anchor="middle">synthesise, then attribute</text>
+<rect x="925" y="185" width="230" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="1040" y="205" text-anchor="middle" style="fill:#10182B">Lift clear, standalone passages</text>
+<rect x="925" y="230" width="230" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="1040" y="250" text-anchor="middle" style="fill:#10182B">Cross-check facts across sources</text>
+<rect x="925" y="275" width="230" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="1040" y="295" text-anchor="middle" style="fill:#10182B">Prefer specific, verifiable claims</text>
+<rect x="925" y="320" width="230" height="30" rx="8" fill="#FFFFFF" stroke="#CBD2E1"/><text class="s" x="1040" y="340" text-anchor="middle" style="fill:#10182B">Cite a few sources, name brands</text>
+<text class="lo" x="30" y="432" style="font-size:13px;letter-spacing:.06em">WHERE YOU HAVE INFLUENCE</text>
+<rect class="orange" x="290" y="445" width="250" height="56" rx="10"/>
+<text class="s" x="415" y="469" text-anchor="middle" style="fill:#10182B">Cover the whole topic,</text>
+<text class="s" x="415" y="486" text-anchor="middle" style="fill:#10182B">not a single keyword</text>
+<rect class="orange" x="600" y="445" width="260" height="56" rx="10"/>
+<text class="s" x="730" y="469" text-anchor="middle" style="fill:#10182B">Crawler access, server-rendered</text>
+<text class="s" x="730" y="486" text-anchor="middle" style="fill:#10182B">HTML, SEO fundamentals</text>
+<rect class="orange" x="910" y="445" width="260" height="56" rx="10"/>
+<text class="s" x="1040" y="469" text-anchor="middle" style="fill:#10182B">Answer-first passages, original</text>
+<text class="s" x="1040" y="486" text-anchor="middle" style="fill:#10182B">facts, consistent brand info</text>
+</svg>

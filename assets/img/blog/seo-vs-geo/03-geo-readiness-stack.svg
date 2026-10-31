@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" role="img" aria-label="GEO readiness stack: accessible, extractable, citable, measurable">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lr{font-size:12px;font-weight:700;fill:#B91C1C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .q{fill:#FFFFFF;stroke:#10182B;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .line{stroke:#64748B;stroke-width:2;fill:none}
+  .red{stroke:#DC2626;stroke-width:2;fill:none;stroke-dasharray:5 4;marker-end:url(#ar);marker-start:url(#ar)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker>
+</defs>
+<rect width="1200" height="540" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The GEO readiness stack</text>
+<text class="sub" x="30" y="72">Build from the bottom up. Each layer only pays off if the one below it works.</text>
+<rect class="navy" x="30" y="95" width="290" height="92" rx="12"/>
+<text class="t" x="52" y="135">4 · Measurable</text>
+<text class="s" x="52" y="158" style="fill:#10182B">Do you know if it works?</text>
+<rect class="box" x="335" y="95" width="835" height="92" rx="12"/>
+<g class="s" style="fill:#10182B;font-size:13.5px">
+<text x="360" y="133">✓  Search Console generative AI report</text>
+<text x="770" y="133">✓  AI referrals segmented in analytics</text>
+<text x="360" y="161">✓  AI bot hits and errors in CDN logs</text>
+<text x="770" y="161">✓  Tracked prompt set: mentions, citations</text>
+</g>
+<rect class="orange" x="30" y="199" width="290" height="92" rx="12"/>
+<text class="t" x="52" y="239">3 · Citable</text>
+<text class="s" x="52" y="262" style="fill:#10182B">Will it trust and pick you?</text>
+<rect class="box" x="335" y="199" width="835" height="92" rx="12"/>
+<g class="s" style="fill:#10182B;font-size:13.5px">
+<text x="360" y="237">✓  Original data, first-hand experience</text>
+<text x="770" y="237">✓  Named experts, visible dates, kept fresh</text>
+<text x="360" y="265">✓  Consistent brand facts everywhere</text>
+<text x="770" y="265">✓  Genuine mentions: reviews, forums, press</text>
+</g>
+<rect class="blue" x="30" y="303" width="290" height="92" rx="12"/>
+<text class="t" x="52" y="343">2 · Extractable</text>
+<text class="s" x="52" y="366" style="fill:#10182B">Can it lift a clean answer?</text>
+<rect class="box" x="335" y="303" width="835" height="92" rx="12"/>
+<g class="s" style="fill:#10182B;font-size:13.5px">
+<text x="360" y="341">✓  Answer-first sections, clear headings</text>
+<text x="770" y="341">✓  One idea per passage</text>
+<text x="360" y="369">✓  Tables, lists and definitions for facts</text>
+<text x="770" y="369">✓  Structured data matching visible content</text>
+</g>
+<rect class="green" x="30" y="407" width="290" height="92" rx="12"/>
+<text class="t" x="52" y="447">1 · Accessible</text>
+<text class="s" x="52" y="470" style="fill:#10182B">Can AI systems reach it?</text>
+<rect class="box" x="335" y="407" width="835" height="92" rx="12"/>
+<g class="s" style="fill:#10182B;font-size:13.5px">
+<text x="360" y="445">✓  robots.txt allows answer crawlers</text>
+<text x="770" y="445">✓  Content in raw HTML, not JS-only</text>
+<text x="360" y="473">✓  Indexed in both Google and Bing</text>
+<text x="770" y="473">✓  Fast, 200 status, clean canonicals</text>
+</g>
+</svg>

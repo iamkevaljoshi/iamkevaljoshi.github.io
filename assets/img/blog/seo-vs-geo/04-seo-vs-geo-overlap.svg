@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="What SEO and GEO share and where they differ">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lr{font-size:12px;font-weight:700;fill:#B91C1C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .q{fill:#FFFFFF;stroke:#10182B;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .line{stroke:#64748B;stroke-width:2;fill:none}
+  .red{stroke:#DC2626;stroke-width:2;fill:none;stroke-dasharray:5 4;marker-end:url(#ar);marker-start:url(#ar)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker>
+</defs>
+<rect width="1200" height="560" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">SEO and GEO: mostly the same foundation</text>
+<circle cx="480" cy="305" r="230" fill="#EFF4FF" fill-opacity="0.85" stroke="#2563EB" stroke-width="2"/>
+<circle cx="720" cy="305" r="230" fill="#FFF4EC" fill-opacity="0.6" stroke="#EA580C" stroke-width="2"/>
+<text x="370" y="175" text-anchor="middle" style="font-size:24px;font-weight:700;fill:#1D4ED8">SEO</text>
+<text class="s" x="370" y="196" text-anchor="middle">rank and earn the click</text>
+<text x="830" y="175" text-anchor="middle" style="font-size:24px;font-weight:700;fill:#C2410C">GEO</text>
+<text class="s" x="830" y="196" text-anchor="middle">get cited and recommended</text>
+<text class="lbl" x="600" y="196" text-anchor="middle" style="fill:#10182B">SHARED FOUNDATION</text>
+
+<g class="s" style="fill:#10182B;font-size:13px">
+<text x="370" y="250" text-anchor="middle">Keyword rank tracking</text>
+<text x="370" y="282" text-anchor="middle">SERP feature targeting</text>
+<text x="370" y="314" text-anchor="middle">Title and snippet CTR tests</text>
+<text x="370" y="346" text-anchor="middle">Links for ranking power</text>
+<text x="370" y="378" text-anchor="middle">Position as the KPI</text>
+
+<text x="600" y="234" text-anchor="middle">Crawlable, indexable pages</text>
+<text x="600" y="264" text-anchor="middle">Helpful, expert content</text>
+<text x="600" y="294" text-anchor="middle">Experience and authority</text>
+<text x="600" y="324" text-anchor="middle">Technical health, speed</text>
+<text x="600" y="354" text-anchor="middle">Clear headings, structure</text>
+<text x="600" y="384" text-anchor="middle">Structured data</text>
+<text x="600" y="414" text-anchor="middle">Internal linking</text>
+
+<text x="830" y="250" text-anchor="middle">AI crawler access</text>
+<text x="830" y="282" text-anchor="middle">Answer-first passages</text>
+<text x="830" y="314" text-anchor="middle">Off-site brand mentions</text>
+<text x="830" y="346" text-anchor="middle">Entity consistency</text>
+<text x="830" y="378" text-anchor="middle">Citation share as the KPI</text>
+</g>
+</svg>

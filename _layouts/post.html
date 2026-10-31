@@ -29,6 +29,9 @@ layout: default
       {%- if shared > 0 -%}{%- assign related = related | push: other -%}{%- endif -%}
     {%- endif -%}
   {%- endfor %}
+  {%- if related.size == 0 -%}
+    {%- for other in site.posts -%}{%- if other.url != page.url -%}{%- assign related = related | push: other -%}{%- endif -%}{%- endfor -%}
+  {%- endif %}
   {%- if related.size > 0 %}
   <aside class="wrap narrow related" aria-labelledby="related-h">
     <h2 id="related-h">Related reading</h2>
