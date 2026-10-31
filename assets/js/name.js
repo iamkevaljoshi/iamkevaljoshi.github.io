@@ -8,12 +8,14 @@
   var NAME = canvas.dataset.name || 'Keval Joshi';
   var particles = [], dpr = 1, W = 0, H = 0, fontSize = 100, running = false, visible = true;
   var pointer = { x: -9999, y: -9999, active: false };
-  var ink = '#17203A', gold = '#C98100';
+  var ink = '#17203A', gold = '#C98100', accent = '#0B6E72', violet = '#5B4FD6';
 
   function readColors() {
     var cs = getComputedStyle(root);
     ink = cs.getPropertyValue('--ink').trim();
     gold = cs.getPropertyValue('--gold').trim();
+    accent = cs.getPropertyValue('--accent').trim();
+    violet = cs.getPropertyValue('--violet').trim();
     if (reduce) draw();
   }
 
@@ -56,8 +58,11 @@
   function draw() {
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, W, H);
+    var grad = ctx.createLinearGradient(0, 0, W, 0);
+    grad.addColorStop(0, ink); grad.addColorStop(0.45, ink);
+    grad.addColorStop(0.75, violet); grad.addColorStop(1, accent);
     [false, true].forEach(function (pass) {
-      ctx.fillStyle = pass ? gold : ink;
+      ctx.fillStyle = pass ? gold : grad;
       ctx.beginPath();
       particles.forEach(function (p) {
         if (p.gold === pass) { ctx.moveTo(p.x + p.r, p.y); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); }

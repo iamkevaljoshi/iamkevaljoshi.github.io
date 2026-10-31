@@ -6,6 +6,7 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT® special
 {%- assign p = site.data.profile -%}
 {%- assign cases = site.work | where_exp: "c", "c.draft != true" -%}
 <section class="hero">
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap">
     <p class="eyebrow">{{ p.title }} · {{ p.location }}</p>
     <h1 class="sr-only">{{ p.name }}, {{ p.title }}</h1>
@@ -15,7 +16,7 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT® special
     <p class="hint" id="hint"><i></i><span id="hintText">Move your cursor through my name</span></p>
     <div class="hero-foot">
       <div>
-        <p class="tagline">{{ p.tagline }}</p>
+        <p class="tagline">{{ p.tagline | replace: 'Adobe Experience Manager', '<span class="grad-text">Adobe Experience Manager</span>' }}</p>
         <p class="intro">{{ p.intro }}</p>
       </div>
       <div class="cta-row">
@@ -30,6 +31,14 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT® special
     </ul>
   </div>
 </section>
+
+<div class="marquee" aria-label="Areas of expertise">
+  {%- for pass in (1..2) %}
+  <ul{% if pass == 2 %} aria-hidden="true"{% endif %}>
+    {%- for k in p.knows_about %}<li>{{ k }}</li>{% endfor %}
+  </ul>
+  {%- endfor %}
+</div>
 
 <section class="block">
   <div class="wrap">

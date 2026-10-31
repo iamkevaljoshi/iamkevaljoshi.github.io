@@ -76,3 +76,54 @@
     });
   });
 })();
+
+/* scroll reveal, card spotlight, count-up */
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+
+  if (!reduce && 'IntersectionObserver' in window) {
+    var items = $$('.card, .cert, .case-card, .cred-row li, .job, .post-item, .proof li, .faq details, .skill-grp, .list li, .about-grid > *, .lede, .facts');
+    items.forEach(function (el) {
+      var sibs = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.classList.add('rv');
+      el.style.transitionDelay = (Math.min(sibs, 6) * 70) + 'ms';
+    });
+    var ro = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { ro.observe(el); });
+    // once revealed, hand the element back to its own hover transitions
+    document.addEventListener('transitionend', function (e) {
+      var el = e.target;
+      if (el.classList && el.classList.contains('in') && e.propertyName === 'opacity') {
+        el.classList.remove('rv', 'in'); el.style.transitionDelay = '';
+      }
+    });
+  }
+
+  $$('.card, .cert, .case-card, .cred-row li').forEach(function (el) {
+    el.addEventListener('pointermove', function (e) {
+      var r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  $$('.proof strong').forEach(function (el) {
+    var m = el.textContent.match(/^(\d+)(.*)$/);
+    if (!m || reduce) return;
+    var target = +m[1], rest = m[2];
+    el.textContent = '0' + rest;
+    new IntersectionObserver(function (es, o) {
+      if (!es[0].isIntersecting) return;
+      o.disconnect();
+      var t0 = performance.now();
+      (function tick(t) {
+        var k = Math.min(1, (t - t0) / 1400), v = Math.round(target * (1 - Math.pow(1 - k, 3)));
+        el.textContent = v + rest;
+        if (k < 1) requestAnimationFrame(tick);
+      })(t0);
+    }).observe(el);
+  });
+})();
