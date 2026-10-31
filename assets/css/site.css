@@ -373,3 +373,7 @@ p,li,dd{text-wrap:pretty}
   .marquee ul{animation:none!important}
   ::view-transition-old(root),::view-transition-new(root){animation:none!important}
 }
+/* soften glow edges */
+.aurora{-webkit-mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 70%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 70%,transparent)}
+.page-head::before{top:-40%;background:radial-gradient(closest-side,color-mix(in srgb,var(--violet) 26%,transparent),color-mix(in srgb,var(--accent) 12%,transparent) 55%,transparent)}
+.page-head{-webkit-mask-image:none}
