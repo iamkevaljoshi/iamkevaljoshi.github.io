@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+{% include head.html %}
+</head>
+<body>
+{% include header.html %}
+<main id="main">
+{{ content }}
+</main>
+{% include footer.html %}
+<script src="{{ '/assets/js/site.js' | relative_url }}"></script>
+{%- if page.hero %}
+<script src="{{ '/assets/js/name.js' | relative_url }}"></script>
+{%- endif %}
+</body>
+</html>

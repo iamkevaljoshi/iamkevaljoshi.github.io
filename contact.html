@@ -1,0 +1,14 @@
+---
+layout: page
+title: Contact
+permalink: /contact/
+lede: For architecture reviews, platform design or a conversation about your project.
+description: Contact Keval Joshi, solution architect.
+---
+{%- assign p = site.data.profile -%}
+<a class="mail" href="mailto:{{ p.email }}">{{ p.email }}</a>
+<div class="contact-row">
+  <button class="btn solid" type="button" data-copy="{{ p.email }}">Copy email</button>
+  <a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+  <a class="btn ghost" href="{{ p.github }}" target="_blank" rel="noopener">GitHub</a>
+</div>

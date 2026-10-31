@@ -1,0 +1,45 @@
+---
+layout: page
+title: Experience
+permalink: /experience/
+lede: Roles, outcomes and the skills behind them.
+description: Professional experience, education, certifications and skills of Keval Joshi, solution architect.
+---
+{%- assign p = site.data.profile -%}
+<div class="timeline" id="timeline">
+  <div class="track"></div><div class="fill" id="fill"></div>
+  {%- for j in p.experience %}
+  <article class="job">
+    <div class="job-head">
+      <div class="when">{{ j.from }} – {{ j.to }}</div>
+      <div>
+        <h3>{{ j.role }}</h3>
+        <div class="org">{{ j.org }}</div>
+        <p>{{ j.summary }}</p>
+        {%- if j.points.size > 0 %}<ul>{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </div>
+  </article>
+  {%- endfor %}
+</div>
+
+<h2 class="sub">Skills</h2>
+<div>
+  {%- for g in p.skills %}
+  <div class="skill-grp"><h4>{{ g.group }}</h4><div class="tags" style="margin:0">{% for i in g.items %}<span class="tag">{{ i }}</span>{% endfor %}</div></div>
+  {%- endfor %}
+</div>
+
+<h2 class="sub">Education</h2>
+<ul class="list">
+  {%- for e in p.education %}
+  <li><strong>{{ e.title }}</strong>, {{ e.org }} <span class="muted">· {{ e.from }} – {{ e.to }}</span></li>
+  {%- endfor %}
+</ul>
+
+<h2 class="sub">Certifications</h2>
+<ul class="list">
+  {%- for c in p.certifications %}<li>{{ c }}</li>{% endfor %}
+</ul>
+
+<p style="margin-top:2.5rem"><a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener">Full profile on LinkedIn</a></p>

@@ -1,0 +1,39 @@
+---
+layout: page
+title: About
+permalink: /about/
+lede: Background, working style and the principles I design by.
+description: About Keval Joshi, solution architect. Background, approach and architecture principles.
+---
+{%- assign p = site.data.profile -%}
+{%- assign initials = p.name | split: ' ' -%}
+<div class="about-grid">
+  <div class="portrait">
+    <div class="ring"></div>
+    {%- if p.photo != "" %}
+    <img src="{{ p.photo | relative_url }}" alt="Portrait of {{ p.name }}">
+    {%- else %}
+    <span class="initials" aria-hidden="true">{{ initials[0] | slice: 0, 1 }}{{ initials[1] | slice: 0, 1 }}</span>
+    {%- endif %}
+  </div>
+  <div class="about-text">
+    {%- for para in p.about %}<p>{{ para }}</p>{% endfor %}
+    <dl class="facts">
+      {%- for f in p.facts %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endfor %}
+    </dl>
+  </div>
+</div>
+
+<h2 class="sub">How I approach architecture</h2>
+<div class="grid">
+  {%- for c in p.principles %}
+  <div class="card"><span class="num">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div>
+  {%- endfor %}
+</div>
+
+<h2 class="sub">Areas of expertise</h2>
+<div class="grid">
+  {%- for c in p.capabilities %}
+  <div class="card"><h3>{{ c.title }}</h3><p>{{ c.text }}</p></div>
+  {%- endfor %}
+</div>

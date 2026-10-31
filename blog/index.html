@@ -1,0 +1,23 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+eyebrow: Writing
+lede: Notes on architecture, platforms and delivery.
+description: Technical blog by Keval Joshi on solution architecture, integration, cloud and delivery.
+---
+<div class="posts">
+  {%- for post in site.posts %}
+  <article class="post-item">
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
+    <div>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p>{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 35 }}</p>
+      {%- if post.tags.size > 0 %}<div class="tags">{% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+    </div>
+  </article>
+  {%- else %}
+  <p class="empty">No posts yet.</p>
+  {%- endfor %}
+</div>
+<p class="muted" style="margin-top:2rem">Subscribe via <a href="{{ '/feed.xml' | relative_url }}">RSS</a>.</p>

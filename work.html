@@ -1,0 +1,37 @@
+---
+layout: page
+title: Work
+permalink: /work/
+lede: Selected case studies, each with the context, the architecture and the outcome.
+description: Selected solution architecture case studies by Keval Joshi.
+---
+{%- assign p = site.data.profile -%}
+{%- assign all_tags = p.projects | map: 'tags' | join: '|' | split: '|' | uniq -%}
+<div class="filters" id="filters" role="group" aria-label="Filter case studies by skill">
+  <button class="chip" type="button" aria-pressed="true" data-skill="All">All</button>
+  {%- for t in all_tags %}<button class="chip" type="button" aria-pressed="false" data-skill="{{ t }}">{{ t }}</button>{% endfor %}
+</div>
+<div class="projects">
+  {%- for pr in p.projects %}
+  <div class="project" data-tags="{{ pr.tags | join: '|' }}">
+    <button class="p-row" type="button" aria-expanded="false" aria-controls="pp{{ forloop.index }}">
+      <span class="p-title">{{ pr.title }}</span>
+      <span class="p-year">{{ pr.year }}</span>
+      <span class="p-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+    </button>
+    <div class="p-panel" id="pp{{ forloop.index }}"><div>
+      <div class="p-body">
+        <div>
+          <dl>
+            <dt>Context</dt><dd>{{ pr.context }}</dd>
+            <dt>Approach</dt><dd>{{ pr.approach }}</dd>
+            <dt>Outcome</dt><dd>{{ pr.outcome }}</dd>
+          </dl>
+          <div class="tags">{% for t in pr.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+        </div>
+        {%- if pr.link != "" %}<a class="btn ghost p-link" href="{{ pr.link }}" target="_blank" rel="noopener">View project</a>{% endif %}
+      </div>
+    </div></div>
+  </div>
+  {%- endfor %}
+</div>

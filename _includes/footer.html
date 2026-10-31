@@ -1,0 +1,11 @@
+{%- assign p = site.data.profile -%}
+<footer>
+  <div class="wrap foot">
+    <span>© {{ 'now' | date: '%Y' }} {{ p.name }}</span>
+    <span class="foot-links">
+      <a href="{{ p.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="{{ p.github }}" target="_blank" rel="noopener">GitHub</a>
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </span>
+  </div>
+</footer>

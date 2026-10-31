@@ -1,0 +1,119 @@
+# ---------------------------------------------------------------------
+# Edit this file to change the content of every page.
+# Anything in [square brackets] is a placeholder: replace it with your own.
+# LinkedIn could not be read automatically, so copy facts from there.
+# ---------------------------------------------------------------------
+name: Keval Joshi
+title: Solution Architect
+location: "[City], India"
+email: "[your-email@example.com]"
+linkedin: https://www.linkedin.com/in/keval-joshi-36b8393b
+github: https://github.com/iamkevaljoshi
+photo: ""   # e.g. /assets/img/keval.jpg (add the file to the repo). Empty shows initials.
+
+tagline: "I turn business goals into platform architectures that are secure, scalable and simple to run."
+intro: "I’m Keval, a solution architect based in [City], India. I design and deliver enterprise digital platforms, and I care about clear trade-offs, sound integration design and teams that can run what they build."
+
+about:
+  - "[Two or three sentences on your background: years of experience, industries, the kinds of platforms you architect.]"
+  - "I work with stakeholders and engineering teams to frame the problem, weigh options openly, and document decisions so they outlast the project. I favour pragmatic designs: the simplest architecture that meets the quality attributes that matter."
+  - "[One sentence on what you are focused on now, or what you are looking for next.]"
+
+facts:
+  - { label: "Based in", value: "[City], India" }
+  - { label: "Currently", value: "Solution Architect, [Company]" }
+  - { label: "Experience", value: "[N]+ years" }
+  - { label: "Languages", value: "English, Hindi, Gujarati" }
+
+capabilities:
+  - title: Solution & enterprise architecture
+    text: Target-state design, reference architectures, roadmaps and architecture decision records tied to business outcomes.
+  - title: Cloud & platform engineering
+    text: Cloud-native and hybrid designs, environments, CI/CD and operability built in from day one.
+  - title: Integration & API design
+    text: API-led and event-driven integration, contract-first design, and clean boundaries between systems.
+  - title: Digital experience platforms
+    text: Content, commerce and customer-experience platforms, from selection and migration to build.
+  - title: Security, performance & governance
+    text: Non-functional requirements, threat modelling, performance budgets and review gates teams can live with.
+  - title: Delivery leadership
+    text: Technical leadership across squads, estimation, risk management and mentoring engineers.
+
+principles:
+  - title: Start with the decision
+    text: Every diagram answers a question. I write down the context, options and trade-offs before the boxes and arrows.
+  - title: Design for the people who run it
+    text: Operability, observability and handover are architecture concerns, not afterthoughts.
+  - title: Prefer boring, proven choices
+    text: Spend novelty where it creates advantage, and standard patterns everywhere else.
+  - title: Make it evolvable
+    text: Clear seams, versioned contracts and fitness checks keep a design healthy as requirements change.
+
+# Most recent first
+experience:
+  - from: "[2023]"
+    to: Present
+    role: "[Solution Architect]"
+    org: "[Company]"
+    summary: "[What you own: the platforms, clients or domains you architect.]"
+    points:
+      - "[Outcome with a number, e.g. cut page load time by 40% across the platform.]"
+      - "[Architecture you led, e.g. designed the integration layer connecting X, Y and Z.]"
+      - "[Leadership, e.g. mentored a team of N engineers; introduced ADRs and design reviews.]"
+  - from: "[2019]"
+    to: "[2023]"
+    role: "[Technical Lead / Senior Engineer]"
+    org: "[Company]"
+    summary: "[Scope of the role and the stack you led.]"
+    points:
+      - "[Outcome with a number.]"
+      - "[Technical contribution.]"
+  - from: "[2014]"
+    to: "[2019]"
+    role: "[Software Engineer]"
+    org: "[Company]"
+    summary: "[Where you built your engineering foundation.]"
+    points:
+      - "[Highlight.]"
+
+education:
+  - from: "[2010]"
+    to: "[2014]"
+    title: "[Degree, Field]"
+    org: "[University]"
+
+certifications:
+  - "[Certification name, issuer, year]"
+  - "[Certification name, issuer, year]"
+
+skills:
+  - group: Architecture
+    items: ["[Solution design]", "[Integration patterns]", "[Domain-driven design]", "[Architecture decision records]"]
+  - group: Platforms & cloud
+    items: ["[Cloud provider]", "[Containers]", "[CI/CD]", "[Infrastructure as code]"]
+  - group: Engineering
+    items: ["[Language]", "[Framework]", "[Databases]", "[Testing]"]
+
+# Case studies. Each opens as an expandable row on the Work page.
+projects:
+  - title: "[Platform modernisation]"
+    year: "[2025]"
+    tags: ["[Architecture]", "[Cloud]"]
+    context: "[The client or business problem, in one or two sentences.]"
+    approach: "[The architecture you designed and the key trade-offs you made.]"
+    outcome: "[Measured result: performance, cost, delivery speed, reliability.]"
+    link: ""
+  - title: "[Enterprise integration layer]"
+    year: "[2024]"
+    tags: ["[Integration]", "[API]"]
+    context: "[The client or business problem.]"
+    approach: "[The integration approach and patterns.]"
+    outcome: "[Measured result.]"
+    link: ""
+  - title: "[Digital experience platform build]"
+    year: "[2023]"
+    tags: ["[Architecture]", "[API]"]
+    context: "[The client or business problem.]"
+    approach: "[The platform architecture and delivery approach.]"
+    outcome: "[Measured result.]"
+    link: ""
