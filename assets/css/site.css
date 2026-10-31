@@ -467,3 +467,7 @@ h1.tagline{max-width:24ch}
 .search-foot{display:flex;gap:1.25rem;margin:0;padding:.65rem 1.1rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
 .search-foot kbd{margin-right:.2rem}
 @media (max-width:640px){.search-dlg{margin-top:1rem;max-height:calc(100vh - 2rem)}.search-results li a{grid-template-columns:1fr}.sr-type{grid-row:auto}.search-foot{display:none}}
+.related{padding-bottom:2rem}
+.related h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 1rem;max-width:none}
+.related .post-item{grid-template-columns:7.5rem minmax(0,1fr)}
+@media (max-width:640px){.related .post-item{grid-template-columns:1fr}}

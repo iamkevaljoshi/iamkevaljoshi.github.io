@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-label="Repo per site versus repoless: one codebase serving many sites">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lr{font-size:12px;font-weight:700;fill:#B91C1C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .q{fill:#FFFFFF;stroke:#10182B;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .line{stroke:#64748B;stroke-width:2;fill:none}
+  .red{stroke:#DC2626;stroke-width:2;fill:none;stroke-dasharray:5 4;marker-end:url(#ar);marker-start:url(#ar)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker>
+</defs>
+<rect width="1200" height="500" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">From repo-per-site to repoless</text>
+<text class="sub" x="30" y="72">Same three country sites, two very different operating models</text>
+
+<rect x="30" y="95" width="550" height="370" rx="14" fill="#FFFFFF" stroke="#E2E6EF"/>
+<text class="t" x="55" y="128">Repo per site</text>
+<text class="s" x="55" y="148">every site owns a full copy of the code</text>
+
+<rect class="grey" x="55" y="168" width="140" height="66" rx="10"/>
+<text class="t" x="125" y="196" text-anchor="middle">brand-de repo</text>
+<text class="s" x="125" y="216" text-anchor="middle">blocks · styles</text>
+<rect class="grey" x="230" y="168" width="140" height="66" rx="10"/>
+<text class="t" x="300" y="196" text-anchor="middle">brand-ch repo</text>
+<text class="s" x="300" y="216" text-anchor="middle">blocks · styles</text>
+<rect class="grey" x="405" y="168" width="140" height="66" rx="10"/>
+<text class="t" x="475" y="196" text-anchor="middle">brand-fr repo</text>
+<text class="s" x="475" y="216" text-anchor="middle">blocks · styles</text>
+<path class="red" d="M199,201 H226"/>
+<path class="red" d="M374,201 H401"/>
+<text class="lr" x="305" y="262" text-anchor="middle">kept in sync by hand: copy, cherry-pick, drift</text>
+
+<path class="arr" d="M125,236 V306"/>
+<path class="arr" d="M300,272 V306"/>
+<path class="arr" d="M475,236 V306"/>
+<rect class="green" x="55" y="310" width="140" height="56" rx="10"/>
+<text class="t" x="125" y="343" text-anchor="middle">brand-de site</text>
+<rect class="green" x="230" y="310" width="140" height="56" rx="10"/>
+<text class="t" x="300" y="343" text-anchor="middle">brand-ch site</text>
+<rect class="green" x="405" y="310" width="140" height="56" rx="10"/>
+<text class="t" x="475" y="343" text-anchor="middle">brand-fr site</text>
+
+<text class="s" x="305" y="403" text-anchor="middle">3 repos · 3 Code Sync installs · 3 PR queues</text>
+<text class="lr" x="305" y="428" text-anchor="middle">One block fix = 3 PRs, 3 reviews, 3 releases</text>
+
+<rect x="620" y="95" width="550" height="370" rx="14" fill="#FFFFFF" stroke="#E2E6EF"/>
+<text class="t" x="645" y="128">Repoless</text>
+<text class="s" x="645" y="148">one codebase, many sites, wired together by configuration</text>
+
+<rect class="blue" x="765" y="168" width="260" height="66" rx="10"/>
+<text class="t" x="895" y="196" text-anchor="middle">brand-web repo</text>
+<text class="s" x="895" y="216" text-anchor="middle">one set of blocks, styles, scripts</text>
+<path class="arr" d="M895,236 V252"/>
+<rect class="navy" x="645" y="256" width="500" height="34" rx="8"/>
+<text class="lbl" x="895" y="278" text-anchor="middle" style="fill:#10182B">Configuration Service · admin.hlx.page/config</text>
+<path class="arr" d="M730,292 V306"/>
+<path class="arr" d="M895,292 V306"/>
+<path class="arr" d="M1060,292 V306"/>
+<rect class="green" x="655" y="310" width="150" height="56" rx="10"/>
+<text class="t" x="730" y="335" text-anchor="middle">brand-de site</text>
+<text class="s" x="730" y="353" text-anchor="middle">content: /de</text>
+<rect class="green" x="820" y="310" width="150" height="56" rx="10"/>
+<text class="t" x="895" y="335" text-anchor="middle">brand-ch site</text>
+<text class="s" x="895" y="353" text-anchor="middle">content: /ch</text>
+<rect class="green" x="985" y="310" width="150" height="56" rx="10"/>
+<text class="t" x="1060" y="335" text-anchor="middle">brand-fr site</text>
+<text class="s" x="1060" y="353" text-anchor="middle">content: /fr</text>
+
+<text class="s" x="895" y="403" text-anchor="middle">1 repo · 1 Code Sync install · new sites created by API</text>
+<text class="lb" x="895" y="428" text-anchor="middle">One block fix = 1 PR, live on every site</text>
+</svg>

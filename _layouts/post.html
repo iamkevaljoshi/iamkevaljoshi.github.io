@@ -21,6 +21,30 @@ layout: default
   <div class="wrap narrow prose">
     {{ content }}
   </div>
+  {%- assign related = "" | split: "" -%}
+  {%- for other in site.posts -%}
+    {%- if other.url != page.url -%}
+      {%- assign shared = 0 -%}
+      {%- for t in other.tags -%}{%- if page.tags contains t -%}{%- assign shared = shared | plus: 1 -%}{%- endif -%}{%- endfor -%}
+      {%- if shared > 0 -%}{%- assign related = related | push: other -%}{%- endif -%}
+    {%- endif -%}
+  {%- endfor %}
+  {%- if related.size > 0 %}
+  <aside class="wrap narrow related" aria-labelledby="related-h">
+    <h2 id="related-h">Related reading</h2>
+    <div class="posts">
+      {%- for r in related limit: 3 %}
+      <article class="post-item">
+        <time datetime="{{ r.date | date_to_xmlschema }}">{{ r.date | date: "%-d %b %Y" }}</time>
+        <div>
+          <h3><a href="{{ r.url | relative_url }}">{{ r.title }}</a></h3>
+          <p>{{ r.description | default: r.excerpt | strip_html | normalize_whitespace | truncatewords: 28 }}</p>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+  </aside>
+  {%- endif %}
   <footer class="wrap narrow post-foot">
     <div class="author-box">
       {%- if p.photo != "" %}<img class="avatar" src="{{ p.photo | relative_url }}" alt="" width="48" height="48" loading="lazy">{% else %}<span class="avatar" aria-hidden="true">KJ</span>{% endif %}

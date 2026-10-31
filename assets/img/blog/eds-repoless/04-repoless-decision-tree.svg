@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Decision tree: separate repos, single site with sections, or repoless">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lr{font-size:12px;font-weight:700;fill:#B91C1C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .q{fill:#FFFFFF;stroke:#10182B;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .line{stroke:#64748B;stroke-width:2;fill:none}
+  .red{stroke:#DC2626;stroke-width:2;fill:none;stroke-dasharray:5 4;marker-end:url(#ar);marker-start:url(#ar)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker>
+</defs>
+<rect width="1200" height="640" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="46">Should this be repoless?</text>
+
+<rect x="390" y="70" width="420" height="50" rx="25" fill="#10182B"/>
+<text class="t" x="600" y="100" text-anchor="middle" style="fill:#FFFFFF">You run more than one web experience</text>
+<path class="arr" d="M600,122 V146"/>
+
+<rect class="q" x="280" y="150" width="640" height="64" rx="10"/>
+<text class="t" x="600" y="177" text-anchor="middle">Do they share most blocks, the design system and front-end code?</text>
+<text class="s" x="600" y="198" text-anchor="middle">(differences are mostly content, branding tokens and configuration)</text>
+
+<path class="arr" d="M440,216 V240 H400 V266"/>
+<text class="lbl" x="448" y="234">Yes</text>
+<path class="arr" d="M820,216 V240 H980 V266"/>
+<text class="lbl" x="828" y="234">No</text>
+
+<rect class="grey" x="830" y="270" width="300" height="80" rx="10"/>
+<text class="t" x="980" y="300" text-anchor="middle">Separate codebases</text>
+<text class="s" x="980" y="322" text-anchor="middle">different products deserve</text>
+<text class="s" x="980" y="339" text-anchor="middle">their own repos and roadmaps</text>
+
+<rect class="q" x="120" y="270" width="560" height="70" rx="10"/>
+<text class="t" x="400" y="297" text-anchor="middle">Do they need their own content, domain, index,</text>
+<text class="t" x="400" y="318" text-anchor="middle">sitemap, access rules or publishing rights?</text>
+
+<path class="arr" d="M220,342 V364 H190 V386"/>
+<text class="lbl" x="228" y="358">No</text>
+<path class="arr" d="M560,342 V364 H630 V386"/>
+<text class="lbl" x="568" y="358">Yes</text>
+
+<rect class="green" x="40" y="390" width="300" height="96" rx="10"/>
+<text class="t" x="190" y="420" text-anchor="middle">One site, split into sections</text>
+<text class="s" x="190" y="443" text-anchor="middle">several indexes and sitemaps,</text>
+<text class="s" x="190" y="461" text-anchor="middle">section-level metadata sheets</text>
+
+<rect class="q" x="400" y="390" width="460" height="64" rx="10"/>
+<text class="t" x="630" y="417" text-anchor="middle">Can they all take the same code release</text>
+<text class="t" x="630" y="438" text-anchor="middle">at the same time?</text>
+
+<path class="arr" d="M510,456 V506"/>
+<text class="lbl" x="518" y="485">Yes</text>
+<path class="arr" d="M780,456 V506"/>
+<text class="lbl" x="788" y="485">No</text>
+
+<rect class="blue" x="390" y="510" width="240" height="90" rx="10"/>
+<text class="t" x="510" y="545" text-anchor="middle">Repoless</text>
+<text class="s" x="510" y="567" text-anchor="middle">one repo, N sites,</text>
+<text class="s" x="510" y="585" text-anchor="middle">config-driven differences</text>
+
+<rect class="orange" x="650" y="510" width="340" height="90" rx="10"/>
+<text class="t" x="820" y="540" text-anchor="middle">Repoless with guardrails</text>
+<text class="s" x="820" y="562" text-anchor="middle">site-level feature flags and opt-in blocks,</text>
+<text class="s" x="820" y="580" text-anchor="middle">or move the outlier to its own codebase</text>
+</svg>

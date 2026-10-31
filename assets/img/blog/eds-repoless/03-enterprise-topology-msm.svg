@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 570" role="img" aria-label="Enterprise topology: AEM authoring with MSM live copies, one aem.live site per market, shared repository and per-market domains">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lr{font-size:12px;font-weight:700;fill:#B91C1C}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .q{fill:#FFFFFF;stroke:#10182B;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .line{stroke:#64748B;stroke-width:2;fill:none}
+  .red{stroke:#DC2626;stroke-width:2;fill:none;stroke-dasharray:5 4;marker-end:url(#ar);marker-start:url(#ar)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/></marker>
+</defs>
+<rect width="1200" height="570" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Repoless with AEM authoring and MSM</text>
+<text class="sub" x="30" y="72">One MSM site maps to one aem.live site; all of them share the same repository</text>
+
+<rect class="box" x="30" y="95" width="330" height="345" rx="14"/>
+<text class="t" x="195" y="125" text-anchor="middle">AEM as a Cloud Service · Author</text>
+<text class="s" x="195" y="144" text-anchor="middle">Universal Editor</text>
+<rect class="blue" x="50" y="160" width="290" height="36" rx="8"/>
+<text class="s" x="195" y="183" text-anchor="middle" style="fill:#10182B;font-size:11.5px">/content/brand/language-masters · blueprint</text>
+<path class="line" d="M70,198 V372"/>
+<text class="lbl" x="80" y="218">MSM live copies</text>
+<path class="arr" d="M70,252 H86"/>
+<path class="arr" d="M70,312 H86"/>
+<path class="arr" d="M70,372 H86"/>
+<rect class="box" x="90" y="234" width="250" height="36" rx="8"/>
+<text class="s" x="215" y="257" text-anchor="middle" style="fill:#10182B">/content/brand/de</text>
+<rect class="box" x="90" y="294" width="250" height="36" rx="8"/>
+<text class="s" x="215" y="317" text-anchor="middle" style="fill:#10182B">/content/brand/ch</text>
+<rect class="box" x="90" y="354" width="250" height="36" rx="8"/>
+<text class="s" x="215" y="377" text-anchor="middle" style="fill:#10182B">/content/brand/fr</text>
+<text class="s" x="195" y="422" text-anchor="middle">EDS cloud config per site: repoless type</text>
+
+<rect class="blue" x="470" y="95" width="280" height="68" rx="10"/>
+<text class="t" x="610" y="124" text-anchor="middle">github.com/acme/brand-web</text>
+<text class="s" x="610" y="145" text-anchor="middle">one codebase · AEM Code Sync</text>
+<path class="arr" d="M610,165 V198"/>
+
+<rect x="455" y="202" width="310" height="208" rx="12" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text class="lbl" x="610" y="222" text-anchor="middle">aem.live sites (Configuration Service)</text>
+<rect class="green" x="470" y="230" width="280" height="45" rx="9"/>
+<text class="t" x="610" y="258" text-anchor="middle">brand-de</text>
+<rect class="green" x="470" y="290" width="280" height="45" rx="9"/>
+<text class="t" x="610" y="318" text-anchor="middle">brand-ch</text>
+<rect class="green" x="470" y="350" width="280" height="45" rx="9"/>
+<text class="t" x="610" y="378" text-anchor="middle">brand-fr</text>
+
+<path class="arr" d="M344,252 H466"/>
+<path class="arr" d="M344,312 H466"/>
+<path class="arr" d="M344,372 H466"/>
+<text class="lbl" x="405" y="243" text-anchor="middle">publish</text>
+
+<text class="lbl" x="1025" y="215" text-anchor="middle">Your CDN · one domain per market</text>
+<rect class="orange" x="880" y="230" width="290" height="45" rx="9"/>
+<text class="t" x="1025" y="258" text-anchor="middle">www.brand.de</text>
+<rect class="orange" x="880" y="290" width="290" height="45" rx="9"/>
+<text class="t" x="1025" y="318" text-anchor="middle">www.brand.ch</text>
+<rect class="orange" x="880" y="350" width="290" height="45" rx="9"/>
+<text class="t" x="1025" y="378" text-anchor="middle">www.brand.fr</text>
+<path class="arr" d="M754,252 H876"/>
+<path class="arr" d="M754,312 H876"/>
+<path class="arr" d="M754,372 H876"/>
+
+<rect class="navy" x="30" y="465" width="1140" height="78" rx="12"/>
+<text class="t" x="55" y="495">Same pattern for environments</text>
+<text class="s" x="55" y="520">Stage author publishes to site brand-de, prod author publishes to site brand-de-prod. Same repo, same path mappings, separate content and config.</text>
+</svg>
