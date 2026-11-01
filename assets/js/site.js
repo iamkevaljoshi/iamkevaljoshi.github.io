@@ -267,3 +267,11 @@ document.addEventListener('click', function (e) {
     window.gtag('event', 'select_content', { content_type: 'quick_link', item_id: a.dataset.track, link_url: a.href });
   }
 });
+
+/* architecture flow: SMIL pulses ignore CSS, so pause them for reduced motion and off-screen */
+(function () {
+  var svg = document.querySelector('.arch-svg');
+  if (!svg || !svg.pauseAnimations) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { svg.pauseAnimations(); return; }
+  new IntersectionObserver(function (es) { es[0].isIntersecting ? svg.unpauseAnimations() : svg.pauseAnimations(); }).observe(svg);
+})();

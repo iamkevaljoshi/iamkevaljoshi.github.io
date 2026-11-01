@@ -1,0 +1,41 @@
+<figure class="arch" aria-labelledby="arch-cap">
+  <svg class="arch-svg" viewBox="0 0 520 372" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="af-pub" d="M95 96 C95 135 228 118 228 150"/>
+      <path id="af-code" d="M425 96 C425 135 292 118 292 150"/>
+      <path id="af-cache" d="M260 214 C260 252 135 244 135 280"/>
+      <path id="af-serve" d="M212 312 H306"/>
+    </defs>
+    <g class="af-links">
+      <use href="#af-pub"/><use href="#af-code"/><use href="#af-cache"/><use href="#af-serve"/>
+    </g>
+    <g class="af-labels">
+      <text x="122" y="140">publish</text>
+      <text x="398" y="140" text-anchor="end">code sync</text>
+      <text x="214" y="262" text-anchor="end">cache</text>
+      <text x="259" y="302" text-anchor="middle">deliver</text>
+    </g>
+
+    <g class="af-node n-author"><rect x="20" y="32" width="150" height="64" rx="12"/><text class="t" x="95" y="60">AEM Author</text><text class="s" x="95" y="80">Universal Editor</text></g>
+    <g class="af-node n-code"><rect x="350" y="32" width="150" height="64" rx="12"/><text class="t" x="425" y="60">GitHub</text><text class="s" x="425" y="80">blocks · code</text></g>
+    <g class="af-node n-eds"><rect x="185" y="150" width="150" height="64" rx="12"/><text class="t" x="260" y="178">Edge Delivery</text><text class="s" x="260" y="198">Content Bus</text></g>
+    <g class="af-node n-cdn"><rect x="60" y="280" width="150" height="64" rx="12"/><text class="t" x="135" y="308">CDN · Edge</text><text class="s" x="135" y="328">cached HTML</text></g>
+    <g class="af-node n-visitor"><rect x="310" y="280" width="190" height="64" rx="12"/><text class="t" x="405" y="308">Visitor</text><text class="s" x="405" y="328">fast, static pages</text></g>
+
+    <g class="af-pulses">
+      <circle class="p-author" r="4.5"><animateMotion dur="2.6s" repeatCount="indefinite" begin="0s"><mpath href="#af-pub"/></animateMotion></circle>
+      <circle class="p-code" r="4.5"><animateMotion dur="2.6s" repeatCount="indefinite" begin="1.3s"><mpath href="#af-code"/></animateMotion></circle>
+      <circle class="p-eds" r="4.5"><animateMotion dur="2.2s" repeatCount="indefinite" begin=".6s"><mpath href="#af-cache"/></animateMotion></circle>
+      <circle class="p-cdn" r="4.5"><animateMotion dur="1.4s" repeatCount="indefinite" begin=".9s"><mpath href="#af-serve"/></animateMotion></circle>
+    </g>
+  </svg>
+
+  <ol class="arch-chips" aria-hidden="true">
+    <li class="c-author">AEM Author</li>
+    <li class="c-eds">Edge Delivery</li>
+    <li class="c-cdn">CDN</li>
+    <li class="c-visitor">Visitor</li>
+  </ol>
+
+  <figcaption id="arch-cap">The kind of platform I design: authors publish from AEM, code syncs from GitHub, Edge Delivery Services builds the pages, and a CDN serves them to visitors.</figcaption>
+</figure>

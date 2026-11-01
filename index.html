@@ -1,6 +1,5 @@
 ---
 layout: default
-hero: true
 seo_title: "Keval Joshi – AEM Solutions Architect in Mumbai, India"
 description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT®, specialising in Adobe Experience Manager (AEM) platforms and AEM Cloud Service migrations.
 ---
@@ -8,21 +7,19 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT®, specia
 {%- assign cases = site.work | where_exp: "c", "c.draft != true" -%}
 <section class="hero">
   <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
-  <div class="wrap">
-    <p class="eyebrow hero-id"><a href="{{ '/about/' | relative_url }}" data-track="hero-about">{%- if p.photo != "" %}<img src="{{ p.photo | relative_url }}" alt="" width="44" height="44">{% endif %}<span>{{ p.name }} · {{ p.title }} · {{ p.location }}</span></a></p>
-    <div class="name-stage" id="stage">
-      <canvas id="name-canvas" data-name="{{ p.name }}" aria-hidden="true"></canvas>
-    </div>
-    <p class="hint" id="hint"><i></i><span id="hintText">Move your cursor through my name</span></p>
-    <div class="hero-foot">
-      <div>
-        <h1 class="tagline">{{ p.tagline | replace: 'Adobe Experience Manager', '<span class="grad-text">Adobe Experience Manager</span>' }}</h1>
-        <p class="intro">{{ p.intro }}</p>
-      </div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow hero-id"><a href="{{ '/about/' | relative_url }}" data-track="hero-about">{%- if p.photo != "" %}<img src="{{ p.photo | relative_url }}" alt="" width="44" height="44">{% endif %}<span>{{ p.title }} · {{ p.location }}</span></a></p>
+      <p class="hero-name" data-split>{{ p.name }}</p>
+      <h1 class="tagline">{{ p.tagline | replace: 'Adobe Experience Manager', '<span class="grad-text">Adobe Experience Manager</span>' }}</h1>
+      <p class="intro">{{ p.intro }}</p>
       <div class="cta-row">
         <a class="btn solid" href="{{ '/contact/' | relative_url }}" data-track="hero-contact">Start a conversation</a>
       </div>
     </div>
+    {% include arch-flow.html %}
+  </div>
+  <div class="wrap">
     {% include explore.html %}
   </div>
 </section>

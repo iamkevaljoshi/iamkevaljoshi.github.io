@@ -527,3 +527,48 @@ h1.tagline{max-width:24ch}
   .hero-foot{margin-top:1.25rem;gap:1.25rem}
   .hint{display:none}
 }
+
+/* ---------- hero v2: real-text name + live architecture flow ---------- */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.hero-name{font-size:clamp(3rem,7.5vw,6.2rem);font-weight:800;letter-spacing:-.045em;line-height:.95;margin:.4rem 0 1.4rem}
+.hero-name::after{content:".";color:var(--gold)}
+.hero-copy .tagline{font-size:clamp(1.35rem,2.4vw,1.9rem);max-width:26ch}
+.hero-copy .intro{max-width:46ch}
+.hero-copy .cta-row{margin-top:1.75rem}
+
+.arch{margin:0;position:relative}
+.arch-svg{width:100%;height:auto;display:block;overflow:visible}
+.af-links use{fill:none;stroke:color-mix(in srgb,var(--ink) 22%,transparent);stroke-width:2;stroke-dasharray:5 6;animation:af-dash 1.2s linear infinite}
+@keyframes af-dash{to{stroke-dashoffset:-11}}
+.af-labels text{font-family:var(--mono);font-size:11px;letter-spacing:.06em;fill:var(--muted);text-transform:uppercase}
+.af-node rect{fill:color-mix(in srgb,var(--bg) 82%,transparent);stroke:var(--hue);stroke-width:1.6;transition:fill .3s,transform .3s}
+.af-node text{text-anchor:middle;font-family:var(--font)}
+.af-node .t{font-size:15px;font-weight:700;fill:var(--ink)}
+.af-node .s{font-size:12px;fill:var(--muted)}
+.af-node{transition:transform .35s cubic-bezier(.2,.8,.2,1);transform-box:fill-box;transform-origin:center}
+.af-node:hover{transform:translateY(-3px)}
+.af-node:hover rect{fill:color-mix(in srgb,var(--hue) 12%,var(--bg))}
+.n-author{--hue:var(--accent)} .n-code{--hue:var(--muted)} .n-eds{--hue:var(--violet)} .n-cdn{--hue:var(--gold)} .n-visitor{--hue:var(--coral)}
+.n-eds rect{stroke-width:2.2;filter:drop-shadow(0 8px 18px color-mix(in srgb,var(--violet) 30%,transparent))}
+.af-pulses circle{filter:drop-shadow(0 0 5px currentColor)}
+.p-author{fill:var(--accent);color:var(--accent)} .p-code{fill:var(--violet);color:var(--violet)}
+.p-eds{fill:var(--gold);color:var(--gold)} .p-cdn{fill:var(--coral);color:var(--coral)}
+.arch figcaption{color:var(--muted);font-size:.88rem;line-height:1.5;margin-top:.9rem;max-width:44ch}
+
+/* compact flow for phones */
+.arch-chips{display:none;list-style:none;margin:0;padding:0}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:1.5rem}
+  .arch-svg{display:none}
+  .arch-chips{display:flex;align-items:center;gap:0;overflow:hidden}
+  .arch-chips li{position:relative;flex:1 1 0;min-width:0;text-align:center;font-size:.72rem;font-weight:700;padding:.5rem .2rem;border-radius:.6rem;
+    border:1.5px solid var(--hue);background:color-mix(in srgb,var(--hue) 9%,var(--bg));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .arch-chips li+li{margin-left:1.6rem}
+  .arch-chips li+li::before{content:"";position:absolute;right:calc(100% + 1.5px);top:50%;width:1.6rem;height:2px;
+    background:repeating-linear-gradient(90deg,var(--hue) 0 5px,transparent 5px 9px);background-size:18px 2px;animation:chip-flow .9s linear infinite}
+  .c-author{--hue:var(--accent)} .c-eds{--hue:var(--violet)} .c-cdn{--hue:var(--gold)} .c-visitor{--hue:var(--coral)}
+  .arch figcaption{font-size:.8rem;margin-top:.6rem}
+  .hero-name{margin-bottom:1rem}
+}
+@keyframes chip-flow{to{background-position:18px 0}}
+@media (prefers-reduced-motion: reduce){.af-links use,.arch-chips li::before{animation:none!important}}
