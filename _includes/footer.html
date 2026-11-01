@@ -2,6 +2,14 @@
 <footer>
   <div class="wrap foot">
     <span>© {{ 'now' | date: '%Y' }} {{ p.name }}</span>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="{{ '/experience/' | relative_url }}">Experience</a>
+      <a href="{{ '/certifications/' | relative_url }}">Certifications</a>
+      <a href="{{ '/blog/' | relative_url }}">Blog</a>
+      <a href="{{ '/work/' | relative_url }}">Work</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      <a href="{{ '/contact/' | relative_url }}">Contact</a>
+    </nav>
     <span class="foot-links">
       <a href="{{ p.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
       <a href="{{ p.github }}" target="_blank" rel="noopener">GitHub</a>

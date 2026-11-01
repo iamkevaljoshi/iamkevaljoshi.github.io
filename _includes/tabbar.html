@@ -1,0 +1,13 @@
+{%- assign u = page.url -%}
+<nav class="tabbar" aria-label="Quick navigation">
+  <a href="{{ '/' | relative_url }}" data-track="tab-home"{% if u == '/' %} aria-current="page"{% endif %}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg><span>Home</span></a>
+  <a href="{{ '/experience/' | relative_url }}" data-track="tab-experience"{% if u contains '/experience/' %} aria-current="page"{% endif %}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg><span>Experience</span></a>
+  <a href="{{ '/certifications/' | relative_url }}" data-track="tab-certifications"{% if u contains '/certifications/' %} aria-current="page"{% endif %}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg><span>Certs</span></a>
+  <a href="{{ '/blog/' | relative_url }}" data-track="tab-blog"{% if u contains '/blog/' %} aria-current="page"{% endif %}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z"/><path d="M8 13h8M8 17h5"/></svg><span>Blog</span></a>
+  <a href="{{ '/contact/' | relative_url }}" data-track="tab-contact"{% if u contains '/contact/' %} aria-current="page"{% endif %}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>Contact</span></a>
+</nav>

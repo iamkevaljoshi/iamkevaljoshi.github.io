@@ -242,3 +242,28 @@ document.querySelectorAll('.prose img[src$=".svg"]').forEach(function (img) {
   var qp = new URLSearchParams(location.search).get('q');
   if (qp) { open(); input.value = qp; load().then(render); }
 })();
+
+/* tab bar: tuck away while reading down a post, return on scroll up */
+(function () {
+  var bar = document.querySelector('.tabbar');
+  if (!bar) return;
+  var last = scrollY, ticking = false;
+  addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var y = scrollY, nearEnd = innerHeight + y > document.documentElement.scrollHeight - 80;
+      bar.classList.toggle('hide', y > last + 4 && y > 300 && !nearEnd);
+      if (y < last - 4 || nearEnd) bar.classList.remove('hide');
+      last = y; ticking = false;
+    });
+  }, { passive: true });
+})();
+
+/* GA4 events for quick links, so their engagement can be measured */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('[data-track]');
+  if (a && typeof window.gtag === 'function') {
+    window.gtag('event', 'select_content', { content_type: 'quick_link', item_id: a.dataset.track, link_url: a.href });
+  }
+});

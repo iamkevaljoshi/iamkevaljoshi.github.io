@@ -471,3 +471,56 @@ h1.tagline{max-width:24ch}
 .related h2{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 1rem;max-width:none}
 .related .post-item{grid-template-columns:7.5rem minmax(0,1fr)}
 @media (max-width:640px){.related .post-item{grid-template-columns:1fr}}
+
+/* ---------- explore widget (home quick links) ---------- */
+.explore{padding:0 0 clamp(2.5rem,6vh,4rem)}
+.explore-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
+.xcard{--hue:var(--accent);position:relative;display:flex;align-items:center;gap:1rem;padding:1.15rem 1.2rem;border:1px solid var(--line);border-radius:1.1rem;
+  text-decoration:none;background:color-mix(in srgb,var(--bg) 72%,transparent);transition:border-color .25s,transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.xcard:nth-child(2){--hue:var(--violet)}
+.xcard:nth-child(3){--hue:var(--gold)}
+.xcard:nth-child(4){--hue:var(--coral)}
+.xcard:nth-child(5){--hue:var(--accent)}
+.xcard:nth-child(6){--hue:var(--violet)}
+.xcard:hover,.xcard:focus-visible{border-color:var(--hue);transform:translateY(-3px);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--hue) 70%,transparent)}
+.xicon{flex:none;width:2.75rem;height:2.75rem;border-radius:.8rem;display:grid;place-items:center;color:var(--hue);
+  background:color-mix(in srgb,var(--hue) 13%,transparent)}
+.xicon svg{width:1.35rem;height:1.35rem}
+.xbody{display:flex;flex-direction:column;min-width:0;gap:.1rem}
+.xtitle{font-weight:700;font-size:1.12rem;letter-spacing:-.01em}
+.xmeta{color:var(--muted);font-size:.9rem;line-height:1.35}
+.xarrow{margin-left:auto;color:var(--muted);transition:transform .3s,color .3s}
+.xcard:hover .xarrow{transform:translateX(4px);color:var(--hue)}
+@media (max-width:900px){.explore-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){
+  .explore-grid{gap:.6rem}
+  .xcard{flex-direction:column;align-items:flex-start;gap:.6rem;padding:.95rem}
+  .xicon{width:2.4rem;height:2.4rem}
+  .xtitle{font-size:1.02rem}
+  .xmeta{font-size:.8rem}
+  .xarrow{position:absolute;top:.9rem;right:.95rem}
+}
+
+/* ---------- mobile bottom tab bar ---------- */
+.tabbar{display:none}
+@media (max-width:960px){
+  .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:55;
+    padding:.35rem .25rem calc(.35rem + env(safe-area-inset-bottom,0px));
+    background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-top:1px solid var(--line);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+  .tabbar a{display:flex;flex-direction:column;align-items:center;gap:.15rem;padding:.35rem 0;min-height:3rem;justify-content:center;
+    text-decoration:none;color:var(--muted);font-size:.7rem;font-weight:600;border-radius:.75rem;-webkit-tap-highlight-color:transparent}
+  .tabbar svg{width:1.35rem;height:1.35rem}
+  .tabbar a[aria-current="page"]{color:var(--accent)}
+  .tabbar a[aria-current="page"] svg{filter:drop-shadow(0 0 6px color-mix(in srgb,var(--accent) 45%,transparent))}
+  .tabbar a:active{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+  body{padding-bottom:calc(4.1rem + env(safe-area-inset-bottom,0px))}
+  .tabbar.hide{transform:translateY(110%)}
+}
+@media print{.tabbar{display:none}}
+
+/* footer quick links */
+.foot{align-items:center}
+.foot-nav{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem}
+.foot-nav a{text-decoration:none}
+.foot-nav a:hover{color:var(--ink)}
