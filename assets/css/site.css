@@ -578,3 +578,29 @@ h1.tagline{max-width:24ch}
   .hero-copy .cta-row{margin-top:1.1rem}
 }
 @media (prefers-reduced-motion: reduce){.af-links use{animation:none!important}}
+
+/* ---------- personalisation ---------- */
+.scard.is-picked{border-color:var(--hue);box-shadow:0 0 0 3px color-mix(in srgb,var(--hue) 16%,transparent)}
+.picked{margin-left:auto;font-family:var(--font);text-transform:none;letter-spacing:0;font-size:.72rem;font-weight:700;
+  padding:.15rem .5rem;border-radius:999px;background:var(--hue);color:var(--bg)}
+.scard.is-picked .sarrow{margin-left:.5rem}
+.pstate{display:inline-block;margin-bottom:.4rem;font-size:.75rem;font-weight:700;padding:.12rem .55rem;border-radius:999px;
+  background:color-mix(in srgb,var(--violet) 14%,transparent);color:var(--violet)}
+.pstate.done{background:var(--surface);color:var(--muted)}
+.pstate.rec{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+
+.p13n-toast{position:fixed;left:1.25rem;bottom:1.25rem;z-index:58;width:min(24rem,calc(100vw - 2.5rem));padding:1.1rem 2.6rem 1rem 1.15rem;
+  border:1px solid var(--line);border-radius:1.1rem;background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 22px 50px -24px color-mix(in srgb,#000 45%,transparent);
+  transform:translateY(calc(100% + 2rem));opacity:0;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.p13n-toast::before{content:"";position:absolute;inset:0 0 auto;height:3px;border-radius:1.1rem 1.1rem 0 0;background:var(--grad)}
+.p13n-toast.in{transform:none;opacity:1}
+.p13n-msg{margin:0 0 .8rem;font-size:1rem;line-height:1.45;font-weight:500}
+.p13n-cta{padding:.6rem 1.1rem;font-size:.92rem}
+.p13n-why{margin-top:.75rem;font-size:.8rem;color:var(--muted)}
+.p13n-why summary{cursor:pointer}
+.p13n-why p{margin:.4rem 0 0}
+.p13n-why a{color:var(--accent)}
+.p13n-close{position:absolute;top:.55rem;right:.55rem;width:2rem;height:2rem;border-radius:50%;border:0;background:transparent;color:var(--muted);font-size:1.3rem;line-height:1;cursor:pointer}
+.p13n-close:hover{background:var(--surface);color:var(--ink)}
+@media (max-width:960px){.p13n-toast{left:.75rem;right:.75rem;width:auto;bottom:calc(4.6rem + env(safe-area-inset-bottom,0px))}}

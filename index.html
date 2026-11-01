@@ -32,7 +32,7 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT®, specia
   {%- endfor %}
 </div>
 
-<section class="block">
+<section class="block" data-section="capabilities">
   <div class="wrap">
     <div class="sec-head">
       <h2 data-split>What I do</h2>
@@ -60,7 +60,7 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT®, specia
 </section>
 {%- endif %}
 {%- if site.posts.size > 0 %}
-<section class="block">
+<section class="block" data-section="writing">
   <div class="wrap">
     <div class="sec-head">
       <h2 data-split>Latest writing</h2>
@@ -68,7 +68,7 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT®, specia
     </div>
     <div class="posts">
       {%- for post in site.posts limit: 3 %}
-      <article class="post-item">
+      <article class="post-item" data-tags="{{ post.tags | join: '|' | escape }}">
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
         <div>
           <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
