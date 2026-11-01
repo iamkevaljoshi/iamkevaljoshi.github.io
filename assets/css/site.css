@@ -37,8 +37,6 @@ header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
 header.nav.scrolled{border-bottom-color:var(--line)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:4.25rem;gap:1rem}
-.logo{font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:-.02em}
-.logo span{color:var(--gold)}
 .nav-links{display:flex;align-items:center;gap:clamp(.75rem,2.2vw,1.9rem);margin-left:auto}
 .nav-links a{text-decoration:none;font-size:1rem;color:var(--muted);transition:color .2s;padding:.25rem 0;border-bottom:2px solid transparent}
 .nav-links a:hover{color:var(--ink)}
@@ -296,7 +294,6 @@ p,li,dd{text-wrap:pretty}
 @keyframes vt-in{from{opacity:0;transform:translateY(12px)}}
 
 .progress{background:var(--grad)}
-.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* hero aurora */
 .hero{position:relative;overflow:hidden;isolation:isolate}
@@ -604,3 +601,23 @@ h1.tagline{max-width:24ch}
 .p13n-close{position:absolute;top:.55rem;right:.55rem;width:2rem;height:2rem;border-radius:50%;border:0;background:transparent;color:var(--muted);font-size:1.3rem;line-height:1;cursor:pointer}
 .p13n-close:hover{background:var(--surface);color:var(--ink)}
 @media (max-width:960px){.p13n-toast{left:.75rem;right:.75rem;width:auto;bottom:calc(4.6rem + env(safe-area-inset-bottom,0px))}}
+
+/* ---------- logo ---------- */
+:root{--tile-acc:#5CC6C9;--tile-gold:#F4B63F}
+:root[data-theme="dark"]{--tile-acc:#0B6E72;--tile-gold:#C98100}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--tile-acc:#0B6E72;--tile-gold:#C98100}}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;letter-spacing:normal;font-size:1rem}
+.logo-tile{flex:none;width:2.4rem;height:2.4rem;border-radius:.7rem;background:var(--ink);color:var(--bg);display:grid;place-items:center;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.logo-tile .mark{width:76%;height:76%}
+.logo-tile .mark-hub{fill:var(--tile-acc);stroke:var(--ink)}
+.logo-tile .mark-node{fill:var(--tile-gold);stroke:var(--ink)}
+.logo:hover .logo-tile{transform:rotate(-6deg) scale(1.05);box-shadow:0 8px 18px -8px color-mix(in srgb,var(--violet) 60%,transparent)}
+.logo-text{display:flex;flex-direction:column;line-height:1.1}
+.logo-name{font-weight:750;font-size:1.05rem;letter-spacing:-.02em;color:var(--ink)}
+.logo-role{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+@media (max-width:1180px){.logo-role{display:none}}
+@media (max-width:1060px) and (min-width:961px){.logo-text{display:none}}
+@media (max-width:380px){.logo-name{font-size:.95rem}}
+.logo-tile.sm{width:1.5rem;height:1.5rem;border-radius:.45rem}
+.foot-brand{display:inline-flex;align-items:center;gap:.6rem}

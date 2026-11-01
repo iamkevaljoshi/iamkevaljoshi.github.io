@@ -2,7 +2,10 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a class="logo" href="{{ '/' | relative_url }}" aria-label="{{ site.data.profile.name }}, home">KJ<span>.</span></a>
+    <a class="logo" href="{{ '/' | relative_url }}" aria-label="{{ site.data.profile.name }}, home">
+      <span class="logo-tile">{% include logo-mark.svg %}</span>
+      <span class="logo-text"><span class="logo-name">{{ site.data.profile.name }}</span><span class="logo-role">{{ site.data.profile.title }}</span></span>
+    </a>
     <nav class="nav-links" id="navLinks" aria-label="Main">
       <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
       <a href="{{ '/about/' | relative_url }}"{% if page.url contains '/about/' %} aria-current="page"{% endif %}>About</a>
