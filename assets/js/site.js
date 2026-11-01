@@ -270,8 +270,10 @@ document.addEventListener('click', function (e) {
 
 /* architecture flow: SMIL pulses ignore CSS, so pause them for reduced motion and off-screen */
 (function () {
-  var svg = document.querySelector('.arch-svg');
-  if (!svg || !svg.pauseAnimations) return;
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { svg.pauseAnimations(); return; }
-  new IntersectionObserver(function (es) { es[0].isIntersecting ? svg.unpauseAnimations() : svg.pauseAnimations(); }).observe(svg);
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.arch-svg').forEach(function (svg) {
+    if (!svg.pauseAnimations) return;
+    if (reduce) { svg.pauseAnimations(); return; }
+    new IntersectionObserver(function (es) { es[0].isIntersecting ? svg.unpauseAnimations() : svg.pauseAnimations(); }).observe(svg);
+  });
 })();

@@ -555,20 +555,26 @@ h1.tagline{max-width:24ch}
 .p-eds{fill:var(--gold);color:var(--gold)} .p-cdn{fill:var(--coral);color:var(--coral)}
 .arch figcaption{color:var(--muted);font-size:.88rem;line-height:1.5;margin-top:.9rem;max-width:44ch}
 
-/* compact flow for phones */
-.arch-chips{display:none;list-style:none;margin:0;padding:0}
+/* phones: same live flow, narrow layout; diagram sits between headline and CTA */
+.arch-svg-m{display:none}
 @media (max-width:900px){
-  .hero-grid{grid-template-columns:1fr;gap:1.5rem}
-  .arch-svg{display:none}
-  .arch-chips{display:flex;align-items:center;gap:0;overflow:hidden}
-  .arch-chips li{position:relative;flex:1 1 0;min-width:0;text-align:center;font-size:.72rem;font-weight:700;padding:.5rem .2rem;border-radius:.6rem;
-    border:1.5px solid var(--hue);background:color-mix(in srgb,var(--hue) 9%,var(--bg));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .arch-chips li+li{margin-left:1.6rem}
-  .arch-chips li+li::before{content:"";position:absolute;right:calc(100% + 1.5px);top:50%;width:1.6rem;height:2px;
-    background:repeating-linear-gradient(90deg,var(--hue) 0 5px,transparent 5px 9px);background-size:18px 2px;animation:chip-flow .9s linear infinite}
-  .c-author{--hue:var(--accent)} .c-eds{--hue:var(--violet)} .c-cdn{--hue:var(--gold)} .c-visitor{--hue:var(--coral)}
-  .arch figcaption{font-size:.8rem;margin-top:.6rem}
-  .hero-name{margin-bottom:1rem}
+  .hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:0}
+  .hero-copy{display:contents}
+  .hero-id{order:1}
+  .hero-name{order:2;margin-bottom:.9rem}
+  .hero-copy .tagline{order:3}
+  .hero-copy .intro{order:4;margin-top:.9rem}
+  .arch{order:5;margin:1.4rem auto 0;width:100%;max-width:26rem}
+  .hero-copy .cta-row{order:6;margin-top:1.4rem}
+  .arch-svg-d{display:none}
+  .arch-svg-m{display:block}
+  .arch figcaption{display:none}
 }
-@keyframes chip-flow{to{background-position:18px 0}}
-@media (prefers-reduced-motion: reduce){.af-links use,.arch-chips li::before{animation:none!important}}
+@media (max-width:640px){
+  .hero-copy .intro{display:none}
+  .hero-name{font-size:clamp(2.6rem,12vw,3.4rem)}
+  .hero-copy .tagline{font-size:1.3rem}
+  .arch{margin-top:1.1rem}
+  .hero-copy .cta-row{margin-top:1.1rem}
+}
+@media (prefers-reduced-motion: reduce){.af-links use{animation:none!important}}
