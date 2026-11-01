@@ -492,7 +492,7 @@ h1.tagline{max-width:24ch}
   .stats{gap:.6rem;margin-top:1.5rem}
   .scard{padding:.9rem .95rem 1rem}
   .shead{font-size:.66rem;gap:.45rem}
-  .sicon{width:1.7rem;height:1.7rem}
+  .sicon{display:none}
   .sval{font-size:1.3rem;margin-top:.25rem}
   .ssub{font-size:.8rem}
 }

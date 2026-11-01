@@ -112,7 +112,7 @@
 
   $$('.proof strong, .sval').forEach(function (el) {
     var m = el.textContent.match(/^(\d+)(.*)$/);
-    if (!m || reduce) return;
+    if (!m || reduce || +m[1] < 10) return;   // counting to 3 isn't worth animating
     var target = +m[1], rest = m[2];
     el.textContent = '0' + rest;
     new IntersectionObserver(function (es, o) {
