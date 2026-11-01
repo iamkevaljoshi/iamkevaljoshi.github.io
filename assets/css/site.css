@@ -472,34 +472,32 @@ h1.tagline{max-width:24ch}
 .related .post-item{grid-template-columns:7.5rem minmax(0,1fr)}
 @media (max-width:640px){.related .post-item{grid-template-columns:1fr}}
 
-/* ---------- explore widget (home quick links) ---------- */
-.explore{padding:0 0 clamp(2.5rem,6vh,4rem)}
-.explore-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
-.xcard{--hue:var(--accent);position:relative;display:flex;align-items:center;gap:1rem;padding:1.15rem 1.2rem;border:1px solid var(--line);border-radius:1.1rem;
+/* ---------- stat cards: proof + quick links in one ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem;margin-top:clamp(2rem,5vh,3rem)}
+.scard{--hue:var(--accent);display:flex;flex-direction:column;gap:.35rem;padding:1.1rem 1.2rem 1.2rem;border:1px solid var(--line);border-radius:1.1rem;
   text-decoration:none;background:color-mix(in srgb,var(--bg) 72%,transparent);transition:border-color .25s,transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
-.xcard:nth-child(2){--hue:var(--violet)}
-.xcard:nth-child(3){--hue:var(--gold)}
-.xcard:nth-child(4){--hue:var(--coral)}
-.xcard:nth-child(5){--hue:var(--accent)}
-.xcard:nth-child(6){--hue:var(--violet)}
-.xcard:hover,.xcard:focus-visible{border-color:var(--hue);transform:translateY(-3px);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--hue) 70%,transparent)}
-.xicon{flex:none;width:2.75rem;height:2.75rem;border-radius:.8rem;display:grid;place-items:center;color:var(--hue);
-  background:color-mix(in srgb,var(--hue) 13%,transparent)}
-.xicon svg{width:1.35rem;height:1.35rem}
-.xbody{display:flex;flex-direction:column;min-width:0;gap:.1rem}
-.xtitle{font-weight:700;font-size:1.12rem;letter-spacing:-.01em}
-.xmeta{color:var(--muted);font-size:.9rem;line-height:1.35}
-.xarrow{margin-left:auto;color:var(--muted);transition:transform .3s,color .3s}
-.xcard:hover .xarrow{transform:translateX(4px);color:var(--hue)}
-@media (max-width:900px){.explore-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.scard:nth-child(3){--hue:var(--violet)}
+.scard:nth-child(4){--hue:var(--gold)}
+.scard:nth-child(5){--hue:var(--coral)}
+.scard:hover,.scard:focus-visible{border-color:var(--hue);transform:translateY(-3px);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--hue) 70%,transparent)}
+.shead{display:flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--hue)}
+.sicon{width:2rem;height:2rem;border-radius:.6rem;display:grid;place-items:center;background:color-mix(in srgb,var(--hue) 13%,transparent);flex:none}
+.sicon svg{width:1.05rem;height:1.05rem}
+.sarrow{margin-left:auto;font-family:var(--font);font-size:1.05rem;color:var(--muted);transition:transform .3s,color .3s}
+.scard:hover .sarrow{transform:translateX(4px);color:var(--hue)}
+.sval{font-size:clamp(1.45rem,2.4vw,1.9rem);letter-spacing:-.03em;line-height:1.1;margin-top:.45rem;color:var(--ink)}
+.ssub{color:var(--muted);font-size:.9rem;line-height:1.4}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){
-  .explore-grid{gap:.6rem}
-  .xcard{flex-direction:column;align-items:flex-start;gap:.6rem;padding:.95rem}
-  .xicon{width:2.4rem;height:2.4rem}
-  .xtitle{font-size:1.02rem}
-  .xmeta{font-size:.8rem}
-  .xarrow{position:absolute;top:.9rem;right:.95rem}
+  .stats{gap:.6rem;margin-top:1.5rem}
+  .scard{padding:.9rem .95rem 1rem}
+  .shead{font-size:.66rem;gap:.45rem}
+  .sicon{width:1.7rem;height:1.7rem}
+  .sval{font-size:1.3rem;margin-top:.25rem}
+  .ssub{font-size:.8rem}
 }
+.hero-id a{display:flex;align-items:center;gap:.85rem;text-decoration:none;color:inherit}
+.hero-id a:hover span{text-decoration:underline;text-underline-offset:.25em}
 
 /* ---------- mobile bottom tab bar ---------- */
 .tabbar{display:none}
@@ -524,14 +522,8 @@ h1.tagline{max-width:24ch}
 .foot-nav{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem}
 .foot-nav a{text-decoration:none}
 .foot-nav a:hover{color:var(--ink)}
-/* explore lives inside the hero: after proof on desktop, before it on phones */
-.hero .explore{padding:0;margin-top:clamp(1.75rem,4vh,2.5rem)}
 @media (max-width:760px){
   .hero{padding-top:1.75rem}
-  .hero .wrap{display:flex;flex-direction:column}
-  .hero .explore{order:1;margin-top:1.75rem}
-  .hero .proof{order:2}
   .hero-foot{margin-top:1.25rem;gap:1.25rem}
-  .hero .cta-row .btn{padding:.7rem 1.1rem;font-size:.95rem}
   .hint{display:none}
 }

@@ -23,13 +23,6 @@ summary: "Keval Joshi is a Mumbai-based Solutions Architect at DEPT® with 12+ y
 tagline: "Solutions Architect for enterprise Adobe Experience Manager platforms."
 intro: "I design and deliver AEM-based digital experience platforms for enterprise brands, from AEM as a Cloud Service migrations to integration architecture, with clear trade-offs and platforms teams can actually run."
 
-# Short proof points shown under the home hero.
-proof:
-  - { value: "12+ yrs", label: "in software engineering" }
-  - { value: "AEM Architect", label: "Adobe certified" }
-  - { value: "Cloud Service", label: "Migration Expert, Adobe" }
-  - { value: "DEPT®", label: "Solutions Architect" }
-
 knows_about:
   - Adobe Experience Manager
   - AEM as a Cloud Service

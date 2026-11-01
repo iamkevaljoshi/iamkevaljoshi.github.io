@@ -110,7 +110,7 @@
     });
   });
 
-  $$('.proof strong').forEach(function (el) {
+  $$('.proof strong, .sval').forEach(function (el) {
     var m = el.textContent.match(/^(\d+)(.*)$/);
     if (!m || reduce) return;
     var target = +m[1], rest = m[2];
