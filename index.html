@@ -29,10 +29,9 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT®, specia
       <li><strong>{{ item.value }}</strong><span>{{ item.label }}</span></li>
       {%- endfor %}
     </ul>
+    {% include explore.html %}
   </div>
 </section>
-
-{% include explore.html %}
 
 <div class="marquee" aria-label="Areas of expertise">
   {%- for pass in (1..2) %}

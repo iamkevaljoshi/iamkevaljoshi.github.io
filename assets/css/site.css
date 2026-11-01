@@ -524,3 +524,14 @@ h1.tagline{max-width:24ch}
 .foot-nav{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem}
 .foot-nav a{text-decoration:none}
 .foot-nav a:hover{color:var(--ink)}
+/* explore lives inside the hero: after proof on desktop, before it on phones */
+.hero .explore{padding:0;margin-top:clamp(1.75rem,4vh,2.5rem)}
+@media (max-width:760px){
+  .hero{padding-top:1.75rem}
+  .hero .wrap{display:flex;flex-direction:column}
+  .hero .explore{order:1;margin-top:1.75rem}
+  .hero .proof{order:2}
+  .hero-foot{margin-top:1.25rem;gap:1.25rem}
+  .hero .cta-row .btn{padding:.7rem 1.1rem;font-size:.95rem}
+  .hint{display:none}
+}

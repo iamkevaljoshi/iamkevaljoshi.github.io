@@ -1,8 +1,7 @@
 {%- assign p = site.data.profile -%}
 {%- assign adobe = p.certifications | where: "issuer", "Adobe" -%}
 {%- assign latest = site.posts.first -%}
-<section class="explore" aria-labelledby="explore-h">
-  <div class="wrap">
+<nav class="explore" aria-labelledby="explore-h">
     <h2 class="sr-only" id="explore-h">Explore the site</h2>
     <div class="explore-grid">
       <a class="xcard" href="{{ '/experience/' | relative_url }}" data-track="experience">
@@ -36,5 +35,4 @@
         <span class="xarrow" aria-hidden="true">→</span>
       </a>
     </div>
-  </div>
-</section>
+</nav>
