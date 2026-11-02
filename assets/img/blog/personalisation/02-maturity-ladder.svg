@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-label="Personalisation maturity ladder from contextual rules to behavioural, predictive and one-to-one real-time personalisation">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lg{font-size:12px;font-weight:700;fill:#047857}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker></defs>
+<rect width="1200" height="480" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The personalisation maturity ladder</text>
+<text class="sub" x="30" y="72">Start on the bottom rung. Each step up needs better data, tooling and measurement than the one below.</text>
+<rect class="violet" x="620" y="96" width="550" height="74" rx="10"/><text class="lb" x="640" y="122">4 · PREDICTIVE AND 1:1</text><text class="t" x="640" y="145">Models choose content and next-best action per person</text><text class="s" x="640" y="163">Needs: unified profile, enough traffic, governance</text>
+<rect class="blue" x="460" y="182" width="710" height="74" rx="10"/><text class="lb" x="480" y="208">3 · BEHAVIOURAL</text><text class="t" x="480" y="231">What this visitor did: pages read, products viewed, returning</text><text class="s" x="480" y="249">Needs: event tracking, first-party storage, consent</text>
+<rect class="green" x="300" y="268" width="870" height="74" rx="10"/><text class="lg" x="320" y="294">2 · SEGMENT-BASED</text><text class="t" x="320" y="317">Who they are: industry, role, customer vs. prospect, new vs. returning</text><text class="s" x="320" y="335">Needs: a few well-defined audiences and a CMS that can vary content</text>
+<rect class="orange" x="140" y="354" width="1030" height="74" rx="10"/><text class="lo" x="160" y="380">1 · CONTEXTUAL</text><text class="t" x="160" y="403">Where and when they are: location, device, language, referrer, time, campaign</text><text class="s" x="160" y="421">Needs: almost nothing, since it works for anonymous visitors with no stored data</text>
+<text class="s" x="30" y="456">Most teams get 80% of the value from rungs 1–3. Rung 4 pays off only with the data volume and operating model to support it.</text>
+</svg>

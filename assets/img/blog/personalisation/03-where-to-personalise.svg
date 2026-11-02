@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" role="img" aria-label="Where personalisation runs: in the browser, at the edge, or on the origin server, compared on speed, flicker and SEO">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lg{font-size:12px;font-weight:700;fill:#047857}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker></defs>
+<rect width="1200" height="460" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Where should personalisation run?</text>
+<text class="sub" x="30" y="72">The same decision can be applied in three places. The trade-off is speed, flicker and what search engines see.</text>
+<rect class="orange" x="30" y="100" width="360" height="270" rx="12"/><text class="lo" x="50" y="128">IN THE BROWSER (CLIENT-SIDE)</text>
+<text class="s" x="50" y="156">Page loads default, script fetches a decision,</text><text class="s" x="50" y="176">then swaps content.</text>
+<text class="t" x="50" y="212">+ Easiest to add, works on any stack</text><text class="t" x="50" y="240">− Flicker or hidden-page delay</text><text class="t" x="50" y="268">− Hurts LCP when it blocks rendering</text><text class="t" x="50" y="296">− Crawlers see the default version</text>
+<text class="s" x="50" y="340">Use for: below-the-fold modules, banners, tests</text>
+<rect class="blue" x="420" y="100" width="360" height="270" rx="12"/><text class="lb" x="440" y="128">AT THE EDGE (CDN / WORKER)</text>
+<text class="s" x="440" y="156">A worker picks the variant from cookie, geo or</text><text class="s" x="440" y="176">header before the response leaves the CDN.</text>
+<text class="t" x="440" y="212">+ No flicker, no extra round trip</text><text class="t" x="440" y="240">+ Cacheable per variant or segment</text><text class="t" x="440" y="268">− Limited to coarse signals</text><text class="t" x="440" y="296">− Needs a clear Vary / cache-key plan</text>
+<text class="s" x="440" y="340">Use for: geo, language, logged-in state, campaigns</text>
+<rect class="green" x="810" y="100" width="360" height="270" rx="12"/><text class="lg" x="830" y="128">ON THE ORIGIN (SERVER-SIDE)</text>
+<text class="s" x="830" y="156">The application renders the personalised page</text><text class="s" x="830" y="176">with full profile access.</text>
+<text class="t" x="830" y="212">+ Richest data, no flicker</text><text class="t" x="830" y="240">+ Secure for sensitive data</text><text class="t" x="830" y="268">− Slower, harder to cache</text><text class="t" x="830" y="296">− More infrastructure to run</text>
+<text class="s" x="830" y="340">Use for: account areas, pricing, recommendations</text>
+<rect class="box" x="30" y="392" width="1140" height="46" rx="10"/><text class="s" x="600" y="421" text-anchor="middle">Rule of thumb: serve one fast, indexable page to everyone and layer personalisation on top, at the edge where you can, in the browser where you must.</text>
+</svg>

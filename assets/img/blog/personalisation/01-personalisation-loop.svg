@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="The personalisation loop: collect signals, build profile, decide, deliver, measure, then learn and feed back">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lg{font-size:12px;font-weight:700;fill:#047857}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker></defs>
+<rect width="1200" height="420" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The personalisation loop</text>
+<text class="sub" x="30" y="72">Five steps, one feedback arrow. If you can't close the loop, you're guessing.</text>
+<rect class="blue" x="30" y="130" width="190" height="110" rx="12"/><text class="lb" x="125" y="156" text-anchor="middle">1 · SIGNALS</text><text class="t" x="125" y="182" text-anchor="middle">Collect</text><text class="s" x="125" y="204" text-anchor="middle">pages, search, purchases,</text><text class="s" x="125" y="222" text-anchor="middle">consented CRM data</text>
+<rect class="violet" x="260" y="130" width="190" height="110" rx="12"/><text class="lb" x="355" y="156" text-anchor="middle">2 · PROFILE</text><text class="t" x="355" y="182" text-anchor="middle">Understand</text><text class="s" x="355" y="204" text-anchor="middle">segments, intent,</text><text class="s" x="355" y="222" text-anchor="middle">lifecycle stage</text>
+<rect class="orange" x="490" y="130" width="190" height="110" rx="12"/><text class="lo" x="585" y="156" text-anchor="middle">3 · DECISION</text><text class="t" x="585" y="182" text-anchor="middle">Decide</text><text class="s" x="585" y="204" text-anchor="middle">rules first, then</text><text class="s" x="585" y="222" text-anchor="middle">models; always a default</text>
+<rect class="green" x="720" y="130" width="190" height="110" rx="12"/><text class="lg" x="815" y="156" text-anchor="middle">4 · EXPERIENCE</text><text class="t" x="815" y="182" text-anchor="middle">Deliver</text><text class="s" x="815" y="204" text-anchor="middle">web, email, app, sales;</text><text class="s" x="815" y="222" text-anchor="middle">fast and consistent</text>
+<rect class="navy" x="950" y="130" width="220" height="110" rx="12"/><text class="lb" x="1060" y="156" text-anchor="middle">5 · MEASURE</text><text class="t" x="1060" y="182" text-anchor="middle">Prove</text><text class="s" x="1060" y="204" text-anchor="middle">holdout group vs.</text><text class="s" x="1060" y="222" text-anchor="middle">personalised, per goal</text>
+<path class="arr" d="M220 185 H258"/><path class="arr" d="M450 185 H488"/><path class="arr" d="M680 185 H718"/><path class="arr" d="M910 185 H948"/>
+<path class="arr" d="M1060 242 V330 H125 V244"/>
+<text class="s" x="600" y="318" text-anchor="middle">Learn: keep what wins, retire what doesn't, refine the signals</text>
+<rect class="box" x="30" y="352" width="1140" height="46" rx="10"/><text class="s" x="600" y="381" text-anchor="middle">Guardrails across every step: consent and privacy · a sensible default for everyone · performance budget · SEO-safe rendering</text>
+</svg>
