@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-label="How a page earns a ranking: discover, crawl, render, index, rank, appear in results, satisfy the searcher">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lg{font-size:12px;font-weight:700;fill:#047857}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .arro{stroke:#EA580C;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#ao)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#EA580C"/></marker>
+</defs>
+<rect width="1200" height="480" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">How a page earns a ranking</text>
+<text class="sub" x="30" y="72">Each stage is a gate. If a page fails one, the stages after it never see it.</text>
+
+<rect class="blue" x="30" y="115" width="145" height="110" rx="10"/>
+<text class="t" x="102" y="150" text-anchor="middle">1 · Discover</text>
+<text class="s" x="102" y="174" text-anchor="middle">internal links</text>
+<text class="s" x="102" y="192" text-anchor="middle">backlinks · sitemaps</text>
+<rect class="blue" x="193" y="115" width="145" height="110" rx="10"/>
+<text class="t" x="265" y="150" text-anchor="middle">2 · Crawl</text>
+<text class="s" x="265" y="174" text-anchor="middle">robots.txt</text>
+<text class="s" x="265" y="192" text-anchor="middle">status codes · speed</text>
+<rect class="blue" x="356" y="115" width="145" height="110" rx="10"/>
+<text class="t" x="428" y="150" text-anchor="middle">3 · Render</text>
+<text class="s" x="428" y="174" text-anchor="middle">JavaScript</text>
+<text class="s" x="428" y="192" text-anchor="middle">CSS · resources</text>
+<rect class="blue" x="519" y="115" width="145" height="110" rx="10"/>
+<text class="t" x="591" y="150" text-anchor="middle">4 · Index</text>
+<text class="s" x="591" y="174" text-anchor="middle">canonical · noindex</text>
+<text class="s" x="591" y="192" text-anchor="middle">duplicates · quality</text>
+<rect class="orange" x="682" y="115" width="145" height="110" rx="10"/>
+<text class="t" x="754" y="150" text-anchor="middle">5 · Rank</text>
+<text class="s" x="754" y="174" text-anchor="middle">relevance · quality</text>
+<text class="s" x="754" y="192" text-anchor="middle">links · freshness</text>
+<rect class="violet" x="845" y="115" width="145" height="110" rx="10"/>
+<text class="t" x="917" y="150" text-anchor="middle">6 · Appear</text>
+<text class="s" x="917" y="174" text-anchor="middle">title link · snippet</text>
+<text class="s" x="917" y="192" text-anchor="middle">rich results</text>
+<rect class="green" x="1008" y="115" width="162" height="110" rx="10"/>
+<text class="t" x="1089" y="150" text-anchor="middle">7 · Satisfy</text>
+<text class="s" x="1089" y="174" text-anchor="middle">click · stay · done</text>
+<text class="s" x="1089" y="192" text-anchor="middle">or back to results</text>
+
+<path class="arr" d="M177,170 H189"/><path class="arr" d="M340,170 H352"/><path class="arr" d="M503,170 H515"/>
+<path class="arr" d="M666,170 H678"/><path class="arr" d="M829,170 H841"/><path class="arr" d="M992,170 H1004"/>
+<path class="arro" d="M1089,227 V262 H754 V231"/>
+<text class="lo" x="921" y="282" text-anchor="middle">user interaction signals feed back into ranking (e.g. Navboost)</text>
+
+<path d="M30,318 v12 h634 v-12" stroke="#2563EB" stroke-width="2" fill="none"/>
+<text class="lb" x="347" y="356" text-anchor="middle" style="font-size:13px;letter-spacing:.08em">TECHNICAL SEO</text>
+<text class="s" x="347" y="377" text-anchor="middle">make it possible: reachable, renderable, indexable, one URL per piece of content</text>
+<path d="M682,318 v12 h145 v-12" stroke="#EA580C" stroke-width="2" fill="none"/>
+<text class="lo" x="754" y="356" text-anchor="middle" style="font-size:13px;letter-spacing:.08em">CONTENT + TRUST</text>
+<text class="s" x="754" y="377" text-anchor="middle">make it the best answer</text>
+<path d="M845,318 v12 h325 v-12" stroke="#6D5BD0" stroke-width="2" fill="none"/>
+<text x="1007" y="356" text-anchor="middle" style="font-size:13px;letter-spacing:.08em;font-weight:700;fill:#5B4BC4">PRESENTATION + EXPERIENCE</text>
+<text class="s" x="1007" y="377" text-anchor="middle">make it the result people choose and stay on</text>
+
+<text class="s" x="600" y="440" text-anchor="middle" style="font-style:italic">Simplified. Google runs many ranking systems at stage 5 (PageRank, freshness, reviews, spam detection and more) and none of them sees a page that never got indexed.</text>
+</svg>

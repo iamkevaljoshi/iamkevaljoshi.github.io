@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="What matters in SEO versus what Google says does not matter">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lg{font-size:12px;font-weight:700;fill:#047857}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .arro{stroke:#EA580C;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#ao)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#EA580C"/></marker>
+</defs>
+<rect width="1200" height="520" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Where to spend your SEO effort</text>
+<text class="sub" x="30" y="72">Right column: things Google's own documentation says don't matter, or barely matter</text>
+<rect class="green" x="30" y="95" width="555" height="395" rx="14"/>
+<text class="lg" x="55" y="128" style="font-size:13px;letter-spacing:.08em">WORTH THE EFFORT</text>
+<g class="t" style="font-size:14.5px;font-weight:500">
+<text x="55" y="168">✓  Every important URL crawlable and indexed</text>
+<text x="55" y="210">✓  One canonical URL per piece of content</text>
+<text x="55" y="252">✓  Content that fully satisfies the search intent</text>
+<text x="55" y="294">✓  First-hand experience and clear authorship</text>
+<text x="55" y="336">✓  Links and mentions you earned, not bought</text>
+<text x="55" y="378">✓  Accurate, descriptive titles and main headings</text>
+<text x="55" y="420">✓  Searchers who don't need to go back to results</text>
+<text x="55" y="462">✓  Fast, stable, mobile-friendly pages</text>
+</g>
+<rect class="grey" x="615" y="95" width="555" height="395" rx="14"/>
+<text class="lbl" x="640" y="128" style="font-size:13px;letter-spacing:.08em">LOW OR NO RETURN</text>
+<g class="s" style="font-size:14.5px;fill:#475569">
+<text x="640" y="168">✗  Meta keywords tag (not used)</text>
+<text x="640" y="210">✗  A target word count ("no magical word count")</text>
+<text x="640" y="252">✗  Keywords in domain or URL ("hardly any effect")</text>
+<text x="640" y="294">✗  A set number or order of headings</text>
+<text x="640" y="336">✗  Sitemap priority and changefreq (ignored)</text>
+<text x="640" y="378">✗  Fearing a "penalty" for your own duplicates</text>
+<text x="640" y="420">✗  Subdomain vs subfolder debates</text>
+<text x="640" y="462">✗  Treating E-E-A-T as a score to optimise</text>
+</g>
+</svg>

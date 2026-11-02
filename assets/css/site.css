@@ -621,3 +621,9 @@ h1.tagline{max-width:24ch}
 @media (max-width:380px){.logo-name{font-size:.95rem}}
 .logo-tile.sm{width:1.5rem;height:1.5rem;border-radius:.45rem}
 .foot-brand{display:inline-flex;align-items:center;gap:.6rem}
+
+/* blog checklists */
+.prose ul.checklist{list-style:none;padding-left:0}
+.prose ul.checklist li{position:relative;padding-left:2rem;margin:.45rem 0}
+.prose ul.checklist li::before{content:"";position:absolute;left:0;top:.3em;width:1.15rem;height:1.15rem;border-radius:.35rem;
+  border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}

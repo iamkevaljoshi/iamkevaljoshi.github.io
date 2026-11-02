@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="SEO priority stack: technical foundation, content and intent, trust and authority, search presentation, page experience, measurement">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lg{font-size:12px;font-weight:700;fill:#047857}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .arro{stroke:#EA580C;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#ao)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#EA580C"/></marker>
+</defs>
+<rect width="1200" height="560" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The SEO priority stack</text>
+<text class="sub" x="30" y="72">Work bottom-up. Each layer multiplies the one below it, and none can compensate for a missing foundation.</text>
+<rect class="navy" x="400" y="100" width="400" height="58" rx="10"/>
+<text class="t" x="600" y="125" text-anchor="middle">6 · Measure and iterate</text>
+<text class="s" x="600" y="145" text-anchor="middle">Search Console · Bing Webmaster Tools · analytics</text>
+<rect class="green" x="330" y="166" width="540" height="58" rx="10"/>
+<text class="t" x="600" y="191" text-anchor="middle">5 · Page experience</text>
+<text class="s" x="600" y="211" text-anchor="middle">Core Web Vitals · mobile · HTTPS · no intrusive interstitials</text>
+<rect class="violet" x="260" y="232" width="680" height="58" rx="10"/>
+<text class="t" x="600" y="257" text-anchor="middle">4 · Search presentation</text>
+<text class="s" x="600" y="277" text-anchor="middle">title links · meta descriptions · structured data · site name · images</text>
+<rect class="orange" x="190" y="298" width="820" height="58" rx="10"/>
+<text class="t" x="600" y="323" text-anchor="middle">3 · Trust and authority</text>
+<text class="s" x="600" y="343" text-anchor="middle">first-hand expertise · clear authorship · earned links · genuine mentions and reviews</text>
+<rect class="orange" x="120" y="364" width="960" height="58" rx="10" style="fill:#FFF8F1"/>
+<text class="t" x="600" y="389" text-anchor="middle">2 · Content that satisfies intent</text>
+<text class="s" x="600" y="409" text-anchor="middle">right format for the query · original, people-first, complete · better than what already ranks</text>
+<rect class="blue" x="50" y="430" width="1100" height="58" rx="10"/>
+<text class="t" x="600" y="455" text-anchor="middle">1 · Technical foundation</text>
+<text class="s" x="600" y="475" text-anchor="middle">crawlable · renderable · indexable · one canonical URL per page · internal links · sitemaps · clean status codes</text>
+<text class="lo" x="1150" y="122" text-anchor="end">smallest lever</text>
+<text class="lb" x="1150" y="522" text-anchor="end">biggest lever, fix first</text>
+<path d="M1165,140 V505" stroke="#94A3B8" stroke-width="2" stroke-dasharray="4 4"/>
+</svg>
