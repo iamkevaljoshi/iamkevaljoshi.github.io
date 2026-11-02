@@ -2,7 +2,7 @@
 layout: post
 title: "What actually matters in SEO in 2026: a practitioner's priority list"
 seo_title: "What Matters in SEO in 2026: A Priority Checklist"
-description: "What matters most in SEO in 2026, sourced from Google's own documentation: the technical foundation, content, trust, titles and page experience, plus the myths to ignore."
+description: "What matters most in SEO in 2026, from Google's own documentation: technical foundation, content, trust, titles, page experience and the myths to ignore."
 date: 2026-11-02 09:00:00 +0530
 tags: [SEO, Technical SEO, Content Strategy]
 ---
