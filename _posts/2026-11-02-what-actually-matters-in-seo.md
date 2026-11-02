@@ -138,7 +138,7 @@ Ranking gets you seen; presentation gets you **chosen**.
 
 **Title links.** Google's best practices: a unique, descriptive and concise `<title>` on every page, no keyword stuffing, no repeated boilerplate, and the brand used briefly at the start or end. Google sets **no character limit** but truncates long titles to fit the screen, so put the important words first.
 
-Google rewrites titles when it finds a problem. The most common reasons are half-empty titles ("| Brand"), outdated titles (an old year), titles that don't match the page, near-identical titles across many pages, and pages with **no clear main heading**. The fix is usually to make the `<title>` and the visible `<h1>` agree.
+Google rewrites titles when it finds a problem. The most common reasons are half-empty titles (just a separator and the brand name), outdated titles (an old year), titles that don't match the page, near-identical titles across many pages, and pages with **no clear main heading**. The fix is usually to make the `<title>` and the visible `<h1>` agree.
 
 **Meta descriptions** aren't a ranking factor, but they often become the snippet. Write a specific, accurate summary of what the page offers. Google may pull a different snippet from the page when that better matches the query.
 
