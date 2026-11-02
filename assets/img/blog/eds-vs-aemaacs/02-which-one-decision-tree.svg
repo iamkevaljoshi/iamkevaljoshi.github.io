@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Decision tree: Edge Delivery Services, traditional AEM as a Cloud Service, or hybrid">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lg{font-size:12px;font-weight:700;fill:#047857}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .q{fill:#FFFFFF;stroke:#10182B;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .dash{stroke:#94A3B8;stroke-width:1.5;fill:none;stroke-dasharray:5 4;marker-end:url(#a)}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker></defs>
+<rect width="1200" height="640" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="46">Edge Delivery or traditional AEM as a Cloud Service?</text>
+<rect x="400" y="68" width="400" height="48" rx="24" fill="#10182B"/>
+<text class="t" x="600" y="98" text-anchor="middle" style="fill:#FFFFFF">New site, section or re-platform on AEM</text>
+<path class="arr" d="M600,118 V142"/>
+<rect class="q" x="230" y="146" width="740" height="64" rx="10"/>
+<text class="t" x="600" y="173" text-anchor="middle">Is most of the experience content-led and the same for every visitor?</text>
+<text class="s" x="600" y="194" text-anchor="middle">(marketing, brand, product information, editorial, campaigns, docs)</text>
+<path class="arr" d="M400,212 V236 H300 V258"/><text class="lbl" x="408" y="230">Yes</text>
+<path class="arr" d="M800,212 V236 H900 V258"/><text class="lbl" x="808" y="230">No: logged-in, per-user, transactional</text>
+<rect class="q" x="60" y="262" width="480" height="70" rx="10"/>
+<text class="t" x="300" y="290" text-anchor="middle">Does it depend on server-side Java on publish?</text>
+<text class="s" x="300" y="311" text-anchor="middle">(Sling servlets, OSGi services, publish-side integrations)</text>
+<rect class="q" x="660" y="262" width="480" height="70" rx="10"/>
+<text class="t" x="900" y="290" text-anchor="middle">Can auth and personalisation run at the edge</text>
+<text class="t" x="900" y="311" text-anchor="middle">or in the browser via APIs?</text>
+<path class="arr" d="M190,334 V362 H160 V384"/><text class="lbl" x="198" y="355">No</text>
+<path class="arr" d="M410,334 V362 H440 V384"/><text class="lbl" x="418" y="355">Yes</text>
+<path class="arr" d="M790,334 V362 H760 V384"/><text class="lbl" x="798" y="355">Yes</text>
+<path class="arr" d="M1010,334 V362 H1040 V384"/><text class="lbl" x="1018" y="355">No</text>
+<rect class="blue" x="30" y="388" width="260" height="100" rx="10"/>
+<text class="t" x="160" y="420" text-anchor="middle">Edge Delivery Services</text>
+<text class="s" x="160" y="443" text-anchor="middle">Universal Editor if you need</text>
+<text class="s" x="160" y="461" text-anchor="middle">AEM workflows, MSM, governance;</text>
+<text class="s" x="160" y="479" text-anchor="middle">Document Authoring for speed</text>
+<rect class="q" x="310" y="388" width="260" height="100" rx="10"/>
+<text class="t" x="440" y="418" text-anchor="middle">Can that logic move to</text>
+<text class="t" x="440" y="439" text-anchor="middle">APIs, App Builder or the edge?</text>
+<text class="s" x="440" y="466" text-anchor="middle">Yes → Edge Delivery</text>
+<text class="s" x="440" y="484" text-anchor="middle">No → traditional for that part</text>
+<rect class="blue" x="630" y="388" width="260" height="100" rx="10" style="stroke-dasharray:6 4"/>
+<text class="t" x="760" y="420" text-anchor="middle">Edge Delivery + edge logic</text>
+<text class="s" x="760" y="443" text-anchor="middle">IdP at the CDN, API-driven blocks,</text>
+<text class="s" x="760" y="461" text-anchor="middle">Target or experimentation</text>
+<text class="s" x="760" y="479" text-anchor="middle">for personalisation</text>
+<rect class="grey" x="910" y="388" width="260" height="100" rx="10"/>
+<text class="t" x="1040" y="420" text-anchor="middle">Traditional AEMaaCS</text>
+<text class="s" x="1040" y="443" text-anchor="middle">publish tier, CUGs, Sling,</text>
+<text class="s" x="1040" y="461" text-anchor="middle">server-side integrations</text>
+<text class="s" x="1040" y="479" text-anchor="middle">(or a dedicated app)</text>
+<rect class="orange" x="30" y="520" width="1140" height="86" rx="12"/>
+<text class="t" x="600" y="552" text-anchor="middle">Most enterprise estates end up hybrid</text>
+<text class="s" x="600" y="576" text-anchor="middle">Both can serve one domain behind the CDN: route content-led paths to Edge Delivery and keep the few server-heavy</text>
+<text class="s" x="600" y="594" text-anchor="middle">paths on traditional publish, then migrate section by section as logic moves to APIs and the edge.</text>
+</svg>

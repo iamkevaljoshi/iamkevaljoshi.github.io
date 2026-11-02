@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-label="One domain, two origins: CDN routes paths to Edge Delivery Services or traditional AEM publish">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:12px;font-weight:600;fill:#475569}
+  .lb{font-size:12px;font-weight:700;fill:#1D4ED8}
+  .lo{font-size:12px;font-weight:700;fill:#C2410C}
+  .lg{font-size:12px;font-weight:700;fill:#047857}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .q{fill:#FFFFFF;stroke:#10182B;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:1.5}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .dash{stroke:#94A3B8;stroke-width:1.5;fill:none;stroke-dasharray:5 4;marker-end:url(#a)}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker></defs>
+<rect width="1200" height="430" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">One domain, two origins: migrate section by section</text>
+<text class="sub" x="30" y="72">The CDN routes by path, so visitors and search engines see one site while you move content</text>
+<rect class="box" x="30" y="170" width="160" height="80" rx="10"/><text class="t" x="110" y="205" text-anchor="middle">Visitor</text><text class="s" x="110" y="226" text-anchor="middle">www.brand.com</text>
+<path class="arr" d="M192,210 H266"/>
+<rect class="orange" x="270" y="130" width="260" height="160" rx="12"/>
+<text class="t" x="400" y="162" text-anchor="middle">CDN · path routing</text>
+<rect x="290" y="180" width="220" height="30" rx="8" fill="#FFFFFF" stroke="#F3C6A8"/><text class="s" x="400" y="200" text-anchor="middle" style="fill:#10182B">/, /products/*, /blog/* → EDS</text>
+<rect x="290" y="218" width="220" height="30" rx="8" fill="#FFFFFF" stroke="#F3C6A8"/><text class="s" x="400" y="238" text-anchor="middle" style="fill:#10182B">/account/*, /portal/* → publish</text>
+<text class="s" x="400" y="274" text-anchor="middle">shared header, footer, design tokens</text>
+<path class="arr" d="M532,180 C600,180 610,135 676,135"/>
+<path class="arr" d="M532,240 C600,240 610,285 676,285"/>
+<rect class="blue" x="680" y="95" width="230" height="80" rx="10"/><text class="t" x="795" y="128" text-anchor="middle">Edge Delivery Services</text><text class="s" x="795" y="150" text-anchor="middle">content-led pages</text>
+<rect class="grey" x="680" y="245" width="230" height="80" rx="10"/><text class="t" x="795" y="278" text-anchor="middle">AEM publish + Dispatcher</text><text class="s" x="795" y="300" text-anchor="middle">server-heavy paths</text>
+<rect class="navy" x="960" y="170" width="210" height="80" rx="10"/><text class="t" x="1065" y="203" text-anchor="middle">One AEM Author</text><text class="s" x="1065" y="225" text-anchor="middle">Universal Editor for both</text>
+<path class="dash" d="M958,195 L914,145"/><path class="dash" d="M958,225 L914,275"/>
+<text class="lg" x="600" y="380" text-anchor="middle">Each release moves another path to Edge Delivery. Keep URLs identical, or 301 every change.</text>
+</svg>
