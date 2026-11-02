@@ -3,7 +3,7 @@ layout: post
 title: "AEM Edge Delivery Services vs traditional AEM as a Cloud Service: benefits, trade-offs and when to use which"
 seo_title: "AEM Edge Delivery Services vs Traditional AEMaaCS: When to Use"
 description: "How Edge Delivery Services differs from traditional AEM as a Cloud Service delivery, its real benefits and limits, and a decision guide for enterprise teams."
-date: 2026-11-02 09:30:00 +0530
+date: 2026-11-02 09:10:00 +0530
 tags: [AEM, Edge Delivery Services, AEM as a Cloud Service, Architecture]
 ---
 
