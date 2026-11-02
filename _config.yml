@@ -8,6 +8,9 @@ locale: en_IN
 url: "https://iamkevaljoshi.github.io"
 baseurl: ""
 
+# Google Search Console (URL-prefix property, HTML tag method)
+google_site_verification: "bLSc2El83ltz_ylG8zk3M1CJhbh3WtmOe2tuJiq2qqk"
+
 markdown: kramdown
 highlighter: rouge
 permalink: /blog/:year/:month/:title/
