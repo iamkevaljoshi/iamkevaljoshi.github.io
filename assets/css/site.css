@@ -627,3 +627,14 @@ h1.tagline{max-width:24ch}
 .prose ul.checklist li{position:relative;padding-left:2rem;margin:.45rem 0}
 .prose ul.checklist li::before{content:"";position:absolute;left:0;top:.3em;width:1.15rem;height:1.15rem;border-radius:.35rem;
   border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
+
+/* footer: logo links home; finger-sized touch targets on touch screens */
+.foot-brand{text-decoration:none;color:inherit}
+.foot-brand:hover{color:var(--ink)}
+.foot-brand:hover .logo-tile{transform:rotate(-6deg) scale(1.05)}
+@media (max-width:960px), (pointer:coarse){
+  .foot{gap:.25rem 1rem}
+  .foot-brand,.foot-nav a,.foot-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 .35rem}
+  .foot-brand{margin-left:-.35rem}
+  .foot-nav,.foot-links{gap:0 .4rem;margin-left:-.35rem}
+}

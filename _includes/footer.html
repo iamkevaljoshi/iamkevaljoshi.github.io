@@ -1,7 +1,7 @@
 {%- assign p = site.data.profile -%}
 <footer>
   <div class="wrap foot">
-    <span class="foot-brand"><span class="logo-tile sm">{% include logo-mark.svg %}</span>© {{ 'now' | date: '%Y' }} {{ p.name }}</span>
+    <a class="foot-brand" href="{{ '/' | relative_url }}" aria-label="{{ p.name }}, home"><span class="logo-tile sm">{% include logo-mark.svg %}</span><span>© {{ 'now' | date: '%Y' }} {{ p.name }}</span></a>
     <nav class="foot-nav" aria-label="Footer">
       <a href="{{ '/experience/' | relative_url }}">Experience</a>
       <a href="{{ '/certifications/' | relative_url }}">Certifications</a>
