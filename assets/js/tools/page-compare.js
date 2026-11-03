@@ -12,6 +12,8 @@
   var CMP_MAX_W = 1000;     // screenshots are compared at this width at most
   var CMP_MAX_H = 12000;    // and this height (in comparison pixels)
   var BAND = 40;            // row band height for changed-region detection
+  var SIG_COLS = 12;        // column blocks in a row signature (used to align the screenshots)
+  var ALIGN_TRIES = [[1, 2500], [8, 3000]]; // [rows per unit, max edit length] from fine to coarse
   var VIEWPORTS = {
     desktop: { w: 1440, h: 900, label: 'Desktop 1440' },
     laptop: { w: 1280, h: 800, label: 'Laptop 1280' },
@@ -94,6 +96,7 @@
   function jinaHeaders(o, format) {
     var hd = { 'Content-Type': 'application/json', 'X-Return-Format': format, 'X-Timeout': '40' };
     if (o.noCache) hd['X-No-Cache'] = 'true';
+    if (o.remove) hd['X-Remove-Selector'] = o.remove;
     if (o.key) hd.Authorization = 'Bearer ' + o.key;
     return hd;
   }
@@ -401,66 +404,162 @@
     });
   }
 
+  /* Rows are aligned before comparing, so a section that is taller or shorter (a lazy-loaded
+     block, a rotating banner of a different height) doesn't mark everything below it as changed. */
+  function rowSigs(data, W, H, R) {
+    var C = SIG_COLS, cw = W / C, pre = new Float32Array((H + 1) * C);
+    for (var y = 0; y < H; y++) {
+      for (var c = 0; c < C; c++) {
+        var x0 = Math.floor(c * cw), x1 = Math.floor((c + 1) * cw), sum = 0, cnt = 0;
+        for (var x = x0; x < x1; x += 2) {
+          var i = (y * W + x) * 4;
+          sum += data[i] * 0.3 + data[i + 1] * 0.59 + data[i + 2] * 0.11;
+          cnt++;
+        }
+        pre[(y + 1) * C + c] = pre[y * C + c] + sum / (cnt || 1);
+      }
+    }
+    // single rows are blurred over 3 rows so a sub-pixel shift between the captures still matches
+    var pad = R === 1 ? 1 : 0, n = H / R, out = new Array(n);
+    for (var u = 0; u < n; u++) {
+      var y0 = Math.max(0, u * R - pad), y1 = Math.min(H, (u + 1) * R + pad), sig = '';
+      for (c = 0; c < C; c++) {
+        var mean = (pre[y1 * C + c] - pre[y0 * C + c]) / (y1 - y0);
+        sig += String.fromCharCode(48 + Math.min(3, Math.floor(mean / 64)));
+      }
+      out[u] = sig;
+    }
+    return out;
+  }
+  function planFrom(parts) {
+    var ia = 0, ib = 0, plan = [];
+    for (var k = 0; k < parts.length; k++) {
+      var p = parts[k], next = parts[k + 1], i;
+      if (p.removed && next && next.added) {
+        var n = Math.min(p.count, next.count);
+        for (i = 0; i < n; i++) plan.push({ a: ia++, b: ib++ });
+        for (i = n; i < p.count; i++) plan.push({ a: ia++, b: -1 });
+        for (i = n; i < next.count; i++) plan.push({ a: -1, b: ib++ });
+        k++;
+      } else if (p.removed) { for (i = 0; i < p.count; i++) plan.push({ a: ia++, b: -1 }); }
+      else if (p.added) { for (i = 0; i < p.count; i++) plan.push({ a: -1, b: ib++ }); }
+      else { for (i = 0; i < p.count; i++) plan.push({ a: ia++, b: ib++ }); }
+    }
+    return plan;
+  }
+  function alignRows(pa, pb, W, HA, HB) {
+    for (var t = 0; t < ALIGN_TRIES.length; t++) {
+      var R = ALIGN_TRIES[t][0];
+      var parts = Diff.diffArrays(rowSigs(pa, W, HA, R), rowSigs(pb, W, HB, R), { maxEditLength: ALIGN_TRIES[t][1] });
+      if (parts) return { R: R, plan: planFrom(parts), aligned: true };
+    }
+    // pages too different to align: compare position by position
+    var na = HA / 8, nb = HB / 8, plan = [];
+    for (var i = 0; i < Math.max(na, nb); i++) plan.push({ a: i < na ? i : -1, b: i < nb ? i : -1 });
+    return { R: 8, plan: plan, aligned: false };
+  }
+
   function compareVisual(A, B, vp, threshold) {
     var W = Math.min(A.img.naturalWidth, B.img.naturalWidth, CMP_MAX_W);
     var da = drawTo(A.img, W), db = drawTo(B.img, W);
-    var H = Math.min(da.h, db.h, CMP_MAX_H);
-    var tallest = Math.min(Math.max(da.h, db.h), CMP_MAX_H);
-    var canvas = function () { var c = document.createElement('canvas'); c.width = W; c.height = H; return c; };
-    var ca = canvas(), cb = canvas(), cd = canvas();
-    var xa = ca.getContext('2d', { willReadFrequently: true }), xb = cb.getContext('2d', { willReadFrequently: true });
-    xa.fillStyle = xb.fillStyle = '#fff';
-    xa.fillRect(0, 0, W, H); xb.fillRect(0, 0, W, H);
-    xa.drawImage(A.img, 0, 0, W, da.h); xb.drawImage(B.img, 0, 0, W, db.h);
-    var pa = xa.getImageData(0, 0, W, H).data, pb = xb.getImageData(0, 0, W, H).data;
-    var xd = cd.getContext('2d'), out = xd.createImageData(W, H), po = out.data;
-    var maxDelta = 35215 * threshold * threshold, rows = new Uint32Array(H), diff = 0;
-    for (var y = 0; y < H; y++) {
-      for (var x = 0; x < W; x++) {
-        var i = (y * W + x) * 4;
-        var dr = pa[i] - pb[i], dg = pa[i + 1] - pb[i + 1], dbl = pa[i + 2] - pb[i + 2];
-        var Y = dr * 0.29889531 + dg * 0.58662247 + dbl * 0.11448223;
-        var I = dr * 0.59597799 - dg * 0.2741761 - dbl * 0.32180189;
-        var Q = dr * 0.21147017 - dg * 0.52261711 + dbl * 0.31114694;
-        if (0.5053 * Y * Y + 0.299 * I * I + 0.1957 * Q * Q > maxDelta) {
-          po[i] = 230; po[i + 1] = 40; po[i + 2] = 60; po[i + 3] = 255;
-          rows[y]++; diff++;
-        } else {
-          var g = 255 - (255 - (pa[i] * 0.3 + pa[i + 1] * 0.59 + pa[i + 2] * 0.11)) * 0.18;
-          po[i] = po[i + 1] = po[i + 2] = g; po[i + 3] = 255;
+    var pad = function (h) { return Math.ceil(Math.min(h, CMP_MAX_H) / 8) * 8; };
+    var HA = pad(da.h), HB = pad(db.h);
+    var draw = function (img, h, drawH) {
+      var c = document.createElement('canvas');
+      c.width = W; c.height = h;
+      var x = c.getContext('2d', { willReadFrequently: true });
+      x.fillStyle = '#fff'; x.fillRect(0, 0, W, h);
+      x.drawImage(img, 0, 0, W, drawH);
+      return x.getImageData(0, 0, W, h).data;
+    };
+    var pa = draw(A.img, HA, da.h), pb = draw(B.img, HB, db.h);
+    var al = alignRows(pa, pb, W, HA, HB), plan = al.plan, R = al.R;
+    var Hm = plan.length * R;
+
+    var cd = document.createElement('canvas');
+    cd.width = W; cd.height = Hm;
+    var xd = cd.getContext('2d'), out = xd.createImageData(W, Hm), po = out.data;
+    var maxDelta = 35215 * threshold * threshold, rows = new Uint32Array(Hm), diff = 0;
+    var paintRow = function (y, r, g, bl) {
+      for (var x = 0, o = y * W * 4; x < W; x++, o += 4) { po[o] = r; po[o + 1] = g; po[o + 2] = bl; po[o + 3] = 255; }
+    };
+    // YIQ colour distance between a source pixel and a destination pixel
+    var delta = function (oa, ob) {
+      var dr = pa[oa] - pb[ob], dg = pa[oa + 1] - pb[ob + 1], dbl = pa[oa + 2] - pb[ob + 2];
+      var Y = dr * 0.29889531 + dg * 0.58662247 + dbl * 0.11448223;
+      var I = dr * 0.59597799 - dg * 0.2741761 - dbl * 0.32180189;
+      var Q = dr * 0.21147017 - dg * 0.52261711 + dbl * 0.31114694;
+      return 0.5053 * Y * Y + 0.299 * I * I + 0.1957 * Q * Q;
+    };
+    // a pixel that only differs from its neighbours by anti-aliasing or a sub-pixel shift is not a real difference
+    var nearMatch = function (oa, x, rb) {
+      for (var dy = -1; dy <= 1; dy++) {
+        var yy2 = rb + dy;
+        if (yy2 < 0 || yy2 >= HB) continue;
+        for (var dx = -1; dx <= 1; dx++) {
+          var xx = x + dx;
+          if ((dx === 0 && dy === 0) || xx < 0 || xx >= W) continue;
+          if (delta(oa, (yy2 * W + xx) * 4) <= maxDelta) return true;
+        }
+      }
+      return false;
+    };
+    for (var m = 0; m < plan.length; m++) {
+      var e = plan[m];
+      for (var r = 0; r < R; r++) {
+        var y = m * R + r;
+        if (e.a < 0 || e.b < 0) { paintRow(y, 230, 40, 60); rows[y] = W; diff += W; continue; }
+        var rb = e.b * R + r, oa = ((e.a * R + r) * W) * 4, ob = (rb * W) * 4, oo = y * W * 4;
+        for (var x = 0; x < W; x++, oa += 4, ob += 4, oo += 4) {
+          if (delta(oa, ob) > maxDelta && !nearMatch(oa, x, rb)) {
+            po[oo] = 230; po[oo + 1] = 40; po[oo + 2] = 60; po[oo + 3] = 255;
+            rows[y]++; diff++;
+          } else {
+            var g = 255 - (255 - (pa[oa] * 0.3 + pa[oa + 1] * 0.59 + pa[oa + 2] * 0.11)) * 0.18;
+            po[oo] = po[oo + 1] = po[oo + 2] = g; po[oo + 3] = 255;
+          }
         }
       }
     }
     xd.putImageData(out, 0, 0);
 
-    var foldH = Math.min(H, Math.round(vp.h * (W / vp.w)));
+    var foldH = Math.min(Hm, Math.round(vp.h * (W / vp.w)));
     var foldDiff = 0;
-    for (y = 0; y < foldH; y++) foldDiff += rows[y];
+    for (var yy = 0; yy < foldH; yy++) foldDiff += rows[yy];
 
-    var regions = [], cur = null, toSrc = 1 / da.s;
-    for (var b0 = 0; b0 < H; b0 += BAND) {
-      var b1 = Math.min(H, b0 + BAND), sum = 0;
-      for (y = b0; y < b1; y++) sum += rows[y];
-      var r = sum / (W * (b1 - b0));
-      if (r > 0.02) {
+    var dstScale = 1 / db.s, regions = [], cur = null;
+    for (var b0 = 0; b0 < Hm; b0 += BAND) {
+      var b1 = Math.min(Hm, b0 + BAND), sum = 0;
+      for (yy = b0; yy < b1; yy++) sum += rows[yy];
+      if (sum / (W * (b1 - b0)) > 0.05) {
         if (cur && cur.y1 === b0) { cur.y1 = b1; cur.sum += sum; }
         else { cur = { y0: b0, y1: b1, sum: sum }; regions.push(cur); }
       }
     }
     regions = regions.map(function (g) {
-      return { y0: Math.round(g.y0 * toSrc), y1: Math.round(g.y1 * toSrc), cy0: g.y0, cy1: g.y1, share: g.sum / (W * (g.y1 - g.y0)) };
+      var onlyA = 0, onlyB = 0, firstB = -1, lastB = -1, n = 0;
+      for (var q = Math.floor(g.y0 / R); q < Math.ceil(g.y1 / R) && q < plan.length; q++) {
+        n++;
+        if (plan[q].b < 0) onlyA++; else { onlyB += plan[q].a < 0 ? 1 : 0; if (firstB < 0) firstB = plan[q].b; lastB = plan[q].b; }
+      }
+      if (firstB < 0) { for (var z = Math.floor(g.y0 / R); z >= 0; z--) if (plan[z].b >= 0) { firstB = lastB = plan[z].b; break; } }
+      var kind = onlyA / n > 0.5 ? 'only in source' : onlyB / n > 0.5 ? 'only in destination' : 'changed';
+      return {
+        y0: Math.round(Math.max(0, firstB) * R * dstScale), y1: Math.round((Math.max(0, lastB) + 1) * R * dstScale),
+        cy0: g.y0, cy1: g.y1, share: g.sum / (W * (g.y1 - g.y0)), kind: kind
+      };
     });
 
-    var hA = palette(pa, W, H), hB = palette(pb, W, H), inter = 0;
+    var hA = palette(pa, W, HA), hB = palette(pb, W, HB), inter = 0;
     for (var k = 0; k < 4096; k++) inter += Math.min(hA[k], hB[k]);
 
     return {
-      width: W, height: H, diffCanvas: cd,
-      similarity: 1 - (diff + (tallest - H) * W) / (W * tallest),
+      width: W, height: Hm, diffCanvas: cd,
+      similarity: 1 - diff / (W * Hm),
       fold: foldH ? 1 - foldDiff / (W * foldH) : null,
       palette: inter, coloursA: topColours(hA), coloursB: topColours(hB),
       heightA: A.img.naturalHeight, heightB: B.img.naturalHeight,
-      truncated: Math.max(da.h, db.h) > CMP_MAX_H,
+      truncated: Math.max(da.h, db.h) > CMP_MAX_H, aligned: al.aligned,
       regions: regions
     };
   }
@@ -469,6 +568,8 @@
   function findings(r) {
     var f = [], c = r.content, v = r.visual;
     var push = function (level, text) { f.push({ level: level, text: text }); };
+    var trim = function (u) { return u.replace(/\/+$/, ''); };
+    if (r.finalA && trim(r.finalA) === trim(r.finalB)) push('info', 'Both sides use the same URL, so any difference comes from the page changing between the two captures (rotating banners, lazy-loaded sections, chat widgets or cookie pop-ups). Use Ignore elements to hide them.');
     if (r.status.b && r.status.b >= 400) push('critical', 'The destination returned HTTP ' + r.status.b + '.');
     if (r.status.a && r.status.a >= 400) push('warn', 'The source returned HTTP ' + r.status.a + '. Check the source URL.');
     var robots = c.meta.rows.find(function (x) { return x.label === 'Robots'; });
@@ -551,7 +652,7 @@
   var STATUS = { same: 'Match', similar: 'Close', diff: 'Differs', missing: 'Missing', info: 'Info' };
 
   function renderVisual(r, out) {
-    var c = card('Visual comparison', 'Screenshots taken at ' + r.vp.label + ' (' + (r.full ? 'full page' : 'first screen') + '). Red pixels differ.');
+    var c = card('Visual comparison', 'Screenshots taken at ' + r.vp.label + ' (' + (r.full ? 'full page' : 'first screen') + '). Rows are aligned first, so a taller or shorter section does not mark everything below it as changed. Red pixels differ, and full red bands exist in only one page.');
     if (!r.visual) {
       c.appendChild(h('p', { class: 'pc-empty', text: r.visualError || 'Screenshots were not available, so UI parity is based on page structure only. Upload screenshots under Advanced options to compare visually.' }));
       out.appendChild(c);
@@ -559,7 +660,7 @@
     }
     var v = r.visual;
     c.appendChild(h('div', { class: 'pc-meters' },
-      meter('Pixel match (whole page)', v.similarity, v.truncated ? 'Compared the first ' + Math.round(CMP_MAX_H / (v.width / r.shotA.img.naturalWidth)) + 'px.' : null),
+      meter('Pixel match (aligned)', v.similarity, v.truncated ? 'Compared the first ' + Math.round(CMP_MAX_H / (v.width / r.shotA.img.naturalWidth)) + 'px.' : null),
       meter('First screen', v.fold),
       meter('Colour palette', v.palette),
       h('div', { class: 'pc-meter' }, h('div', { class: 'pc-meter-h' }, h('span', { text: 'Page height' }), h('strong', { text: v.heightA + ' → ' + v.heightB + 'px' })))));
@@ -594,7 +695,7 @@
     if (v.regions.length) {
       var regs = v.regions.slice().sort(function (x, y) { return (y.share * (y.y1 - y.y0)) - (x.share * (x.y1 - x.y0)); }).slice(0, 8)
         .sort(function (x, y) { return x.y0 - y.y0; });
-      c.appendChild(h('h4', { text: 'Changed regions' }));
+      c.appendChild(h('h4', { text: 'Changed regions (destination pixel position)' }));
       c.appendChild(h('ul', { class: 'pc-regions' }, regs.map(function (g) {
         return h('li', null, h('button', { type: 'button', class: 'pc-link', text: g.y0 + '–' + g.y1 + 'px', onclick: function () {
           viewer.setAttribute('data-mode', 'diff');
@@ -602,7 +703,7 @@
           var scale = diffImg.clientWidth / v.width;
           viewer.scrollTo({ top: g.cy0 * scale - 20, behavior: 'smooth' });
           viewer.focus({ preventScroll: true });
-        } }), ' ', h('span', { class: 'muted', text: pct(g.share) + ' of pixels changed' }));
+        } }), ' ', h('span', { class: 'muted', text: g.kind + ' · ' + pct(g.share) + ' of pixels' }));
       })));
     }
     var dl = h('button', { type: 'button', class: 'btn ghost pc-sm', text: 'Download difference image', onclick: function () {
@@ -793,6 +894,7 @@
     var badUrl = function (u) { try { return !/^https?:$/.test(new URL(u).protocol); } catch (x) { return true; } };
     if ((!src && !pasteA) || (!dst && !pasteB)) { err.textContent = 'Enter both URLs, or paste HTML for any page that can\'t be fetched.'; return; }
     if ((src && badUrl(src)) || (dst && badUrl(dst))) { err.textContent = 'URLs must start with http:// or https://.'; return; }
+    if (!/^[\x20-\x7e]*$/.test(el.pcIgnore.value)) { err.textContent = 'Ignore elements can only contain plain ASCII characters.'; return; }
     if (typeof Diff === 'undefined') { err.textContent = 'The diff library failed to load. Check your connection and reload the page.'; return; }
     persist();
     if (src && dst) history.replaceState(null, '', '?src=' + encodeURIComponent(src) + '&dst=' + encodeURIComponent(dst));
@@ -804,7 +906,7 @@
     $('pcReport').hidden = true;
     var vp = VIEWPORTS[el.pcViewport.value] || VIEWPORTS.desktop;
     var full = el.pcCapture.value === 'full';
-    var o = { key: el.pcKey.value.trim(), noCache: el.pcNoCache.checked };
+    var o = { key: el.pcKey.value.trim(), noCache: el.pcNoCache.checked, remove: el.pcIgnore.value.trim() };
     var sA = step('ha', 'Fetch source page'), sB = step('hb', 'Fetch destination page');
     var vA = step('va', 'Screenshot source'), vB = step('vb', 'Screenshot destination');
     var sC = step('cmp', 'Compare');

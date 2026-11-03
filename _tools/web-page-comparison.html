@@ -21,6 +21,8 @@ faq:
     a: The fetching services can only reach public pages. For anything else, open the page yourself, copy its HTML (View source, or Copy outerHTML in DevTools) and take a full-page screenshot, then paste and upload them under Advanced options.
   - q: Why is the pixel match low when the pages look the same?
     a: Pixel comparison is strict. A section that is 20px taller pushes everything below it down, so the rest of the page counts as changed. Use the first-screen score, the changed regions and the swipe view to judge, and check the content and structure scores alongside it.
+  - q: Why isn't comparing a URL with itself exactly 100%?
+    a: The two screenshots are taken separately, a few seconds apart. Live pages change in that time, with rotating carousels, testimonials, lazy-loaded sections, late-loading announcement bars and chat widgets. The tool aligns the two screenshots row by row, so a taller or shorter section doesn't throw off everything below it, but content that is genuinely different in the two captures still counts. Add selectors for those elements under Ignore elements to exclude them.
   - q: How are the parity scores calculated?
     a: "Content parity weights text overlap at 45%, the heading outline at 20%, links at 15%, images at 10% and SEO metadata at 10%. UI parity weights the full-page pixel match at 40%, the first screen at 25%, page structure at 20% and the colour palette at 15%. Without screenshots, UI parity falls back to structure only."
   - q: What are the limits?
@@ -80,7 +82,7 @@ faq:
         <input name="pcScopeB" type="text" spellcheck="false" placeholder="main">
       </label>
       <label class="pc-field">
-        <span>Ignore elements <small>CSS selectors removed from both pages, such as cookie banners</small></span>
+        <span>Ignore elements <small>CSS selectors removed from both pages before capture (screenshots and text), such as cookie banners and rotating carousels</small></span>
         <input name="pcIgnore" type="text" spellcheck="false" placeholder="#onetrust-banner-sdk, .cookie-banner">
       </label>
       <label class="pc-field">
@@ -132,7 +134,7 @@ faq:
   <ul class="list">
     <li>Set <strong>content scope</strong> to the main content area of each platform, such as <code>.root</code> on AEM 6.5 and <code>main</code> on Edge Delivery Services, so header and footer differences don't drown out page differences.</li>
     <li>Add your AEM content root, such as <code>/content/mysite</code>, as a <strong>path prefix</strong> so <code>/content/mysite/en/about.html</code> and <code>/en/about</code> count as the same link.</li>
-    <li>Remove cookie banners and chat widgets with <strong>ignore elements</strong>. They change between captures and add noise.</li>
+    <li>Remove cookie banners, chat widgets and rotating carousels with <strong>ignore elements</strong>. They change between two captures of even the same page, and add noise to the score.</li>
     <li>Compare at <strong>mobile</strong> as well as desktop. Responsive regressions are the most common UI gap after a re-platform.</li>
     <li>Use <strong>Download JSON</strong> to keep evidence for each page you sign off.</li>
   </ul>
