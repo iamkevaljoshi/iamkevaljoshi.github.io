@@ -29,6 +29,7 @@ This is the playbook I use as a solutions architect: what changes, the steps in 
 - **Adobe's toolchain covers most of it:** Best Practices Analyzer (BPA) and Cloud Acceleration Manager (CAM) to assess; the `aio aem-migration` plugin and, new in 2026, the **AI Cloud Migration skill** with the AEM MCP Server to refactor; the Content Transfer Tool (CTT) to move content; Cloud Manager to build, test and deploy.
 - **What breaks most often:** custom run modes, Sling schedulers, custom replication agents, writes to `/apps` or the file system, DAM Update Asset customisations, unversioned Oak indexes, Classic UI, and Dispatcher configs with custom Apache modules.
 - **Precautions that matter most:** a proof of migration early, frequent CTT top-ups to shorten the freeze, IMS groups planned before ingestion, load testing on stage with production-sized content, and URL/redirect parity for SEO.
+- **AI cuts the timeline roughly in half.** With AI-assisted refactoring, testing and validation, a small migration drops from 3–4 months to 2–3, and a large estate from 9–15 months to 4–6. That only works if network, identity and content work start in parallel from week one.
 - **The pay-off:** no more upgrades, autoscaling, built-in CDN and WAF, a governed delivery pipeline, and access to everything Adobe ships next.
 
 ## Why 2026 is the deadline year
@@ -334,13 +335,43 @@ These come from real programmes, not the documentation.
 
 From the programmes I've been involved in, assuming a competent team and no redesign:
 
-| Estate | Typical duration |
-|---|---|
-| Single site, Touch UI, modest customisation, under 500 GB | 3–4 months |
-| Multi-site, moderate customisation, several integrations, 1–5 TB | 6–9 months |
-| Multi-brand global estate, heavy legacy, Classic UI, 10 TB+ | 9–15 months |
+| Estate | Traditional delivery | AI-assisted delivery |
+|---|---|---|
+| Single site, Touch UI, modest customisation, under 500 GB | 3–4 months | **2–3 months** |
+| Multi-site, moderate customisation, several integrations, 1–5 TB | 6–9 months | **3–5 months** |
+| Multi-brand global estate, heavy legacy, Classic UI, 10 TB+ | 9–15 months | **4–6 months** |
 
-The biggest variables are rarely code. They're network approvals, IMS and SSO setup, integration partners updating allow-lists, and how many times you need to re-run content migration because of data quality.
+The AI-assisted figures assume two things. First, AI is used across the whole delivery, not only for code fixes. Second, the work AI can't speed up starts in week one and runs in parallel: network approvals, IMS and SSO setup, partner allow-lists, and content migration rehearsals. Without that parallelism you save engineering effort but not calendar time, because the critical path simply moves to those tasks.
+
+## How AI shortens the migration
+
+AI shortens the migration by taking the mechanical, high-volume work off the critical path. Here's where I see real savings, and where I don't.
+
+| Phase | Where AI helps | Typical saving |
+|---|---|---|
+| **Assess** | The Cloud Migration skill turns the BPA report into a per-file runbook. An AI assistant can inventory integrations, hostnames, file-system access and schedulers across the codebase in hours rather than weeks of manual review. | 50–70% |
+| **Refactor code** | Pattern fixes from the Cloud Migration skill: schedulers to Sling Jobs, replication, event listeners and handlers, the Assets API, OSGi XML to `.cfg.json` with secrets extracted, Classic and Coral 2 dialogs to Coral 3, static to editable templates, Dispatcher conversion and Oak index renaming. Each batch ends in a review, not a rewrite. | 50–70% |
+| **Testing** | Generating unit tests for refactored Sling Models and services, Cloud Manager UI and functional tests from existing user journeys, and load-test scripts from CDN logs. Also analysing SEO crawl diffs and redirect maps at scale. | 30–50% |
+| **Content validation** | Scripts that compare page, asset and reference counts between source and target after each ingestion, and triage of ingestion logs. | 30–50% |
+| **Documentation and enablement** | Runbooks, the cut-over plan, ops handover notes, and Universal Editor and Touch UI training material for authors. | 40–60% |
+| **After go-live** | Adobe's AEM agents (cloud only) for content, governance and site optimisation work. These are benefits you only unlock by being on AEMaaCS. | Ongoing |
+
+**Where AI doesn't save time:**
+
+- **Content transfer throughput.** CTT extraction and ingestion speed depends on repository size and network, not on how fast you write code. Pre-copy, repository clean-up and early top-ups are still the levers.
+- **Organisational lead times.** Firewall changes, IdP federation, security sign-off and partner allow-lists move at the speed of other teams.
+- **Architecture decisions.** Where UGC should live, what becomes an API, whether a section goes to Edge Delivery Services. AI can draft options, but an architect has to own the decision.
+- **The content freeze.** It's bounded by the final top-up, smoke tests and business sign-off.
+
+To get the AI-assisted timeline, set things up in this order:
+
+1. **Upload BPA to CAM in week one** and connect the AEM MCP Server, so the agent works from live findings rather than a stale CSV.
+2. **Run the read-only runbook first** and use it to size the work and split it into pattern-based tickets.
+3. **Run pattern sessions in parallel** across developers. Each developer owns a pattern, such as schedulers or dialogs, and reviews every batch of five changes as a pull request.
+4. **Keep the guardrails:** the AEM Analyser, the local SDK, migration validation (beta), and Cloud Manager quality gates on every change. AI makes changes faster, and the gates keep them correct.
+5. **Spend the saved engineering time on testing,** not on extra scope. That's what turns faster refactoring into a safer go-live.
+
+The biggest variables are rarely code. They're network approvals, IMS and SSO setup, integration partners updating allow-lists, and how many times you need to re-run content migration because of data quality. AI compresses the engineering. Planning compresses everything else.
 
 ## Should you move to Edge Delivery Services at the same time?
 
@@ -381,6 +412,9 @@ Yes. A customer-managed CDN can sit in front of the Adobe-managed CDN, with the 
 
 **Is AEM 6.5 LTS a better option?**
 It's a valid supported path if you have to stay self-hosted. But it's still an upgrade you run, you'll face the next one later, and Adobe's AEM agents aren't available on it. For most organisations, the cloud move is the better use of the same effort.
+
+**How much faster is an AI-assisted migration?**
+In my experience, roughly half the calendar time: 2–3 months instead of 3–4 for a small site, and 4–6 months instead of 9–15 for a large estate. Most of the saving comes from code refactoring, test generation and validation. Content transfer speed and organisational lead times don't change, so they need to start early.
 
 **Does the AI migration skill replace a migration team?**
 No. It speeds up the mechanical refactoring and gives you a good runbook. Architecture decisions, integrations, content migration, testing and cut-over still need experienced people.
