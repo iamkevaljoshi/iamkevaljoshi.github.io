@@ -3,6 +3,7 @@ layout: post
 title: "Universal Editor vs document-based authoring on Edge Delivery Services: which to pick and when"
 seo_title: "Universal Editor vs Document Authoring on AEM EDS"
 description: "Universal Editor, Experience Workspace (formerly Document Authoring) or Word and Google Docs for AEM Edge Delivery Services: trade-offs and a decision guide."
+ai_summary: "Edge Delivery Services offers three authoring models: Word or Google Docs, Experience Workspace (formerly Document Authoring) and AEM authoring with the Universal Editor. All three publish through the same delivery path, so the choice is about governance, author experience and where content lives. The Universal Editor suits regulated and multi-market estates, Experience Workspace suits new sites, and documents get familiar teams publishing fastest."
 date: 2026-11-03 18:00:00 +0530
 category: edge-delivery-services
 tags: [AEM, Edge Delivery Services, Universal Editor, Authoring]

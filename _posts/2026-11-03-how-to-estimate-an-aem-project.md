@@ -3,6 +3,7 @@ layout: post
 title: "How to estimate an AEM project, and why estimates go wrong"
 seo_title: "How to Estimate an AEM Project: A Practical Method"
 description: "A practical method for estimating AEM projects: drivers, a component complexity model, PERT, contingency, a worked example and why estimates go wrong."
+ai_summary: "AEM effort is driven by unique components, templates, integrations, content migration, languages and non-functional requirements rather than page count. Estimate bottom-up, check top-down and against past projects, use three-point ranges with a risk-based buffer, and commit in phases because early estimates can be off by a factor of four. Coding is usually less than half the budget, and AI assistants change only part of it."
 date: 2026-11-03 19:00:00 +0530
 category: architecture
 tags: [AEM, Estimation, Delivery, Architecture]

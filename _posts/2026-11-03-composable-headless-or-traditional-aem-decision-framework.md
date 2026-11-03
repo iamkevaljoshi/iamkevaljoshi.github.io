@@ -3,6 +3,7 @@ layout: post
 title: "Composable, headless or traditional AEM: a decision framework for CTOs"
 seo_title: "Composable vs Headless vs Traditional AEM: CTO Framework"
 description: "A practical framework for choosing traditional AEM, hybrid, headless, Edge Delivery or a composable MACH stack: scoring matrix, scenarios and anti-patterns."
+ai_summary: "Coupled, hybrid, headless and composable are architectures that separate content, presentation and capabilities to different degrees, and Edge Delivery Services sits off that axis as a page-based, edge-delivered model. This framework helps CTOs weigh eleven factors, from channels and team skills to integration cost and lock-in, highlights the hidden cost of composable, and recommends migrating one channel or section at a time."
 date: 2026-11-03 19:20:00 +0530
 category: architecture
 tags: [AEM, Headless, Composable, Architecture]

@@ -3,6 +3,7 @@ layout: post
 title: "Running AEM Cloud Manager pipelines well: quality gates, rapid development environments and the config pipeline"
 seo_title: "AEM Cloud Manager Pipelines: Quality Gates, RDE, Config"
 description: "How to run delivery on AEM as a Cloud Service: Cloud Manager pipeline types, quality gates, RDEs, the config pipeline for CDN and WAF, and faster builds."
+ai_summary: "Running AEM as a Cloud Service efficiently starts with sending each change through the right Cloud Manager pipeline: full-stack for code, front-end for themes, web tier for Dispatcher and the config pipeline for CDN, WAF, redirects and more. The post explains the three tiers of quality gates, how to use rapid development environments for fast feedback, why there is no rollback button, and how to make builds faster."
 date: 2026-11-03 18:40:00 +0530
 category: aem-cloud-service
 tags: [AEM, AEM as a Cloud Service, Cloud Manager, DevOps]

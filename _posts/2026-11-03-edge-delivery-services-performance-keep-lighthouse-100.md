@@ -3,6 +3,7 @@ layout: post
 title: "Edge Delivery Services performance: how to keep a 100 Lighthouse score after go-live"
 seo_title: "Edge Delivery Services Performance: Keep Lighthouse 100"
 description: "Why AEM Edge Delivery Services sites lose their Lighthouse 100 after launch, and the loading rules, budgets, PR gates and RUM checks that keep them fast."
+ai_summary: "Edge Delivery Services sites launch with a Lighthouse score of 100 but often lose it as tag managers, consent banners, chat widgets and heavy blocks arrive. Keeping it means respecting the eager, lazy and delayed loading phases, moving third-party scripts behind consent into the delayed phase, setting performance budgets with owners, gating pull requests on PageSpeed and watching real-user Core Web Vitals every week."
 date: 2026-11-03 17:20:00 +0530
 category: edge-delivery-services
 tags: [AEM, Edge Delivery Services, Performance, Core Web Vitals]

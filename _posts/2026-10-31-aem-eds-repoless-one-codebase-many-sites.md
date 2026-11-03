@@ -3,6 +3,7 @@ layout: post
 title: "Repoless on AEM Edge Delivery Services: one codebase, many sites"
 seo_title: "Repoless AEM Edge Delivery Services: One Codebase, Many Sites"
 description: "Repoless on AEM Edge Delivery Services: how one codebase serves many brands, markets and environments, setup with DA or AEM authoring, and governance."
+ai_summary: "Repoless lets many Edge Delivery Services sites run from one GitHub repository, with each site defined through the Configuration Service and keeping its own content, domain, indexes and CDN settings. It suits multi-market, multi-brand and multi-environment estates, but every code push now reaches every site, so the shared repository needs product-style ownership and site differences should live in configuration, not forks."
 date: 2026-10-31 13:00:00 +0530
 category: edge-delivery-services
 tags: [AEM, Edge Delivery Services, Repoless, Architecture]

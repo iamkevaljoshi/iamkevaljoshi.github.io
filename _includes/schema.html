@@ -65,6 +65,9 @@
       "author": { "@id": "{{ home }}#person" },
       "publisher": { "@id": "{{ home }}#person" },
       "image": "{{ '/assets/img/og.png' | absolute_url }}",
+      {%- if page.ai_summary %}
+      "abstract": {{ page.ai_summary | jsonify }},
+      {%- endif %}
       "keywords": {{ page.tags | join: ', ' | jsonify }},
       {%- assign sc_cat = site.topics | where: "slug", page.category | first %}
       {%- if sc_cat %}

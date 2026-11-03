@@ -3,6 +3,7 @@ layout: post
 title: "AEM Edge Delivery Services vs traditional AEM as a Cloud Service: benefits, trade-offs and when to use which"
 seo_title: "AEM Edge Delivery Services vs Traditional AEMaaCS: When to Use"
 description: "How Edge Delivery Services differs from traditional AEM as a Cloud Service delivery, its real benefits and limits, and a decision guide for enterprise teams."
+ai_summary: "Edge Delivery Services and traditional AEM as a Cloud Service are the same product with different delivery architectures. Edge Delivery replaces Publish and Dispatcher with pre-rendered pages served from the edge, winning on speed, developer velocity and running cost, while traditional delivery still suits server-side Java logic, deeply gated experiences and large existing component libraries. Both can share one domain, so estates can move section by section."
 date: 2026-11-02 09:10:00 +0530
 category: edge-delivery-services
 tags: [AEM, Edge Delivery Services, AEM as a Cloud Service, Architecture]

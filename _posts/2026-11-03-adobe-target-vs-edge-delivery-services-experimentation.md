@@ -3,6 +3,7 @@ layout: post
 title: "Adobe Target vs Edge Delivery Services experimentation: which to use for testing and personalisation"
 seo_title: "Adobe Target vs EDS Experimentation: Which to Use"
 description: "Adobe Target or Edge Delivery Services experimentation? A practical comparison of authoring, statistics, audiences, performance, SEO and how to run both."
+ai_summary: "Edge Delivery Services experimentation suits content and layout A/B tests: variants are ordinary documents and add no network call before the page renders. Adobe Target suits audience-based and AI-driven personalisation with richer statistics and reporting, at a measurable cost to page speed. The post compares both, works through sample size and significance, and explains how to run them together safely."
 date: 2026-11-03 20:00:00 +0530
 category: digital-experience
 tags: [Personalisation, Experimentation, Adobe Target, Edge Delivery Services]

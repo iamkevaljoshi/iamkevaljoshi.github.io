@@ -3,6 +3,7 @@ layout: post
 title: "llms.txt, AI crawlers and robots.txt: what to allow in 2026"
 seo_title: "AI Crawlers, robots.txt and llms.txt: What to Allow in 2026"
 description: "Which AI crawlers to allow or block in 2026: search bots, user-triggered fetchers and training bots, three robots.txt templates, llms.txt facts and checks."
+ai_summary: "AI bots fall into three groups: search bots that decide whether you can be cited, user-triggered fetchers acting for a person, and training crawlers. Blocking training crawlers keeps you out of future models without removing you from AI answers, while blocking search bots does. The post gives three robots.txt templates, explains Google's and Bing's newer AI controls, warns about CDN and WAF defaults, and puts llms.txt in perspective."
 date: 2026-11-03 17:40:00 +0530
 category: seo-ai-search
 tags: [GEO, AI Search, robots.txt, llms.txt]

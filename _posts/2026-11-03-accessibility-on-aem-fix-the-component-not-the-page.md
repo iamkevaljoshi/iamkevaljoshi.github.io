@@ -3,6 +3,7 @@ layout: post
 title: "Accessibility on AEM: fix the component, not the page"
 seo_title: "AEM Accessibility: Fix Components, Not Pages (WCAG 2.2)"
 description: "Why accessibility on AEM Sites and Edge Delivery Services is a component problem: legal context, common failures with HTL and block fixes, testing, governance."
+ai_summary: "On AEM and Edge Delivery Services, accessibility problems repeat across thousands of pages because they live in a few shared components, templates and policies, so fixing the component fixes every page that uses it. The post covers the 2026 legal landscape, how responsibility splits between developers, designers and authors, fixes for the most common component failures, and a testing approach that combines automation with keyboard and screen reader checks."
 date: 2026-11-03 17:00:00 +0530
 category: digital-experience
 tags: [Accessibility, WCAG 2.2, AEM, Edge Delivery Services]

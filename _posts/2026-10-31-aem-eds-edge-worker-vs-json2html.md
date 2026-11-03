@@ -3,6 +3,7 @@ layout: post
 title: "AEM Edge Delivery Services: edge worker vs JSON2HTML for dynamic pages"
 seo_title: "EDS Edge Worker vs JSON2HTML: Dynamic Pages in AEM"
 description: "When to use the JSON2HTML overlay or a CDN edge worker for data-driven pages on AEM Edge Delivery Services: architecture, trade-offs and a decision guide."
+ai_summary: "JSON2HTML and edge workers solve data-driven pages on Edge Delivery Services at different moments. JSON2HTML renders JSON into real, cached, indexable pages at publish time, while an edge worker runs on every request, so it can personalise, authenticate and fetch live data, but adds cost and latency to each request. Use JSON2HTML when every visitor sees the same page, and an edge worker when the page must differ per visitor or be real-time."
 date: 2026-10-31 12:00:00 +0530
 category: edge-delivery-services
 tags: [AEM, Edge Delivery Services, Architecture]

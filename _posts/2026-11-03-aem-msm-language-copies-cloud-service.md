@@ -3,6 +3,7 @@ layout: post
 title: "Multi-site management and language copies in AEM as a Cloud Service: patterns that scale"
 seo_title: "AEM MSM and Language Copies on Cloud Service: Patterns"
 description: "How to structure MSM, language copies and translation in AEM as a Cloud Service for 40+ markets: content structure, rollout configs, pitfalls and governance."
+ai_summary: "Multi Site Manager (MSM) reuses and synchronises content between sites, while language copies and the translation framework turn one language into another; MSM never translates. The pattern that scales is to translate once into a master per language, then make each market a live copy of its language master, keeping inheritance one level deep. The post covers rollout configuration as code on Cloud Service, Edge Delivery Services and governance."
 date: 2026-11-03 18:20:00 +0530
 category: aem-cloud-service
 tags: [AEM, AEM as a Cloud Service, MSM, Multilingual]

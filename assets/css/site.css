@@ -678,3 +678,40 @@ h1.tagline{max-width:24ch}
 .cat-chips span{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
 .post-head .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .6rem}
 .post-head .crumbs .post-cat{margin:0}
+
+/* ---------- AI summary (blog posts) ---------- */
+.ai-sum{margin-top:.5rem;margin-bottom:.5rem}
+.ai-sum-card{position:relative;border-radius:1.25rem;padding:1.35rem 1.5rem 1.25rem;
+  background:linear-gradient(color-mix(in srgb,var(--bg) 88%,transparent),color-mix(in srgb,var(--bg) 88%,transparent)) padding-box,var(--grad) border-box;
+  border:1.5px solid transparent;box-shadow:0 18px 40px -30px color-mix(in srgb,var(--violet) 70%,transparent)}
+.ai-sum-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.6rem}
+.ai-sum-head h2{display:flex;align-items:center;gap:.5rem;margin:0;font-size:1.05rem;letter-spacing:-.01em;max-width:none}
+.ai-sum-head svg{width:1.25rem;height:1.25rem;color:var(--violet)}
+.ai-sum-badge{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;border-radius:999px;
+  color:color-mix(in srgb,var(--violet) 80%,var(--ink));background:color-mix(in srgb,var(--violet) 14%,transparent)}
+.ai-sum-body{font-size:1.08rem;line-height:1.65}
+.ai-sum-body p{margin:0 0 .6rem}
+.ai-sum-body ul{margin:0 0 .6rem;padding-left:1.2rem}
+.ai-sum-body li{margin:.3rem 0}
+.ai-sum-body li::marker{color:var(--violet)}
+.ai-sum.is-busy .ai-sum-body{opacity:.75}
+.ai-sum-src,.ai-sum-note{margin:0;font-size:.88rem;color:var(--muted)}
+.ai-sum-label{display:block;margin:0 0 .55rem;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ai-sum-live,.ai-sum-ask{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
+.ai-sum-controls{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
+.ai-sum-types{display:flex;flex-wrap:wrap;gap:.45rem}
+.ai-chip{font:inherit;font-size:.92rem;min-height:40px;padding:0 .9rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.ai-chip:hover,.ai-chip:focus-visible{border-color:var(--violet);color:var(--violet)}
+.ai-chip[aria-pressed="true"]{background:color-mix(in srgb,var(--violet) 16%,transparent);border-color:var(--violet)}
+.ai-chip:disabled{cursor:progress;opacity:.6}
+.ai-sum-aud{display:inline-flex;align-items:center;gap:.5rem;font-size:.92rem;color:var(--muted)}
+.ai-sum-aud select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:.6rem;min-height:40px;padding:0 .6rem}
+.ai-sum-status{margin:.6rem 0 .2rem;font-size:.92rem;color:var(--accent);min-height:1.2em}
+.ai-sum-status:empty{display:none}
+.ai-link{font:inherit;background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer}
+.ai-sum-ask ul{list-style:none;margin:0 0 .4rem;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.ai-sum-ask a{display:inline-flex;align-items:center;min-height:40px;padding:0 .9rem;border-radius:999px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:.92rem}
+.ai-sum-ask a::after{content:"↗";margin-left:.35rem;color:var(--muted)}
+.ai-sum-ask a:hover,.ai-sum-ask a:focus-visible{border-color:var(--accent);color:var(--accent)}
+@media (max-width:640px){.ai-sum-card{padding:1.1rem 1.1rem 1rem}.ai-sum-body{font-size:1.02rem}}
+@media print{.ai-sum-live,.ai-sum-ask{display:none}}

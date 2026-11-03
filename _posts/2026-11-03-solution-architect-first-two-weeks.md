@@ -3,6 +3,7 @@ layout: post
 title: "What a solution architect does in the first two weeks of a project"
 seo_title: "Solution Architect: First Two Weeks on a New Project"
 description: "A day-by-day playbook for a solution architect's first two weeks on a client project: interviews, discovery, NFRs, C4, ADRs, a RAID log, a spike and a readout."
+ai_summary: "A solution architect's first two weeks should be spent listening in week one and shaping in week two. That means interviewing stakeholders, raising access requests on day one, writing non-functional requirements with numbers, capturing key decisions as a C4 context diagram and a few architecture decision records, spiking the riskiest assumption early and ending with a readout rather than a long document."
 date: 2026-11-03 19:40:00 +0530
 category: architecture
 tags: [Solution Architecture, Delivery, Leadership]

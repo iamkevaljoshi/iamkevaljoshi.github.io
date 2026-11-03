@@ -3,6 +3,7 @@ layout: post
 title: "SEO vs GEO: how search is changing and how to make your site visible in AI answers"
 seo_title: "SEO vs GEO: How to Get Your Site Cited in AI Search Answers"
 description: "What generative engine optimization (GEO) is, how AI search changes user behaviour, how it differs from SEO, and a four-layer plan to make your site GEO-ready."
+ai_summary: "Generative engine optimisation (GEO) builds on SEO rather than replacing it: AI answers are assembled from pages that are already crawlable, indexable and trusted. On top of that foundation, GEO means content that AI crawlers can read without JavaScript, passages that can be quoted cleanly, trust signals beyond your own site, and measuring citations as well as rankings, while ignoring shortcuts that promise AI visibility."
 date: 2026-10-31 15:00:00 +0530
 category: seo-ai-search
 tags: [SEO, GEO, AI Search]
