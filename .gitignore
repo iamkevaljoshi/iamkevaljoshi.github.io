@@ -4,3 +4,6 @@ _site/
 Gemfile.lock
 vendor/
 .DS_Store
+
+# Local GitHub token used for pushing (never commit)
+.github-token
