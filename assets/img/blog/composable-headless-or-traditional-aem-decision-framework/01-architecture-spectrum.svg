@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 590" role="img" aria-label="The architecture spectrum from coupled to hybrid to headless to composable. Coupled is traditional AEM Sites, hybrid is AEM with the Universal Editor editing a JavaScript app, headless is Content Fragments delivered over GraphQL or OpenAPI, and composable is best-of-breed services integrated by your own team. Edge Delivery Services sits off the main axis: authored and published as pages from one vendor like coupled, but with front-end-only code and edge delivery like decoupled, and it is not a headless content API. Moving right adds vendors, integration code, front-end freedom and the need for a platform team.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .tool{font-size:12px;font-weight:600}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .div{stroke:#CBD2E1;stroke-width:1}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+</style>
+<rect width="1200" height="590" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">From coupled to composable, and where Edge Delivery fits</text>
+<text class="sub" x="30" y="72">Each step right decouples more of the stack and moves more of the integration work onto your team</text>
+
+<!-- 1 Coupled -->
+<rect class="blue" x="24" y="96" width="270" height="270" rx="12"/>
+<text class="t" x="40" y="126">1 · Coupled</text><text class="w" x="40" y="146">traditional AEM Sites</text>
+<g class="s"><circle cx="44" cy="177" r="3" fill="#2563EB"/><text x="54" y="181">One platform renders the pages</text>
+<circle cx="44" cy="203" r="3" fill="#2563EB"/><text x="54" y="207">HTL and Java on Publish</text>
+<circle cx="44" cy="229" r="3" fill="#2563EB"/><text x="54" y="233">Templates, policies, MSM</text>
+<circle cx="44" cy="255" r="3" fill="#2563EB"/><text x="54" y="259">Fewest vendors, Java skills</text></g>
+<line class="div" x1="40" y1="296" x2="278" y2="296"/><text class="lbl" x="40" y="318">AEM EXAMPLE</text>
+<text class="tool" x="40" y="340" fill="#1D4ED8">Author, Publish, Dispatcher</text>
+
+<!-- 2 Hybrid -->
+<rect class="violet" x="318" y="96" width="270" height="270" rx="12"/>
+<text class="t" x="334" y="126">2 · Hybrid</text><text class="w" x="334" y="146">CMS edits, JS app renders</text>
+<g class="s"><circle cx="338" cy="177" r="3" fill="#6D5BD0"/><text x="348" y="181">CMS owns content and preview</text>
+<circle cx="338" cy="203" r="3" fill="#6D5BD0"/><text x="348" y="207">Next.js or similar renders</text>
+<circle cx="338" cy="229" r="3" fill="#6D5BD0"/><text x="348" y="233">In-context editing is kept</text>
+<circle cx="338" cy="255" r="3" fill="#6D5BD0"/><text x="348" y="259">SPA Editor deprecated 2025.01</text></g>
+<line class="div" x1="334" y1="296" x2="572" y2="296"/><text class="lbl" x="334" y="318">AEM EXAMPLE</text>
+<text class="tool" x="334" y="340" fill="#5B47C2">Universal Editor + your app</text>
+
+<!-- 3 Headless -->
+<rect class="orange" x="612" y="96" width="270" height="270" rx="12"/>
+<text class="t" x="628" y="126">3 · Headless</text><text class="w" x="628" y="146">content as an API</text>
+<g class="s"><circle cx="632" cy="177" r="3" fill="#EA580C"/><text x="642" y="181">CMS delivers JSON, no pages</text>
+<circle cx="632" cy="203" r="3" fill="#EA580C"/><text x="642" y="207">Any front end, any channel</text>
+<circle cx="632" cy="229" r="3" fill="#EA580C"/><text x="642" y="233">Front end owns routing, SEO</text>
+<circle cx="632" cy="255" r="3" fill="#EA580C"/><text x="642" y="259">Preview takes extra work</text></g>
+<line class="div" x1="628" y1="296" x2="866" y2="296"/><text class="lbl" x="628" y="318">AEM EXAMPLE</text>
+<text class="tool" x="628" y="340" fill="#C2410C">Fragments via GraphQL, OpenAPI</text>
+
+<!-- 4 Composable -->
+<rect class="green" x="906" y="96" width="270" height="270" rx="12"/>
+<text class="t" x="922" y="126">4 · Composable</text><text class="w" x="922" y="146">best-of-breed, MACH</text>
+<g class="s"><circle cx="926" cy="177" r="3" fill="#059669"/><text x="936" y="181">A vendor per capability</text>
+<circle cx="926" cy="203" r="3" fill="#059669"/><text x="936" y="207">CMS, commerce, search, DAM</text>
+<circle cx="926" cy="229" r="3" fill="#059669"/><text x="936" y="233">You own the integration</text>
+<circle cx="926" cy="255" r="3" fill="#059669"/><text x="936" y="259">Needs a platform team</text></g>
+<line class="div" x1="922" y1="296" x2="1160" y2="296"/><text class="lbl" x="922" y="318">TYPICAL STACK</text>
+<text class="tool" x="922" y="340" fill="#047857">Headless CMS + services + Next.js</text>
+
+<!-- EDS band -->
+<rect class="navy" x="24" y="392" width="564" height="140" rx="12"/>
+<text class="t" x="40" y="422">Edge Delivery Services: off the main axis</text>
+<g class="s"><circle cx="44" cy="451" r="3" fill="#10182B"/><text x="54" y="455">Authored and published as pages, one vendor: feels coupled</text>
+<circle cx="44" cy="477" r="3" fill="#10182B"/><text x="54" y="481">Front-end-only code, pre-rendered HTML at the edge: decoupled</text>
+<circle cx="44" cy="503" r="3" fill="#10182B"/><text x="54" y="507">Not headless: it serves pages, not a content API for apps</text></g>
+
+<!-- What grows -->
+<rect fill="#FFFFFF" stroke="#CBD2E1" stroke-width="1.5" x="612" y="392" width="564" height="140" rx="12"/>
+<text class="lbl" x="628" y="420">WHAT GROWS AS YOU MOVE RIGHT</text>
+<g class="s"><circle cx="632" cy="447" r="3" fill="#5B6478"/><text x="642" y="451">Vendors, contracts and support boundaries</text>
+<circle cx="632" cy="471" r="3" fill="#5B6478"/><text x="642" y="475">Integration and orchestration code you run</text>
+<circle cx="632" cy="495" r="3" fill="#5B6478"/><text x="642" y="499">Front-end freedom and channel reach</text>
+<circle cx="632" cy="519" r="3" fill="#5B6478"/><text x="642" y="523">Need for a funded platform team</text></g>
+
+<text class="lg" x="600" y="566" text-anchor="middle">Most enterprise estates end up mixing two or three of these behind one domain.</text>
+</svg>

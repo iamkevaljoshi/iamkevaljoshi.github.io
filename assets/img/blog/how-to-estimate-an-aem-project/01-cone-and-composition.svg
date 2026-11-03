@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Two panels. Left: the cone of uncertainty, showing an estimate's likely range narrowing from 0.25 to 4 times at the initial concept or RFP stage, to 0.5 to 2 times after discovery, 0.67 to 1.5 times once the backlog is signed off, 0.8 to 1.25 times early in build, and converging at go-live. Right: where effort goes in an illustrative mid-size AEM project of 252 person-weeks: build engineering 42 percent, delivery management and business analysis 20 percent, QA and testing 14 percent, content migration and entry 7 percent, architecture 6 percent, DevOps, performance, accessibility and training 6 percent, design support 4 percent.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .tool{font-size:12px;font-weight:600}
+  .div{stroke:#CBD2E1;stroke-width:1}
+  .grid{stroke:#CBD2E1;stroke-width:1;stroke-dasharray:4 4}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+  .panel{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+</style>
+<rect width="1200" height="620" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Why early AEM estimates are ranges, and where the effort really goes</text>
+<text class="sub" x="30" y="72">Uncertainty narrows only as decisions get made. Coding is less than half of the budget.</text>
+
+<!-- Left panel: cone -->
+<rect class="panel" x="24" y="96" width="740" height="500" rx="12"/>
+<text class="t" x="44" y="126">The cone of uncertainty</text>
+<text class="w" x="44" y="146">Actual vs. estimate, McConnell's multipliers mapped to AEM milestones (my mapping)</text>
+
+<line class="grid" x1="110" y1="180" x2="740" y2="180"/>
+<line class="grid" x1="110" y1="260" x2="740" y2="260"/>
+<line class="grid" x1="110" y1="420" x2="740" y2="420"/>
+<line class="grid" x1="110" y1="500" x2="740" y2="500"/>
+<line x1="110" y1="340" x2="740" y2="340" stroke="#10182B" stroke-width="1.5"/>
+
+<g class="w" text-anchor="end">
+<text x="100" y="184">4×</text>
+<text x="100" y="264">2×</text>
+<text x="100" y="344">1×</text>
+<text x="100" y="424">0.5×</text>
+<text x="100" y="504">0.25×</text>
+</g>
+
+<polygon points="130,180 270,260 410,293 550,314 700,340 550,366 410,386 270,420 130,500" fill="#EFF4FF" stroke="#2563EB" stroke-width="2"/>
+
+<g fill="#2563EB">
+<circle cx="130" cy="180" r="4"/><circle cx="270" cy="260" r="4"/><circle cx="410" cy="293" r="4"/><circle cx="550" cy="314" r="4"/>
+<circle cx="130" cy="500" r="4"/><circle cx="270" cy="420" r="4"/><circle cx="410" cy="386" r="4"/><circle cx="550" cy="366" r="4"/>
+<circle cx="700" cy="340" r="5" fill="#059669"/>
+</g>
+
+<g class="tool" fill="#1D4ED8" text-anchor="middle">
+<text x="270" y="250">2×</text>
+<text x="410" y="283">1.5×</text>
+<text x="550" y="304">1.25×</text>
+<text x="270" y="438">0.5×</text>
+<text x="410" y="404">0.67×</text>
+<text x="550" y="384">0.8×</text>
+</g>
+
+<text class="s" x="310" y="222">Narrows only if you do the work: discovery, spikes, sign-off</text>
+
+<g text-anchor="middle">
+<text class="tool" x="130" y="545" fill="#10182B">Initial concept</text>
+<text class="s" x="130" y="564">RFP, sales pitch</text>
+<text class="tool" x="270" y="545" fill="#10182B">Approved definition</text>
+<text class="s" x="270" y="564">Discovery complete</text>
+<text class="tool" x="410" y="545" fill="#10182B">Requirements done</text>
+<text class="s" x="410" y="564">Backlog signed off</text>
+<text class="tool" x="550" y="545" fill="#10182B">UI design done</text>
+<text class="s" x="550" y="564">Early build sprints</text>
+<text class="tool" x="700" y="545" fill="#047857">Complete</text>
+<text class="s" x="700" y="564">Go-live</text>
+</g>
+
+<!-- Right panel: composition -->
+<rect class="panel" x="784" y="96" width="392" height="500" rx="12"/>
+<text class="t" x="804" y="126">Where the effort goes</text>
+<text class="w" x="804" y="146">Illustrative mid-size site, 252 person-weeks</text>
+
+<g class="s">
+<text x="804" y="184">Build: back end, front end, tech lead</text>
+<rect x="804" y="192" width="252" height="16" rx="3" fill="#2563EB"/>
+<text class="tool" x="1064" y="205" fill="#10182B">42%</text>
+
+<text x="804" y="236">Delivery management and BA</text>
+<rect x="804" y="244" width="120" height="16" rx="3" fill="#6D5BD0"/>
+<text class="tool" x="932" y="257" fill="#10182B">20%</text>
+
+<text x="804" y="288">QA and testing</text>
+<rect x="804" y="296" width="84" height="16" rx="3" fill="#EA580C"/>
+<text class="tool" x="896" y="309" fill="#10182B">14%</text>
+
+<text x="804" y="340">Content migration and entry</text>
+<rect x="804" y="348" width="42" height="16" rx="3" fill="#059669"/>
+<text class="tool" x="854" y="361" fill="#10182B">7%</text>
+
+<text x="804" y="392">Architecture</text>
+<rect x="804" y="400" width="36" height="16" rx="3" fill="#10182B"/>
+<text class="tool" x="848" y="413" fill="#10182B">6%</text>
+
+<text x="804" y="444">DevOps, performance, a11y, training</text>
+<rect x="804" y="452" width="36" height="16" rx="3" fill="#5B6478"/>
+<text class="tool" x="848" y="465" fill="#10182B">6%</text>
+
+<text x="804" y="496">Design support</text>
+<rect x="804" y="504" width="24" height="16" rx="3" fill="#A79BE8"/>
+<text class="tool" x="836" y="517" fill="#10182B">4%</text>
+</g>
+
+<line class="div" x1="804" y1="544" x2="1156" y2="544"/>
+<text class="lg" x="804" y="568">Coding is less than half of the budget</text>
+<text class="w" x="804" y="586">Percentages rounded</text>
+</svg>

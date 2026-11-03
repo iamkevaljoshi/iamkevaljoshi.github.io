@@ -4,6 +4,7 @@ title: "Migrating AEM on-premise and Managed Services to AEM as a Cloud Service:
 seo_title: "AEM 6.5 to AEM as a Cloud Service Migration: Architect's Guide"
 description: "How to migrate AEM 6.5 on-premise or AMS to AEM as a Cloud Service: steps, tools (BPA, CAM, CTT, AI migration skill), what breaks, precautions and benefits."
 date: 2026-11-03 09:00:00 +0530
+category: aem-cloud-service
 tags: [AEM, AEM as a Cloud Service, Cloud Migration, Architecture]
 ---
 

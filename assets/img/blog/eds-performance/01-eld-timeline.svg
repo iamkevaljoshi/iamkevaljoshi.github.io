@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="The three loading phases of an Edge Delivery Services page on a timeline. Eager runs up to the Largest Contentful Paint with a budget of about 100 KB from one origin: first section, LCP image, core scripts and fallback fonts. Lazy runs after LCP: header, footer, remaining sections, lazy images, web fonts and analytics bootstrap. Delayed starts at least three seconds after LCP and only after consent: tag manager, chat, heatmaps, pixels and surveys.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .tool{font-size:12px;font-weight:600}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .div{stroke:#CBD2E1;stroke-width:1}
+  .axis{stroke:#10182B;stroke-width:2}
+  .mk{font-size:12px;font-weight:700;fill:#10182B}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+</style>
+<rect width="1200" height="640" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Eager, lazy, delayed: what belongs in each phase</text>
+<text class="sub" x="30" y="72">The loading contract that keeps an Edge Delivery Services page at 100, and what tends to break it</text>
+
+<!-- timeline -->
+<line class="axis" x1="30" y1="112" x2="1160" y2="112"/>
+<path d="M1160 106 L1172 112 L1160 118 Z" fill="#10182B"/>
+<circle cx="36" cy="112" r="6" fill="#2563EB"/>
+<text class="mk" x="30" y="138">Request</text>
+<circle cx="412" cy="112" r="6" fill="#6D5BD0"/>
+<text class="mk" x="412" y="138" text-anchor="middle">LCP</text>
+<circle cx="803" cy="112" r="6" fill="#EA580C"/>
+<text class="mk" x="803" y="138" text-anchor="middle">LCP + 3 s, and consent</text>
+<text class="w" x="1160" y="138" text-anchor="end">time</text>
+
+<!-- Eager -->
+<rect class="blue" x="24" y="156" width="372" height="410" rx="12"/>
+<text class="t" x="40" y="186">E · Eager</text><text class="w" x="40" y="206">until LCP · ~100 KB · one origin</text>
+<g class="s"><circle cx="44" cy="235" r="3" fill="#2563EB"/><text x="54" y="239">aem.js, scripts.js, styles.css</text>
+<circle cx="44" cy="261" r="3" fill="#2563EB"/><text x="54" y="265">Decorate DOM, body hidden until ready</text>
+<circle cx="44" cy="287" r="3" fill="#2563EB"/><text x="54" y="291">First section's block JS and CSS</text>
+<circle cx="44" cy="313" r="3" fill="#2563EB"/><text x="54" y="317">LCP image, same origin, eager</text>
+<circle cx="44" cy="339" r="3" fill="#2563EB"/><text x="54" y="343">Fallback fonts with size-adjust</text>
+<circle cx="44" cy="365" r="3" fill="#2563EB"/><text x="54" y="369">Target decision only, if you must</text></g>
+<line class="div" x1="40" y1="420" x2="380" y2="420"/><text class="lbl" x="40" y="442">KEEP OUT</text>
+<text class="tool" x="40" y="466" fill="#1D4ED8">Second origins, preconnect, preload</text>
+<text class="tool" x="40" y="490" fill="#1D4ED8">Hero carousels and autoplay video</text>
+<text class="tool" x="40" y="514" fill="#1D4ED8">Web font files on mobile</text>
+<text class="tool" x="40" y="538" fill="#1D4ED8">Data fetches that gate the hero</text>
+
+<!-- Lazy -->
+<rect class="violet" x="414" y="156" width="372" height="410" rx="12"/>
+<text class="t" x="430" y="186">L · Lazy</text><text class="w" x="430" y="206">after LCP · mostly same origin</text>
+<g class="s"><circle cx="434" cy="235" r="3" fill="#6D5BD0"/><text x="444" y="239">Header and footer fragments</text>
+<circle cx="434" cy="261" r="3" fill="#6D5BD0"/><text x="444" y="265">Remaining sections and blocks</text>
+<circle cx="434" cy="287" r="3" fill="#6D5BD0"/><text x="444" y="291">Images with loading="lazy"</text>
+<circle cx="434" cy="313" r="3" fill="#6D5BD0"/><text x="444" y="317">lazy-styles.css and web fonts</text>
+<circle cx="434" cy="339" r="3" fill="#6D5BD0"/><text x="444" y="343">Data layer and analytics bootstrap</text>
+<circle cx="434" cy="365" r="3" fill="#6D5BD0"/><text x="444" y="369">Embeds behind IntersectionObserver</text></g>
+<line class="div" x1="430" y1="420" x2="770" y2="420"/><text class="lbl" x="430" y="442">KEEP OUT</text>
+<text class="tool" x="430" y="466" fill="#5B47C2">Long main-thread tasks</text>
+<text class="tool" x="430" y="490" fill="#5B47C2">Large third-party libraries</text>
+<text class="tool" x="430" y="514" fill="#5B47C2">Anything that shifts the layout</text>
+<text class="tool" x="430" y="538" fill="#5B47C2">Tags without consent</text>
+
+<!-- Delayed -->
+<rect class="orange" x="804" y="156" width="372" height="410" rx="12"/>
+<text class="t" x="820" y="186">D · Delayed</text><text class="w" x="820" y="206">≥ 3 s after LCP · consent-gated</text>
+<g class="s"><circle cx="824" cy="235" r="3" fill="#EA580C"/><text x="834" y="239">consent-check.js and the CMP</text>
+<circle cx="824" cy="261" r="3" fill="#EA580C"/><text x="834" y="265">consented.js: tag manager, Launch</text>
+<circle cx="824" cy="287" r="3" fill="#EA580C"/><text x="834" y="291">Chat widgets, heatmaps, replay</text>
+<circle cx="824" cy="313" r="3" fill="#EA580C"/><text x="834" y="317">Social and advertising pixels</text>
+<circle cx="824" cy="339" r="3" fill="#EA580C"/><text x="834" y="343">Surveys and feedback tools</text>
+<circle cx="824" cy="365" r="3" fill="#EA580C"/><text x="834" y="369">Third-party A/B testing scripts</text></g>
+<line class="div" x1="820" y1="420" x2="1160" y2="420"/><text class="lbl" x="820" y="442">KEEP OUT</text>
+<text class="tool" x="820" y="466" fill="#C2410C">Anything the visitor must see</text>
+<text class="tool" x="820" y="490" fill="#C2410C">Anything the visitor must use</text>
+<text class="tool" x="820" y="514" fill="#C2410C">DOM rewrites above the fold</text>
+<text class="tool" x="820" y="538" fill="#C2410C">Scripts that ignore consent</text>
+
+<text class="lg" x="600" y="606" text-anchor="middle">Rule of thumb: if it isn't needed for the first paint, it moves right. If it isn't first-party, it starts in Delayed.</text>
+</svg>

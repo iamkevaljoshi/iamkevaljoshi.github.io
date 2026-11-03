@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 730" role="img" aria-label="The AEM as a Cloud Service pipeline landscape in Cloud Manager: full-stack, front-end, web tier config, config and code quality pipelines, what each one carries, which gates it passes, where it deploys and how long it takes, plus the Rapid Development Environment inner loop that bypasses pipelines">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .tool{font-size:12px;font-weight:600}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .div{stroke:#CBD2E1;stroke-width:1}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+</style>
+<rect width="1200" height="730" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The Cloud Manager pipeline landscape</text>
+<text class="sub" x="30" y="72">Five pipeline types, each with its own payload, gates and speed, plus the RDE inner loop that skips them all</text>
+
+<!-- column headers -->
+<text class="lbl" x="40" y="116">PIPELINE</text>
+<text class="lbl" x="284" y="116">WHAT IT CARRIES</text>
+<text class="lbl" x="580" y="116">GATES</text>
+<text class="lbl" x="876" y="116">DEPLOYS TO</text>
+<text class="lbl" x="1056" y="116">SPEED</text>
+
+<!-- Lane 1: full-stack -->
+<rect class="blue" x="24" y="128" width="1152" height="78" rx="12"/>
+<text class="t" x="40" y="160">Full-stack</text><text class="w" x="40" y="182">one per environment</text>
+<line class="div" x1="268" y1="140" x2="268" y2="194"/>
+<text class="s" x="284" y="162">Java bundles, ui.apps, ui.config,</text>
+<text class="s" x="284" y="182">indexes, repoinit, Dispatcher*</text>
+<line class="div" x1="564" y1="140" x2="564" y2="194"/>
+<text class="s" x="580" y="162">Build, unit tests, code quality,</text>
+<text class="s" x="580" y="182">functional and UI tests, audit</text>
+<line class="div" x1="860" y1="140" x2="860" y2="194"/>
+<text class="s" x="876" y="162">Dev, or</text>
+<text class="s" x="876" y="182">Stage then Prod</text>
+<line class="div" x1="1040" y1="140" x2="1040" y2="194"/>
+<text class="tool" x="1056" y="172" fill="#1D4ED8">Slowest</text>
+
+<!-- Lane 2: front-end -->
+<rect class="violet" x="24" y="218" width="1152" height="78" rx="12"/>
+<text class="t" x="40" y="250">Front-end</text><text class="w" x="40" y="272">site theme CSS and JS</text>
+<line class="div" x1="268" y1="230" x2="268" y2="284"/>
+<text class="s" x="284" y="252">Theme project: npm run build,</text>
+<text class="s" x="284" y="272">output from the dist folder</text>
+<line class="div" x1="564" y1="230" x2="564" y2="284"/>
+<text class="s" x="580" y="252">npm build of the theme project,</text>
+<text class="s" x="580" y="272">experience audit</text>
+<line class="div" x1="860" y1="230" x2="860" y2="284"/>
+<text class="s" x="876" y="252">Dev, or</text>
+<text class="s" x="876" y="272">Stage then Prod</text>
+<line class="div" x1="1040" y1="230" x2="1040" y2="284"/>
+<text class="tool" x="1056" y="262" fill="#5B47C2">Fast</text>
+
+<!-- Lane 3: web tier -->
+<rect class="orange" x="24" y="308" width="1152" height="78" rx="12"/>
+<text class="t" x="40" y="340">Web tier config</text><text class="w" x="40" y="362">flexible mode Dispatcher</text>
+<line class="div" x1="268" y1="320" x2="268" y2="374"/>
+<text class="s" x="284" y="342">Dispatcher and Apache httpd</text>
+<text class="s" x="284" y="362">configuration only</text>
+<line class="div" x1="564" y1="320" x2="564" y2="374"/>
+<text class="s" x="580" y="342">Dispatcher validation,</text>
+<text class="s" x="580" y="362">no Java build</text>
+<line class="div" x1="860" y1="320" x2="860" y2="374"/>
+<text class="s" x="876" y="342">Dev, or</text>
+<text class="s" x="876" y="362">Stage then Prod</text>
+<line class="div" x1="1040" y1="320" x2="1040" y2="374"/>
+<text class="tool" x="1056" y="352" fill="#C2410C">Minutes</text>
+
+<!-- Lane 4: config -->
+<rect class="green" x="24" y="398" width="1152" height="78" rx="12"/>
+<text class="t" x="40" y="430">Config pipeline</text><text class="w" x="40" y="452">targeted deployment</text>
+<line class="div" x1="268" y1="410" x2="268" y2="464"/>
+<text class="s" x="284" y="432">YAML: CDN, WAF, redirects, logs,</text>
+<text class="s" x="284" y="452">purge rules, API, edge functions</text>
+<line class="div" x1="564" y1="410" x2="564" y2="464"/>
+<text class="s" x="580" y="432">Config validated at deploy,</text>
+<text class="s" x="580" y="452">no code scan</text>
+<line class="div" x1="860" y1="410" x2="860" y2="464"/>
+<text class="s" x="876" y="432">Dev, Stage, Prod,</text>
+<text class="s" x="876" y="452">Edge Delivery prod</text>
+<line class="div" x1="1040" y1="410" x2="1040" y2="464"/>
+<text class="tool" x="1056" y="442" fill="#047857">Minutes</text>
+
+<!-- Lane 5: code quality -->
+<rect class="navy" x="24" y="488" width="1152" height="78" rx="12"/>
+<text class="t" x="40" y="520">Code quality only</text><text class="w" x="40" y="542">and pull request checks</text>
+<line class="div" x1="268" y1="500" x2="268" y2="554"/>
+<text class="s" x="284" y="522">Any branch, or every pull</text>
+<text class="s" x="284" y="542">request on a connected repo</text>
+<line class="div" x1="564" y1="500" x2="564" y2="554"/>
+<text class="s" x="580" y="522">Build, unit tests, code quality</text>
+<text class="s" x="580" y="542">(important issues cannot pass)</text>
+<line class="div" x1="860" y1="500" x2="860" y2="554"/>
+<text class="s" x="876" y="532">Nothing: report only</text>
+<line class="div" x1="1040" y1="500" x2="1040" y2="554"/>
+<text class="tool" x="1056" y="532" fill="#10182B">Fast feedback</text>
+
+<!-- RDE strip -->
+<rect x="24" y="592" width="1152" height="78" rx="12" fill="#FFFFFF" stroke="#CBD2E1" stroke-width="2" stroke-dasharray="6 5"/>
+<text class="t" x="40" y="624">Inner loop: RDE</text><text class="w" x="40" y="646">no pipeline at all</text>
+<line class="div" x1="268" y1="604" x2="268" y2="658"/>
+<text class="s" x="284" y="624">Laptop with AEM SDK and Dispatcher tools, then aio aem:rde:install pushes bundles,</text>
+<text class="s" x="284" y="646">packages, OSGi configs, Dispatcher zips and config YAML. No quality gates: promote through the lanes above.</text>
+
+<text class="lg" x="600" y="704" text-anchor="middle">* Full-stack skips Dispatcher config when a web tier config pipeline exists for that environment.</text>
+</svg>

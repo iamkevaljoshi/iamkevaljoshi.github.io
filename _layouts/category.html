@@ -1,0 +1,34 @@
+---
+layout: default
+---
+{%- assign cat_posts = site.posts | where: "category", page.slug -%}
+{%- assign cats = site.topics | sort: 'order' -%}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><a class="crumb" href="{{ '/blog/' | relative_url }}">Blog</a> / Category</p>
+    <h1 data-split>{{ page.title }}</h1>
+    {%- if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
+  </div>
+</section>
+<section class="block tight">
+  <div class="wrap">
+    <p class="muted tools-count">{{ cat_posts.size }} {% if cat_posts.size == 1 %}post{% else %}posts{% endif %}</p>
+    <div class="posts">
+      {%- for post in cat_posts %}
+      {% include post-item.html post=post hide_category=true %}
+      {%- else %}
+      <p class="empty">No posts in this category yet.</p>
+      {%- endfor %}
+    </div>
+    <nav class="cat-nav" aria-labelledby="cat-nav-h">
+      <h2 id="cat-nav-h">Other categories</h2>
+      <ul class="cat-chips">
+        <li><a href="{{ '/blog/' | relative_url }}">All posts <span>{{ site.posts.size }}</span></a></li>
+        {%- for c in cats %}{% unless c.url == page.url %}
+        {%- assign n = site.posts | where: "category", c.slug %}
+        <li><a href="{{ c.url | relative_url }}">{{ c.title }} <span>{{ n.size }}</span></a></li>
+        {%- endunless %}{% endfor %}
+      </ul>
+    </nav>
+  </div>
+</section>

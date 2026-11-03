@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="AI crawlers grouped by purpose in 2026. Search and answer index bots such as OAI-SearchBot, Claude-SearchBot, PerplexityBot, Googlebot and Bingbot honour robots.txt and decide whether you can be cited. User-triggered fetchers such as ChatGPT-User, Claude-User, Perplexity-User and Google-Agent fetch a page because a person asked, and several do not follow robots.txt. Training crawlers and usage tokens such as GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, Meta-ExternalAgent and CCBot control whether content is used to train models.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .b{font-weight:700}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .tool{font-size:12px;font-weight:600}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .div{stroke:#CBD2E1;stroke-width:1}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+</style>
+<rect width="1200" height="620" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Three kinds of AI bot, three different decisions</text>
+<text class="sub" x="30" y="72">Group by purpose first, then decide. Names and behaviour per each vendor's documentation, November 2026.</text>
+
+<!-- 1 Search and answer index -->
+<rect class="green" x="24" y="96" width="364" height="444" rx="12"/>
+<text class="t" x="40" y="126">1 · Search and answer index</text><text class="w" x="40" y="148">decides whether you can be cited</text>
+<g class="s">
+<circle cx="44" cy="180" r="3" fill="#059669"/><text x="54" y="184"><tspan class="b">OAI-SearchBot</tspan> · ChatGPT search</text>
+<circle cx="44" cy="207" r="3" fill="#059669"/><text x="54" y="211"><tspan class="b">Claude-SearchBot</tspan> · Claude search</text>
+<circle cx="44" cy="234" r="3" fill="#059669"/><text x="54" y="238"><tspan class="b">PerplexityBot</tspan> · Perplexity answers</text>
+<circle cx="44" cy="261" r="3" fill="#059669"/><text x="54" y="265"><tspan class="b">Googlebot</tspan> · Search, AI Overviews, AI Mode</text>
+<circle cx="44" cy="288" r="3" fill="#059669"/><text x="54" y="292"><tspan class="b">Bingbot</tspan> · Bing and Copilot</text>
+<circle cx="44" cy="315" r="3" fill="#059669"/><text x="54" y="319"><tspan class="b">Applebot</tspan> · Siri, Spotlight, Safari</text>
+<circle cx="44" cy="342" r="3" fill="#059669"/><text x="54" y="346"><tspan class="b">DuckAssistBot</tspan> · DuckAssist answers</text>
+<circle cx="44" cy="369" r="3" fill="#059669"/><text x="54" y="373"><tspan class="b">Amzn-SearchBot</tspan> · Alexa search</text>
+<circle cx="44" cy="396" r="3" fill="#059669"/><text x="54" y="400"><tspan class="b">meta-webindexer</tspan> · Meta AI search</text>
+</g>
+<line class="div" x1="40" y1="432" x2="372" y2="432"/><text class="lbl" x="40" y="454">ROBOTS.TXT</text>
+<text class="tool" x="40" y="478" fill="#047857">Honoured. Blocking one removes you</text>
+<text class="tool" x="40" y="498" fill="#047857">from that assistant's answers.</text>
+<text class="tool" x="40" y="522" fill="#047857">Default: allow.</text>
+
+<!-- 2 User-triggered fetchers -->
+<rect class="orange" x="418" y="96" width="364" height="444" rx="12"/>
+<text class="t" x="434" y="126">2 · User-triggered fetchers</text><text class="w" x="434" y="148">fetch one page because a person asked</text>
+<g class="s">
+<circle cx="438" cy="180" r="3" fill="#EA580C"/><text x="448" y="184"><tspan class="b">ChatGPT-User</tspan> · rules "may not apply"</text>
+<circle cx="438" cy="207" r="3" fill="#EA580C"/><text x="448" y="211"><tspan class="b">Claude-User</tspan> · honours robots.txt</text>
+<circle cx="438" cy="234" r="3" fill="#EA580C"/><text x="448" y="238"><tspan class="b">Perplexity-User</tspan> · generally ignores</text>
+<circle cx="438" cy="261" r="3" fill="#EA580C"/><text x="448" y="265"><tspan class="b">Google-Agent</tspan> · generally ignores</text>
+<circle cx="438" cy="288" r="3" fill="#EA580C"/><text x="448" y="292"><tspan class="b">Meta-ExternalFetcher</tspan> · may bypass</text>
+<circle cx="438" cy="315" r="3" fill="#EA580C"/><text x="448" y="319"><tspan class="b">Amzn-User</tspan> · user-initiated</text>
+</g>
+<text class="w" x="434" y="370">Watch out: CDN "agent" categories and</text>
+<text class="w" x="434" y="390">bot-fight modes often block these silently.</text>
+<line class="div" x1="434" y1="432" x2="766" y2="432"/><text class="lbl" x="434" y="454">ROBOTS.TXT</text>
+<text class="tool" x="434" y="478" fill="#C2410C">A weak lever. Your WAF and CDN rules</text>
+<text class="tool" x="434" y="498" fill="#C2410C">are the real control, in both directions.</text>
+<text class="tool" x="434" y="522" fill="#C2410C">Default: allow, and don't block by accident.</text>
+
+<!-- 3 Training -->
+<rect class="violet" x="812" y="96" width="364" height="444" rx="12"/>
+<text class="t" x="828" y="126">3 · Training crawlers and tokens</text><text class="w" x="828" y="148">decides whether models learn from you</text>
+<g class="s">
+<circle cx="832" cy="180" r="3" fill="#6D5BD0"/><text x="842" y="184"><tspan class="b">GPTBot</tspan> · OpenAI training</text>
+<circle cx="832" cy="207" r="3" fill="#6D5BD0"/><text x="842" y="211"><tspan class="b">ClaudeBot</tspan> · Anthropic training</text>
+<circle cx="832" cy="234" r="3" fill="#6D5BD0"/><text x="842" y="238"><tspan class="b">Google-Extended</tspan> · token: Gemini, grounding</text>
+<circle cx="832" cy="261" r="3" fill="#6D5BD0"/><text x="842" y="265"><tspan class="b">Applebot-Extended</tspan> · token: Apple models</text>
+<circle cx="832" cy="288" r="3" fill="#6D5BD0"/><text x="842" y="292"><tspan class="b">Meta-ExternalAgent</tspan> · Meta training</text>
+<circle cx="832" cy="315" r="3" fill="#6D5BD0"/><text x="842" y="319"><tspan class="b">Amazonbot</tspan> · may train Amazon models</text>
+<circle cx="832" cy="342" r="3" fill="#6D5BD0"/><text x="842" y="346"><tspan class="b">CCBot</tspan> · Common Crawl dataset</text>
+<circle cx="832" cy="369" r="3" fill="#6D5BD0"/><text x="842" y="373"><tspan class="b">Bytespider</tspan> · ByteDance</text>
+</g>
+<line class="div" x1="828" y1="432" x2="1160" y2="432"/><text class="lbl" x="828" y="454">ROBOTS.TXT</text>
+<text class="tool" x="828" y="478" fill="#5B47C2">Honoured by the named vendors. Blocking</text>
+<text class="tool" x="828" y="498" fill="#5B47C2">keeps you out of future models, not answers.</text>
+<text class="tool" x="828" y="522" fill="#5B47C2">Default: a business decision.</text>
+
+<text class="lg" x="600" y="576" text-anchor="middle">Googlebot, Bingbot and Applebot are mixed-use: never block them to stop AI use.</text>
+<text class="lg" x="600" y="598" text-anchor="middle">Use their tokens, snippet controls and webmaster settings instead.</text>
+</svg>

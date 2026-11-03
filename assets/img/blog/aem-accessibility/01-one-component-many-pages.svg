@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="One component, many pages: five shared components such as the header, card, carousel, image and form field feed templates and policies, which render on every page of the site. Fixing a component once fixes every page that uses it. Below, responsibilities are split between developers (semantic HTML, ARIA, keyboard and focus), designers (contrast, focus styles, target size) and authors (alt text, headings, link text, captions).">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .sb{font-size:12.5px;font-weight:700;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .page{fill:#FFFFFF;stroke:#059669;stroke-width:1.5}
+  .pl{stroke:#A7D8C4;stroke-width:2}
+  .con{stroke:#94A3B8;stroke-width:1.5;fill:none}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/></marker></defs>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">One component, many pages</text>
+<text class="sub" x="30" y="72">Accessibility defects live in a few shared components and policies, then repeat on every page that uses them</text>
+<text class="lbl" x="24" y="104">SHARED COMPONENTS</text>
+<text class="lbl" x="400" y="104">TEMPLATES AND POLICIES</text>
+<text class="lbl" x="796" y="104">EVERY PAGE THAT USES THEM</text>
+
+<rect class="blue" x="24" y="118" width="300" height="44" rx="10"/><text class="sb" x="44" y="145">Header and mega-menu</text>
+<path class="con" d="M324,140 C362,140 362,256 398,256" marker-end="url(#ar)"/>
+<rect class="blue" x="24" y="176" width="300" height="44" rx="10"/><text class="sb" x="44" y="203">Card with full-card link</text>
+<path class="con" d="M324,198 C362,198 362,256 398,256" marker-end="url(#ar)"/>
+<rect class="blue" x="24" y="234" width="300" height="44" rx="10"/><text class="sb" x="44" y="261">Carousel</text>
+<path class="con" d="M324,256 C362,256 362,256 398,256" marker-end="url(#ar)"/>
+<rect class="blue" x="24" y="292" width="300" height="44" rx="10"/><text class="sb" x="44" y="319">Image and alt text</text>
+<path class="con" d="M324,314 C362,314 362,256 398,256" marker-end="url(#ar)"/>
+<rect class="blue" x="24" y="350" width="300" height="44" rx="10"/><text class="sb" x="44" y="377">Form field and errors</text>
+<path class="con" d="M324,372 C362,372 362,256 398,256" marker-end="url(#ar)"/>
+<rect class="violet" x="400" y="118" width="320" height="276" rx="12"/>
+<text class="t" x="420" y="148">Templates and policies</text><text class="w" x="420" y="168">where governance is enforced</text>
+<circle cx="424" cy="196" r="3" fill="#6D5BD0"/><text class="s" x="434" y="200">Editable templates</text>
+<circle cx="424" cy="224" r="3" fill="#6D5BD0"/><text class="s" x="434" y="228">Component policies</text>
+<circle cx="424" cy="252" r="3" fill="#6D5BD0"/><text class="s" x="434" y="256">Allowed heading levels</text>
+<circle cx="424" cy="280" r="3" fill="#6D5BD0"/><text class="s" x="434" y="284">Style System variants</text>
+<circle cx="424" cy="308" r="3" fill="#6D5BD0"/><text class="s" x="434" y="312">Required fields in UE models</text>
+<circle cx="424" cy="336" r="3" fill="#6D5BD0"/><text class="s" x="434" y="340">EDS block decoration</text>
+<line class="con" x1="722" y1="160" x2="790" y2="160" marker-end="url(#ar)"/>
+<line class="con" x1="722" y1="256" x2="790" y2="256" marker-end="url(#ar)"/>
+<line class="con" x1="722" y1="352" x2="790" y2="352" marker-end="url(#ar)"/>
+<rect class="page" x="796" y="118" width="38" height="44" rx="4"/><line class="pl" x1="803" y1="130" x2="827" y2="130"/><line class="pl" x1="803" y1="140" x2="821" y2="140"/><line class="pl" x1="803" y1="150" x2="824" y2="150"/>
+<rect class="page" x="843" y="118" width="38" height="44" rx="4"/><line class="pl" x1="850" y1="130" x2="874" y2="130"/><line class="pl" x1="850" y1="140" x2="868" y2="140"/><line class="pl" x1="850" y1="150" x2="871" y2="150"/>
+<rect class="page" x="890" y="118" width="38" height="44" rx="4"/><line class="pl" x1="897" y1="130" x2="921" y2="130"/><line class="pl" x1="897" y1="140" x2="915" y2="140"/><line class="pl" x1="897" y1="150" x2="918" y2="150"/>
+<rect class="page" x="937" y="118" width="38" height="44" rx="4"/><line class="pl" x1="944" y1="130" x2="968" y2="130"/><line class="pl" x1="944" y1="140" x2="962" y2="140"/><line class="pl" x1="944" y1="150" x2="965" y2="150"/>
+<rect class="page" x="984" y="118" width="38" height="44" rx="4"/><line class="pl" x1="991" y1="130" x2="1015" y2="130"/><line class="pl" x1="991" y1="140" x2="1009" y2="140"/><line class="pl" x1="991" y1="150" x2="1012" y2="150"/>
+<rect class="page" x="1031" y="118" width="38" height="44" rx="4"/><line class="pl" x1="1038" y1="130" x2="1062" y2="130"/><line class="pl" x1="1038" y1="140" x2="1056" y2="140"/><line class="pl" x1="1038" y1="150" x2="1059" y2="150"/>
+<rect class="page" x="1078" y="118" width="38" height="44" rx="4"/><line class="pl" x1="1085" y1="130" x2="1109" y2="130"/><line class="pl" x1="1085" y1="140" x2="1103" y2="140"/><line class="pl" x1="1085" y1="150" x2="1106" y2="150"/>
+<rect class="page" x="1125" y="118" width="38" height="44" rx="4"/><line class="pl" x1="1132" y1="130" x2="1156" y2="130"/><line class="pl" x1="1132" y1="140" x2="1150" y2="140"/><line class="pl" x1="1132" y1="150" x2="1153" y2="150"/>
+<rect class="page" x="796" y="173" width="38" height="44" rx="4"/><line class="pl" x1="803" y1="185" x2="827" y2="185"/><line class="pl" x1="803" y1="195" x2="821" y2="195"/><line class="pl" x1="803" y1="205" x2="824" y2="205"/>
+<rect class="page" x="843" y="173" width="38" height="44" rx="4"/><line class="pl" x1="850" y1="185" x2="874" y2="185"/><line class="pl" x1="850" y1="195" x2="868" y2="195"/><line class="pl" x1="850" y1="205" x2="871" y2="205"/>
+<rect class="page" x="890" y="173" width="38" height="44" rx="4"/><line class="pl" x1="897" y1="185" x2="921" y2="185"/><line class="pl" x1="897" y1="195" x2="915" y2="195"/><line class="pl" x1="897" y1="205" x2="918" y2="205"/>
+<rect class="page" x="937" y="173" width="38" height="44" rx="4"/><line class="pl" x1="944" y1="185" x2="968" y2="185"/><line class="pl" x1="944" y1="195" x2="962" y2="195"/><line class="pl" x1="944" y1="205" x2="965" y2="205"/>
+<rect class="page" x="984" y="173" width="38" height="44" rx="4"/><line class="pl" x1="991" y1="185" x2="1015" y2="185"/><line class="pl" x1="991" y1="195" x2="1009" y2="195"/><line class="pl" x1="991" y1="205" x2="1012" y2="205"/>
+<rect class="page" x="1031" y="173" width="38" height="44" rx="4"/><line class="pl" x1="1038" y1="185" x2="1062" y2="185"/><line class="pl" x1="1038" y1="195" x2="1056" y2="195"/><line class="pl" x1="1038" y1="205" x2="1059" y2="205"/>
+<rect class="page" x="1078" y="173" width="38" height="44" rx="4"/><line class="pl" x1="1085" y1="185" x2="1109" y2="185"/><line class="pl" x1="1085" y1="195" x2="1103" y2="195"/><line class="pl" x1="1085" y1="205" x2="1106" y2="205"/>
+<rect class="page" x="1125" y="173" width="38" height="44" rx="4"/><line class="pl" x1="1132" y1="185" x2="1156" y2="185"/><line class="pl" x1="1132" y1="195" x2="1150" y2="195"/><line class="pl" x1="1132" y1="205" x2="1153" y2="205"/>
+<rect class="page" x="796" y="228" width="38" height="44" rx="4"/><line class="pl" x1="803" y1="240" x2="827" y2="240"/><line class="pl" x1="803" y1="250" x2="821" y2="250"/><line class="pl" x1="803" y1="260" x2="824" y2="260"/>
+<rect class="page" x="843" y="228" width="38" height="44" rx="4"/><line class="pl" x1="850" y1="240" x2="874" y2="240"/><line class="pl" x1="850" y1="250" x2="868" y2="250"/><line class="pl" x1="850" y1="260" x2="871" y2="260"/>
+<rect class="page" x="890" y="228" width="38" height="44" rx="4"/><line class="pl" x1="897" y1="240" x2="921" y2="240"/><line class="pl" x1="897" y1="250" x2="915" y2="250"/><line class="pl" x1="897" y1="260" x2="918" y2="260"/>
+<rect class="page" x="937" y="228" width="38" height="44" rx="4"/><line class="pl" x1="944" y1="240" x2="968" y2="240"/><line class="pl" x1="944" y1="250" x2="962" y2="250"/><line class="pl" x1="944" y1="260" x2="965" y2="260"/>
+<rect class="page" x="984" y="228" width="38" height="44" rx="4"/><line class="pl" x1="991" y1="240" x2="1015" y2="240"/><line class="pl" x1="991" y1="250" x2="1009" y2="250"/><line class="pl" x1="991" y1="260" x2="1012" y2="260"/>
+<rect class="page" x="1031" y="228" width="38" height="44" rx="4"/><line class="pl" x1="1038" y1="240" x2="1062" y2="240"/><line class="pl" x1="1038" y1="250" x2="1056" y2="250"/><line class="pl" x1="1038" y1="260" x2="1059" y2="260"/>
+<rect class="page" x="1078" y="228" width="38" height="44" rx="4"/><line class="pl" x1="1085" y1="240" x2="1109" y2="240"/><line class="pl" x1="1085" y1="250" x2="1103" y2="250"/><line class="pl" x1="1085" y1="260" x2="1106" y2="260"/>
+<rect class="page" x="1125" y="228" width="38" height="44" rx="4"/><line class="pl" x1="1132" y1="240" x2="1156" y2="240"/><line class="pl" x1="1132" y1="250" x2="1150" y2="250"/><line class="pl" x1="1132" y1="260" x2="1153" y2="260"/>
+<rect class="page" x="796" y="283" width="38" height="44" rx="4"/><line class="pl" x1="803" y1="295" x2="827" y2="295"/><line class="pl" x1="803" y1="305" x2="821" y2="305"/><line class="pl" x1="803" y1="315" x2="824" y2="315"/>
+<rect class="page" x="843" y="283" width="38" height="44" rx="4"/><line class="pl" x1="850" y1="295" x2="874" y2="295"/><line class="pl" x1="850" y1="305" x2="868" y2="305"/><line class="pl" x1="850" y1="315" x2="871" y2="315"/>
+<rect class="page" x="890" y="283" width="38" height="44" rx="4"/><line class="pl" x1="897" y1="295" x2="921" y2="295"/><line class="pl" x1="897" y1="305" x2="915" y2="305"/><line class="pl" x1="897" y1="315" x2="918" y2="315"/>
+<rect class="page" x="937" y="283" width="38" height="44" rx="4"/><line class="pl" x1="944" y1="295" x2="968" y2="295"/><line class="pl" x1="944" y1="305" x2="962" y2="305"/><line class="pl" x1="944" y1="315" x2="965" y2="315"/>
+<rect class="page" x="984" y="283" width="38" height="44" rx="4"/><line class="pl" x1="991" y1="295" x2="1015" y2="295"/><line class="pl" x1="991" y1="305" x2="1009" y2="305"/><line class="pl" x1="991" y1="315" x2="1012" y2="315"/>
+<rect class="page" x="1031" y="283" width="38" height="44" rx="4"/><line class="pl" x1="1038" y1="295" x2="1062" y2="295"/><line class="pl" x1="1038" y1="305" x2="1056" y2="305"/><line class="pl" x1="1038" y1="315" x2="1059" y2="315"/>
+<rect class="page" x="1078" y="283" width="38" height="44" rx="4"/><line class="pl" x1="1085" y1="295" x2="1109" y2="295"/><line class="pl" x1="1085" y1="305" x2="1103" y2="305"/><line class="pl" x1="1085" y1="315" x2="1106" y2="315"/>
+<rect class="page" x="1125" y="283" width="38" height="44" rx="4"/><line class="pl" x1="1132" y1="295" x2="1156" y2="295"/><line class="pl" x1="1132" y1="305" x2="1150" y2="305"/><line class="pl" x1="1132" y1="315" x2="1153" y2="315"/>
+<text class="lg" x="796" y="358">One defect × every page = a site-wide failure.</text>
+<text class="lg" x="796" y="380">Fix the component once, every page inherits it.</text>
+<text class="lbl" x="24" y="428">WHO OWNS WHAT</text>
+<rect class="orange" x="24" y="440" width="368" height="104" rx="12"/><text class="t" x="44" y="470">Developer</text>
+<text class="s" x="44" y="498">Semantic HTML, ARIA, name/role/value</text>
+<text class="s" x="44" y="522">Keyboard, focus order, status messages</text>
+<rect class="green" x="416" y="440" width="368" height="104" rx="12"/><text class="t" x="436" y="470">Designer</text>
+<text class="s" x="436" y="498">Contrast, visible focus styles</text>
+<text class="s" x="436" y="522">Target size, reflow, motion, error states</text>
+<rect class="navy" x="808" y="440" width="368" height="104" rx="12"/><text class="t" x="828" y="470">Author</text>
+<text class="s" x="828" y="498">Alt text, heading order, link text</text>
+<text class="s" x="828" y="522">Captions, transcripts, clear language</text>
+<text class="lg" x="600" y="578" text-anchor="middle">Templates and policies are where the three roles meet: they decide what authors can and cannot get wrong.</text>
+</svg>

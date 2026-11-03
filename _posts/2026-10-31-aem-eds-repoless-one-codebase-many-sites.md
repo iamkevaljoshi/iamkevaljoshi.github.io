@@ -4,6 +4,7 @@ title: "Repoless on AEM Edge Delivery Services: one codebase, many sites"
 seo_title: "Repoless AEM Edge Delivery Services: One Codebase, Many Sites"
 description: "Repoless on AEM Edge Delivery Services: how one codebase serves many brands, markets and environments, setup with DA or AEM authoring, and governance."
 date: 2026-10-31 13:00:00 +0530
+category: edge-delivery-services
 tags: [AEM, Edge Delivery Services, Repoless, Architecture]
 ---
 

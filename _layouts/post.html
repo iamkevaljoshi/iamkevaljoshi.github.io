@@ -2,10 +2,11 @@
 layout: default
 ---
 {%- assign p = site.data.profile -%}
+{%- assign post_cat = site.topics | where: "slug", page.category | first -%}
 <article class="post" data-title="{{ page.title | escape }}" data-tags="{{ page.tags | join: '|' | escape }}">
   <header class="post-head">
     <div class="wrap narrow">
-      <a class="back" href="{{ '/blog/' | relative_url }}">← All posts</a>
+      <p class="crumbs"><a class="back" href="{{ '/blog/' | relative_url }}">← All posts</a>{% if post_cat %}<span aria-hidden="true">·</span><a class="post-cat" href="{{ post_cat.url | relative_url }}">{{ post_cat.title }}</a>{% endif %}</p>
       <h1>{{ page.title }}</h1>
       <p class="meta">
         By <a href="{{ '/about/' | relative_url }}" rel="author">{{ p.name }}</a>
@@ -23,7 +24,10 @@ layout: default
   </div>
   {%- assign related = "" | split: "" -%}
   {%- for other in site.posts -%}
-    {%- if other.url != page.url -%}
+    {%- if other.url != page.url and page.category and other.category == page.category -%}{%- assign related = related | push: other -%}{%- endif -%}
+  {%- endfor -%}
+  {%- for other in site.posts -%}
+    {%- if other.url != page.url and other.category != page.category -%}
       {%- assign shared = 0 -%}
       {%- for t in other.tags -%}{%- if page.tags contains t -%}{%- assign shared = shared | plus: 1 -%}{%- endif -%}{%- endfor -%}
       {%- if shared > 0 -%}{%- assign related = related | push: other -%}{%- endif -%}

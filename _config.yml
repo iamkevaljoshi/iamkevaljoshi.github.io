@@ -22,6 +22,9 @@ collections:
   tools:
     output: true
     permalink: /tools/:name/
+  topics:
+    output: true
+    permalink: /blog/category/:name/
 
 defaults:
   - scope: { path: "", type: posts }
@@ -30,6 +33,8 @@ defaults:
     values: { layout: case-study }
   - scope: { path: "", type: tools }
     values: { layout: tool }
+  - scope: { path: "", type: topics }
+    values: { layout: category }
 
 plugins:
   - jekyll-feed

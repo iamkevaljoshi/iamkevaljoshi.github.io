@@ -657,3 +657,24 @@ h1.tagline{max-width:24ch}
 .tool-card .tags{margin-top:auto;padding-top:.5rem}
 .tools-more{margin-top:2rem}
 .tools-more a{color:var(--accent)}
+
+/* ---------- blog categories ---------- */
+.blog-sub{font-size:clamp(1.3rem,2.4vw,1.6rem);letter-spacing:-.02em;margin:0 0 1.25rem;max-width:none}
+.blog-sub .muted{font-family:var(--mono);font-size:.85rem;letter-spacing:.06em;margin-left:.4rem;vertical-align:middle}
+.cat-list{grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr));margin-bottom:clamp(2.5rem,6vh,4rem)}
+.cat-card h3{font-size:clamp(1.35rem,2.4vw,1.7rem);margin:.4rem 0 0;max-width:none;line-height:1.15;letter-spacing:-.025em}
+.cat-latest{list-style:none;margin:auto 0 0;padding:.75rem 0 0;border-top:1px solid var(--line);display:grid;gap:.35rem;font-size:.95rem;color:var(--muted)}
+.cat-latest li{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cat-latest li::before{content:"→ ";color:var(--hue)}
+.post-cat{display:inline-block;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);text-decoration:none;margin:0 0 .45rem}
+.post-cat:hover{text-decoration:underline}
+.crumb{color:inherit;text-decoration:none}
+.crumb:hover{text-decoration:underline}
+.cat-nav{margin-top:clamp(2.5rem,6vh,4rem)}
+.cat-nav h2{font-size:1.3rem;letter-spacing:-.02em;margin:0 0 1rem;max-width:none}
+.cat-chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.6rem}
+.cat-chips a{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1rem;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink)}
+.cat-chips a:hover,.cat-chips a:focus-visible{border-color:var(--accent);color:var(--accent)}
+.cat-chips span{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.post-head .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .6rem}
+.post-head .crumbs .post-cat{margin:0}

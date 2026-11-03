@@ -4,19 +4,34 @@ title: Blog
 seo_title: "Blog on AEM and Solution Architecture – Keval Joshi"
 permalink: /blog/
 eyebrow: Writing
-lede: Notes on Adobe Experience Manager, solution architecture and delivery.
-description: Technical writing by Keval Joshi on Adobe Experience Manager (AEM), AEM as a Cloud Service, solution architecture and integration.
+lede: Notes on Adobe Experience Manager, Edge Delivery Services, solution architecture, SEO and AI search, and digital experience.
+description: Technical writing by Keval Joshi on Adobe Experience Manager (AEM), Edge Delivery Services, AEM as a Cloud Service, solution architecture, SEO and AI search.
 ---
+{%- assign cats = site.topics | sort: 'order' -%}
+<h2 class="blog-sub" id="categories">Browse by category</h2>
+<div class="tool-list cat-list">
+  {%- for c in cats %}
+  {%- assign cp = site.posts | where: "category", c.slug %}
+  <a class="tool-card cat-card" href="{{ c.url | relative_url }}">
+    <span class="shead">
+      <span class="sicon" aria-hidden="true">{% include topic-icon.html icon=c.icon %}</span>
+      {{ cp.size }} {% if cp.size == 1 %}post{% else %}posts{% endif %}<span class="sarrow" aria-hidden="true">→</span>
+    </span>
+    <h3>{{ c.title }}</h3>
+    <p>{{ c.lede }}</p>
+    {%- if cp.size > 0 %}
+    <ul class="cat-latest">
+      {%- for p in cp limit: 3 %}<li>{{ p.title }}</li>{% endfor %}
+    </ul>
+    {%- endif %}
+  </a>
+  {%- endfor %}
+</div>
+
+<h2 class="blog-sub" id="all-posts">All posts <span class="muted">{{ site.posts.size }}</span></h2>
 <div class="posts">
   {%- for post in site.posts %}
-  <article class="post-item">
-    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
-    <div>
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <p>{{ post.excerpt | strip_html | normalize_whitespace | truncatewords: 35 }}</p>
-      {%- if post.tags.size > 0 %}<div class="tags">{% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
-    </div>
-  </article>
+  {% include post-item.html post=post %}
   {%- else %}
   <p class="empty">No posts yet.</p>
   {%- endfor %}

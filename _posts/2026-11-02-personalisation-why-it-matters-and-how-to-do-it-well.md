@@ -4,6 +4,7 @@ title: "Personalisation that works: why it matters and how to do it without the 
 seo_title: "Personalisation: Why It Matters and How to Do It Well"
 description: "A practitioner's guide to web personalisation: why it matters, the maturity ladder, how to build it, where to run it, privacy, SEO, measurement and mistakes."
 date: 2026-11-02 14:10:00 +0530
+category: digital-experience
 tags: [Personalisation, Digital Experience, Architecture]
 ---
 

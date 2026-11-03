@@ -4,6 +4,7 @@ title: "SEO vs GEO: how search is changing and how to make your site visible in 
 seo_title: "SEO vs GEO: How to Get Your Site Cited in AI Search Answers"
 description: "What generative engine optimization (GEO) is, how AI search changes user behaviour, how it differs from SEO, and a four-layer plan to make your site GEO-ready."
 date: 2026-10-31 15:00:00 +0530
+category: seo-ai-search
 tags: [SEO, GEO, AI Search]
 ---
 

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Recommended multi-market AEM content structure: an English language master is translated into German, French, Spanish and Japanese language masters using translation projects, and each language master is the MSM blueprint for market live copies such as Germany, Austria, Switzerland, France, Belgium, Spain and Japan">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .ar{stroke:#5B6478;stroke-width:1.6;fill:none}
+  .arv{stroke:#6D5BD0;stroke-width:1.6;fill:none}
+  .arg{stroke:#059669;stroke-width:1.6;fill:none}
+  .tag{font-size:12px;font-weight:700}
+</style>
+<defs>
+  <marker id="mv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6D5BD0"/></marker>
+  <marker id="mg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#059669"/></marker>
+</defs>
+<rect width="1200" height="640" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Translate once per language, roll out once per market</text>
+<text class="sub" x="30" y="72">Language masters feed translation; each translated master is the MSM blueprint for its markets</text>
+
+<!-- Tier 1 -->
+<rect class="blue" x="40" y="96" width="1120" height="74" rx="12"/>
+<text class="t" x="60" y="126">Source language master · /content/acme/language-masters/en</text>
+<text class="s" x="60" y="152">Authored once by the global team. Also the blueprint for English markets (/us/en, /gb/en, /ie/en).</text>
+
+<!-- Tier 1 to Tier 2 arrows -->
+<line class="arv" x1="245" y1="170" x2="245" y2="242" marker-end="url(#mv)"/>
+<line class="arv" x1="665" y1="170" x2="665" y2="242" marker-end="url(#mv)"/>
+<line class="arv" x1="945" y1="170" x2="945" y2="242" marker-end="url(#mv)"/>
+<line class="arv" x1="1085" y1="170" x2="1085" y2="242" marker-end="url(#mv)"/>
+<text class="tag" x="262" y="212" fill="#5B47C2">Translation projects create and update language copies</text>
+<text class="w" x="262" y="230">machine, human or AI translation · updates arrive as launches</text>
+
+<!-- Tier 2 -->
+<rect class="violet" x="40" y="246" width="410" height="78" rx="12"/>
+<text class="t" x="56" y="274">/language-masters/de</text>
+<text class="s" x="56" y="300">Translated and reviewed German master</text>
+<rect class="violet" x="460" y="246" width="410" height="78" rx="12"/>
+<text class="t" x="476" y="274">/language-masters/fr</text>
+<text class="s" x="476" y="300">Translated and reviewed French master</text>
+<rect class="violet" x="880" y="246" width="130" height="78" rx="12"/>
+<text class="t" x="896" y="274">…/es</text>
+<text class="s" x="896" y="300">Spanish</text>
+<rect class="violet" x="1020" y="246" width="140" height="78" rx="12"/>
+<text class="t" x="1036" y="274">…/ja</text>
+<text class="s" x="1036" y="300">Japanese</text>
+
+<!-- Tier 2 to Tier 3 arrows -->
+<line class="arg" x1="245" y1="324" x2="105" y2="396" marker-end="url(#mg)"/>
+<line class="arg" x1="245" y1="324" x2="245" y2="396" marker-end="url(#mg)"/>
+<line class="arg" x1="245" y1="324" x2="385" y2="396" marker-end="url(#mg)"/>
+<line class="arg" x1="665" y1="324" x2="525" y2="396" marker-end="url(#mg)"/>
+<line class="arg" x1="665" y1="324" x2="665" y2="396" marker-end="url(#mg)"/>
+<line class="arg" x1="665" y1="324" x2="805" y2="396" marker-end="url(#mg)"/>
+<line class="arg" x1="945" y1="324" x2="945" y2="396" marker-end="url(#mg)"/>
+<line class="arg" x1="1090" y1="324" x2="1090" y2="396" marker-end="url(#mg)"/>
+<text class="tag" x="455" y="366" fill="#047857" text-anchor="middle">MSM live copies · rollout</text>
+
+<!-- Tier 3 -->
+<g>
+<rect class="green" x="40" y="400" width="130" height="70" rx="10"/><text class="t" x="54" y="428">/de/de</text><text class="s" x="54" y="452">Germany</text>
+<rect class="green" x="180" y="400" width="130" height="70" rx="10"/><text class="t" x="194" y="428">/at/de</text><text class="s" x="194" y="452">Austria</text>
+<rect class="green" x="320" y="400" width="130" height="70" rx="10"/><text class="t" x="334" y="428">/ch/de</text><text class="s" x="334" y="452">Switzerland</text>
+<rect class="green" x="460" y="400" width="130" height="70" rx="10"/><text class="t" x="474" y="428">/fr/fr</text><text class="s" x="474" y="452">France</text>
+<rect class="green" x="600" y="400" width="130" height="70" rx="10"/><text class="t" x="614" y="428">/ch/fr</text><text class="s" x="614" y="452">Switzerland</text>
+<rect class="green" x="740" y="400" width="130" height="70" rx="10"/><text class="t" x="754" y="428">/be/fr</text><text class="s" x="754" y="452">Belgium</text>
+<rect class="green" x="880" y="400" width="130" height="70" rx="10"/><text class="t" x="894" y="428">/es/es</text><text class="s" x="894" y="452">Spain</text>
+<rect class="green" x="1020" y="400" width="140" height="70" rx="10"/><text class="t" x="1034" y="428">/jp/ja</text><text class="s" x="1034" y="452">Japan</text>
+</g>
+
+<!-- Rules -->
+<text class="lbl" x="40" y="508">RULES THAT KEEP IT HEALTHY</text>
+<rect class="navy" x="40" y="520" width="360" height="92" rx="12"/>
+<text class="t" x="56" y="548">One level of inheritance</text>
+<text class="s" x="56" y="572">Markets inherit from a language master,</text>
+<text class="s" x="56" y="592">never from another market.</text>
+<rect class="orange" x="420" y="520" width="360" height="92" rx="12"/>
+<text class="t" x="436" y="548">Local change = component-level cancel</text>
+<text class="s" x="436" y="572">Cancel inheritance on the component,</text>
+<text class="s" x="436" y="592">not the page. Suspend only temporarily.</text>
+<rect class="navy" x="800" y="520" width="360" height="92" rx="12"/>
+<text class="t" x="816" y="548">Market-only pages stay local</text>
+<text class="s" x="816" y="572">Create them in the live copy; they sit</text>
+<text class="s" x="816" y="592">outside the live relationship.</text>
+</svg>

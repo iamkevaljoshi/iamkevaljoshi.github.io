@@ -1,0 +1,11 @@
+{%- assign it = include.post -%}
+{%- assign it_cat = site.topics | where: "slug", it.category | first -%}
+<article class="post-item">
+  <time datetime="{{ it.date | date_to_xmlschema }}">{{ it.date | date: "%-d %b %Y" }}</time>
+  <div>
+    {%- if it_cat and include.hide_category != true %}<a class="post-cat" href="{{ it_cat.url | relative_url }}">{{ it_cat.title }}</a>{% endif %}
+    <h3><a href="{{ it.url | relative_url }}">{{ it.title }}</a></h3>
+    <p>{{ it.description | default: it.excerpt | strip_html | normalize_whitespace | truncatewords: 35 }}</p>
+    {%- if include.tags != false and it.tags.size > 0 %}<div class="tags">{% for t in it.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+  </div>
+</article>

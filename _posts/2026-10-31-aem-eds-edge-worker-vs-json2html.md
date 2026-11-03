@@ -4,6 +4,7 @@ title: "AEM Edge Delivery Services: edge worker vs JSON2HTML for dynamic pages"
 seo_title: "EDS Edge Worker vs JSON2HTML: Dynamic Pages in AEM"
 description: "When to use the JSON2HTML overlay or a CDN edge worker for data-driven pages on AEM Edge Delivery Services: architecture, trade-offs and a decision guide."
 date: 2026-10-31 12:00:00 +0530
+category: edge-delivery-services
 tags: [AEM, Edge Delivery Services, Architecture]
 ---
 

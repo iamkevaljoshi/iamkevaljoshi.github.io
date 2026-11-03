@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-label="Timeline of a solution architect's first ten working days. Week 1, listen and map: day 1 kick-off and access requests, day 2 business interviews, day 3 technical interviews, day 4 current-state discovery, day 5 NFRs and playback. Week 2, shape: day 6 C4 context diagram, day 7 architecture decision records, day 8 spike on the riskiest assumption, day 9 definition of done and sprint 1 runway, day 10 architecture readout.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+</style>
+<rect width="1200" height="660" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The first ten working days</text>
+<text class="sub" x="30" y="72">Week 1 is for listening and mapping. Week 2 is for shaping decisions and getting sprint 1 ready.</text>
+
+<text class="lbl" x="24" y="104">WEEK 1 · LISTEN AND MAP</text>
+
+<!-- Day 1 -->
+<rect class="blue" x="24" y="116" width="216" height="180" rx="12"/>
+<text class="t" x="40" y="144">Day 1</text><text class="w" x="40" y="164">Kick-off and access</text>
+<g class="s"><circle cx="44" cy="193" r="3" fill="#2563EB"/><text x="54" y="197">Raise access requests</text>
+<circle cx="44" cy="219" r="3" fill="#2563EB"/><text x="54" y="223">Read SOW, RFP, BRD</text>
+<circle cx="44" cy="245" r="3" fill="#2563EB"/><text x="54" y="249">Meet the delivery lead</text>
+<circle cx="44" cy="271" r="3" fill="#2563EB"/><text x="54" y="275">Draft stakeholder map</text></g>
+
+<!-- Day 2 -->
+<rect class="blue" x="258" y="116" width="216" height="180" rx="12"/>
+<text class="t" x="274" y="144">Day 2</text><text class="w" x="274" y="164">Business interviews</text>
+<g class="s"><circle cx="278" cy="193" r="3" fill="#2563EB"/><text x="288" y="197">Business owner</text>
+<circle cx="278" cy="219" r="3" fill="#2563EB"/><text x="288" y="223">Marketing and authors</text>
+<circle cx="278" cy="245" r="3" fill="#2563EB"/><text x="288" y="249">Content operations</text>
+<circle cx="278" cy="271" r="3" fill="#2563EB"/><text x="288" y="275">Start the question log</text></g>
+
+<!-- Day 3 -->
+<rect class="blue" x="492" y="116" width="216" height="180" rx="12"/>
+<text class="t" x="508" y="144">Day 3</text><text class="w" x="508" y="164">Technical interviews</text>
+<g class="s"><circle cx="512" cy="193" r="3" fill="#2563EB"/><text x="522" y="197">IT, security, infra</text>
+<circle cx="512" cy="219" r="3" fill="#2563EB"/><text x="522" y="223">Data and analytics</text>
+<circle cx="512" cy="245" r="3" fill="#2563EB"/><text x="522" y="249">Legal and compliance</text>
+<circle cx="512" cy="271" r="3" fill="#2563EB"/><text x="522" y="275">Chase access requests</text></g>
+
+<!-- Day 4 -->
+<rect class="blue" x="726" y="116" width="216" height="180" rx="12"/>
+<text class="t" x="742" y="144">Day 4</text><text class="w" x="742" y="164">Current-state discovery</text>
+<g class="s"><circle cx="746" cy="193" r="3" fill="#2563EB"/><text x="756" y="197">Systems inventory</text>
+<circle cx="746" cy="219" r="3" fill="#2563EB"/><text x="756" y="223">Integrations list</text>
+<circle cx="746" cy="245" r="3" fill="#2563EB"/><text x="756" y="249">Traffic, content volume</text>
+<circle cx="746" cy="271" r="3" fill="#2563EB"/><text x="756" y="275">Codebase walkthrough</text></g>
+
+<!-- Day 5 -->
+<rect class="blue" x="960" y="116" width="216" height="180" rx="12"/>
+<text class="t" x="976" y="144">Day 5</text><text class="w" x="976" y="164">NFRs and playback</text>
+<g class="s"><circle cx="980" cy="193" r="3" fill="#2563EB"/><text x="990" y="197">Draft NFRs with numbers</text>
+<circle cx="980" cy="219" r="3" fill="#2563EB"/><text x="990" y="223">First RAID log</text>
+<circle cx="980" cy="245" r="3" fill="#2563EB"/><text x="990" y="249">Pain points, top 10</text>
+<circle cx="980" cy="271" r="3" fill="#2563EB"/><text x="990" y="275">Week 1 playback</text></g>
+
+<text class="lbl" x="24" y="330">WEEK 2 · SHAPE</text>
+
+<!-- Day 6 -->
+<rect class="violet" x="24" y="342" width="216" height="180" rx="12"/>
+<text class="t" x="40" y="370">Day 6</text><text class="w" x="40" y="390">Context and containers</text>
+<g class="s"><circle cx="44" cy="419" r="3" fill="#6D5BD0"/><text x="54" y="423">C4 context diagram</text>
+<circle cx="44" cy="445" r="3" fill="#6D5BD0"/><text x="54" y="449">Container sketch</text>
+<circle cx="44" cy="471" r="3" fill="#6D5BD0"/><text x="54" y="475">Review with client IT</text>
+<circle cx="44" cy="497" r="3" fill="#6D5BD0"/><text x="54" y="501">Pick the riskiest bit</text></g>
+
+<!-- Day 7 -->
+<rect class="violet" x="258" y="342" width="216" height="180" rx="12"/>
+<text class="t" x="274" y="370">Day 7</text><text class="w" x="274" y="390">Key decisions</text>
+<g class="s"><circle cx="278" cy="419" r="3" fill="#6D5BD0"/><text x="288" y="423">ADRs for 3–5 decisions</text>
+<circle cx="278" cy="445" r="3" fill="#6D5BD0"/><text x="288" y="449">Options and trade-offs</text>
+<circle cx="278" cy="471" r="3" fill="#6D5BD0"/><text x="288" y="475">Start the spike</text>
+<circle cx="278" cy="497" r="3" fill="#6D5BD0"/><text x="288" y="501">Update RAID log</text></g>
+
+<!-- Day 8 -->
+<rect class="violet" x="492" y="342" width="216" height="180" rx="12"/>
+<text class="t" x="508" y="370">Day 8</text><text class="w" x="508" y="390">Prove it</text>
+<g class="s"><circle cx="512" cy="419" r="3" fill="#6D5BD0"/><text x="522" y="423">Finish the spike</text>
+<circle cx="512" cy="445" r="3" fill="#6D5BD0"/><text x="522" y="449">Environments plan</text>
+<circle cx="512" cy="471" r="3" fill="#6D5BD0"/><text x="522" y="475">Branching strategy</text>
+<circle cx="512" cy="497" r="3" fill="#6D5BD0"/><text x="522" y="501">CI/CD quality gates</text></g>
+
+<!-- Day 9 -->
+<rect class="violet" x="726" y="342" width="216" height="180" rx="12"/>
+<text class="t" x="742" y="370">Day 9</text><text class="w" x="742" y="390">Ready for sprint 1</text>
+<g class="s"><circle cx="746" cy="419" r="3" fill="#6D5BD0"/><text x="756" y="423">DoD including NFRs</text>
+<circle cx="746" cy="445" r="3" fill="#6D5BD0"/><text x="756" y="449">Architecture runway</text>
+<circle cx="746" cy="471" r="3" fill="#6D5BD0"/><text x="756" y="475">Sense-check estimates</text>
+<circle cx="746" cy="497" r="3" fill="#6D5BD0"/><text x="756" y="501">Dry-run the readout</text></g>
+
+<!-- Day 10 -->
+<rect class="navy" x="960" y="342" width="216" height="180" rx="12"/>
+<text class="t" x="976" y="370">Day 10</text><text class="w" x="976" y="390">Readout</text>
+<g class="s"><circle cx="980" cy="419" r="3" fill="#10182B"/><text x="990" y="423">What we heard</text>
+<circle cx="980" cy="445" r="3" fill="#10182B"/><text x="990" y="449">Decisions and options</text>
+<circle cx="980" cy="471" r="3" fill="#10182B"/><text x="990" y="475">Top risks and asks</text>
+<circle cx="980" cy="497" r="3" fill="#10182B"/><text x="990" y="501">Agreed next steps</text></g>
+
+<!-- Deliverables band -->
+<rect x="24" y="548" width="1152" height="76" rx="12" fill="#FFFFFF" stroke="#CBD2E1" stroke-width="1"/>
+<text class="lbl" x="40" y="572">END OF WEEK 1</text>
+<text class="s" x="170" y="572">Stakeholder map · interview notes · systems and integrations inventory · draft NFRs · RAID log · question log</text>
+<text class="lbl" x="40" y="604">END OF WEEK 2</text>
+<text class="s" x="170" y="604">C4 context diagram · 3–5 ADRs · spike result · environments and branching · DoD · sprint 1 runway · readout</text>
+
+<text class="lg" x="600" y="648" text-anchor="middle">Access requests raised on day 1 run in the background for the whole fortnight.</text>
+</svg>

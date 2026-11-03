@@ -10,7 +10,10 @@ sitemap: false
   {"t": "Experience", "u": "{{ '/experience/' | relative_url }}", "s": "Page", "x": "Career history, skills, education and certifications."},
   {"t": "Certifications", "u": "{{ '/certifications/' | relative_url }}", "s": "Page", "x": "Adobe Experience Manager, SAFe and ITIL certifications with credential IDs."},
   {"t": "Work", "u": "{{ '/work/' | relative_url }}", "s": "Page", "x": "AEM architecture case studies and typical engagements: AEM as a Cloud Service migration, platform builds, integration architecture, architecture reviews."},
-  {"t": "Blog", "u": "{{ '/blog/' | relative_url }}", "s": "Page", "x": "Technical writing on Adobe Experience Manager, Edge Delivery Services and solution architecture."},
+  {"t": "Blog", "u": "{{ '/blog/' | relative_url }}", "s": "Page", "x": "Technical writing on Adobe Experience Manager, Edge Delivery Services, AEM as a Cloud Service, solution architecture, SEO and AI search, and digital experience."},
+{%- for c in site.topics %}
+  {"t": {{ c.title | jsonify }}, "u": "{{ c.url | relative_url }}", "s": "Blog category", "x": {{ c.description | jsonify }}},
+{%- endfor %}
   {"t": "Tools", "u": "{{ '/tools/' | relative_url }}", "s": "Page", "x": "Free browser-based tools for AEM and web teams, including a web page comparison tool for migration QA."},
 {%- for t in site.tools %}
   {"t": {{ t.title | jsonify }}, "u": "{{ t.url | relative_url }}", "s": "Tool", "g": {{ t.tags | join: ' ' | jsonify }}, "x": {{ t.description | append: ' ' | append: t.summary | jsonify }}},

@@ -1,0 +1,9 @@
+{%- assign s = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"' -%}
+{%- case include.icon -%}
+{%- when 'edge' -%}<svg {{ s }}><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z"/></svg>
+{%- when 'cloud' -%}<svg {{ s }}><path d="M7 18.5a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.6A3.8 3.8 0 0 1 17.5 18.5z"/></svg>
+{%- when 'arch' -%}<svg {{ s }}><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2h12v2"/></svg>
+{%- when 'search' -%}<svg {{ s }}><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M10.5 7.5v6M7.5 10.5h6"/></svg>
+{%- when 'experience' -%}<svg {{ s }}><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/><path d="m17.5 4.5 1 1M19.5 8h1.5"/></svg>
+{%- else -%}<svg {{ s }}><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5M8 13h8M8 17h5"/></svg>
+{%- endcase -%}

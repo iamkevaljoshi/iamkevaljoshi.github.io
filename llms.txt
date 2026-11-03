@@ -39,8 +39,14 @@ sitemap: false
 {%- endfor %}
 
 ## Blog posts
-{%- for post in site.posts %}
+{%- assign cats = site.topics | sort: 'order' %}
+{%- for c in cats %}
+
+### [{{ c.title }}]({{ c.url | absolute_url }})
+{%- assign cp = site.posts | where: "category", c.slug %}
+{%- for post in cp %}
 - [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description | default: post.excerpt | strip_html | normalize_whitespace | truncate: 140 }}
+{%- endfor %}
 {%- endfor %}
 
 ## Profiles

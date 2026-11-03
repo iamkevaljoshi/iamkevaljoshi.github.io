@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Three ways to author content for AEM Edge Delivery Services compared: document-based authoring in Word or Google Docs stored in SharePoint or Google Drive; Experience Workspace, formerly Document Authoring, stored in the Edge Delivery document repository; and AEM authoring with the Universal Editor stored in AEM as a Cloud Service. All three publish through the Admin API to the same Content Bus and are served from aem.page and aem.live behind a CDN, using the same GitHub code base.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .bar{font-size:14px;font-weight:600;fill:#10182B}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .div{stroke:#CBD2E1;stroke-width:1}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker></defs>
+<rect width="1200" height="630" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Three authoring models, one delivery path</text>
+<text class="sub" x="30" y="72">Where authors work and where content lives differ; everything is published to the same Edge Delivery Content Bus</text>
+
+<!-- Column 1: document-based -->
+<rect class="orange" x="30" y="96" width="360" height="380" rx="12"/>
+<text class="t" x="50" y="126">Document-based</text>
+<text class="w" x="50" y="146">Word / Excel or Google Docs / Sheets</text>
+<line class="div" x1="50" y1="162" x2="370" y2="162"/>
+<text class="lbl" x="50" y="186">AUTHORS EDIT IN</text>
+<text class="s" x="50" y="206">Word, Excel, Google Docs and Google Sheets</text>
+<text class="lbl" x="50" y="242">CONTENT LIVES IN</text>
+<text class="s" x="50" y="262">SharePoint or Google Drive</text>
+<text class="lbl" x="50" y="298">PREVIEW AND PUBLISH</text>
+<text class="s" x="50" y="318">AEM Sidekick browser extension</text>
+<text class="lbl" x="50" y="354">GOVERNANCE</text>
+<text class="s" x="50" y="374">Drive / SharePoint sharing, file versions;</text>
+<text class="s" x="50" y="392">no field validation, structure by convention</text>
+<text class="lbl" x="50" y="428">STRONGEST FOR</text>
+<text class="s" x="50" y="448">Teams living in Microsoft 365 or Google</text>
+<text class="s" x="50" y="466">Workspace, text-heavy content</text>
+
+<!-- Column 2: Experience Workspace -->
+<rect class="violet" x="420" y="96" width="360" height="380" rx="12"/>
+<text class="t" x="440" y="126">Experience Workspace</text>
+<text class="w" x="440" y="146">formerly Document Authoring (da.live)</text>
+<line class="div" x1="440" y1="162" x2="760" y2="162"/>
+<text class="lbl" x="440" y="186">AUTHORS EDIT IN</text>
+<text class="s" x="440" y="206">Canvas and doc editor, sheets, AI assistant</text>
+<text class="lbl" x="440" y="242">CONTENT LIVES IN</text>
+<text class="s" x="440" y="262">Edge Delivery document-based repository</text>
+<text class="lbl" x="440" y="298">PREVIEW AND PUBLISH</text>
+<text class="s" x="440" y="318">From the editor, apps or Sidekick</text>
+<text class="lbl" x="440" y="354">GOVERNANCE</text>
+<text class="s" x="440" y="374">IMS permissions, versions, request publish,</text>
+<text class="s" x="440" y="392">MSM, translation and scheduling apps</text>
+<text class="lbl" x="440" y="428">STRONGEST FOR</text>
+<text class="s" x="440" y="448">New EDS sites that want speed with</text>
+<text class="s" x="440" y="466">a growing set of CMS controls</text>
+
+<!-- Column 3: AEM authoring + UE -->
+<rect class="blue" x="810" y="96" width="360" height="380" rx="12"/>
+<text class="t" x="830" y="126">AEM authoring + Universal Editor</text>
+<text class="w" x="830" y="146">xwalk projects, content in AEM Cloud Service</text>
+<line class="div" x1="830" y1="162" x2="1150" y2="162"/>
+<text class="lbl" x="830" y="186">AUTHORS EDIT IN</text>
+<text class="s" x="830" y="206">Universal Editor and the AEM Sites console</text>
+<text class="lbl" x="830" y="242">CONTENT LIVES IN</text>
+<text class="s" x="830" y="262">AEM author repository (JCR)</text>
+<text class="lbl" x="830" y="298">PREVIEW AND PUBLISH</text>
+<text class="s" x="830" y="318">UE Publish, Quick / Manage Publication</text>
+<text class="lbl" x="830" y="354">GOVERNANCE</text>
+<text class="s" x="830" y="374">Field models and validation, workflows,</text>
+<text class="s" x="830" y="392">MSM Live Copies, Launches, translation</text>
+<text class="lbl" x="830" y="428">STRONGEST FOR</text>
+<text class="s" x="830" y="448">Regulated, multi-market and existing</text>
+<text class="s" x="830" y="466">AEM estates</text>
+
+<!-- Arrows -->
+<path class="arr" d="M210 478 L210 512"/>
+<path class="arr" d="M600 478 L600 512"/>
+<path class="arr" d="M990 478 L990 512"/>
+
+<!-- Delivery bar -->
+<rect class="navy" x="30" y="516" width="1140" height="56" rx="12"/>
+<text class="bar" x="600" y="550" text-anchor="middle">Admin API  →  Content Bus  →  aem.page (preview) and aem.live (live)  →  your CDN</text>
+
+<text class="lg" x="600" y="606" text-anchor="middle">Same GitHub code for blocks and styles. AEM authoring adds component models, definitions and filters as JSON.</text>
+</svg>

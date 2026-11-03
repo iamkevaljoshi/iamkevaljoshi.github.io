@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Where EDS experimentation and Adobe Target run in the Edge Delivery Services page lifecycle. Both decide in the eager phase before the largest contentful paint: the experimentation plugin picks a variant from page metadata and swaps content locally, while Target through the Web SDK makes a network call to the Adobe Edge Network. Reporting differs: sampled Operational Telemetry for EDS, Target reports or Analytics for Target for Target.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .lcp{stroke:#DC2626;stroke-width:2;stroke-dasharray:6 5}
+  .lg{font-size:12.5px;font-weight:700;fill:#B91C1C}
+</style>
+<rect width="1200" height="640" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Where each tool runs in the EDS page lifecycle</text>
+<text class="sub" x="30" y="72">Both decide before the largest contentful paint. Only Target needs a network round trip to do it.</text>
+<rect class="navy" x="176" y="96" width="196" height="56" rx="10"/>
+<text class="t" x="190" y="120">1 · Edge / CDN</text><text class="w" x="190" y="140">before the browser</text>
+<rect class="navy" x="380" y="96" width="196" height="56" rx="10"/>
+<text class="t" x="394" y="120">2 · HTML + head</text><text class="w" x="394" y="140">parse, preload</text>
+<rect class="navy" x="584" y="96" width="196" height="56" rx="10"/>
+<text class="t" x="598" y="120">3 · Eager</text><text class="w" x="598" y="140">blocks LCP</text>
+<rect class="navy" x="788" y="96" width="196" height="56" rx="10"/>
+<text class="t" x="802" y="120">4 · Lazy</text><text class="w" x="802" y="140">after LCP</text>
+<rect class="navy" x="992" y="96" width="196" height="56" rx="10"/>
+<text class="t" x="1006" y="120">5 · Delayed</text><text class="w" x="1006" y="140">about 3 s later</text>
+<rect class="green" x="24" y="166" width="140" height="150" rx="10"/>
+<text class="t" x="36" y="196">EDS</text>
+<text class="t" x="36" y="216">experiment-</text>
+<text class="t" x="36" y="236">ation plugin</text>
+<rect class="green" x="176" y="166" width="196" height="150" rx="10"/>
+<text class="s" x="190" y="194">No decision here.</text>
+<text class="s" x="190" y="214">Control page served</text>
+<text class="s" x="190" y="234">from the CDN cache.</text>
+<rect class="green" x="380" y="166" width="196" height="150" rx="10"/>
+<text class="s" x="394" y="194">Metadata in head:</text>
+<text class="s" x="394" y="214">Experiment, Variants,</text>
+<text class="s" x="394" y="234">Split, Audience,</text>
+<text class="s" x="394" y="254">Status, dates.</text>
+<rect class="green" x="584" y="166" width="196" height="150" rx="10"/>
+<text class="s" x="598" y="194">Read metadata, consent.</text>
+<text class="s" x="598" y="214">Pick variant by split.</text>
+<text class="s" x="598" y="234">Fetch variant doc,</text>
+<text class="s" x="598" y="254">swap the content.</text>
+<text class="s" x="598" y="274">Keep in sessionStorage.</text>
+<rect class="green" x="788" y="166" width="196" height="150" rx="10"/>
+<text class="s" x="802" y="194">aem:experimentation</text>
+<text class="s" x="802" y="214">event for analytics.</text>
+<text class="s" x="802" y="234">Sidekick panel</text>
+<text class="s" x="802" y="254">(preview only).</text>
+<rect class="green" x="992" y="166" width="196" height="150" rx="10"/>
+<text class="s" x="1006" y="194">Nothing extra.</text>
+<rect class="orange" x="24" y="330" width="140" height="150" rx="10"/>
+<text class="t" x="36" y="360">Adobe</text>
+<text class="t" x="36" y="380">Target via</text>
+<text class="t" x="36" y="400">Web SDK</text>
+<rect class="orange" x="176" y="330" width="196" height="150" rx="10"/>
+<text class="s" x="190" y="358">Not used in the</text>
+<text class="s" x="190" y="378">standard EDS setup.</text>
+<text class="s" x="190" y="398">Server-side or edge</text>
+<text class="s" x="190" y="418">needs custom work.</text>
+<rect class="orange" x="380" y="330" width="196" height="150" rx="10"/>
+<text class="s" x="394" y="358">Preload Web SDK.</text>
+<text class="s" x="394" y="378">Target: on flag</text>
+<text class="s" x="394" y="398">and consent check.</text>
+<rect class="orange" x="584" y="330" width="196" height="150" rx="10"/>
+<text class="s" x="598" y="358">interact call to the</text>
+<text class="s" x="598" y="378">Adobe Edge Network:</text>
+<text class="s" x="598" y="398">Target decisions +</text>
+<text class="s" x="598" y="418">RTCDP edge audiences.</text>
+<text class="s" x="598" y="438">Apply after decorate.</text>
+<rect class="orange" x="788" y="330" width="196" height="150" rx="10"/>
+<text class="s" x="802" y="358">Analytics and data</text>
+<text class="s" x="802" y="378">layer (martech lazy).</text>
+<text class="s" x="802" y="398">Display and conversion</text>
+<text class="s" x="802" y="418">events sent.</text>
+<rect class="orange" x="992" y="330" width="196" height="150" rx="10"/>
+<text class="s" x="1006" y="358">Launch tags and</text>
+<text class="s" x="1006" y="378">third-party scripts.</text>
+<line class="lcp" x1="784.0" y1="160" x2="784.0" y2="490"/>
+<text class="lg" x="792.0" y="500">LCP</text>
+<rect class="violet" x="24" y="512" width="140" height="96" rx="10"/>
+<text class="t" x="36" y="542">Reporting</text><text class="w" x="36" y="562">after the visit</text>
+<rect class="green" x="176" y="512" width="502.0" height="96" rx="10"/>
+<text class="lbl" x="190" y="538">EDS</text>
+<text class="s" x="190" y="562">Operational Telemetry (RUM): sampled, 1 in 100 by</text>
+<text class="s" x="190" y="582">default, no cookies. Basic conversion view.</text>
+<rect class="orange" x="686.0" y="512" width="502.0" height="96" rx="10"/>
+<text class="lbl" x="700.0" y="538">ADOBE TARGET</text>
+<text class="s" x="700.0" y="562">Target reports (Welch's t-test or Bayesian),</text>
+<text class="s" x="700.0" y="582">or Analytics for Target (A4T) in Adobe Analytics.</text>
+</svg>
