@@ -1,0 +1,72 @@
+---
+title: SEO audit
+seo_title: "Free SEO Audit Tool: robots.txt, Sitemap and On-Page Checker"
+description: "Free SEO audit for any URL: robots.txt, XML sitemaps, indexability, canonicals, titles, headings, hreflang, structured data and Core Web Vitals."
+lede: A practitioner's SEO audit of any page in about 30 seconds. It checks robots.txt and XML sitemaps, crawling and indexing, on-page content, technical and mobile basics, structured data and, with a free Google key, Core Web Vitals.
+summary: Audit any URL for robots.txt, XML sitemaps, indexability, canonicals, titles, headings, links, hreflang, structured data and Core Web Vitals, with prioritised fixes.
+category: SEO
+icon: seo
+order: 2
+added: 2026-11-03 14:00:00 +0530
+tags: [SEO, robots.txt, Sitemaps, Core Web Vitals]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/seo-audit.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: What does the SEO audit check?
+    a: "About 60 checks in six groups: crawling and indexing (status, HTTPS, redirects, robots rules for Googlebot and Bingbot, noindex, canonicals); robots.txt and XML sitemaps (presence, syntax, size limits, sitemap validity, lastmod and whether the page is listed); on-page content (title, meta description, H1, heading order, depth, JavaScript dependence, images and links); technical and mobile (viewport, language, hreflang, mixed content, favicon, URL hygiene); structured data and Open Graph; and Core Web Vitals."
+  - q: How is the score calculated?
+    a: "Each check passes (full marks), needs improvement (half) or fails (none), weighted by impact. Categories are then weighted: crawling and indexing 25%, on-page 25%, robots.txt and sitemaps 15%, technical 15%, structured data 10% and performance 10%. Info items are not scored. Performance is left out when no Google API key is provided."
+  - q: Why do I need a Google API key for Core Web Vitals?
+    a: "Core Web Vitals come from the PageSpeed Insights API. Its anonymous quota is shared by everyone and is usually used up, so the audit only runs it with your own key. Create one for free in Google Cloud (enable the PageSpeed Insights API). It is sent only to Google and stays in your browser if you choose to remember it."
+  - q: Does it check my whole site?
+    a: "No. It audits one page, plus the site-wide robots.txt, sitemaps and HTTP/www redirects. Run it on your key templates (home, category, article, product) to cover a site."
+  - q: Is my data stored anywhere?
+    a: "No. The audit runs in your browser. URLs are sent to Jina Reader to fetch pages and files, and to Google if you add a PageSpeed key. Nothing is saved on this site."
+---
+<form id="auForm" class="pc-form au-form" novalidate>
+  <div class="au-url-row">
+    <label class="pc-field">
+      <span>Page URL</span>
+      <input id="auUrl" name="auUrl" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://www.example.com/products/" required>
+    </label>
+    <button class="btn solid" id="auGo" type="submit">Run SEO audit</button>
+  </div>
+  <details class="pc-adv">
+    <summary>Settings</summary>
+    <div class="pc-adv-grid">
+      <label class="pc-field">
+        <span>Google API key for Core Web Vitals <small>optional; <a href="https://developers.google.com/speed/docs/insights/v5/get-started#APIKey" target="_blank" rel="noopener">get a free key</a></small></span>
+        <input name="auPsi" type="password" autocomplete="off" spellcheck="false" placeholder="AIza…">
+      </label>
+      <label class="pc-field pc-inline">
+        <span>Core Web Vitals device</span>
+        <select name="auStrategy"><option value="mobile">Mobile</option><option value="desktop">Desktop</option></select>
+      </label>
+      <label class="pc-field">
+        <span>Jina Reader API key <small>optional; raises rate limits. <a href="https://jina.ai/reader/" target="_blank" rel="noopener">Get a free key</a></small></span>
+        <input name="auKey" type="password" autocomplete="off" spellcheck="false" placeholder="jina_…">
+      </label>
+      <label class="pc-check"><input name="auRemember" type="checkbox"> Remember keys in this browser</label>
+    </div>
+  </details>
+  <p class="pc-error" id="auError" role="alert"></p>
+  <p class="pc-note muted">Pages and files are fetched through <a href="https://jina.ai/reader/" target="_blank" rel="noopener">Jina Reader</a>. Nothing is stored on this site. Public pages only.</p>
+</form>
+
+<ol class="pc-steps" id="auSteps" aria-live="polite" hidden></ol>
+<section class="pc-report" id="auReport" aria-label="SEO audit report" hidden></section>
+
+<section class="pc-about">
+  <h2>What it checks</h2>
+  <div class="pc-about-grid">
+    <div><h3>Crawling and indexing</h3><p>HTTP status and redirects, HTTPS, http→https and www consolidation, robots.txt rules for Googlebot and Bingbot (RFC 9309 matching), noindex, nofollow, nosnippet and canonicals, including ones JavaScript changes.</p></div>
+    <div><h3>robots.txt and sitemaps</h3><p>robots.txt presence, server errors, syntax, the 500 KiB limit and Sitemap lines. Sitemaps and sitemap indexes are parsed for XML validity, namespace, the 50,000-URL limit, host consistency, lastmod dates and whether this page is listed.</p></div>
+    <div><h3>On-page content</h3><p>Title and meta description quality and length, H1 and heading order, title–H1 alignment, content depth, how much content depends on JavaScript, image alt text and dimensions, and internal links and anchor text.</p></div>
+    <div><h3>Technical and mobile</h3><p>Viewport and zoom, language, charset, hreflang codes and self-references, mixed content, favicon, URL hygiene and HTML size.</p></div>
+    <div><h3>Structured data and social</h3><p>JSON-LD validity, types and the key properties for rich results (Article, Product, Organization, BreadcrumbList, Event and more), plus Open Graph and Twitter cards.</p></div>
+    <div><h3>Core Web Vitals</h3><p>Real-user LCP, INP and CLS from the Chrome UX Report and Lighthouse performance and SEO scores, through the PageSpeed Insights API with your free key.</p></div>
+  </div>
+  <p>Want to know how ready the page is for ChatGPT, Perplexity and Google AI Overviews? Run the <a href="{{ '/tools/geo-audit/' | relative_url }}">GEO audit</a>. Background reading: <a href="{{ '/blog/2026/11/what-actually-matters-in-seo/' | relative_url }}">What actually matters in SEO in 2026</a>.</p>
+</section>

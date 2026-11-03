@@ -90,7 +90,7 @@
   }
   function httpError(res, who) {
     if (res.status === 429) return new Error(who + ' rate limit reached. Wait a minute, or add a free Jina API key under Advanced options.');
-    if (res.status === 401 || res.status === 403) return new Error(who + ' refused the request (' + res.status + '). Check your API key.');
+    if (res.status === 401 || res.status === 403) return new Error(who + ' refused the request (' + res.status + '). It may be blocking anonymous requests to this domain: add a free Jina API key under Advanced options, or check the key you entered.');
     return new Error(who + ' returned HTTP ' + res.status + '.');
   }
   function jinaHeaders(o, format) {

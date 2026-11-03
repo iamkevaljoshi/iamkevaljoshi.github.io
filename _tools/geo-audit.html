@@ -1,0 +1,66 @@
+---
+title: GEO audit
+seo_title: "Free GEO Audit: AI Search Visibility Checker for ChatGPT and AI Overviews"
+description: "Check if ChatGPT, Claude, Perplexity, Copilot and Google AI Overviews can crawl, read, trust and cite your page. Free generative engine optimisation audit."
+lede: Generative engine optimisation (GEO) is about being the source AI answers quote. This audit checks whether ChatGPT, Claude, Perplexity, Microsoft Copilot and Google AI Overviews can reach your page, read it without JavaScript, and find answer-ready, credible content worth citing.
+summary: Check whether ChatGPT, Claude, Perplexity, Copilot and Google AI Overviews can crawl, read and cite a page, covering AI bots, rendering, answer structure, E-E-A-T, schema and llms.txt.
+category: GEO and AI search
+icon: geo
+order: 3
+added: 2026-11-03 14:30:00 +0530
+tags: [GEO, AI search, llms.txt, E-E-A-T]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/geo-audit.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: What is GEO?
+    a: "Generative engine optimisation is the practice of making content easy for AI search and assistants (ChatGPT, Claude, Perplexity, Google AI Overviews and AI Mode, Copilot) to find, understand and cite. It builds on SEO: the same pages must be crawlable and indexable, but the emphasis shifts to answer-ready passages, evidence and clear entities."
+  - q: Which AI crawlers does it check?
+    a: "Nineteen user agents across OpenAI (OAI-SearchBot, ChatGPT-User, GPTBot), Anthropic (Claude-SearchBot, Claude-User, ClaudeBot), Perplexity, Google (Googlebot, Google-Extended), Microsoft (Bingbot), Apple, DuckDuckGo, Mistral, Meta, Amazon, Common Crawl and ByteDance. Search and user-triggered bots are scored; training bots are listed for information, because blocking them is a business decision that doesn't remove you from AI answers."
+  - q: Why does content in the served HTML matter so much?
+    a: "Google renders JavaScript, but most AI crawlers, including those from OpenAI, Anthropic and Perplexity, read only the HTML as served. Content that appears only after JavaScript runs is invisible to them. The audit fetches the page both ways and compares them."
+  - q: Do I need an llms.txt file?
+    a: "It's optional. llms.txt (llmstxt.org) is an emerging proposal for a Markdown summary of your site. No major AI search engine has confirmed using it yet, so it isn't scored as a problem when missing, but AI agents and developer tools do read it, and it's quick to add. The audit validates its format if you have one."
+  - q: Where do the structure and evidence checks come from?
+    a: "From how retrieval-based AI search works (it selects passages, not pages) and from the GEO research paper by Aggarwal et al. (KDD 2024), which found that citing sources, adding quotations and adding statistics raised visibility in generative answers by up to 40%. They are heuristics: they show what makes content easier to cite, not a guarantee of citation."
+  - q: How is the score calculated?
+    a: "Checks pass (full marks), need improvement (half) or fail (none), weighted by impact. Categories are weighted: AI crawler access 25%, readable without JavaScript 20%, answer-ready structure 20%, evidence and authority 20%, machine-readable signals 15%. Info items are not scored."
+---
+<form id="auForm" class="pc-form au-form" novalidate>
+  <div class="au-url-row">
+    <label class="pc-field">
+      <span>Page URL</span>
+      <input id="auUrl" name="auUrl" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://www.example.com/guide/" required>
+    </label>
+    <button class="btn solid" id="auGo" type="submit">Run GEO audit</button>
+  </div>
+  <details class="pc-adv">
+    <summary>Settings</summary>
+    <div class="pc-adv-grid">
+      <label class="pc-field">
+        <span>Jina Reader API key <small>optional; raises rate limits. <a href="https://jina.ai/reader/" target="_blank" rel="noopener">Get a free key</a></small></span>
+        <input name="auKey" type="password" autocomplete="off" spellcheck="false" placeholder="jina_…">
+      </label>
+      <label class="pc-check"><input name="auRemember" type="checkbox"> Remember the key in this browser</label>
+    </div>
+  </details>
+  <p class="pc-error" id="auError" role="alert"></p>
+  <p class="pc-note muted">Pages and files are fetched through <a href="https://jina.ai/reader/" target="_blank" rel="noopener">Jina Reader</a>. Nothing is stored on this site. Public pages only.</p>
+</form>
+
+<ol class="pc-steps" id="auSteps" aria-live="polite" hidden></ol>
+<section class="pc-report" id="auReport" aria-label="GEO audit report" hidden></section>
+
+<section class="pc-about">
+  <h2>What it checks</h2>
+  <div class="pc-about-grid">
+    <div><h3>AI crawler access</h3><p>robots.txt rules for 19 AI and search crawlers, split into search, user-triggered and training bots; noindex, nosnippet and max-snippet, which control AI Overviews; data-nosnippet; and canonicals.</p></div>
+    <div><h3>Readable without JavaScript</h3><p>The page is fetched twice, once as a browser renders it and once as most AI crawlers see it, then compared: how much content, and whether the title, H1, description and structured data survive without JavaScript.</p></div>
+    <div><h3>Answer-ready structure</h3><p>Subheadings, question-style headings, an answer-first opening, paragraph and section length, lists and tables, a summary, and an FAQ: what makes passages easy to retrieve and quote.</p></div>
+    <div><h3>Evidence and authority</h3><p>Named authors, publish and update dates, statistics, outbound citations to sources, quotations, About and Contact links, and Organization or Person schema with sameAs links.</p></div>
+    <div><h3>Machine-readable signals</h3><p>JSON-LD validity and content types, llms.txt and llms-full.txt format, meta description, Open Graph, image alt text and language.</p></div>
+    <div><h3>Engine readiness</h3><p>A per-engine view for ChatGPT, Claude, Perplexity, Google AI Overviews and AI Mode, and Microsoft Copilot: ready, limited or blocked, and why.</p></div>
+  </div>
+  <p>Run the <a href="{{ '/tools/seo-audit/' | relative_url }}">SEO audit</a> too: AI search builds on the same crawling and indexing foundations. Background reading: <a href="{{ '/blog/2026/10/seo-vs-geo-making-your-site-visible-in-ai-search/' | relative_url }}">SEO vs GEO: making your site visible in AI search</a>.</p>
+</section>
