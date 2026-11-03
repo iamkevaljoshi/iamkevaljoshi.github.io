@@ -1,0 +1,54 @@
+---
+layout: default
+---
+{%- assign p = site.data.profile -%}
+<section class="page-head">
+  <div class="wrap">
+    <a class="back" href="{{ '/tools/' | relative_url }}">← All tools</a>
+    <p class="eyebrow">{{ page.category | default: 'Tool' }} · Free · Runs in your browser</p>
+    <h1 data-split>{{ page.title }}</h1>
+    {%- if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
+  </div>
+</section>
+<section class="block tight">
+  <div class="wrap">
+    {{ content }}
+    {%- if page.faq %}
+    <h2 class="sub" id="faq">Questions</h2>
+    <div class="faq">
+      {%- for f in page.faq %}
+      <details><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "url": "{{ page.url | absolute_url }}",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any (web browser)",
+  "browserRequirements": "Requires JavaScript",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": {{ p.name | jsonify }}, "url": "{{ '/about/' | absolute_url }}" }
+  {%- if page.faq %},
+  "subjectOf": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for f in page.faq %}
+      { "@type": "Question", "name": {{ f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify }} } }{% unless forloop.last %},{% endunless %}
+      {%- endfor %}
+    ]
+  }
+  {%- endif %}
+}
+</script>
+{%- for s in page.scripts %}
+{%- if s.src contains '://' %}{% assign s_url = s.src %}{% else %}{% assign s_url = s.src | relative_url %}{% endif %}
+<script src="{{ s_url }}"{% if s.integrity %} integrity="{{ s.integrity }}" crossorigin="anonymous"{% endif %} defer></script>
+{%- endfor %}

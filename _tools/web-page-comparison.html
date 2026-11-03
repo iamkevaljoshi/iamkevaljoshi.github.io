@@ -1,0 +1,140 @@
+---
+title: Web page comparison
+seo_title: "Web Page Comparison Tool: UI and Content Parity Checker"
+description: "Free tool that compares two URLs visually and by content, then scores UI parity and content parity. Built for website and AEM migration QA."
+lede: Compare a source and a destination page, visually and by content, and get a UI parity and content parity report. Built for migration QA, such as AEM 6.5 to AEM as a Cloud Service or Edge Delivery Services.
+summary: Compare two URLs side by side. Get UI parity and content parity scores, a pixel diff, text and heading changes, missing links and SEO checks.
+category: Migration QA
+icon: compare
+order: 1
+added: 2026-11-03
+tags: [Visual diff, Content parity, SEO, Migration]
+scripts:
+  - src: https://cdn.jsdelivr.net/npm/diff@5.2.0/dist/diff.min.js
+    integrity: sha384-lJJVaUgxmk/PVfQnAsGN1QuJZrE+n6bg2EMu33yVZOJ2av/3UzTHbmnPCI7ENJYa
+  - src: /assets/js/tools/page-compare.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: Is my data stored anywhere?
+    a: No. The comparison runs in your browser. To read and screenshot the two pages, the URLs are sent to Jina Reader (and, only if its screenshot fails, Microlink). Nothing is saved on this site. Optional settings and an API key you choose to remember stay in your browser's local storage.
+  - q: Can I compare pages behind a login, a VPN or on staging?
+    a: The fetching services can only reach public pages. For anything else, open the page yourself, copy its HTML (View source, or Copy outerHTML in DevTools) and take a full-page screenshot, then paste and upload them under Advanced options.
+  - q: Why is the pixel match low when the pages look the same?
+    a: Pixel comparison is strict. A section that is 20px taller pushes everything below it down, so the rest of the page counts as changed. Use the first-screen score, the changed regions and the swipe view to judge, and check the content and structure scores alongside it.
+  - q: How are the parity scores calculated?
+    a: "Content parity weights text overlap at 45%, the heading outline at 20%, links at 15%, images at 10% and SEO metadata at 10%. UI parity weights the full-page pixel match at 40%, the first screen at 25%, page structure at 20% and the colour palette at 15%. Without screenshots, UI parity falls back to structure only."
+  - q: What are the limits?
+    a: Without an API key, Jina Reader allows about 20 requests a minute per IP address, and each comparison uses four. A free Jina API key raises that a lot. Very long pages are compared over the first 12,000 pixels at comparison size.
+---
+<form id="pcForm" class="pc-form" novalidate>
+  <div class="pc-urls">
+    <label class="pc-field">
+      <span>Source URL <small>the original page, such as AEM 6.5</small></span>
+      <input id="pcSrc" name="pcSrc" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://www.example.com/en/products.html">
+    </label>
+    <button type="button" class="pc-swap" id="pcSwap" aria-label="Swap source and destination">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"/></svg>
+    </button>
+    <label class="pc-field">
+      <span>Destination URL <small>the new page, such as AEMaaCS or EDS</small></span>
+      <input id="pcDst" name="pcDst" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://new.example.com/en/products">
+    </label>
+  </div>
+
+  <div class="pc-opts">
+    <label class="pc-field pc-inline">
+      <span>Viewport</span>
+      <select name="pcViewport">
+        <option value="desktop">Desktop · 1440px</option>
+        <option value="laptop">Laptop · 1280px</option>
+        <option value="tablet">Tablet · 768px</option>
+        <option value="mobile">Mobile · 390px</option>
+      </select>
+    </label>
+    <label class="pc-field pc-inline">
+      <span>Capture</span>
+      <select name="pcCapture">
+        <option value="full">Full page</option>
+        <option value="fold">First screen only</option>
+      </select>
+    </label>
+    <label class="pc-field pc-inline">
+      <span>Pixel sensitivity</span>
+      <select name="pcSensitivity">
+        <option value="normal">Normal</option>
+        <option value="strict">Strict</option>
+        <option value="relaxed">Relaxed</option>
+      </select>
+    </label>
+  </div>
+
+  <details class="pc-adv">
+    <summary>Advanced options</summary>
+    <div class="pc-adv-grid">
+      <label class="pc-field">
+        <span>Source content scope <small>CSS selector; blank means &lt;main&gt;, or the whole body</small></span>
+        <input name="pcScopeA" type="text" spellcheck="false" placeholder="main, .root, #content">
+      </label>
+      <label class="pc-field">
+        <span>Destination content scope</span>
+        <input name="pcScopeB" type="text" spellcheck="false" placeholder="main">
+      </label>
+      <label class="pc-field">
+        <span>Ignore elements <small>CSS selectors removed from both pages, such as cookie banners</small></span>
+        <input name="pcIgnore" type="text" spellcheck="false" placeholder="#onetrust-banner-sdk, .cookie-banner">
+      </label>
+      <label class="pc-field">
+        <span>Path prefixes to ignore in links <small>for AEM content paths</small></span>
+        <input name="pcPrefix" type="text" spellcheck="false" placeholder="/content/mysite">
+      </label>
+      <label class="pc-field">
+        <span>Other hosts to treat as internal <small>both page domains are included automatically</small></span>
+        <input name="pcHosts" type="text" spellcheck="false" placeholder="main--site--org.aem.live">
+      </label>
+      <label class="pc-field">
+        <span>Jina Reader API key <small>optional; raises rate limits. <a href="https://jina.ai/reader/" target="_blank" rel="noopener">Get a free key</a></small></span>
+        <input name="pcKey" type="password" autocomplete="off" spellcheck="false" placeholder="jina_…">
+      </label>
+      <label class="pc-check"><input name="pcRemember" type="checkbox"> Remember the key in this browser</label>
+      <label class="pc-check"><input name="pcNoCache" type="checkbox" checked> Always fetch fresh pages (skip cache)</label>
+    </div>
+    <fieldset class="pc-manual">
+      <legend>Pages that can't be fetched (staging, logins, VPN)</legend>
+      <p class="muted">Paste the page HTML and upload a full-page screenshot. Anything you provide here replaces fetching for that side.</p>
+      <div class="pc-adv-grid">
+        <label class="pc-field"><span>Source HTML</span><textarea name="pcHtmlA" rows="4" spellcheck="false" placeholder="&lt;!doctype html&gt;…"></textarea></label>
+        <label class="pc-field"><span>Destination HTML</span><textarea name="pcHtmlB" rows="4" spellcheck="false" placeholder="&lt;!doctype html&gt;…"></textarea></label>
+        <label class="pc-field"><span>Source screenshot</span><input name="pcShotA" type="file" accept="image/*"></label>
+        <label class="pc-field"><span>Destination screenshot</span><input name="pcShotB" type="file" accept="image/*"></label>
+      </div>
+    </fieldset>
+  </details>
+
+  <div class="pc-go">
+    <button class="btn solid" id="pcGo" type="submit">Compare pages</button>
+    <button class="pc-link" id="pcExample" type="button">Try an example</button>
+  </div>
+  <p class="pc-error" id="pcError" role="alert"></p>
+  <p class="pc-note muted">URLs are sent to <a href="https://jina.ai/reader/" target="_blank" rel="noopener">Jina Reader</a> to render and screenshot them. Nothing is stored on this site. Use public pages only, or paste HTML for private ones.</p>
+</form>
+
+<ol class="pc-steps" id="pcSteps" aria-live="polite" hidden></ol>
+<section class="pc-report" id="pcReport" aria-label="Comparison report" hidden></section>
+
+<section class="pc-about">
+  <h2>What it checks</h2>
+  <div class="pc-about-grid">
+    <div><h3>UI parity</h3><p>Full-page screenshots of both pages at the same viewport, compared pixel by pixel. You get a difference map, a first-screen score, changed regions, colour palette similarity and a count of structural elements such as headings, forms, buttons and landmarks.</p></div>
+    <div><h3>Content parity</h3><p>The rendered text, compared block by block with word-level highlighting, plus the heading outline, internal and external links, and images matched by file name or alt text.</p></div>
+    <div><h3>SEO and metadata</h3><p>Title, meta description, H1, canonical, robots, language, hreflang, Open Graph and structured data. It flags the classic migration mistakes, such as a noindex left on, or a canonical still pointing at the old domain.</p></div>
+  </div>
+  <h2>Tips for migration QA</h2>
+  <ul class="list">
+    <li>Set <strong>content scope</strong> to the main content area of each platform, such as <code>.root</code> on AEM 6.5 and <code>main</code> on Edge Delivery Services, so header and footer differences don't drown out page differences.</li>
+    <li>Add your AEM content root, such as <code>/content/mysite</code>, as a <strong>path prefix</strong> so <code>/content/mysite/en/about.html</code> and <code>/en/about</code> count as the same link.</li>
+    <li>Remove cookie banners and chat widgets with <strong>ignore elements</strong>. They change between captures and add noise.</li>
+    <li>Compare at <strong>mobile</strong> as well as desktop. Responsive regressions are the most common UI gap after a re-platform.</li>
+    <li>Use <strong>Download JSON</strong> to keep evidence for each page you sign off.</li>
+  </ul>
+  <p>Planning the migration itself? Read <a href="{{ '/blog/2026/11/aem-on-premise-and-managed-services-to-aem-as-a-cloud-service-migration/' | relative_url }}">Migrating AEM on-premise and Managed Services to AEM as a Cloud Service</a>.</p>
+</section>

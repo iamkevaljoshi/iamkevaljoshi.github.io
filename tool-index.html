@@ -1,0 +1,30 @@
+---
+layout: page
+title: Tools
+seo_title: "Free Tools for AEM and Web Teams – Keval Joshi"
+permalink: /tools/
+eyebrow: Tools
+lede: Free tools for AEM and web teams. They run in your browser, there's nothing to install, and nothing is stored on a server.
+description: Free browser-based tools by Keval Joshi for AEM and web teams, including a web page comparison tool for UI and content parity during migrations.
+---
+{%- assign tool_list = site.tools | sort: 'order' -%}
+<p class="muted tools-count">{{ tool_list.size }} {% if tool_list.size == 1 %}tool{% else %}tools{% endif %} so far</p>
+<div class="tool-list">
+  {%- for t in tool_list %}
+  <a class="tool-card" href="{{ t.url | relative_url }}">
+    <span class="shead">
+      <span class="sicon" aria-hidden="true">
+        {%- case t.icon -%}
+        {%- when 'compare' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7.5" height="16" rx="1.5"/><rect x="13.5" y="4" width="7.5" height="16" rx="1.5"/><path d="M5.5 8h2.5M5.5 11h2.5M16 8h2.5M16 11h2.5M16 14h1"/></svg>
+        {%- else -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3.6 17.2a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.2-5.4l-2.5 2.5-2.3-.4-.4-2.3z"/></svg>
+        {%- endcase -%}
+      </span>
+      {{ t.category | default: 'Tool' }}<span class="sarrow" aria-hidden="true">→</span>
+    </span>
+    <h2>{{ t.title }}</h2>
+    <p>{{ t.summary }}</p>
+    {%- if t.tags.size > 0 %}<span class="tags">{% for tag in t.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</span>{% endif %}
+  </a>
+  {%- endfor %}
+</div>
+<p class="tools-more muted">More tools are on the way. Is there one that would save your team time? <a href="{{ '/contact/' | relative_url }}">Tell me about it</a>.</p>

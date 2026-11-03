@@ -11,6 +11,10 @@ sitemap: false
   {"t": "Certifications", "u": "{{ '/certifications/' | relative_url }}", "s": "Page", "x": "Adobe Experience Manager, SAFe and ITIL certifications with credential IDs."},
   {"t": "Work", "u": "{{ '/work/' | relative_url }}", "s": "Page", "x": "AEM architecture case studies and typical engagements: AEM as a Cloud Service migration, platform builds, integration architecture, architecture reviews."},
   {"t": "Blog", "u": "{{ '/blog/' | relative_url }}", "s": "Page", "x": "Technical writing on Adobe Experience Manager, Edge Delivery Services and solution architecture."},
+  {"t": "Tools", "u": "{{ '/tools/' | relative_url }}", "s": "Page", "x": "Free browser-based tools for AEM and web teams, including a web page comparison tool for migration QA."},
+{%- for t in site.tools %}
+  {"t": {{ t.title | jsonify }}, "u": "{{ t.url | relative_url }}", "s": "Tool", "g": {{ t.tags | join: ' ' | jsonify }}, "x": {{ t.description | append: ' ' | append: t.summary | jsonify }}},
+{%- endfor %}
   {"t": "Contact", "u": "{{ '/contact/' | relative_url }}", "s": "Page", "x": {{ 'Email ' | append: p.email | append: ', LinkedIn, GitHub. Based in ' | append: p.location | jsonify }}},
 {%- for post in site.posts %}
   {"t": {{ post.title | jsonify }}, "u": "{{ post.url | relative_url }}", "s": "Blog post", "g": {{ post.tags | join: ' ' | jsonify }}, "x": {{ post.description | default: post.excerpt | strip_html | normalize_whitespace | jsonify }}},

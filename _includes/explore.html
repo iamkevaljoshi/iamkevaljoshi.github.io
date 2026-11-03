@@ -28,4 +28,11 @@
     {%- endif %}
     <span class="ssub">AEMaaCS migration, builds, integration, reviews</span>
   </a>
+  {%- assign tool_list = site.tools | sort: 'order' -%}
+  {%- assign newest_tool = site.tools | sort: 'added' | last %}
+  <a class="scard" href="{{ '/tools/' | relative_url }}" data-track="tools">
+    <span class="shead"><span class="sicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3.6 17.2a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.2-5.4l-2.5 2.5-2.3-.4-.4-2.3z"/></svg></span>Tools<span class="sarrow" aria-hidden="true">→</span></span>
+    <strong class="sval">{{ tool_list.size }} {% if tool_list.size == 1 %}tool{% else %}tools{% endif %}</strong>
+    <span class="ssub">{% if newest_tool %}New: {{ newest_tool.title | truncate: 40 }}{% else %}Free, browser-based{% endif %}</span>
+  </a>
 </nav>

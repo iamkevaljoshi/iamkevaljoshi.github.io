@@ -19,12 +19,17 @@ collections:
   work:
     output: true
     permalink: /work/:name/
+  tools:
+    output: true
+    permalink: /tools/:name/
 
 defaults:
   - scope: { path: "", type: posts }
     values: { layout: post }
   - scope: { path: "", type: work }
     values: { layout: case-study }
+  - scope: { path: "", type: tools }
+    values: { layout: tool }
 
 plugins:
   - jekyll-feed

@@ -29,7 +29,14 @@ sitemap: false
 - [Certifications]({{ '/certifications/' | absolute_url }}): professional certifications with credential IDs
 - [Work]({{ '/work/' | absolute_url }}): case studies
 - [Blog]({{ '/blog/' | absolute_url }}): technical writing
+- [Tools]({{ '/tools/' | absolute_url }}): free browser-based tools for AEM and web teams
 - [Contact]({{ '/contact/' | absolute_url }})
+
+## Tools
+{%- assign tool_list = site.tools | sort: 'order' %}
+{%- for t in tool_list %}
+- [{{ t.title }}]({{ t.url | absolute_url }}): {{ t.description }}
+{%- endfor %}
 
 ## Blog posts
 {%- for post in site.posts %}
