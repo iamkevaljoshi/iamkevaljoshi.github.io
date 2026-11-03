@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" role="img" aria-label="Content migration timeline with the Content Transfer Tool: proof of migration, full extraction and ingestion, validation, production ingestion, top-ups, content freeze and go-live, and what the source and target systems do in each period">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:13px;font-weight:700;fill:#10182B}
+  .s{font-size:12px;fill:#5B6478}
+  .lane{font-size:13px;font-weight:600;fill:#10182B}
+  .bt{font-size:12px;fill:#10182B}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+  .axis{stroke:#10182B;stroke-width:2}
+</style>
+<rect width="1200" height="440" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Content migration: one big move, many small top-ups, a short freeze</text>
+<text class="sub" x="30" y="72">How Content Transfer Tool runs line up against what authors and visitors experience</text>
+
+<!-- milestones -->
+<g text-anchor="middle">
+<text class="t" x="210" y="118">Proof of migration</text><text class="s" x="210" y="136">sample, measure speed</text>
+<text class="t" x="360" y="118">Full extraction</text><text class="s" x="360" y="136">ingest to stage (wipe)</text>
+<text class="t" x="510" y="118">Validate</text><text class="s" x="510" y="136">pages, refs, ACLs</text>
+<text class="t" x="660" y="118">Ingest to prod</text><text class="s" x="660" y="136">same migration set</text>
+<text class="t" x="820" y="118">Top-ups</text><text class="s" x="820" y="136">deltas, no wipe</text>
+<text class="t" x="960" y="118">Freeze</text><text class="s" x="960" y="136">final top-up</text>
+<text class="t" x="1100" y="118">Go live</text><text class="s" x="1100" y="136">DNS / CDN switch</text>
+</g>
+<line class="axis" x1="170" y1="170" x2="1150" y2="170"/>
+<g fill="#10182B"><circle cx="210" cy="170" r="6"/><circle cx="360" cy="170" r="6"/><circle cx="510" cy="170" r="6"/><circle cx="660" cy="170" r="6"/>
+<circle cx="780" cy="170" r="4"/><circle cx="820" cy="170" r="4"/><circle cx="860" cy="170" r="4"/>
+<circle cx="960" cy="170" r="6" fill="#EA580C"/><circle cx="1100" cy="170" r="7" fill="#059669"/></g>
+<g stroke="#CBD2E1" stroke-dasharray="4 4"><line x1="960" y1="178" x2="960" y2="372"/><line x1="1100" y1="178" x2="1100" y2="372"/></g>
+
+<!-- lanes -->
+<text class="lane" x="30" y="226">Source author</text>
+<rect x="170" y="206" width="790" height="32" rx="6" fill="#ECFDF5" stroke="#059669"/><text class="bt" x="186" y="227">authors keep working; their changes are carried over by top-ups</text>
+<rect x="960" y="206" width="140" height="32" rx="6" fill="#FFF4EC" stroke="#EA580C"/><text class="bt" x="1030" y="227" text-anchor="middle">frozen</text>
+<rect x="1100" y="206" width="50" height="32" rx="6" fill="#F1F3F8" stroke="#94A3B8"/>
+
+<text class="lane" x="30" y="282">Source publish</text>
+<rect x="170" y="262" width="930" height="32" rx="6" fill="#ECFDF5" stroke="#059669"/><text class="bt" x="186" y="283">serves all live traffic, no visitor impact</text>
+<rect x="1100" y="262" width="50" height="32" rx="6" fill="#F1F3F8" stroke="#94A3B8"/>
+
+<text class="lane" x="30" y="338">AEMaaCS</text>
+<rect x="170" y="318" width="190" height="32" rx="6" fill="#F1F3F8" stroke="#94A3B8"/><text class="bt" x="186" y="339">provisioned, code builds</text>
+<rect x="360" y="318" width="740" height="32" rx="6" fill="#EFF4FF" stroke="#2563EB"/><text class="bt" x="376" y="339">refactored code + migrated content: functional, UAT, load and security testing</text>
+<rect x="1100" y="318" width="50" height="32" rx="6" fill="#059669"/><text class="bt" x="1125" y="339" text-anchor="middle" style="fill:#FFFFFF;font-weight:700">live</text>
+
+<text class="lg" x="600" y="410" text-anchor="middle">Keep the freeze short: rehearse and time the final top-up before you commit to a go-live date.</text>
+</svg>

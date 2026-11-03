@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Architecture before and after: AEM 6.5 on-premise or Managed Services compared with AEM as a Cloud Service">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .pt{font-size:17px;font-weight:700;fill:#10182B}
+  .t{font-size:15px;font-weight:600;fill:#10182B}
+  .s{font-size:12.5px;fill:#5B6478}
+  .f{font-size:13px;fill:#10182B}
+  .box{fill:#FFFFFF;stroke:#CBD2E1;stroke-width:1.5}
+  .bb{fill:#FFFFFF;stroke:#93B4F5;stroke-width:1.5}
+  .grey{fill:#F1F3F8;stroke:#94A3B8;stroke-width:1.5}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .arr{stroke:#64748B;stroke-width:2;fill:none;marker-end:url(#a)}
+  .big{stroke:#059669;stroke-width:3;fill:none;marker-end:url(#g)}
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#64748B"/></marker>
+  <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#059669"/></marker>
+</defs>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">What actually changes when you move to AEM as a Cloud Service</text>
+<text class="sub" x="30" y="72">Same product family, different operating model: from servers you run to a service Adobe runs</text>
+
+<!-- Left panel -->
+<rect class="grey" x="30" y="92" width="540" height="480" rx="14"/>
+<text class="pt" x="60" y="124">AEM 6.5 on-premise / Managed Services</text>
+<rect class="box" x="60" y="142" width="480" height="54" rx="10"/><text class="t" x="80" y="166">CDN (optional, yours)</text><text class="s" x="80" y="186">often added late, or not at all</text>
+<path class="arr" d="M300,197 V210"/>
+<rect class="box" x="60" y="212" width="480" height="54" rx="10"/><text class="t" x="80" y="236">Dispatcher on Apache</text><text class="s" x="80" y="256">you manage modules, rewrites, flush agents</text>
+<path class="arr" d="M300,267 V280"/>
+<rect class="box" x="60" y="282" width="480" height="54" rx="10"/><text class="t" x="80" y="306">Publish farm</text><text class="s" x="80" y="326">fixed VMs, scaled by ticket or capacity planning</text>
+<path class="arr" d="M300,337 V350"/>
+<rect class="box" x="60" y="352" width="480" height="54" rx="10"/><text class="t" x="80" y="376">Author (+ standby)</text><text class="s" x="80" y="396">TarMK or MongoMK, local users, you back up</text>
+<text class="f" x="60" y="444">• You apply service packs and plan major upgrades</text>
+<text class="f" x="60" y="472">• Custom run modes, JVM flags, SSH and CRXDE everywhere</text>
+<text class="f" x="60" y="500">• Deploy via scripts, Jenkins or AMS Cloud Manager</text>
+<text class="f" x="60" y="528">• Content written on publish stays on that node</text>
+
+<!-- Arrow -->
+<path class="big" d="M574,332 H624"/>
+
+<!-- Right panel -->
+<rect class="blue" x="630" y="92" width="540" height="480" rx="14"/>
+<text class="pt" x="660" y="124">AEM as a Cloud Service</text>
+<rect class="bb" x="660" y="142" width="480" height="54" rx="10"/><text class="t" x="680" y="166">Adobe-managed CDN (BYO CDN optional in front)</text><text class="s" x="680" y="186">traffic filters, WAF, redirects via config pipeline</text>
+<path class="arr" d="M900,197 V210"/>
+<rect class="bb" x="660" y="212" width="480" height="54" rx="10"/><text class="t" x="680" y="236">Dispatcher (immutable config)</text><text class="s" x="680" y="256">validated and deployed by Cloud Manager</text>
+<path class="arr" d="M900,267 V280"/>
+<rect class="bb" x="660" y="282" width="480" height="54" rx="10"/><text class="t" x="680" y="306">Publish pods</text><text class="s" x="680" y="326">autoscaled and stateless, rebuilt from a golden master</text>
+<path class="arr" d="M900,337 V350"/>
+<rect class="bb" x="660" y="352" width="480" height="54" rx="10"/><text class="t" x="680" y="376">Author cluster</text><text class="s" x="680" y="396">Adobe IMS login, shared cloud blob store</text>
+<text class="f" x="660" y="444">• Adobe applies maintenance and feature releases</text>
+<text class="f" x="660" y="472">• Run modes limited to author/publish × dev/stage/prod</text>
+<text class="f" x="660" y="500">• All code through Cloud Manager, blue-green deploys</text>
+<text class="f" x="660" y="528">• /apps and /libs are immutable at runtime</text>
+</svg>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="The five phases of an AEM to AEM as a Cloud Service migration, the main activities in each, and the Adobe tools used: assess, plan, refactor, migrate content, go live">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .tool{font-size:12px;font-weight:600}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .div{stroke:#CBD2E1;stroke-width:1}
+  .lg{font-size:12.5px;font-weight:700;fill:#047857}
+</style>
+<rect width="1200" height="560" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The migration journey: five phases, one toolchain</text>
+<text class="sub" x="30" y="72">What happens in each phase, and the Adobe tooling that does the heavy lifting</text>
+
+<!-- 1 Assess -->
+<rect class="blue" x="24" y="96" width="216" height="400" rx="12"/>
+<text class="t" x="40" y="126">1 · Assess</text><text class="w" x="40" y="146">typically weeks 1–4</text>
+<g class="s"><circle cx="44" cy="177" r="3" fill="#2563EB"/><text x="54" y="181">BPA report into CAM</text>
+<circle cx="44" cy="203" r="3" fill="#2563EB"/><text x="54" y="207">Customisation inventory</text>
+<circle cx="44" cy="229" r="3" fill="#2563EB"/><text x="54" y="233">Integrations and egress</text>
+<circle cx="44" cy="255" r="3" fill="#2563EB"/><text x="54" y="259">Repo size, Lucene ≤ 25 GB</text>
+<circle cx="44" cy="281" r="3" fill="#2563EB"/><text x="54" y="285">Traffic and licence baseline</text></g>
+<line class="div" x1="40" y1="372" x2="224" y2="372"/><text class="lbl" x="40" y="394">TOOLS</text>
+<text class="tool" x="40" y="416" fill="#1D4ED8">Best Practices Analyzer</text>
+<text class="tool" x="40" y="438" fill="#1D4ED8">Cloud Acceleration Manager</text>
+<text class="tool" x="40" y="460" fill="#1D4ED8">CDN / access logs</text>
+
+<!-- 2 Plan -->
+<rect class="violet" x="258" y="96" width="216" height="400" rx="12"/>
+<text class="t" x="274" y="126">2 · Plan</text><text class="w" x="274" y="146">overlaps with assess</text>
+<g class="s"><circle cx="278" cy="177" r="3" fill="#6D5BD0"/><text x="288" y="181">AEMaaCS, EDS or hybrid</text>
+<circle cx="278" cy="203" r="3" fill="#6D5BD0"/><text x="288" y="207">Proof of migration</text>
+<circle cx="278" cy="229" r="3" fill="#6D5BD0"/><text x="288" y="233">Freeze and cut-over plan</text>
+<circle cx="278" cy="255" r="3" fill="#6D5BD0"/><text x="288" y="259">Programs, envs, IMS, SSO</text>
+<circle cx="278" cy="281" r="3" fill="#6D5BD0"/><text x="288" y="285">Networking and CDN design</text></g>
+<line class="div" x1="274" y1="372" x2="458" y2="372"/><text class="lbl" x="274" y="394">TOOLS</text>
+<text class="tool" x="274" y="416" fill="#5B47C2">CAM project</text>
+<text class="tool" x="274" y="438" fill="#5B47C2">Cloud Manager</text>
+<text class="tool" x="274" y="460" fill="#5B47C2">Adobe Admin Console</text>
+
+<!-- 3 Refactor -->
+<rect class="orange" x="492" y="96" width="216" height="400" rx="12"/>
+<text class="t" x="508" y="126">3 · Refactor code</text><text class="w" x="508" y="146">the longest phase</text>
+<g class="s"><circle cx="512" cy="177" r="3" fill="#EA580C"/><text x="522" y="181">Restructure Maven repo</text>
+<circle cx="512" cy="203" r="3" fill="#EA580C"/><text x="522" y="207">OSGi → .cfg.json + secrets</text>
+<circle cx="512" cy="229" r="3" fill="#EA580C"/><text x="522" y="233">Schedulers → Sling Jobs</text>
+<circle cx="512" cy="255" r="3" fill="#EA580C"/><text x="522" y="259">Replication and indexes</text>
+<circle cx="512" cy="281" r="3" fill="#EA580C"/><text x="522" y="285">Dispatcher to cloud layout</text>
+<circle cx="512" cy="307" r="3" fill="#EA580C"/><text x="522" y="311">DAM → asset microservices</text></g>
+<line class="div" x1="508" y1="372" x2="692" y2="372"/><text class="lbl" x="508" y="394">TOOLS</text>
+<text class="tool" x="508" y="416" fill="#C2410C">aio aem-migration plugin</text>
+<text class="tool" x="508" y="438" fill="#C2410C">AI Cloud Migration skill</text>
+<text class="tool" x="508" y="460" fill="#C2410C">AEM SDK · Analyser · RDE</text>
+
+<!-- 4 Migrate content -->
+<rect class="green" x="726" y="96" width="216" height="400" rx="12"/>
+<text class="t" x="742" y="126">4 · Migrate content</text><text class="w" x="742" y="146">runs alongside refactoring</text>
+<g class="s"><circle cx="746" cy="177" r="3" fill="#059669"/><text x="756" y="181">Pre-copy blobs (AzCopy)</text>
+<circle cx="746" cy="203" r="3" fill="#059669"/><text x="756" y="207">Full extract → ingest stage</text>
+<circle cx="746" cy="229" r="3" fill="#059669"/><text x="756" y="233">Validate, fix, re-run</text>
+<circle cx="746" cy="255" r="3" fill="#059669"/><text x="756" y="259">Ingest prod, then top-ups</text>
+<circle cx="746" cy="281" r="3" fill="#059669"/><text x="756" y="285">Groups → IMS</text></g>
+<line class="div" x1="742" y1="372" x2="926" y2="372"/><text class="lbl" x="742" y="394">TOOLS</text>
+<text class="tool" x="742" y="416" fill="#047857">Content Transfer Tool</text>
+<text class="tool" x="742" y="438" fill="#047857">AzCopy pre-copy</text>
+<text class="tool" x="742" y="460" fill="#047857">CAM migration sets</text>
+
+<!-- 5 Go live -->
+<rect class="navy" x="960" y="96" width="216" height="400" rx="12"/>
+<text class="t" x="976" y="126">5 · Go live</text><text class="w" x="976" y="146">and hypercare</text>
+<g class="s"><circle cx="980" cy="177" r="3" fill="#10182B"/><text x="990" y="181">Load and pen tests on stage</text>
+<circle cx="980" cy="203" r="3" fill="#10182B"/><text x="990" y="207">Freeze + final top-up</text>
+<circle cx="980" cy="229" r="3" fill="#10182B"/><text x="990" y="233">DNS, certs, CDN rules</text>
+<circle cx="980" cy="255" r="3" fill="#10182B"/><text x="990" y="259">Redirects and SEO checks</text>
+<circle cx="980" cy="281" r="3" fill="#10182B"/><text x="990" y="285">Hypercare, decommission</text></g>
+<line class="div" x1="976" y1="372" x2="1160" y2="372"/><text class="lbl" x="976" y="394">TOOLS</text>
+<text class="tool" x="976" y="416" fill="#10182B">Cloud Manager pipelines</text>
+<text class="tool" x="976" y="438" fill="#10182B">Config pipeline (CDN)</text>
+<text class="tool" x="976" y="460" fill="#10182B">CAM Go-Live checks</text>
+
+<text class="lg" x="600" y="534" text-anchor="middle">Phases overlap: content top-ups keep running while code is refactored and tested.</text>
+</svg>
