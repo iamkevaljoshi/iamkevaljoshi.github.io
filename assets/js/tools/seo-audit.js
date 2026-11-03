@@ -323,8 +323,9 @@
     if (issues.length) C('tech', 'warn', 'URL could be cleaner', fin, 'Use short, lower-case, hyphenated, descriptive paths.', 1, issues);
     else C('tech', 'pass', 'URL is clean and readable', fin, '', 1);
     if (doc.querySelector('meta[name="keywords" i]')) C('tech', 'info', 'meta keywords tag present', 'Google ignores it, and it can reveal your keyword strategy to competitors.', '', 1);
-    if (raw && raw.html) {
-      var kb = Math.round(new Blob([raw.html]).size / 1024);
+    var served = raw && raw.html ? raw.html : (page.rendered ? '' : page.body);
+    if (served) {
+      var kb = Math.round(new Blob([served]).size / 1024);
       if (kb > 2048) C('tech', 'warn', 'Large HTML document (' + kb + ' KB)', 'Google stops at 15 MB, but heavy HTML slows parsing and rendering.', 'Reduce inline data, SVG and duplicated markup.', 1);
       else C('tech', 'pass', 'HTML size is reasonable (' + kb + ' KB)', '', '', 1);
     }
@@ -457,7 +458,9 @@
       var page = res[0];
       if (!page || !page.body) throw new Error('The page could not be fetched' + (page && page.error ? ': ' + page.error : '.'));
       page.doc = K.parse(page.body);
-      var raw = res[1] && res[1].body ? { doc: K.parse(res[1].body), html: res[1].body } : null;
+      // without a rendered page there is nothing to compare the served HTML with
+      var raw = page.rendered && res[1] && res[1].body ? { doc: K.parse(res[1].body), html: res[1].body } : null;
+      if (!page.rendered) C('onpage', 'info', 'JavaScript rendering not checked', 'Without a Jina API key the page is fetched as served, so the audit can\'t see what JavaScript changes (content, title, canonical, noindex, structured data). Google renders JavaScript; add a free key under Settings to compare.', '', 1);
       var fin = page.finalUrl;
       var sMap = step('Read XML sitemaps');
       var robots = checkRobots(res[2], fin);

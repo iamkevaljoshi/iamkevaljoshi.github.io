@@ -1,0 +1,97 @@
+---
+title: Accessibility checker
+seo_title: "Free WCAG 2.2 Accessibility Checker (axe-core) with Manual Checklist"
+description: "Free WCAG 2.2 AA accessibility checker powered by axe-core: issues by impact and success criterion, highlighted on the page, plus expert and manual checks."
+lede: Test any page against WCAG 2.2 AA with axe-core, the engine behind Lighthouse and most professional tools. Every issue comes with its success criterion, how to fix it, and a highlight on the page itself, plus the expert and manual checks automation can't do.
+summary: WCAG 2.2 AA checks with axe-core, issues by impact and success criterion highlighted on a live preview, an expert review of alt and link text, and a manual checklist.
+category: Accessibility
+icon: a11y
+order: 4
+added: 2026-11-03 16:00:00 +0530
+tags: [WCAG 2.2, axe-core, EAA, ADA]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/a11y-audit.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: Can an automated checker prove my site is accessible?
+    a: "No. Automated rules reliably catch issues such as missing alt attributes, low contrast, unlabelled form fields and invalid ARIA. Deque's research found they detect about 57% of issues by volume, but far fewer of the 55 WCAG 2.2 AA success criteria can be fully tested by a machine. Keyboard use, focus order, screen reader experience, meaningful alt text and clear error messages need a human, which is why the report ends with a manual checklist."
+  - q: Which standard should I test against?
+    a: "WCAG 2.2 AA for most sites. It includes everything in WCAG 2.1 AA, which is what most laws reference today. The European Accessibility Act (enforceable since 28 June 2025) relies on EN 301 549: version 3.2.1 references WCAG 2.1 AA, and version 4.1.1, published in September 2026, moves to WCAG 2.2 AA. In the US, the ADA Title II rule requires WCAG 2.1 AA for state and local governments (deadlines extended to April 2027 and April 2028), and courts use it as the benchmark for private sites. In India, the RPwD Act 2016 with IS 17802 and GIGW 3.0 aligns with WCAG 2.1 AA."
+  - q: How is the score calculated?
+    a: "Like Lighthouse, it's based on axe-core results. Each passed rule earns points, and each failed rule loses points by its impact: critical 10, serious 7, moderate 3, minor 1. Rules that need manual review aren't scored. A score of 100 means no automated failures, not full conformance."
+  - q: Why might results differ from a browser extension?
+    a: "With a Jina API key the page is rendered in a real browser first, then re-displayed here without its scripts; without a key it is tested as the server sends it, which misses anything JavaScript builds. Menus and dialogs that open only on interaction are not tested in their open state. Content inside shadow DOM and cross-origin iframes is not included. For the most complete result, also run axe DevTools or Accessibility Insights on the live page and test with a keyboard and screen reader."
+  - q: Is my data stored anywhere?
+    a: "No. The page is fetched through Jina Reader and analysed in your browser, inside an isolated frame that can't access this site. Manual checklist ticks are saved only in your browser."
+---
+<form id="axForm" class="pc-form au-form" novalidate>
+  <div class="au-url-row">
+    <label class="pc-field">
+      <span>Page URL</span>
+      <input id="axUrl" name="axUrl" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://www.example.com/contact/">
+    </label>
+    <button class="btn solid" id="axGo" type="submit">Check accessibility</button>
+  </div>
+  <div class="pc-opts">
+    <label class="pc-field pc-inline">
+      <span>Standard</span>
+      <select name="axStandard">
+        <option value="wcag22aa">WCAG 2.2 AA (recommended)</option>
+        <option value="wcag21aa">WCAG 2.1 AA</option>
+        <option value="wcag22aaa">WCAG 2.2 AAA (adds enhanced contrast)</option>
+      </select>
+    </label>
+    <label class="pc-field pc-inline">
+      <span>Viewport</span>
+      <select name="axViewport">
+        <option value="desktop">Desktop · 1280px</option>
+        <option value="mobile">Mobile · 390px</option>
+      </select>
+    </label>
+    <label class="pc-check ax-best"><input name="axBest" type="checkbox" checked> Include best practices</label>
+  </div>
+  <details class="pc-adv">
+    <summary>Settings</summary>
+    <div class="pc-adv-grid">
+      <label class="pc-field">
+        <span>Jina Reader API key <small>recommended: needed to render JavaScript-built pages accurately, and raises rate limits. <a href="https://jina.ai/reader/" target="_blank" rel="noopener">Get a free key</a></small></span>
+        <input name="auKey" type="password" autocomplete="off" spellcheck="false" placeholder="jina_…">
+      </label>
+      <label class="pc-check"><input name="auRemember" type="checkbox"> Remember the key in this browser</label>
+    </div>
+    <fieldset class="pc-manual">
+      <legend>Private, staging or logged-in pages</legend>
+      <p class="muted">Open the page, copy the rendered HTML (DevTools → Elements → right-click &lt;html&gt; → Copy outerHTML), paste it here and put the page URL above so styles load.</p>
+      <label class="pc-field"><span>Page HTML</span><textarea name="axHtml" rows="4" spellcheck="false" placeholder="&lt;html&gt;…"></textarea></label>
+    </fieldset>
+  </details>
+  <p class="pc-error" id="axError" role="alert"></p>
+  <p class="pc-note muted">Powered by <a href="https://github.com/dequelabs/axe-core" target="_blank" rel="noopener">axe-core</a> (Deque, MPL 2.0). Pages are fetched through Jina Reader and tested in an isolated frame in your browser.</p>
+</form>
+
+<ol class="pc-steps" id="axSteps" aria-live="polite" hidden></ol>
+<section class="pc-report" id="axReport" aria-label="Accessibility summary" hidden></section>
+<section class="pc-card ax-stage" id="axStage" aria-label="Page preview" hidden>
+  <h3>Page preview</h3>
+  <p class="muted au-small">The page as tested, with its scripts removed. Use "Show on page" on any issue to highlight the element.</p>
+  <div class="ax-viewport" id="axViewport"><div class="ax-scaler" id="axScaler"></div></div>
+</section>
+<section class="ax-issues" id="axIssues" aria-label="Accessibility issues" hidden></section>
+
+<section class="pc-about">
+  <h2>What it checks</h2>
+  <div class="pc-about-grid">
+    <div><h3>WCAG 2.2 rules (axe-core)</h3><p>About 100 rules: contrast, alt text, form labels, names and roles of controls, ARIA validity, language, page title, landmarks, lists and tables, keyboard access, zoom and the new 2.2 target-size criterion. Each issue is mapped to its success criterion and level.</p></div>
+    <div><h3>Expert review</h3><p>What rules can't judge: alt text that exists but says "image" or a file name, generic or ambiguous link text, links opening new tabs without warning, the heading outline, skip links and landmark labelling.</p></div>
+    <div><h3>Manual WCAG 2.2 checklist</h3><p>Keyboard and focus (including Focus Not Obscured), screen reader output, reflow and zoom, text spacing, motion, media, forms, and the new 2.2 criteria: Dragging Movements, Redundant Entry, Accessible Authentication and Consistent Help.</p></div>
+  </div>
+  <h2>How to use the results</h2>
+  <ul class="list">
+    <li><strong>Fix critical and serious issues first.</strong> They block people completely: unlabelled buttons, missing form labels, keyboard traps, text that can't be read.</li>
+    <li><strong>Fix the component, not the page.</strong> On AEM, Edge Delivery Services or any component-based site, most issues repeat across pages because they live in one component or block. One fix there clears hundreds of pages.</li>
+    <li><strong>Check both viewports.</strong> Mobile menus, hidden labels and touch-target sizes often fail only on small screens.</li>
+    <li><strong>Export CSV</strong> for your backlog: one row per element, with selector, HTML, how to fix and the WCAG reference.</li>
+    <li><strong>Then test by hand.</strong> Unplug the mouse, turn on a screen reader (NVDA on Windows, VoiceOver on Mac and iOS, TalkBack on Android) and work through the checklist.</li>
+  </ul>
+</section>

@@ -39,17 +39,22 @@
     var t = setTimeout(function () { ctl.abort(); }, ms);
     return fetch(url, Object.assign({}, opts, { signal: ctl.signal })).finally(function () { clearTimeout(t); });
   }
-  /* format: 'html' (rendered page), 'raw' (HTML as served, no JavaScript) or 'text' (a plain file such as robots.txt) */
+  /* format: 'html' (the page after JavaScript, which Jina only renders for requests with an API key),
+     'raw' (HTML as served, no JavaScript) or 'text' (a plain file such as robots.txt).
+     The result's `rendered` flag says whether JavaScript actually ran. */
   async function jina(url, format, o) {
     o = o || {};
+    var render = format === 'html' && !!o.key && !o.noRender;
     var hd = { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Return-Format': format === 'text' ? 'text' : 'html', 'X-Timeout': '40' };
     if (format === 'raw') hd['X-Engine'] = 'direct';
+    if (render) hd['X-Engine'] = 'browser';
     if (o.noCache !== false) hd['X-No-Cache'] = 'true';
     if (o.key) hd.Authorization = 'Bearer ' + o.key;
     var res;
     try { res = await fetchT(JINA, { method: 'POST', headers: hd, body: JSON.stringify({ url: url }) }, 90000); }
     catch (e) { throw new Error(e.name === 'AbortError' ? 'Timed out fetching ' + url : 'Network error fetching ' + url); }
     var j = await res.json().catch(function () { return {}; });
+    if (render && (res.status === 401 || res.status === 402)) return jina(url, format, Object.assign({}, o, { noRender: true }));
     if (res.status === 429) throw new Error('Jina Reader rate limit reached. Wait a minute, or add a free Jina API key under Settings.');
     if (res.status === 401 || res.status === 403) {
       if (j.name === 'AbuseAlleviationError') throw new Error('Jina Reader is temporarily blocking anonymous requests to this domain. Add a free Jina API key under Settings, or try again later.');
@@ -63,7 +68,7 @@
     var body = format === 'text' ? (d.text != null ? d.text : d.content || '') : (d.html || '');
     var status = d.httpStatus || null;
     // a plain-text file comes back without a title; a title means the server answered with an HTML page (often a soft 404)
-    return { ok: !status || status < 400, status: status, finalUrl: d.finalUrl || d.url || url, body: body, title: d.title || '', servedHtml: format === 'text' && !!norm(d.title) };
+    return { ok: !status || status < 400, status: status, finalUrl: d.finalUrl || d.url || url, body: body, title: d.title || '', servedHtml: format === 'text' && !!norm(d.title), rendered: render };
   }
 
   /* ---------- robots.txt (RFC 9309) ---------- */

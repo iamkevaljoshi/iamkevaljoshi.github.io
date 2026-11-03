@@ -101,6 +101,22 @@
   /* ---------- readable without JavaScript ---------- */
   function checkRender(page, raw) {
     var renderedWords = K.words(K.visibleText(page.doc)).length;
+    if (!page.rendered) {
+      // page.doc is the HTML as served, which is exactly what AI crawlers read
+      var appShell = page.doc.querySelector('#root:empty, #app:empty, #__next:empty, app-root:empty, [ng-version]:empty');
+      if (renderedWords < 150) C('render', appShell ? 'fail' : 'warn', 'Only ' + plural(renderedWords, 'word') + ' in the served HTML', 'This is what GPTBot, ClaudeBot and PerplexityBot read. If the page shows more in a browser, that content is built by JavaScript and they miss it.', 'Server-render or pre-render the main content.', 5);
+      else C('render', 'pass', renderedWords + ' words of content in the served HTML', 'This is what AI crawlers read.', '', 5);
+      var gaps = [];
+      if (!norm(page.doc.title)) gaps.push('<title>');
+      if (!page.doc.querySelector('h1')) gaps.push('<h1>');
+      if (!K.meta(page.doc, 'meta[name="description" i]')) gaps.push('meta description');
+      if (gaps.length) C('render', 'warn', 'Missing from the served HTML: ' + gaps.join(', '), 'If they appear in a browser, JavaScript adds them and most AI crawlers won\'t see them.', 'Output them server-side.', 3, gaps);
+      else C('render', 'pass', 'Title, H1 and description are in the served HTML', '', '', 3);
+      C('render', 'info', 'JavaScript-rendered version not compared', 'Without a Jina API key the page can\'t be rendered, so the audit can\'t measure how much content depends on JavaScript. Add a free key under Settings.', '', 1);
+      if (page.doc.querySelector('main, article, [role="main"]')) C('render', 'pass', 'Main content is marked up (<main> or <article>)', '', '', 2);
+      else C('render', 'warn', 'No <main> or <article> element', 'Extractors have to guess which part of the page is the content.', 'Wrap the primary content in <main>.', 2);
+      return { ratio: null, rawWords: renderedWords, renderedWords: null, servedOnly: true };
+    }
     if (!raw) { C('render', 'info', 'The HTML as served could not be fetched', 'Comparison with the rendered page was skipped.', '', 1); return { ratio: null, rawWords: null, renderedWords: renderedWords }; }
     var rawWords = K.words(K.visibleText(raw.doc)).length;
     if (renderedWords < 50) { C('render', 'info', 'Too little text to compare (' + renderedWords + ' words after rendering)', 'This looks like an app or a mostly visual page.', '', 1); return { ratio: null, rawWords: rawWords, renderedWords: renderedWords }; }
@@ -125,7 +141,7 @@
   function checkStructure(page, ld) {
     var scope = scopeOf(page.doc), text = K.visibleText({ body: scope }), wc = K.words(text).length;
     var heads = Array.from(scope.querySelectorAll('h2,h3,h4')).map(function (x) { return norm(x.textContent); }).filter(Boolean);
-    if (wc < 300) C('structure', 'warn', 'Little content to cite (' + wc + ' words)', 'Short pages rarely contain a quotable, self-contained answer.', 'Cover the topic in enough depth to answer the main questions.', 2);
+    if (wc < 300) C('structure', 'warn', 'Little content to cite (' + plural(wc, 'word') + ')', 'Short pages rarely contain a quotable, self-contained answer.', 'Cover the topic in enough depth to answer the main questions.', 2);
     else C('structure', 'pass', wc + ' words of main content', '', '', 1);
     if (wc > 400 && heads.length < 3) C('structure', 'warn', 'Few subheadings (' + heads.length + ')', 'AI engines retrieve passages; long text without sections is hard to segment and cite.', 'Split the content into sections with descriptive H2 and H3 headings.', 3);
     else if (heads.length) C('structure', 'pass', plural(heads.length, 'subheading') + ' structure the content', '', '', 3);
@@ -261,7 +277,7 @@
   function engines(rows, render, tokens) {
     var ok = function (ua) { var r = rows.find(function (x) { return x.bot.ua === ua; }); return !r || r.allowed; };
     var indexable = !/noindex|(^|,)\s*none/.test(tokens), snippets = !/nosnippet|max-snippet\s*:\s*0\b/.test(tokens);
-    var readable = render.ratio == null || render.ratio >= 0.5;
+    var readable = render.servedOnly ? render.rawWords >= 150 : (render.ratio == null || render.ratio >= 0.5);
     var E = [
       { name: 'ChatGPT', bots: ['OAI-SearchBot', 'ChatGPT-User'], needsRaw: true },
       { name: 'Claude', bots: ['Claude-SearchBot', 'Claude-User'], needsRaw: true },
@@ -281,7 +297,8 @@
         return h('div', { class: 'au-engine au-e-' + state }, h('span', { class: 'au-badge', text: { ready: 'Ready', limited: 'Limited', blocked: 'Blocked' }[state] }),
           h('strong', { text: e.name }), h('p', { class: 'muted', text: why.join('; ') + '.' }));
       })),
-      render.rawWords != null ? h('p', { class: 'muted au-small', text: 'Without JavaScript, crawlers see ' + render.rawWords + ' of ' + render.renderedWords + ' words.' }) : null);
+      render.servedOnly ? h('p', { class: 'muted au-small', text: 'Crawlers see ' + render.rawWords + ' words in the served HTML. Add a free Jina API key to compare with the JavaScript-rendered page.' })
+        : render.rawWords != null ? h('p', { class: 'muted au-small', text: 'Without JavaScript, crawlers see ' + render.rawWords + ' of ' + render.renderedWords + ' words.' }) : null);
   }
 
   /* ---------- run ---------- */
@@ -324,7 +341,7 @@
       var page = res[0];
       if (!page || !page.body) throw new Error('The page could not be fetched' + (page && page.error ? ': ' + page.error : '.'));
       page.doc = K.parse(page.body);
-      var raw = res[1] && res[1].body ? { doc: K.parse(res[1].body) } : null;
+      var raw = page.rendered && res[1] && res[1].body ? { doc: K.parse(res[1].body) } : null;
       var ld = K.jsonLd(page.doc);
       var homeLd = res[5] && res[5].body ? K.jsonLd(K.parse(res[5].body)) : null;
       var rows = checkAccess(page, res[2]);

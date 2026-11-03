@@ -215,3 +215,55 @@
 .au-e-blocked{border-color:color-mix(in srgb,var(--pc-bad) 45%,var(--line))}
 .au-e-limited{border-color:color-mix(in srgb,var(--pc-mid) 45%,var(--line))}
 @media print{.au-form{display:none!important}.au-more ul{max-height:none}}
+
+/* ---------- accessibility checker ---------- */
+.ax-best{align-self:end;margin-bottom:.7rem}
+.ax-verdict{margin:.6rem 0 0;padding:.7rem .9rem;border-radius:.7rem;font-size:.95rem;line-height:1.5}
+.ax-v-fail{background:var(--pc-del-bg)}
+.ax-v-fail strong{color:var(--pc-bad)}
+.ax-v-pass{background:var(--pc-add-bg)}
+.ax-v-pass strong{color:var(--pc-good)}
+.ax-impacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem;margin-top:.9rem}
+.ax-impact-tile{display:flex;flex-direction:column;align-items:flex-start;padding:.6rem .75rem;border-radius:.7rem;text-decoration:none;border:1px solid var(--line);--tone:var(--muted)}
+.ax-impact-tile strong{font-size:1.5rem;line-height:1.1;color:var(--tone)}
+.ax-impact-tile span{font-size:.82rem;color:var(--muted)}
+.ax-critical{--tone:var(--pc-bad)} .ax-serious{--tone:#D9480F} .ax-moderate{--tone:var(--pc-mid)} .ax-minor{--tone:var(--muted)}
+:root[data-theme="dark"] .ax-serious{--tone:#FF9F6B}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .ax-serious{--tone:#FF9F6B}}
+@media (max-width:480px){.ax-impacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ax-pbar{text-decoration:none}
+.ax-stage{margin:1rem 0}
+.ax-stage h3{margin:0}
+.ax-viewport{margin-top:.75rem;max-height:75vh;overflow:auto;border:1px solid var(--line);border-radius:.8rem;background:#fff;overscroll-behavior:contain}
+.ax-scaler{position:relative;overflow:hidden;margin:0 auto}
+.ax-frame{position:absolute;top:0;left:0;border:0;transform-origin:0 0;background:#fff}
+.ax-h{font-size:1.4rem;margin:2rem 0 .75rem}
+.ax-filter{margin-bottom:1rem}
+.ax-rule>summary{align-items:flex-start}
+.ax-rule-head{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .75rem;flex:1;margin-right:1rem}
+.ax-impact{font-size:.72rem;font-weight:700;letter-spacing:.03em;padding:.15rem .6rem;border-radius:999px;color:#fff;background:var(--tone);white-space:nowrap}
+.ax-rule-title{font-weight:650;font-size:1.05rem}
+.ax-count{font-size:.85rem;color:var(--muted);margin-left:auto}
+.ax-meta{display:flex;flex-wrap:wrap;gap:.35rem;margin:.75rem 0 .5rem}
+.ax-sc{font-size:.78rem;padding:.12rem .55rem;border-radius:999px;background:var(--surface);color:var(--ink);font-family:var(--mono)}
+.ax-level{background:color-mix(in srgb,var(--violet) 14%,var(--surface));color:var(--violet)}
+.ax-learn{color:var(--accent);font-weight:600;font-size:.95rem}
+.ax-nodes{margin:.5rem 0 0;padding-left:1.2rem;display:grid;gap:.9rem}
+.ax-node-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 1rem}
+.ax-sel{font-family:var(--mono);font-size:.8rem;overflow-wrap:anywhere;color:var(--muted)}
+.ax-show{font-size:.88rem;white-space:nowrap}
+.ax-html{margin:.35rem 0;padding:.6rem .75rem;background:var(--surface);border-radius:.5rem;overflow-x:auto;font-size:.8rem;line-height:1.5}
+.ax-html code{font-family:var(--mono);white-space:pre-wrap;overflow-wrap:anywhere}
+.ax-summary{white-space:pre-line;font-size:.9rem;margin:.25rem 0 0;padding-left:.75rem;border-left:3px solid var(--tone,var(--line))}
+.ax-checklist{list-style:none;margin:.5rem 0 0;padding:0;display:grid;gap:.25rem}
+.ax-checklist li{border-top:1px solid var(--line);padding:.7rem 0}
+.ax-checklist label{display:grid;grid-template-columns:1.4rem minmax(0,1fr);gap:.6rem;cursor:pointer;font-size:.95rem;line-height:1.5}
+.ax-checklist input{width:1.1rem;height:1.1rem;margin-top:.2rem;accent-color:var(--accent)}
+.ax-checklist strong{font-size:.85rem;font-family:var(--mono);color:var(--accent);font-weight:500}
+.ax-passed{columns:2 20rem;margin:.75rem 0 0;padding-left:1.1rem;font-size:.9rem}
+.ax-passed li{break-inside:avoid;margin-bottom:.25rem}
+.ax-issues .pc-card{margin-bottom:1rem}
+@media print{.ax-stage{display:none!important}.ax-filter,.ax-show{display:none!important}}
+.ax-fidelity{border-color:color-mix(in srgb,var(--pc-mid) 55%,var(--line));background:color-mix(in srgb,var(--pc-chg-bg) 70%,transparent)}
+.ax-fidelity h3{margin:0 0 .4rem;font-size:1.1rem;color:var(--pc-mid)}
+.ax-fidelity p{margin:0;font-size:.95rem}

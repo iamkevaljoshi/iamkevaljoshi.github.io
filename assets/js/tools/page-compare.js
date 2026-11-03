@@ -103,7 +103,9 @@
   async function fetchHtml(url, o) {
     var hd = jinaHeaders(o, 'html');
     hd.Accept = 'application/json';
+    if (o.key && !o.noRender) hd['X-Engine'] = 'browser'; // JavaScript rendering needs an API key
     var res = await fetchT(JINA, { method: 'POST', headers: hd, body: JSON.stringify({ url: url }) }, 90000);
+    if (o.key && !o.noRender && (res.status === 401 || res.status === 402)) return fetchHtml(url, Object.assign({}, o, { noRender: true }));
     if (!res.ok) throw httpError(res, 'Jina Reader');
     var j = await res.json();
     var d = j.data || {};
