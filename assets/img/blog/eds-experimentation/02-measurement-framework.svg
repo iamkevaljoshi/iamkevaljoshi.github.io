@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Experiment measurement framework in three stages. Before launch: write a hypothesis, choose one primary metric, set guardrails including Core Web Vitals, choose a minimum detectable effect and calculate sample size and duration in whole weeks. While running: check sample ratio mismatch, confirm conversions fire in every arm, watch errors and vitals, and do not peek at the result. After the planned sample: read the confidence interval, check guardrails, then ship, retest, stop or record the learning.">
+<defs>
+  <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:17px;font-weight:700;fill:#10182B}
+  .s{font-size:13px;fill:#10182B}
+  .b{font-size:13px;font-weight:700;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .red{fill:#FEF2F2;stroke:#DC2626;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .warn{font-size:13px;font-weight:700;fill:#B91C1C}
+</style>
+<rect width="1200" height="620" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Measuring an experiment: decide before, check during, read after</text>
+<text class="sub" x="30" y="72">Most bad results are decided before launch, when nobody wrote down what success means.</text>
+
+<!-- Before -->
+<rect class="blue" x="24" y="96" width="362" height="330" rx="12"/>
+<text class="lbl" x="44" y="124">BEFORE LAUNCH</text>
+<text class="t" x="44" y="150">Define success</text>
+<text class="b" x="44" y="184">1  Hypothesis</text>
+<text class="s" x="66" y="203">Because … we believe … will … without …</text>
+<text class="b" x="44" y="232">2  One primary metric</text>
+<text class="s" x="66" y="251">A named conversion, not "any click"</text>
+<text class="b" x="44" y="280">3  Guardrails</text>
+<text class="s" x="66" y="299">LCP, INP, CLS, errors, bounce</text>
+<text class="b" x="44" y="328">4  Minimum detectable effect</text>
+<text class="s" x="66" y="347">The smallest lift worth shipping</text>
+<text class="b" x="44" y="376">5  Sample size and duration</text>
+<text class="s" x="66" y="395">Rounded up to whole weeks, 1 to 6</text>
+
+<!-- During -->
+<rect class="orange" x="419" y="96" width="362" height="330" rx="12"/>
+<text class="lbl" x="439" y="124">WHILE RUNNING</text>
+<text class="t" x="439" y="150">Check the data, not the result</text>
+<text class="b" x="439" y="184">Sample ratio mismatch</text>
+<text class="s" x="461" y="203">Planned 50/50, got 10,000 vs 10,400?</text>
+<text class="s" x="461" y="222">χ² ≈ 7.8, p ≈ 0.005: test is broken</text>
+<text class="b" x="439" y="256">Conversion fires in every arm</text>
+<text class="s" x="461" y="275">Test each variant via ?experiment=</text>
+<text class="b" x="439" y="309">Errors and vitals per variant</text>
+<text class="s" x="461" y="328">A slow challenger is a guardrail risk</text>
+<rect class="red" x="439" y="352" width="322" height="54" rx="8"/>
+<text class="warn" x="455" y="375">Don't peek and stop early.</text>
+<text class="s" x="455" y="394">It inflates false positives.</text>
+
+<!-- After -->
+<rect class="green" x="814" y="96" width="362" height="330" rx="12"/>
+<text class="lbl" x="834" y="124">AT THE PLANNED SAMPLE</text>
+<text class="t" x="834" y="150">Read the interval</text>
+<text class="s" x="834" y="184">5.0% → 5.6%, 31,000 visitors per arm</text>
+<text class="b" x="834" y="208">p ≈ 0.001, significant</text>
+<text class="b" x="834" y="232">95% CI: +5% to +19% relative</text>
+<rect x="834" y="256" width="322" height="40" rx="6" fill="#FFFFFF" stroke="#C9D1E0"/>
+<line x1="854" y1="276" x2="1136" y2="276" stroke="#C9D1E0" stroke-width="2"/>
+<line x1="874" y1="266" x2="874" y2="286" stroke="#5B6478" stroke-width="2"/>
+<text class="lbl" x="866" y="293">0</text>
+<rect x="921" y="270" width="132" height="12" rx="6" fill="#059669"/>
+<line x1="1062" y1="264" x2="1062" y2="288" stroke="#DC2626" stroke-width="2" stroke-dasharray="4 3"/>
+<text class="s" x="834" y="322">Real win, but below a 20% MDE line</text>
+<text class="s" x="834" y="341">(red): forecast from the lower bound.</text>
+<text class="b" x="834" y="375">Then check guardrails, and apply</text>
+<text class="b" x="834" y="394">the rules agreed before launch.</text>
+
+<path class="arr" d="M388 261H415" marker-end="url(#ah2)"/>
+<path class="arr" d="M783 261H810" marker-end="url(#ah2)"/>
+
+<!-- Decisions -->
+<text class="lbl" x="30" y="464">DECISION</text>
+<rect class="green" x="24" y="476" width="278" height="110" rx="12"/>
+<text class="t" x="42" y="506">Ship</text>
+<text class="s" x="42" y="532">Primary better,</text>
+<text class="s" x="42" y="551">guardrails fine. Promote,</text>
+<text class="s" x="42" y="570">then remove the test.</text>
+<rect class="orange" x="318" y="476" width="278" height="110" rx="12"/>
+<text class="t" x="336" y="506">Fix and retest</text>
+<text class="s" x="336" y="532">Primary better, a guardrail</text>
+<text class="s" x="336" y="551">worse. Usually image weight</text>
+<text class="s" x="336" y="570">or layout shift.</text>
+<rect class="navy" x="612" y="476" width="278" height="110" rx="12"/>
+<text class="t" x="630" y="506">Stop or go bolder</text>
+<text class="s" x="630" y="532">Narrow interval near zero:</text>
+<text class="s" x="630" y="551">it doesn't matter. Wide:</text>
+<text class="s" x="630" y="570">underpowered, inconclusive.</text>
+<rect class="red" x="906" y="476" width="270" height="110" rx="12"/>
+<text class="t" x="924" y="506">Revert and learn</text>
+<text class="s" x="924" y="532">Primary worse. Record why;</text>
+<text class="s" x="924" y="551">it saved you from shipping</text>
+<text class="s" x="924" y="570">a bad change.</text>
+</svg>

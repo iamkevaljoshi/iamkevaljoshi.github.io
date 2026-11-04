@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="The EDS experimentation lifecycle as a loop of eight steps. One, research: find evidence in analytics, telemetry, recordings and feedback. Two, hypothesis and register: write the hypothesis, metrics, minimum detectable effect and sample size, and add a row to the register. Three, build: copy the control into the experiments folder or create a challenger in Universal Editor. Four, QA and launch: preview every variant with the Sidekick panel on mobile and desktop, then publish. Five, monitor: check sample ratio, conversions and errors. Six, analyse at the planned sample. Seven, decide and promote. Eight, clean up and share: remove metadata, challengers and manifest rows, and record the learning, which feeds the next round of research.">
+<defs>
+  <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .who{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.06em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .c{font-size:15px;font-weight:700;fill:#10182B}
+</style>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The experimentation loop on EDS</text>
+<text class="sub" x="30" y="72">Eight steps, one register. The step teams skip most often is the last one.</text>
+
+<!-- Top row, left to right -->
+<rect class="blue" x="24" y="100" width="262" height="160" rx="12"/>
+<text class="t" x="42" y="130">1 · Research</text>
+<text class="s" x="42" y="158">Evidence from analytics,</text>
+<text class="s" x="42" y="177">telemetry, recordings,</text>
+<text class="s" x="42" y="196">search and feedback.</text>
+<text class="who" x="42" y="240">OWNER · ANALYST</text>
+
+<rect class="blue" x="322" y="100" width="262" height="160" rx="12"/>
+<text class="t" x="340" y="130">2 · Hypothesis + register</text>
+<text class="s" x="340" y="158">Primary metric, guardrails,</text>
+<text class="s" x="340" y="177">MDE, sample size, dates.</text>
+<text class="s" x="340" y="196">One row per experiment.</text>
+<text class="who" x="340" y="240">OWNER · ANALYST</text>
+
+<rect class="green" x="620" y="100" width="262" height="160" rx="12"/>
+<text class="t" x="638" y="130">3 · Build the challenger</text>
+<text class="s" x="638" y="158">Copy into /experiments/&lt;id&gt;/</text>
+<text class="s" x="638" y="177">or Add Challenger in UE.</text>
+<text class="s" x="638" y="196">Code-only: block variant.</text>
+<text class="who" x="638" y="240">AUTHOR · DEVELOPER</text>
+
+<rect class="green" x="918" y="100" width="258" height="160" rx="12"/>
+<text class="t" x="936" y="130">4 · QA and launch</text>
+<text class="s" x="936" y="158">Preview every variant in</text>
+<text class="s" x="936" y="177">the Sidekick panel, mobile</text>
+<text class="s" x="936" y="196">and desktop. Then publish.</text>
+<text class="who" x="936" y="240">AUTHOR · DEVELOPER</text>
+
+<!-- Bottom row, right to left -->
+<rect class="orange" x="918" y="400" width="258" height="160" rx="12"/>
+<text class="t" x="936" y="430">5 · Monitor quality</text>
+<text class="s" x="936" y="458">Sample ratio, conversions</text>
+<text class="s" x="936" y="477">in every arm, errors and</text>
+<text class="s" x="936" y="496">vitals. Not the result.</text>
+<text class="who" x="936" y="540">ANALYST</text>
+
+<rect class="orange" x="620" y="400" width="262" height="160" rx="12"/>
+<text class="t" x="638" y="430">6 · Analyse</text>
+<text class="s" x="638" y="458">At the planned sample.</text>
+<text class="s" x="638" y="477">Unsampled data, by visit.</text>
+<text class="s" x="638" y="496">Interval, then guardrails.</text>
+<text class="who" x="638" y="540">ANALYST</text>
+
+<rect class="violet" x="322" y="400" width="262" height="160" rx="12"/>
+<text class="t" x="340" y="430">7 · Decide and promote</text>
+<text class="s" x="340" y="458">Ship, retest, stop or</text>
+<text class="s" x="340" y="477">revert, by the rules set</text>
+<text class="s" x="340" y="496">before launch.</text>
+<text class="who" x="340" y="540">OWNER</text>
+
+<rect class="violet" x="24" y="400" width="262" height="160" rx="12"/>
+<text class="t" x="42" y="430">8 · Clean up and share</text>
+<text class="s" x="42" y="458">Remove metadata, challengers,</text>
+<text class="s" x="42" y="477">manifest rows, code branches.</text>
+<text class="s" x="42" y="496">Record the learning.</text>
+<text class="who" x="42" y="540">AUTHOR · DEVELOPER</text>
+
+<!-- arrows -->
+<path class="arr" d="M288 180H318" marker-end="url(#ah3)"/>
+<path class="arr" d="M586 180H616" marker-end="url(#ah3)"/>
+<path class="arr" d="M884 180H914" marker-end="url(#ah3)"/>
+<path class="arr" d="M1047 262V396" marker-end="url(#ah3)"/>
+<path class="arr" d="M916 480H886" marker-end="url(#ah3)"/>
+<path class="arr" d="M618 480H588" marker-end="url(#ah3)"/>
+<path class="arr" d="M320 480H290" marker-end="url(#ah3)"/>
+<path class="arr" d="M155 398V264" marker-end="url(#ah3)"/>
+
+<rect x="360" y="296" width="480" height="68" rx="34" fill="#FFFFFF" stroke="#10182B" stroke-width="2"/>
+<text class="c" x="600" y="325" text-anchor="middle">Experiment register</text>
+<text class="s" x="600" y="347" text-anchor="middle">ID · page · hypothesis · metrics · sample · dates · owner · result</text>
+</svg>

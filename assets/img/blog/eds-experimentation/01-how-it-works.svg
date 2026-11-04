@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-label="How an Edge Delivery Services experiment is resolved. One: the CDN serves the same cached control page to everyone. Two: experiment metadata in the head tells the loader to import the plugin. Three: the visitor is assigned a variant by a weighted random draw, stored in sessionStorage, after status, date, audience and consent gates. Four: the challenger document is fetched from the same origin and swapped into main, a section or a fragment, or body classes switch code-only variants. Five: an experiment checkpoint goes to sampled Operational Telemetry and an aem:experimentation event goes to unsampled analytics.">
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .w{font-size:12px;font-weight:600;fill:#5B6478}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .note{font-size:12.5px;font-weight:700;fill:#B45309}
+</style>
+<rect width="1200" height="660" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">How an EDS experiment is resolved</text>
+<text class="sub" x="30" y="72">Everything happens in the browser, before the first section is painted. The CDN never varies.</text>
+
+<!-- Step 1 -->
+<rect class="navy" x="24" y="96" width="210" height="270" rx="12"/>
+<text class="lbl" x="40" y="122">EDGE / CDN</text>
+<text class="t" x="40" y="148">1 · Control served</text>
+<text class="s" x="40" y="178">Same cached HTML for</text>
+<text class="s" x="40" y="197">every visitor on the</text>
+<text class="s" x="40" y="216">control URL.</text>
+<text class="s" x="40" y="246">No personalised HTML,</text>
+<text class="s" x="40" y="265">no cache-key changes,</text>
+<text class="s" x="40" y="284">no TTFB penalty.</text>
+
+<!-- Step 2 -->
+<rect class="blue" x="258" y="96" width="210" height="270" rx="12"/>
+<text class="lbl" x="274" y="122">HEAD</text>
+<text class="t" x="274" y="148">2 · Metadata found</text>
+<text class="m" x="274" y="178">experiment</text>
+<text class="m" x="274" y="196">experiment-variants</text>
+<text class="m" x="274" y="214">experiment-split</text>
+<text class="s" x="274" y="246">experiment-loader.js</text>
+<text class="s" x="274" y="265">imports the plugin only</text>
+<text class="s" x="274" y="284">if these tags exist.</text>
+<text class="s" x="274" y="314">No experiment: nothing</text>
+<text class="s" x="274" y="333">downloaded.</text>
+
+<!-- Step 3 -->
+<rect class="green" x="492" y="96" width="210" height="270" rx="12"/>
+<text class="lbl" x="508" y="122">EAGER PHASE</text>
+<text class="t" x="508" y="148">3 · Assign variant</text>
+<text class="s" x="508" y="178">Weighted random draw</text>
+<text class="s" x="508" y="197">from the split.</text>
+<text class="s" x="508" y="227">Stored in sessionStorage:</text>
+<text class="s" x="508" y="246">sticky for the session,</text>
+<text class="s" x="508" y="265">not for the person.</text>
+<text class="s" x="508" y="295">Control gets whatever</text>
+<text class="s" x="508" y="314">the challengers don't.</text>
+
+<!-- Step 4 -->
+<rect class="green" x="726" y="96" width="210" height="270" rx="12"/>
+<text class="lbl" x="742" y="122">EAGER PHASE</text>
+<text class="t" x="742" y="148">4 · Swap content</text>
+<text class="s" x="742" y="178">Fetch challenger doc</text>
+<text class="s" x="742" y="197">from the same origin.</text>
+<text class="s" x="742" y="227">Replace main, section</text>
+<text class="s" x="742" y="246">or fragment selector,</text>
+<text class="s" x="742" y="265">then decorate blocks.</text>
+<text class="s" x="742" y="295">Code-only: body classes</text>
+<text class="m" x="742" y="314">variant-challenger-1</text>
+<text class="s" x="742" y="340">URL stays the same.</text>
+
+<!-- Step 5 -->
+<rect class="violet" x="960" y="96" width="216" height="270" rx="12"/>
+<text class="lbl" x="976" y="122">PAGE ACTIVE</text>
+<text class="t" x="976" y="148">5 · Record exposure</text>
+<text class="m" x="976" y="178">sampleRUM('experiment',</text>
+<text class="m" x="976" y="196">{ source, target })</text>
+<text class="s" x="976" y="226">and a DOM event:</text>
+<text class="m" x="976" y="248">aem:experimentation</text>
+<text class="s" x="976" y="278">Plus clicks, conversions,</text>
+<text class="s" x="976" y="297">Core Web Vitals and</text>
+<text class="s" x="976" y="316">errors from the same</text>
+<text class="s" x="976" y="335">page view.</text>
+
+<path class="arr" d="M236 231H254" marker-end="url(#ah)"/>
+<path class="arr" d="M470 231H488" marker-end="url(#ah)"/>
+<path class="arr" d="M704 231H722" marker-end="url(#ah)"/>
+<path class="arr" d="M938 231H956" marker-end="url(#ah)"/>
+
+<!-- Gates -->
+<rect class="orange" x="24" y="398" width="678" height="150" rx="12"/>
+<text class="lbl" x="40" y="424">GATES, CHECKED BEFORE THE DRAW</text>
+<text class="s" x="40" y="454">Status active?  ·  Inside start and end dates?  ·  Matches an Experiment Audience?</text>
+<text class="s" x="40" y="476">Consent given, if Experiment Requires Consent is true?</text>
+<text class="t" x="40" y="512">Any gate fails → visitor gets the control.</text>
+<text class="s" x="40" y="534">With consent missing, no experiment checkpoint is sent either.</text>
+<path class="arr" d="M597 396V370" marker-end="url(#ah)"/>
+
+<!-- Outputs -->
+<rect class="navy" x="726" y="398" width="216" height="150" rx="12"/>
+<text class="lbl" x="742" y="424">OPERATIONAL TELEMETRY</text>
+<text class="s" x="742" y="452">Cookieless, per page view.</text>
+<text class="s" x="742" y="472">1 in 100 sampled by default.</text>
+<text class="s" x="742" y="492">Operational view: is it</text>
+<text class="s" x="742" y="512">running, fast, error-free?</text>
+
+<rect class="blue" x="960" y="398" width="216" height="150" rx="12"/>
+<text class="lbl" x="976" y="424">YOUR ANALYTICS</text>
+<text class="s" x="976" y="452">Unsampled, per visit.</text>
+<text class="s" x="976" y="472">Conversions on any page,</text>
+<text class="s" x="976" y="492">revenue, segments.</text>
+<text class="s" x="976" y="512">Measurement view: did</text>
+<text class="s" x="976" y="531">it win?</text>
+
+<path class="arr" d="M1030 368L860 394" marker-end="url(#ah)"/>
+<path class="arr" d="M1068 368V394" marker-end="url(#ah)"/>
+
+<text class="note" x="30" y="600">A conversion only counts in telemetry if it happens in the same page view as the experiment.</text>
+<text class="sub" x="30" y="626">For checkout, sign-up or anything a page or more away, measure with the analytics event.</text>
+</svg>
