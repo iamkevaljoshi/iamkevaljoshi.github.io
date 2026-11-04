@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="One domain, many origins. Requests to www.example.com reach the Adobe-managed CDN, where origin selectors route by path or domain: everything else goes to AEM publish by default; /scripts, /styles, /blocks and migrated sections go to Edge Delivery Services at main--repo--owner.aem.live; static.example.com goes to the AEM static tier; /graphql goes to another AEM environment through a custom domain; /blog and /api/search go to external HTTPS backends. Origins are HTTPS on port 443, adobeaemcloud.com domains are not allowed, and cookies, Authorization and Host are not forwarded unless enabled.">
+<defs>
+  <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .def{stroke:#10182B;stroke-width:3;fill:none}
+</style>
+<rect width="1200" height="620" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">One domain, many origins</text>
+<text class="sub" x="30" y="72">Origin selectors turn the Adobe-managed CDN into a reverse proxy. No extra CDN required.</text>
+
+<!-- visitor -->
+<rect class="navy" x="24" y="250" width="170" height="110" rx="12"/>
+<text class="t" x="40" y="282">Visitors</text>
+<text class="m" x="40" y="308">www.example.com</text>
+<text class="m" x="40" y="328">static.example.com</text>
+<path class="arr" d="M196 305H238" marker-end="url(#a2)"/>
+
+<!-- CDN -->
+<rect class="blue" x="242" y="110" width="330" height="390" rx="14"/>
+<text class="lbl" x="262" y="138">ADOBE-MANAGED CDN</text>
+<text class="t" x="262" y="162">originSelectors rules</text>
+<text class="m" x="262" y="200">/scripts/ /styles/ /blocks/</text>
+<text class="m" x="262" y="218">/campaigns/*  → aem-live</text>
+<text class="m" x="262" y="252">static.example.com</text>
+<text class="m" x="262" y="270">              → static</text>
+<text class="m" x="262" y="304">/graphql*  → headless-publish</text>
+<text class="m" x="262" y="338">/blog*  → wordpress</text>
+<text class="m" x="262" y="356">/api/search*  → search-saas</text>
+<text class="m" x="262" y="374">  + x-api-key from a secret</text>
+<text class="m" x="262" y="408">no match  → AEM publish</text>
+<line x1="262" y1="430" x2="552" y2="430" stroke="#C9D1E0"/>
+<text class="s" x="262" y="452">Request transformations run first,</text>
+<text class="s" x="262" y="470">so paths can be rewritten before</text>
+<text class="s" x="262" y="488">proxying. Match on originalPath.</text>
+
+<!-- origins -->
+<rect class="navy" x="640" y="96" width="290" height="70" rx="12"/>
+<text class="t" x="656" y="124">AEM publish (default)</text>
+<text class="s" x="656" y="146">Dispatcher → publish. No rule needed.</text>
+
+<rect class="green" x="640" y="180" width="290" height="70" rx="12"/>
+<text class="t" x="656" y="208">Edge Delivery Services</text>
+<text class="m" x="656" y="230">main--repo--owner.aem.live</text>
+
+<rect class="green" x="640" y="264" width="290" height="70" rx="12"/>
+<text class="t" x="656" y="292">AEM static tier</text>
+<text class="s" x="656" y="314">selectAemOrigin: static</text>
+
+<rect class="violet" x="640" y="348" width="290" height="70" rx="12"/>
+<text class="t" x="656" y="376">Another AEM environment</text>
+<text class="s" x="656" y="398">Via a custom domain installed on it</text>
+
+<rect class="orange" x="640" y="432" width="290" height="70" rx="12"/>
+<text class="t" x="656" y="460">External HTTPS apps</text>
+<text class="s" x="656" y="482">WordPress, search SaaS, careers ATS</text>
+
+<path class="def" d="M574 131H636" marker-end="url(#a2)"/>
+<path class="arr" d="M574 215H636" marker-end="url(#a2)"/>
+<path class="arr" d="M574 299H636" marker-end="url(#a2)"/>
+<path class="arr" d="M574 383H636" marker-end="url(#a2)"/>
+<path class="arr" d="M574 467H636" marker-end="url(#a2)"/>
+
+<!-- rules panel -->
+<rect x="958" y="96" width="218" height="406" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="974" y="122">ORIGIN RULES</text>
+<text class="s" x="974" y="150">HTTPS on port 443 only.</text>
+<text class="s" x="974" y="178">No *.adobeaemcloud.com</text>
+<text class="s" x="974" y="196">origins (loop protection).</text>
+<text class="s" x="974" y="224">Cookies, Authorization</text>
+<text class="s" x="974" y="242">and Host are not passed</text>
+<text class="s" x="974" y="260">unless you enable them.</text>
+<text class="s" x="974" y="288">Cached by the backend's</text>
+<text class="s" x="974" y="306">headers unless skipCache.</text>
+<text class="s" x="974" y="334">Default timeout 60 s.</text>
+<text class="s" x="974" y="362">Egress IPs are shared:</text>
+<text class="s" x="974" y="380">prefer a secret header</text>
+<text class="s" x="974" y="398">to IP allowlists.</text>
+<text class="s" x="974" y="426">EDS: push invalidation</text>
+<text class="s" x="974" y="444">in managed mode.</text>
+
+<text class="sub" x="30" y="560">Each origin you add becomes part of your availability: set timeouts, monitor it, and configure custom error pages.</text>
+</svg>

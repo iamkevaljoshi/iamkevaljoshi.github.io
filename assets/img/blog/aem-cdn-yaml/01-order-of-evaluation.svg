@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Order of evaluation in the AEM as a Cloud Service CDN. A browser request passes through request transformations, then traffic filters, then redirects. If a redirect matches, the response goes straight to response transformations. Otherwise origin selectors choose a backend, the CDN cache is checked using the full URL as the key, and on a miss the origin is fetched. Every response, whether a redirect, cache hit or origin fetch, passes through response transformations before reaching the browser.">
+<defs>
+  <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .red{fill:#FEF2F2;stroke:#DC2626;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .yes{font-size:12px;font-weight:700;fill:#B45309}
+  .cdn{fill:none;stroke:#94A3B8;stroke-width:2;stroke-dasharray:7 6}
+</style>
+<rect width="1200" height="640" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Order of evaluation in the AEMaaCS CDN</text>
+<text class="sub" x="30" y="72">Request rules run top to bottom. Response transformations run on every response, after the cache.</text>
+
+<rect class="cdn" x="120" y="92" width="926" height="452" rx="14"/>
+<text class="lbl" x="136" y="532">ADOBE-MANAGED CDN (FASTLY)</text>
+
+<!-- browser in -->
+<circle cx="66" cy="180" r="40" fill="#FFFFFF" stroke="#10182B" stroke-width="2"/>
+<text class="t" x="66" y="185" text-anchor="middle">Browser</text>
+<path class="arr" d="M108 180H142" marker-end="url(#a1)"/>
+
+<!-- 1 request transformations -->
+<rect class="blue" x="146" y="110" width="206" height="140" rx="12"/>
+<text class="lbl" x="162" y="134">1</text>
+<text class="t" x="162" y="156">Request</text>
+<text class="t" x="162" y="176">transformations</text>
+<text class="s" x="162" y="202">Rewrite path, headers,</text>
+<text class="s" x="162" y="220">params; set variables.</text>
+<text class="m" x="162" y="240">path ≠ originalPath</text>
+
+<!-- 2 traffic filters -->
+<rect class="red" x="376" y="110" width="200" height="140" rx="12"/>
+<text class="lbl" x="392" y="134">2</text>
+<text class="t" x="392" y="156">Traffic filters</text>
+<text class="t" x="392" y="176">and WAF</text>
+<text class="s" x="392" y="202">Allow, block, log,</text>
+<text class="s" x="392" y="220">rate limit. Blocked</text>
+<text class="s" x="392" y="238">requests stop here.</text>
+
+<!-- 3 redirects -->
+<rect class="orange" x="600" y="110" width="200" height="140" rx="12"/>
+<text class="lbl" x="616" y="134">3</text>
+<text class="t" x="616" y="156">Redirects</text>
+<text class="s" x="616" y="182">301 default; set 302</text>
+<text class="s" x="616" y="200">for temporary.</text>
+<text class="s" x="616" y="226">Match on originalPath.</text>
+
+<!-- 4 origin selectors -->
+<rect class="violet" x="824" y="110" width="204" height="140" rx="12"/>
+<text class="lbl" x="840" y="134">4</text>
+<text class="t" x="840" y="156">Origin selectors</text>
+<text class="s" x="840" y="182">AEM publish (default),</text>
+<text class="s" x="840" y="200">EDS, static tier, other</text>
+<text class="s" x="840" y="218">AEM env, any HTTPS app.</text>
+<text class="m" x="840" y="240">skipCache, headers</text>
+
+<path class="arr" d="M354 180H372" marker-end="url(#a1)"/>
+<path class="arr" d="M578 180H596" marker-end="url(#a1)"/>
+<path class="arr" d="M802 180H820" marker-end="url(#a1)"/>
+
+<!-- cache -->
+<rect class="navy" x="824" y="290" width="204" height="110" rx="12"/>
+<text class="t" x="840" y="318">Cache lookup</text>
+<text class="s" x="840" y="342">Key = full URL incl.</text>
+<text class="s" x="840" y="360">query string. Not</text>
+<text class="s" x="840" y="378">headers or cookies.</text>
+<path class="arr" d="M926 252V286" marker-end="url(#a1)"/>
+
+<!-- origin -->
+<rect class="green" x="1084" y="290" width="104" height="110" rx="12"/>
+<text class="t" x="1136" y="330" text-anchor="middle">Origin</text>
+<text class="s" x="1136" y="352" text-anchor="middle">TTL from its</text>
+<text class="s" x="1136" y="370" text-anchor="middle">cache headers</text>
+<path class="arr" d="M1030 344H1080" marker-end="url(#a1)"/>
+<text class="yes" x="1050" y="336">miss</text>
+
+<!-- response transformations -->
+<rect class="blue" x="600" y="430" width="428" height="96" rx="12"/>
+<text class="lbl" x="616" y="454">5 · EVERY RESPONSE</text>
+<text class="t" x="616" y="476">Response transformations</text>
+<text class="s" x="616" y="500">Headers, cookies, status. Run after the cache: they change</text>
+<text class="s" x="616" y="518">what the browser sees, not what the CDN stores.</text>
+
+<path class="arr" d="M926 402V426" marker-end="url(#a1)"/>
+<text class="yes" x="940" y="420">hit</text>
+<path class="arr" d="M1136 402V478H1032" marker-end="url(#a1)"/>
+<path class="arr" d="M700 252V426" marker-end="url(#a1)"/>
+<text class="yes" x="708" y="300">redirect</text>
+<text class="yes" x="708" y="316">matched</text>
+
+<!-- browser out -->
+<path class="arr" d="M598 478H480V574" marker-end="url(#a1)"/>
+<circle cx="480" cy="598" r="22" fill="#FFFFFF" stroke="#10182B" stroke-width="2"/>
+<text class="s" x="512" y="603">Browser</text>
+
+<!-- notes -->
+<rect x="146" y="290" width="430" height="140" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="166" y="316">WHAT THIS MEANS IN PRACTICE</text>
+<text class="s" x="166" y="342">• Later rules see the rewritten path; use originalPath</text>
+<text class="s" x="166" y="360">  when you need what the client sent.</text>
+<text class="s" x="166" y="384">• A request header you add for the origin is not part</text>
+<text class="s" x="166" y="402">  of the cache key. Vary the URL or skip the cache.</text>
+<text class="s" x="166" y="420">• CDN TTLs come from the origin, usually Dispatcher.</text>
+</svg>
