@@ -770,8 +770,8 @@ body::before,body::after{content:none;animation:none}
 
 /* navigation: five items; Contact is the call to action */
 .nav-links a.nav-cta{color:var(--bg);background:var(--ink);padding:.45rem 1rem;border-radius:999px;border-bottom:0;font-weight:600}
-.nav-links a.nav-cta:hover{background:var(--accent);color:#fff}
-.nav-links a.nav-cta[aria-current="page"]{background:var(--accent);color:#fff}
+.nav-links a.nav-cta:hover{background:var(--accent);color:var(--bg)}
+.nav-links a.nav-cta[aria-current="page"]{background:var(--accent);color:var(--bg)}
 @media (max-width:960px){.nav-links,.menu-btn{display:none!important}}
 
 /* credentials row (replaces the scrolling keyword strip) */
