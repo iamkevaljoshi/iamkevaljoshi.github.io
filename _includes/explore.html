@@ -4,16 +4,6 @@
 {%- assign latest = site.posts.first -%}
 <nav class="stats" aria-labelledby="stats-h">
   <h2 class="sr-only" id="stats-h">Highlights and quick links</h2>
-  <a class="scard" href="{{ '/experience/' | relative_url }}" data-track="experience">
-    <span class="shead"><span class="sicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>Experience<span class="sarrow" aria-hidden="true">→</span></span>
-    <strong class="sval">12+ yrs</strong>
-    <span class="ssub">{{ p.experience.size }} roles · now {{ p.title }} at {{ p.employer.name }}</span>
-  </a>
-  <a class="scard" href="{{ '/certifications/' | relative_url }}" data-track="certifications">
-    <span class="shead"><span class="sicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/><path d="m9.5 9 1.7 1.7L14.5 7.5"/></svg></span>Certifications<span class="sarrow" aria-hidden="true">→</span></span>
-    <strong class="sval">{{ p.certifications.size }} certs</strong>
-    <span class="ssub">{{ adobe.size }} Adobe AEM, incl. AEM Architect</span>
-  </a>
   <a class="scard" href="{{ '/blog/' | relative_url }}" data-track="blog">
     <span class="shead"><span class="sicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5M8 13h8M8 17h5"/></svg></span>Writing<span class="sarrow" aria-hidden="true">→</span></span>
     <strong class="sval">{{ site.posts.size }} {% if site.posts.size == 1 %}post{% else %}posts{% endif %}</strong>
@@ -24,9 +14,19 @@
     {%- if cases.size > 0 %}
     <strong class="sval">{{ cases.size }} case {% if cases.size == 1 %}study{% else %}studies{% endif %}</strong>
     {%- else %}
-    <strong class="sval">4 services</strong>
+    <strong class="sval">How I help</strong>
     {%- endif %}
     <span class="ssub">AEMaaCS migration, builds, integration, reviews</span>
+  </a>
+  <a class="scard" href="{{ '/certifications/' | relative_url }}" data-track="certifications">
+    <span class="shead"><span class="sicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/><path d="m9.5 9 1.7 1.7L14.5 7.5"/></svg></span>Certifications<span class="sarrow" aria-hidden="true">→</span></span>
+    <strong class="sval">{{ p.certifications.size }} certs</strong>
+    <span class="ssub">{{ adobe.size }} Adobe AEM, incl. AEM Architect</span>
+  </a>
+  <a class="scard" href="{{ '/experience/' | relative_url }}" data-track="experience">
+    <span class="shead"><span class="sicon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>Experience<span class="sarrow" aria-hidden="true">→</span></span>
+    <strong class="sval">12+ yrs</strong>
+    <span class="ssub">{{ p.experience.size }} roles · now {{ p.title }} at {{ p.employer.name }}</span>
   </a>
   {%- assign tool_list = site.tools | sort: 'order' -%}
   {%- assign newest_tool = site.tools | sort: 'added' | last %}

@@ -7,6 +7,8 @@ ai_summary: "Edge Delivery Services and traditional AEM as a Cloud Service are t
 date: 2026-11-02 09:10:00 +0530
 category: edge-delivery-services
 tags: [AEM, Edge Delivery Services, AEM as a Cloud Service, Architecture]
+start_here: 1
+start_here_why: "Choosing between Edge Delivery Services and traditional AEM? Start with the trade-offs."
 ---
 
 Every AEM programme I've worked on in the last two years has had the same conversation at some point: *should this be on Edge Delivery Services, or "normal" AEM as a Cloud Service?* Sometimes it's asked about a single campaign site, sometimes about a 40-market re-platform.

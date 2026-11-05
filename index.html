@@ -14,7 +14,8 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT®, specia
       <h1 class="tagline">{{ p.tagline | replace: 'Adobe Experience Manager', '<span class="grad-text">Adobe Experience Manager</span>' }}</h1>
       <p class="intro">{{ p.intro }}</p>
       <div class="cta-row">
-        <a class="btn solid" href="{{ '/contact/' | relative_url }}" data-track="hero-contact">Start a conversation</a>
+        <a class="btn solid" href="{{ '/contact/' | relative_url }}" data-track="hero-contact">Discuss your AEM project</a>
+        <a class="btn ghost" href="{{ '/blog/' | relative_url }}" data-track="hero-blog">Read the blog</a>
       </div>
     </div>
     {% include arch-flow.html %}
@@ -24,13 +25,15 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT®, specia
   </div>
 </section>
 
-<div class="marquee" aria-label="Areas of expertise">
-  {%- for pass in (1..2) %}
-  <ul{% if pass == 2 %} aria-hidden="true"{% endif %}>
-    {%- for k in p.knows_about %}<li>{{ k }}</li>{% endfor %}
+{%- assign tick = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.8-5"/></svg>' -%}
+<section class="creds" aria-label="Credentials">
+  <ul class="wrap">
+    <li>{{ tick }}Adobe-certified AEM Architect</li>
+    <li>{{ tick }}AEM as a Cloud Service Migration Expert</li>
+    <li>{{ tick }}12+ years on enterprise platforms</li>
+    <li>{{ tick }}{{ p.title }} at {{ p.employer.name }}</li>
   </ul>
-  {%- endfor %}
-</div>
+</section>
 
 <section class="block" data-section="capabilities">
   <div class="wrap">
@@ -45,6 +48,19 @@ description: Keval Joshi is a Mumbai-based Solutions Architect at DEPT®, specia
     </div>
   </div>
 </section>
+
+{%- if p.testimonials and p.testimonials.size > 0 %}
+<section class="block" data-section="testimonials">
+  <div class="wrap">
+    <div class="sec-head"><h2 data-split>What people say</h2></div>
+    <ul class="quotes">
+      {%- for t in p.testimonials %}
+      <li><blockquote><p>“{{ t.quote }}”</p><footer><strong>{{ t.name }}</strong>{{ t.role }}</footer></blockquote></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{%- endif %}
 
 {%- if cases.size > 0 %}
 <section class="block">

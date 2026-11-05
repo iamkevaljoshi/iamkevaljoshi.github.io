@@ -1,0 +1,26 @@
+# End-of-post call to action, chosen by the post's category slug.
+# A post can override with front matter: cta: { heading, text, button, href }.
+edge-delivery-services:
+  heading: "Planning or improving an Edge Delivery Services site?"
+  text: "I help teams choose the right authoring model, set up a multi-site codebase, keep Lighthouse at 100 and run EDS alongside AEM as a Cloud Service."
+  button: "Talk about your EDS project"
+aem-cloud-service:
+  heading: "Moving to, or running, AEM as a Cloud Service?"
+  text: "From migration planning and cut-over to CDN, Dispatcher and pipeline reviews, I can help you de-risk the platform and the delivery."
+  button: "Discuss your AEMaaCS setup"
+architecture:
+  heading: "Facing a big platform decision?"
+  text: "I run architecture reviews and option assessments that end with a clear recommendation, the trade-offs and a plan your team can deliver."
+  button: "Book an architecture conversation"
+seo-ai-search:
+  heading: "Want your AEM site found by search engines and AI answers?"
+  text: "I review technical SEO and AI-search readiness on AEM and Edge Delivery Services sites, and turn the findings into a prioritised backlog."
+  button: "Ask about an SEO review"
+digital-experience:
+  heading: "Getting more from personalisation, testing or accessibility?"
+  text: "I help teams pick the right tools on AEM, set up experiments that produce decisions, and fix accessibility at the component level."
+  button: "Talk about your experience programme"
+default:
+  heading: "Working on an AEM platform?"
+  text: "Whether it's a migration, a new build or an architecture review, I'm happy to talk it through."
+  button: "Get in touch"

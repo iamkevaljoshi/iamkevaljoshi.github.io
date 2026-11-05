@@ -32,6 +32,29 @@ description: About Keval Joshi, a Mumbai-based Solutions Architect at DEPT® wit
   </div>
 </div>
 
+{%- assign adobe = p.certifications | where: "issuer", "Adobe" %}
+<h2 class="sub" id="credentials">Career and credentials</h2>
+<div class="proof-links">
+  <a class="tool-card" href="{{ '/experience/' | relative_url }}" data-track="about-experience">
+    <span class="shead">Experience<span class="sarrow" aria-hidden="true">→</span></span>
+    <h3 style="margin:.2rem 0 0">12+ years, {{ p.experience.size }} roles</h3>
+    <p>From engineer to Solutions Architect at {{ p.employer.name }}, mostly on enterprise AEM platforms.</p>
+  </a>
+  <a class="tool-card" href="{{ '/certifications/' | relative_url }}" data-track="about-certifications">
+    <span class="shead">Certifications<span class="sarrow" aria-hidden="true">→</span></span>
+    <h3 style="margin:.2rem 0 0">{{ p.certifications.size }} certifications, {{ adobe.size }} from Adobe</h3>
+    <p>Including AEM 6 Architect and AEM as a Cloud Service Migration Expert.</p>
+  </a>
+</div>
+{%- if p.testimonials and p.testimonials.size > 0 %}
+<h2 class="sub">What people say</h2>
+<ul class="quotes">
+  {%- for t in p.testimonials %}
+  <li><blockquote><p>“{{ t.quote }}”</p><footer><strong>{{ t.name }}</strong>{{ t.role }}</footer></blockquote></li>
+  {%- endfor %}
+</ul>
+{%- endif %}
+
 <h2 class="sub">How I approach architecture</h2>
 <div class="grid two">
   {%- for c in p.principles %}

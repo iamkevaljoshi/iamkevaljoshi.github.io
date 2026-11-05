@@ -23,6 +23,36 @@ layout: default
   <div class="wrap narrow prose">
     {{ content }}
   </div>
+  {%- assign cta = page.cta | default: site.data.post_ctas[page.category] | default: site.data.post_ctas.default %}
+  <div class="wrap narrow">
+    <aside class="post-cta" aria-labelledby="post-cta-h">
+      <h2 id="post-cta-h">{{ cta.heading }}</h2>
+      <p>{{ cta.text }}</p>
+      <div class="cta-row">
+        <a class="btn solid" href="{{ cta.href | default: '/contact/' | relative_url }}" data-track="post-cta-{{ page.category | default: 'default' }}">{{ cta.button }}</a>
+        <a class="btn ghost" href="{{ '/work/' | relative_url }}" data-track="post-cta-work">How I can help</a>
+      </div>
+      <p class="follow">Get new posts: follow me on <a href="{{ p.linkedin }}" target="_blank" rel="noopener" data-track="post-follow-linkedin">LinkedIn</a> or subscribe via <a href="{{ '/feed.xml' | relative_url }}">RSS</a>.</p>
+    </aside>
+    {%- if page.category %}
+    {%- assign same = site.posts | where: "category", page.category -%}
+    {%- assign newer = nil -%}{%- assign older = nil -%}
+    {%- for x in same -%}
+      {%- if x.url == page.url -%}
+        {%- assign i_prev = forloop.index0 | minus: 1 -%}
+        {%- assign i_next = forloop.index0 | plus: 1 -%}
+        {%- if forloop.first == false %}{% assign newer = same[i_prev] %}{% endif -%}
+        {%- if forloop.last == false %}{% assign older = same[i_next] %}{% endif -%}
+      {%- endif -%}
+    {%- endfor %}
+    {%- if newer or older %}
+    <nav class="post-pager" aria-label="More in {{ post_cat.title | default: 'this category' }}">
+      {%- if older %}<a class="prev" href="{{ older.url | relative_url }}" rel="prev"><span class="dir">← Previous in {{ post_cat.title }}</span><strong>{{ older.title | split: ':' | first }}</strong></a>{% endif %}
+      {%- if newer %}<a class="next" href="{{ newer.url | relative_url }}" rel="next"><span class="dir">Next in {{ post_cat.title }} →</span><strong>{{ newer.title | split: ':' | first }}</strong></a>{% endif %}
+    </nav>
+    {%- endif %}
+    {%- endif %}
+  </div>
   {%- assign related = "" | split: "" -%}
   {%- for other in site.posts -%}
     {%- if other.url != page.url and page.category and other.category == page.category -%}{%- assign related = related | push: other -%}{%- endif -%}

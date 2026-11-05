@@ -4,6 +4,7 @@ title: Contact
 heading: Get in touch
 seo_title: "Contact Keval Joshi – AEM Solutions Architect, Mumbai"
 permalink: /contact/
+eyebrow: Contact
 lede: For AEM architecture, AEM as a Cloud Service migrations, platform reviews or a conversation about your project.
 description: Contact Keval Joshi, Solutions Architect in Mumbai, India, about Adobe Experience Manager architecture and digital platform projects.
 ---
@@ -15,14 +16,39 @@ description: Contact Keval Joshi, Solutions Architect in Mumbai, India, about Ad
   <a class="btn ghost" href="{{ p.github }}" target="_blank" rel="noopener">GitHub</a>
 </div>
 {%- else %}
-<a class="mail" href="mailto:{{ p.email }}">{{ p.email }}</a>
+<a class="mail" href="mailto:{{ p.email }}?subject={{ 'AEM project enquiry' | url_encode }}" data-track="contact-email">{{ p.email }}</a>
 <div class="contact-row">
-  <button class="btn solid" type="button" data-copy="{{ p.email }}">Copy email</button>
-  <a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
-  <a class="btn ghost" href="{{ p.github }}" target="_blank" rel="noopener">GitHub</a>
+  <button class="btn solid" type="button" data-copy="{{ p.email }}" data-track="contact-copy">Copy email</button>
+  {%- if p.booking != "" %}<a class="btn ghost" href="{{ p.booking }}" target="_blank" rel="noopener" data-track="contact-book">Book a call</a>{% endif %}
+  <a class="btn ghost" href="{{ p.linkedin }}" target="_blank" rel="noopener" data-track="contact-linkedin">LinkedIn</a>
 </div>
 {%- endif %}
-<p class="about-text" style="margin-top:3rem">I’m happy to talk about Adobe Experience Manager architecture, migrations from AEM 6.x to AEM as a Cloud Service, integration design or an independent review of an existing platform. Email is the quickest way to reach me. You can also read more <a href="{{ '/about/' | relative_url }}">about me</a> or see my <a href="{{ '/work/' | relative_url }}">typical engagements</a>.</p>
+{%- if p.reply_time != "" %}
+<p class="muted" style="margin-top:1.25rem">Email is the quickest way to reach me. I usually reply within {{ p.reply_time }}.</p>
+{%- endif %}
+
+<div class="contact-guide">
+  <div class="card">
+    <h3>What I can help with</h3>
+    <ul>
+      <li>AEM 6.x to AEM as a Cloud Service migration</li>
+      <li>New AEM Sites or Edge Delivery Services builds</li>
+      <li>Integration architecture around AEM</li>
+      <li>An independent architecture or performance review</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Useful to include</h3>
+    <ul>
+      <li>Your current platform and AEM version</li>
+      <li>What you're trying to achieve, and by when</li>
+      <li>The main problem or risk on your mind</li>
+      <li>Team setup: in-house, agency or partner</li>
+    </ul>
+  </div>
+</div>
+
+<p class="about-text" style="margin-top:2.5rem">Not ready to talk yet? Read <a href="{{ '/about/' | relative_url }}">how I work</a>, see my <a href="{{ '/work/' | relative_url }}">typical engagements</a>, or browse the <a href="{{ '/blog/' | relative_url }}">blog</a>.</p>
 <dl class="facts" style="margin-top:2rem">
   <div><dt>Based in</dt><dd>{{ p.location }}</dd></div>
   <div><dt>Time zone</dt><dd>IST (UTC+5:30)</dd></div>

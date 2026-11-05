@@ -7,26 +7,35 @@ eyebrow: Writing
 lede: Notes on Adobe Experience Manager, Edge Delivery Services, solution architecture, SEO and AI search, and digital experience.
 description: Technical writing by Keval Joshi on Adobe Experience Manager (AEM), Edge Delivery Services, AEM as a Cloud Service, solution architecture, SEO and AI search.
 ---
+{%- assign p = site.data.profile -%}
 {%- assign cats = site.topics | sort: 'order' -%}
-<h2 class="blog-sub" id="categories">Browse by category</h2>
-<div class="tool-list cat-list">
-  {%- for c in cats %}
-  {%- assign cp = site.posts | where: "category", c.slug %}
-  <a class="tool-card cat-card" href="{{ c.url | relative_url }}">
-    <span class="shead">
-      <span class="sicon" aria-hidden="true">{% include topic-icon.html icon=c.icon %}</span>
-      {{ cp.size }} {% if cp.size == 1 %}post{% else %}posts{% endif %}<span class="sarrow" aria-hidden="true">→</span>
-    </span>
-    <h3>{{ c.title }}</h3>
-    <p>{{ c.lede }}</p>
-    {%- if cp.size > 0 %}
-    <ul class="cat-latest">
-      {%- for p in cp limit: 3 %}<li>{{ p.title }}</li>{% endfor %}
-    </ul>
-    {%- endif %}
-  </a>
-  {%- endfor %}
-</div>
+{%- assign picks = site.posts | where_exp: "x", "x.start_here > 0" | sort: "start_here" -%}
+{%- if picks.size > 0 %}
+<section class="start-here" aria-labelledby="start-h">
+  <h2 class="blog-sub" id="start-h">New here? Start with these</h2>
+  <p>Three posts that cover the decisions most AEM teams face first.</p>
+  <ul class="start-list">
+    {%- for x in picks limit: 3 %}
+    {%- assign xc = site.topics | where: "slug", x.category | first %}
+    <li><a href="{{ x.url | relative_url }}" data-track="start-here-{{ forloop.index }}">
+      {%- if xc %}<span class="post-cat">{{ xc.title }}</span>{% endif %}
+      <strong>{{ x.title | split: ':' | first }}</strong>
+      <span class="why">{{ x.start_here_why }}</span>
+    </a></li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+<nav class="blog-cats" aria-labelledby="categories">
+  <h2 class="blog-sub" id="categories">Browse by category</h2>
+  <ul class="cat-chips">
+    {%- for c in cats %}
+    {%- assign cp = site.posts | where: "category", c.slug %}
+    <li><a href="{{ c.url | relative_url }}">{{ c.title }} <span>{{ cp.size }}</span></a></li>
+    {%- endfor %}
+  </ul>
+</nav>
 
 <h2 class="blog-sub" id="all-posts">All posts <span class="muted">{{ site.posts.size }}</span></h2>
 <div class="posts">
@@ -36,4 +45,4 @@ description: Technical writing by Keval Joshi on Adobe Experience Manager (AEM),
   <p class="empty">No posts yet.</p>
   {%- endfor %}
 </div>
-<p class="muted" style="margin-top:2rem">Subscribe via <a href="{{ '/feed.xml' | relative_url }}">RSS</a>.</p>
+<p class="muted subscribe-line">Get new posts: follow me on <a href="{{ p.linkedin }}" target="_blank" rel="noopener" data-track="blog-follow-linkedin">LinkedIn</a> or subscribe via <a href="{{ '/feed.xml' | relative_url }}">RSS</a>.</p>

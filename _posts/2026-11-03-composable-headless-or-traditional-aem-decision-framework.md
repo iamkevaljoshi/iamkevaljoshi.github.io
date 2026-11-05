@@ -7,6 +7,8 @@ ai_summary: "Coupled, hybrid, headless and composable are architectures that sep
 date: 2026-11-03 19:20:00 +0530
 category: architecture
 tags: [AEM, Headless, Composable, Architecture]
+start_here: 3
+start_here_why: "A framework for the big platform decision, written for CTOs."
 ---
 
 At some point in almost every platform conversation I'm in, someone puts up a slide with "MACH" on it. Sometimes it's a vendor, sometimes it's a newly hired head of engineering who has done it before, and sometimes it's a board member who read that monolithic suites are dead. The question that follows is always some version of: *should we stay on AEM, go headless, or go fully composable?*

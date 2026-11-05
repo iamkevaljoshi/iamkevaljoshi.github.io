@@ -15,6 +15,14 @@ linkedin: https://www.linkedin.com/in/keval-joshi-36b8393b
 github: https://github.com/iamkevaljoshi
 photo: /assets/img/keval-joshi.jpg   # Empty shows initials.
 cv: ""      # e.g. /assets/keval-joshi-cv.pdf. Empty hides the Download CV button.
+booking: "" # e.g. a Calendly or Microsoft Bookings link. Empty hides the "Book a call" button on Contact.
+reply_time: "two working days"   # Shown on Contact as "I usually reply within …". Empty hides the line.
+
+# Real quotes only (e.g. from LinkedIn recommendations, with permission). Empty list hides the section.
+testimonials: []
+#  - quote: "Keval turned a risky migration into a predictable plan…"
+#    name: "Jane Doe"
+#    role: "Head of Digital, Example Corp"
 employer: { name: "DEPT®", url: "https://www.deptagency.com" }
 
 # One sentence that search and AI engines can quote verbatim. Keep it factual.

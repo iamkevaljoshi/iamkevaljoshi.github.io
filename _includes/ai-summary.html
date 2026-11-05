@@ -7,9 +7,10 @@
       <h2 id="ai-sum-h"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.9 9l5.6 1.9-5.6 1.9L12 18.5l-1.9-5.7L4.5 10.9 10.1 9z"/><path d="M19 3v3M17.5 4.5h3"/></svg>AI summary</h2>
       <span class="ai-sum-badge">AI-generated</span>
     </div>
-    <div class="ai-sum-body" data-ai-out aria-live="polite">
+    <div class="ai-sum-body" id="ai-sum-out" data-ai-out aria-live="polite">
       <p>{{ page.ai_summary }}</p>
     </div>
+    <button type="button" class="ai-sum-toggle" data-ai-toggle aria-expanded="false" aria-controls="ai-sum-out">Show full summary and AI options</button>
     <p class="ai-sum-src" data-ai-src>Generated with AI from the full article. AI can make mistakes; the article is the source of truth.</p>
 
     <div class="ai-sum-live" data-ai-live hidden>

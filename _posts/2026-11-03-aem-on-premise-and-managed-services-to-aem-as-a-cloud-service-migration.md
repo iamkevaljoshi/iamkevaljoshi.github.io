@@ -7,6 +7,8 @@ ai_summary: "Moving from AEM 6.5 on-premise or Managed Services to AEM as a Clou
 date: 2026-11-03 09:00:00 +0530
 category: aem-cloud-service
 tags: [AEM, AEM as a Cloud Service, Cloud Migration, Architecture]
+start_here: 2
+start_here_why: "The playbook I use to move AEM 6.x estates to the cloud."
 ---
 
 I've lost count of the AEM 6.x estates I've assessed for a move to AEM as a Cloud Service (AEMaaCS). Some were tidy, Touch UI-only codebases that moved in a few months. Others had fifteen years of customisations: Classic UI dialogs, homegrown replication agents, cron jobs writing to the file system, and Dispatcher configs nobody fully understood any more.

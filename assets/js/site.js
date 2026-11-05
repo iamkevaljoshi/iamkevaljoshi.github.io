@@ -13,13 +13,33 @@
     document.dispatchEvent(new Event('themechange'));
   });
 
-  /* mobile menu */
-  var menuBtn = $('#menuBtn'), links = $('#navLinks');
-  menuBtn.addEventListener('click', function () {
-    var open = links.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', open);
+  /* mobile navigation is the bottom tab bar; the old menu button is gone */
+
+  /* code blocks: reachable and scrollable by keyboard */
+  $$('.prose pre').forEach(function (pre) {
+    pre.tabIndex = 0;
+    pre.setAttribute('role', 'region');
+    pre.setAttribute('aria-label', 'Code example');
   });
-  links.addEventListener('click', function (e) { if (e.target.closest('a')) { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); } });
+
+  /* contents list on posts: collapsible, collapsed by default on phones */
+  $$('.prose nav.toc').forEach(function (toc, i) {
+    var label = toc.querySelector('p');
+    if (!label) return;
+    var list = toc.querySelector('ul');
+    if (list && !list.id) list.id = 'toc-list-' + i;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'toc-toggle';
+    btn.textContent = label.textContent.trim() || 'Contents';
+    if (list) btn.setAttribute('aria-controls', list.id);
+    label.replaceWith(btn);
+    function set(open) { toc.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', open); }
+    set(!matchMedia('(max-width: 760px)').matches);
+    toc.classList.add('is-ready');
+    btn.addEventListener('click', function () { set(!toc.classList.contains('is-open')); });
+    toc.addEventListener('click', function (e) { if (e.target.closest('a') && matchMedia('(max-width: 760px)').matches) set(false); });
+  });
 
   /* heading word reveal */
   $$('[data-split]').forEach(function (h) {
@@ -101,14 +121,6 @@
       }
     });
   }
-
-  $$('.card, .cert, .case-card, .cred-row li').forEach(function (el) {
-    el.addEventListener('pointermove', function (e) {
-      var r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
 
   $$('.proof strong, .sval').forEach(function (el) {
     var m = el.textContent.match(/^(\d+)(.*)$/);

@@ -12,6 +12,15 @@
   var chips = root.querySelectorAll('.ai-chip');
   var original = out.innerHTML, originalSrc = src.textContent;
 
+  /* Collapsed by default (CSS, so no layout shift): posts open with their own TL;DR. */
+  var toggle = $('[data-ai-toggle]');
+  if (toggle) toggle.addEventListener('click', function () {
+    var open = !root.classList.contains('is-open');
+    root.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open);
+    toggle.textContent = open ? 'Show less' : 'Show full summary and AI options';
+  });
+
   if (!('Summarizer' in self)) { $('[data-ai-unsupported]').hidden = false; return; }
 
   var LANG = { expectedInputLanguages: ['en'], outputLanguage: 'en' };
