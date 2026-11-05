@@ -830,3 +830,5 @@ body::before,body::after{content:none;animation:none}
 
 /* about: proof links */
 .proof-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:1rem}
+/* decorative accents keep the bright brand gold; text uses the darker --gold */
+.hero-name::after{color:var(--gold-soft)}
