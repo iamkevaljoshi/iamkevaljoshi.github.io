@@ -1,0 +1,129 @@
+---
+title: Image optimiser
+seo_title: "Free Image Optimiser: Compress, Resize, Convert to WebP and AVIF"
+description: "Free private image optimiser: compress, resize and convert images to WebP, AVIF or JPEG in your browser, with responsive sizes and a ready-to-paste srcset."
+lede: "Compress, resize and convert images to WebP, AVIF or JPEG, right here in your browser. Your images are never uploaded. Get responsive sizes, a before-and-after comparison and HTML you can paste straight into a page."
+summary: "Compress, resize and convert images to WebP, AVIF or JPEG in your browser. Responsive sizes, a before-and-after slider, ZIP download and a ready-made srcset snippet. Nothing is uploaded."
+category: Performance
+icon: image
+order: 5
+added: 2026-11-05 12:00:00 +0530
+tags: [WebP, AVIF, Core Web Vitals, Private]
+scripts:
+  - src: /assets/js/tools/image-opt.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: Are my images uploaded anywhere?
+    a: "No. Everything happens in your browser using its built-in image encoders. Your files never leave your device, which also means it works for confidential or unreleased images. Nothing is stored after you close the page."
+  - q: Which format should I choose?
+    a: "Leave it on Smallest, which tries every format your browser can create and keeps the smallest result. In practice WebP is the safe default: every current browser displays it and it's usually 25–35% smaller than an equivalent JPEG. AVIF is often smaller again, but only some browsers can create it, so the option appears only where it works. Use JPEG only when a system can't accept WebP, and PNG for screenshots or graphics that must stay pixel-perfect."
+  - q: What quality setting should I use?
+    a: "75–82 is the sweet spot for photos on the web: the difference from the original is very hard to see, and files are much smaller. Use the comparison slider to check. Go higher for product images people zoom into, and lower for large background images behind text."
+  - q: Why is my PNG bigger after optimising?
+    a: "Browsers can create PNG files but can't compress them as tightly as specialist tools. If a result would be bigger than the original, the tool tells you and keeps your original. For photos saved as PNG, converting to WebP or JPEG usually saves 70–90%."
+  - q: Does it keep EXIF and location data?
+    a: "No. Re-encoding removes metadata such as camera details and GPS location, which is good for privacy and file size. The image is rotated correctly first, so photos from phones don't end up sideways. If you need to keep copyright metadata, add it back in your digital asset manager."
+  - q: Do I need this on Adobe Experience Manager or Edge Delivery Services?
+    a: "Often less than you'd think. Edge Delivery Services already resizes images from documents and serves them as WebP, and AEM as a Cloud Service can deliver optimised renditions through Dynamic Media or web-optimised image delivery. This tool helps with everything around that: images referenced from code and CSS, assets before they go into the DAM, email and social images, and sites without an image pipeline."
+---
+<div class="io-tool">
+  <label class="io-drop" id="ioDrop" for="ioFile">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5-5-9 9"/></svg>
+    <strong>Drop images here, or click to choose</strong>
+    <span class="muted">JPEG, PNG, WebP, AVIF or GIF · several at once · you can also paste an image</span>
+    <input id="ioFile" type="file" accept="image/*" multiple>
+  </label>
+
+  <form class="pc-form io-settings" id="ioSettings" novalidate onsubmit="return false">
+    <div class="io-grid">
+      <label class="pc-field">
+        <span>Format</span>
+        <select name="format">
+          <option value="auto">Smallest (recommended)</option>
+          <option value="webp">WebP</option>
+          <option value="avif">AVIF</option>
+          <option value="jpeg">JPEG</option>
+          <option value="png">PNG (lossless)</option>
+        </select>
+      </label>
+      <label class="pc-field">
+        <span>Quality <output name="qOut" for="ioQuality">78</output></span>
+        <input id="ioQuality" name="quality" type="range" min="40" max="95" step="1" value="78">
+      </label>
+      <label class="pc-field">
+        <span>Maximum width</span>
+        <select name="maxWidth">
+          <option value="0">Keep original size</option>
+          <option value="2560">2560 px</option>
+          <option value="1920" selected>1920 px (full-width hero)</option>
+          <option value="1440">1440 px</option>
+          <option value="1200">1200 px</option>
+          <option value="960">960 px (content width)</option>
+          <option value="640">640 px</option>
+          <option value="320">320 px (thumbnail)</option>
+          <option value="96">96 px (avatar, 2× of 48)</option>
+        </select>
+      </label>
+    </div>
+    <div class="pc-opts io-opts">
+      <label class="pc-check"><input name="responsive" type="checkbox"> Also create responsive sizes (480, 960, 1440, 1920 px) and a srcset snippet</label>
+    </div>
+    <details class="pc-adv">
+      <summary>More settings</summary>
+      <div class="pc-adv-grid">
+        <label class="pc-field">
+          <span>Background for transparent images saved as JPEG</span>
+          <input name="bg" type="color" value="#ffffff">
+        </label>
+        <label class="pc-field">
+          <span>Image folder in HTML snippets <small>for example /images/ or https://cdn.example.com/img/</small></span>
+          <input name="path" type="text" value="/images/" spellcheck="false" autocomplete="off">
+        </label>
+      </div>
+    </details>
+    <p class="pc-note muted">Runs entirely in your browser with its built-in encoders. Images are never uploaded. Metadata such as GPS location is removed.</p>
+  </form>
+
+  <p class="io-status" id="ioStatus" role="status" aria-live="polite"></p>
+
+  <section class="io-results" id="ioResults" aria-label="Optimised images" hidden>
+    <div class="io-summary" id="ioSummary"></div>
+    <ul class="io-list" id="ioList"></ul>
+  </section>
+</div>
+
+<dialog class="io-cmp" id="ioCmp" aria-labelledby="ioCmpTitle">
+  <div class="io-cmp-head">
+    <h2 id="ioCmpTitle">Compare</h2>
+    <div class="io-cmp-tools">
+      <button type="button" class="btn ghost pc-sm" id="ioCmpZoom" aria-pressed="false">Actual size</button>
+      <button type="button" class="btn solid pc-sm" id="ioCmpClose">Close</button>
+    </div>
+  </div>
+  <div class="io-cmp-view" id="ioCmpView" tabindex="0">
+    <div class="io-cmp-stage" id="ioCmpStage">
+      <img id="ioCmpA" alt="Original image">
+      <div class="io-cmp-top" id="ioCmpTop"><img id="ioCmpB" alt="Optimised image"></div>
+      <span class="io-cmp-tag io-tag-a" id="ioCmpLa">Original</span>
+      <span class="io-cmp-tag io-tag-b" id="ioCmpLb">Optimised</span>
+    </div>
+  </div>
+  <label class="io-cmp-range"><span class="sr-only">Comparison position</span><input type="range" id="ioCmpRange" min="0" max="100" value="50"></label>
+  <p class="muted io-cmp-hint">Drag the slider: optimised on the left, original on the right. Use "Actual size" to check fine detail.</p>
+</dialog>
+
+<section class="pc-about">
+  <h2>What it does</h2>
+  <div class="pc-about-grid">
+    <div><h3>Resize</h3><p>Most images are uploaded far bigger than they're displayed. A 4000 px phone photo shown at 960 px wastes over 90% of its bytes. Pick the largest size the image is shown at, or twice that for sharp screens.</p></div>
+    <div><h3>Convert and compress</h3><p>WebP and AVIF are typically 25–50% smaller than JPEG at the same visual quality. "Smallest" tries every format your browser can create and keeps the winner, avoiding JPEG for images with transparency.</p></div>
+    <div><h3>Responsive sizes</h3><p>Creates 480, 960, 1440 and 1920 px versions plus a ready-to-paste <code>srcset</code>, so phones download a small file and large screens a sharp one. Width and height are included to prevent layout shift.</p></div>
+  </div>
+  <h2>Why it matters</h2>
+  <ul class="list">
+    <li><strong>Images are usually the largest thing on a page,</strong> and often the Largest Contentful Paint element, so they decide your Core Web Vitals score more than anything else.</li>
+    <li><strong>Always set width and height</strong> (the snippet does), so the browser reserves space and the page doesn't jump: that's your Cumulative Layout Shift.</li>
+    <li><strong>Lazy-load images below the fold, never the hero.</strong> The snippet uses <code>loading="lazy"</code>. Remove it, and add <code>fetchpriority="high"</code>, for the main image at the top of the page.</li>
+    <li><strong>Write real alt text.</strong> Describe what the image shows and why it's there, or use an empty <code>alt=""</code> if it's purely decorative.</li>
+  </ul>
+</section>
