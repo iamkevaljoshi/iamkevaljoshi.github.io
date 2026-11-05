@@ -317,6 +317,7 @@ Origin selectors are the CDN's reverse proxy. A rule matches a request and sends
 
 ### The basic shape
 
+{% raw %}
 ```yaml
 data:
   originSelectors:
@@ -340,6 +341,7 @@ data:
         # forwardAuthorization: true
         # timeout: 20
 ```
+{% endraw %}
 
 The origin settings have defaults that are secure, but you need to know them:
 
@@ -419,6 +421,7 @@ data:
 
 Search, store locators, careers portals and legacy apps all fit here. When the backend needs an API key you don't want in the browser, inject it at the edge from a secret:
 
+{% raw %}
 ```yaml
 data:
   originSelectors:
@@ -436,6 +439,7 @@ data:
         domain: api.search-vendor.example
         timeout: 10
 ```
+{% endraw %}
 
 ### Rewriting the path before proxying
 
@@ -530,6 +534,7 @@ Supported status codes are 301, 302, 303, 307 and 308. The default is **301**, s
 
 Putting basic auth on stage, or on a pre-launch campaign path, used to need Dispatcher changes. Now it's configuration:
 
+{% raw %}
 ```yaml
 data:
   authentication:
@@ -548,6 +553,7 @@ data:
           type: authenticate
           authenticator: reviewers
 ```
+{% endraw %}
 
 Up to 10 credentials are allowed, each password referencing a secret. Adobe describes this as for light use cases, and I agree: it's for reviews, not for member areas.
 
@@ -566,6 +572,7 @@ Traffic filter rules (including WAF) run straight after request transformations.
 
 If a customer-managed CDN (Akamai, Cloudflare, CloudFront) sits in front of AEMaaCS, configure an **edge key** so publish only accepts traffic that came through it. The outer CDN sends `X-AEM-Edge-Key` and `X-Forwarded-Host`:
 
+{% raw %}
 ```yaml
 data:
   authentication:
@@ -581,6 +588,7 @@ data:
           type: authenticate
           authenticator: byo-cdn
 ```
+{% endraw %}
 
 Generate keys with `openssl rand -hex 32`, put the date in the secret name, and rotate with the two-slot pattern: add the new key as `edgeKey2`, move the outer CDN to it, then remove `edgeKey1`. When migrating from an Adobe-generated key, keep both configured during the switch, or you risk downtime.
 
@@ -651,7 +659,7 @@ Then I check the CDN logs (up to five minutes behind) for the `rules` field and 
 
 **Change and rollback.** CDN config deploys in minutes and there's no rollback button. A rollback is a revert commit and another config pipeline run. That's fast, but someone has to be ready to do it. Treat production CDN changes like code: a pull request, a reviewer, and a deployment window for anything that touches routing or authentication.
 
-**Secrets.** Use pipeline secret variables where you can. Never edit a secret's value in place. Create a new secret with a new name, reference it, deploy, then remove the old one. Secrets aren't interpolated inside strings, so `"Bearer ${{TOKEN}}"` won't work. Store the whole header value as the secret.
+**Secrets.** Use pipeline secret variables where you can. Never edit a secret's value in place. Create a new secret with a new name, reference it, deploy, then remove the old one. Secrets aren't interpolated inside strings, so {% raw %}`"Bearer ${{TOKEN}}"`{% endraw %} won't work. Store the whole header value as the secret.
 
 ## Decision guide
 
