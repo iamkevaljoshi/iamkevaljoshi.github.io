@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-label="Where images are optimised in an AEM estate. Sources: AEM Assets DAM masters, Edge Delivery documents, and images in code or CSS. Optimisation layers: asset microservices renditions, created once at upload in JPEG, PNG, GIF or WebP; web-optimised image delivery in Core Components, WebP by content negotiation from renditions up to 2048 pixels; Dynamic Media with Smart Imaging, AVIF or WebP, device pixel ratio and bandwidth optimisation and smart crop; Dynamic Media with OpenAPI capabilities, delivery URLs for approved assets to any front end; and the Edge Delivery Services media pipeline with createOptimizedPicture, WebP at 750 and 2000 pixels. Images in code and CSS bypass every layer and must be optimised before commit. All paths reach the CDN and then the browser, where markup decides priority.">
+<defs>
+  <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .red{fill:#FEF2F2;stroke:#DC2626;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .warn{font-size:12.5px;font-weight:700;fill:#B91C1C}
+</style>
+<rect width="1200" height="660" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Where images get optimised on AEM</text>
+<text class="sub" x="30" y="72">Five layers, each with a different job. Images in code bypass all of them.</text>
+
+<text class="lbl" x="30" y="108">SOURCE</text>
+<rect class="navy" x="24" y="120" width="210" height="96" rx="12"/>
+<text class="t" x="40" y="148">AEM Assets (DAM)</text>
+<text class="s" x="40" y="172">High-quality masters,</text>
+<text class="s" x="40" y="190">metadata, approval</text>
+
+<rect class="navy" x="24" y="300" width="210" height="96" rx="12"/>
+<text class="t" x="40" y="328">EDS documents / UE</text>
+<text class="s" x="40" y="352">Images added by authors</text>
+<text class="s" x="40" y="370">to pages</text>
+
+<rect class="red" x="24" y="480" width="210" height="96" rx="12"/>
+<text class="t" x="40" y="508">Code and CSS</text>
+<text class="s" x="40" y="532">Backgrounds, icons, logos</text>
+<text class="s" x="40" y="550">in clientlibs or blocks</text>
+
+<text class="lbl" x="290" y="108">OPTIMISATION LAYER</text>
+<rect class="blue" x="284" y="120" width="420" height="62" rx="10"/>
+<text class="t" x="300" y="145">Asset microservices renditions</text>
+<text class="s" x="300" y="166">Fixed sizes at upload · JPEG, PNG, GIF, WebP</text>
+
+<rect class="blue" x="284" y="192" width="420" height="62" rx="10"/>
+<text class="t" x="300" y="217">Web-optimised image delivery</text>
+<text class="s" x="300" y="238">Core Components checkbox · WebP · renditions ≤ 2048 px</text>
+
+<rect class="violet" x="284" y="264" width="420" height="62" rx="10"/>
+<text class="t" x="300" y="289">Dynamic Media + Smart Imaging</text>
+<text class="s" x="300" y="310">AVIF / WebP · DPR · bandwidth · presets · smart crop</text>
+
+<rect class="violet" x="284" y="336" width="420" height="62" rx="10"/>
+<text class="t" x="300" y="361">Dynamic Media with OpenAPI</text>
+<text class="s" x="300" y="382">Approved assets · delivery URLs for any front end</text>
+
+<rect class="green" x="284" y="408" width="420" height="62" rx="10"/>
+<text class="t" x="300" y="433">EDS media pipeline</text>
+<text class="s" x="300" y="454">createOptimizedPicture · WebP · 750 / 2000 px</text>
+
+<rect x="284" y="500" width="420" height="62" rx="10" fill="#FFFFFF" stroke="#DC2626" stroke-width="2" stroke-dasharray="6 5"/>
+<text class="warn" x="300" y="525">No platform layer</text>
+<text class="s" x="300" y="546">Optimise before commit: image optimiser or build step</text>
+
+<path class="arr" d="M236 150H280" marker-end="url(#a1)"/>
+<path class="arr" d="M236 172C258 172 258 223 280 223" marker-end="url(#a1)"/>
+<path class="arr" d="M236 190C262 190 262 295 280 295" marker-end="url(#a1)"/>
+<path class="arr" d="M236 204C266 204 266 367 280 367" marker-end="url(#a1)"/>
+<path class="arr" d="M236 348C258 348 258 439 280 439" marker-end="url(#a1)"/>
+<path class="arr" d="M236 530H280" marker-end="url(#a1)"/>
+
+<text class="lbl" x="760" y="108">DELIVERY</text>
+<rect class="orange" x="754" y="120" width="190" height="442" rx="12"/>
+<text class="t" x="770" y="150">CDN</text>
+<text class="s" x="770" y="176">Adobe-managed or</text>
+<text class="s" x="770" y="194">your own in front</text>
+<text class="s" x="770" y="226">Caches each size</text>
+<text class="s" x="770" y="244">and format variant</text>
+<text class="s" x="770" y="276">Smart Imaging: TTL</text>
+<text class="s" x="770" y="294">≥ 24 h recommended</text>
+<text class="s" x="770" y="326">OpenAPI delivery:</text>
+<text class="s" x="770" y="344">10-minute TTL</text>
+<text class="s" x="770" y="376">EDS media: same</text>
+<text class="s" x="770" y="394">origin as the page</text>
+
+<path class="arr" d="M706 151H750" marker-end="url(#a1)"/>
+<path class="arr" d="M706 223H750" marker-end="url(#a1)"/>
+<path class="arr" d="M706 295H750" marker-end="url(#a1)"/>
+<path class="arr" d="M706 367H750" marker-end="url(#a1)"/>
+<path class="arr" d="M706 439H750" marker-end="url(#a1)"/>
+<path class="arr" d="M706 531H750" marker-end="url(#a1)"/>
+
+<text class="lbl" x="1000" y="108">BROWSER</text>
+<rect class="navy" x="994" y="120" width="182" height="442" rx="12"/>
+<text class="t" x="1010" y="150">Your markup</text>
+<text class="s" x="1010" y="176">decides priority:</text>
+<text class="s" x="1010" y="208">srcset + sizes</text>
+<text class="s" x="1010" y="232">width + height</text>
+<text class="s" x="1010" y="256">hero: never lazy</text>
+<text class="s" x="1010" y="280">one hero, not two</text>
+<text class="s" x="1010" y="304">rest: loading=lazy</text>
+<text class="s" x="1010" y="336">Measure: LCP element</text>
+<text class="s" x="1010" y="354">in CrUX or OpTel</text>
+<path class="arr" d="M946 340H990" marker-end="url(#a1)"/>
+
+<text class="sub" x="30" y="620">Licences differ: web-optimised delivery and EDS need none; Dynamic Media and its OpenAPI capabilities need a Dynamic Media licence.</text>
+</svg>

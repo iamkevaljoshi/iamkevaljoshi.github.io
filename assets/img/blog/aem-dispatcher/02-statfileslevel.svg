@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="How statfileslevel scopes invalidation. With statfileslevel 2, .stat files exist at the docroot, /content and /content/site; publishing /content/site/en/products/page touches /content/site/.stat, so every HTML file in the whole site, every language, is treated as stale. With statfileslevel 3, a .stat file also exists at /content/site/en, so only English HTML is treated as stale and other languages stay cached.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12.5px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#10182B}
+  .lv{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.06em}
+  .stale{fill:#FEF2F2;stroke:#DC2626;stroke-width:2}
+  .fresh{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .plain{fill:#FFFFFF;stroke:#C9D1E0;stroke-width:1.5}
+  .stat{fill:#F4B63F}
+  .pub{fill:#10182B}
+  .line{stroke:#94A3B8;stroke-width:1.5;fill:none}
+  .key{font-size:12.5px;fill:#10182B}
+</style>
+<rect width="1200" height="560" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">statfileslevel decides how much HTML one publish makes stale</text>
+<text class="sub" x="30" y="72">Example: an author publishes /content/site/en/products/page. Gold dots are .stat files; red boxes are HTML treated as stale.</text>
+
+<!-- left: level 2 -->
+<text class="t" x="40" y="114">/statfileslevel "2" (archetype default)</text>
+<g transform="translate(40,130)">
+  <text class="lv" x="0" y="22">L0</text><rect class="plain" x="40" y="4" width="160" height="30" rx="7"/><text class="m" x="52" y="24">/ (docroot)</text><circle class="stat" cx="186" cy="19" r="6"/>
+  <text class="lv" x="0" y="72">L1</text><rect class="plain" x="70" y="54" width="160" height="30" rx="7"/><text class="m" x="82" y="74">/content</text><circle class="stat" cx="216" cy="69" r="6"/>
+  <text class="lv" x="0" y="122">L2</text><rect class="stale" x="100" y="104" width="190" height="30" rx="7"/><text class="m" x="112" y="124">/content/site</text><circle class="stat" cx="276" cy="119" r="6"/>
+  <text class="lv" x="0" y="172">L3</text>
+  <rect class="stale" x="130" y="154" width="120" height="30" rx="7"/><text class="m" x="142" y="174">…/en</text>
+  <rect class="stale" x="270" y="154" width="120" height="30" rx="7"/><text class="m" x="282" y="174">…/de</text>
+  <rect class="stale" x="410" y="154" width="120" height="30" rx="7"/><text class="m" x="422" y="174">…/fr</text>
+  <text class="lv" x="0" y="222">L4</text>
+  <rect class="stale" x="160" y="204" width="150" height="30" rx="7"/><text class="m" x="172" y="224">…/en/products</text><rect class="pub" x="290" y="213" width="12" height="12" rx="2"/>
+  <rect class="stale" x="330" y="204" width="130" height="30" rx="7"/><text class="m" x="342" y="224">…/de/…</text>
+  <path class="line" d="M60 34V54M90 84V104M120 134V154M150 134 V140H330V154M150 140H470V154M160 184V204M330 184V204"/>
+  <rect class="pub" x="160" y="250" width="12" height="12" rx="2"/><text class="s" x="180" y="261">published page</text>
+</g>
+<text class="s" x="40" y="430">Touches <tspan font-weight="700">/content/site/.stat</tspan>: every language's HTML</text>
+<text class="s" x="40" y="450">is re-rendered on its next request. Simple, safe,</text>
+<text class="s" x="40" y="470">but heavy for big multi-language sites.</text>
+
+<!-- right: level 3 -->
+<text class="t" x="620" y="114">/statfileslevel "3"</text>
+<g transform="translate(620,130)">
+  <text class="lv" x="0" y="22">L0</text><rect class="plain" x="40" y="4" width="160" height="30" rx="7"/><text class="m" x="52" y="24">/ (docroot)</text><circle class="stat" cx="186" cy="19" r="6"/>
+  <text class="lv" x="0" y="72">L1</text><rect class="plain" x="70" y="54" width="160" height="30" rx="7"/><text class="m" x="82" y="74">/content</text><circle class="stat" cx="216" cy="69" r="6"/>
+  <text class="lv" x="0" y="122">L2</text><rect class="plain" x="100" y="104" width="190" height="30" rx="7"/><text class="m" x="112" y="124">/content/site</text><circle class="stat" cx="276" cy="119" r="6"/>
+  <text class="lv" x="0" y="172">L3</text>
+  <rect class="stale" x="130" y="154" width="120" height="30" rx="7"/><text class="m" x="142" y="174">…/en</text><circle class="stat" cx="236" cy="169" r="6"/>
+  <rect class="fresh" x="270" y="154" width="120" height="30" rx="7"/><text class="m" x="282" y="174">…/de</text><circle class="stat" cx="376" cy="169" r="6"/>
+  <rect class="fresh" x="410" y="154" width="120" height="30" rx="7"/><text class="m" x="422" y="174">…/fr</text><circle class="stat" cx="516" cy="169" r="6"/>
+  <text class="lv" x="0" y="222">L4</text>
+  <rect class="stale" x="160" y="204" width="150" height="30" rx="7"/><text class="m" x="172" y="224">…/en/products</text><rect class="pub" x="290" y="213" width="12" height="12" rx="2"/>
+  <rect class="fresh" x="330" y="204" width="130" height="30" rx="7"/><text class="m" x="342" y="224">…/de/…</text>
+  <path class="line" d="M60 34V54M90 84V104M120 134V154M150 134 V140H330V154M150 140H470V154M160 184V204M330 184V204"/>
+</g>
+<text class="s" x="620" y="430">Touches <tspan font-weight="700">/content/site/en/.stat</tspan>: only English HTML</text>
+<text class="s" x="620" y="450">is stale. German and French stay cached. Right for</text>
+<text class="s" x="620" y="470">/content/&lt;site&gt;/&lt;language&gt; structures.</text>
+
+<rect x="40" y="496" width="1120" height="44" rx="10" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="key" x="60" y="523">Only files matching /invalidate (by default *.html) are auto-invalidated by .stat. Other files are removed only when their own path is published, or expire by TTL.</text>
+</svg>

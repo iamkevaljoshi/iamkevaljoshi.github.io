@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="AI readiness ladder for AEM with four levels. Level 1, foundations: AEM as a Cloud Service, clean asset approvals and rights, written brand rules, baselines. Level 2, assist: AI drafts and humans decide, pilots are AI metadata, Generate Variations with experiments and developer tooling. Level 3, automate with review: AI changes content and code through approval steps, pilots are Sites Optimizer fixes, content update jobs and pipeline troubleshooting. Level 4, agentic workflows: agents act across products within governed limits, watch Coworker and prompt-to-page. Most organisations are between levels 1 and 2.">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker></defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:17px;font-weight:700;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .s{font-size:12.5px;fill:#10182B}
+  .b{font-size:12.5px;font-weight:700;fill:#10182B}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2;stroke-dasharray:6 4}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .note{font-size:13px;font-weight:700;fill:#B45309}
+</style>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">AI readiness ladder for AEM</text>
+<text class="sub" x="30" y="72">Climb in order. Each level depends on the one below; skipping foundations is how pilots fail.</text>
+
+<rect class="navy" x="24" y="380" width="270" height="170" rx="12"/>
+<text class="lbl" x="42" y="406">LEVEL 1</text><text class="t" x="42" y="430">Foundations</text>
+<text class="s" x="42" y="456">AEM as a Cloud Service or EDS</text>
+<text class="s" x="42" y="476">Asset approvals and rights data</text>
+<text class="s" x="42" y="496">Brand rules written down</text>
+<text class="s" x="42" y="516">Baselines and an AI policy</text>
+
+<rect class="blue" x="318" y="290" width="270" height="260" rx="12"/>
+<text class="lbl" x="336" y="316">LEVEL 2</text><text class="t" x="336" y="340">Assist</text>
+<text class="s" x="336" y="364">AI drafts, people decide.</text>
+<text class="b" x="336" y="396">Pilot:</text>
+<text class="s" x="336" y="418">AI metadata in Assets</text>
+<text class="s" x="336" y="438">Generate Variations + tests</text>
+<text class="s" x="336" y="458">AGENTS.md, skills, MCP</text>
+<text class="s" x="336" y="478">LLM Optimizer baseline</text>
+
+<rect class="green" x="612" y="200" width="270" height="350" rx="12"/>
+<text class="lbl" x="630" y="226">LEVEL 3</text><text class="t" x="630" y="250">Automate with review</text>
+<text class="s" x="630" y="274">AI changes content and code;</text>
+<text class="s" x="630" y="292">approval steps stay in place.</text>
+<text class="b" x="630" y="324">Pilot:</text>
+<text class="s" x="630" y="346">Sites Optimizer fixes via PRs</text>
+<text class="s" x="630" y="366">Content Update jobs</text>
+<text class="s" x="630" y="386">Pipeline troubleshooting</text>
+<text class="s" x="630" y="406">Permission audits</text>
+
+<rect class="violet" x="906" y="110" width="270" height="440" rx="12"/>
+<text class="lbl" x="924" y="136">LEVEL 4</text><text class="t" x="924" y="160">Agentic workflows</text>
+<text class="s" x="924" y="184">Agents act across products</text>
+<text class="s" x="924" y="202">within governed limits.</text>
+<text class="b" x="924" y="234">Watch, don't depend on:</text>
+<text class="s" x="924" y="256">CX Enterprise Coworker</text>
+<text class="s" x="924" y="276">Prompt-to-page at scale</text>
+<text class="s" x="924" y="296">LLM Apps</text>
+
+<path class="arr" d="M296 410H314" marker-end="url(#ar)"/>
+<path class="arr" d="M590 330H608" marker-end="url(#ar)"/>
+<path class="arr" d="M884 250H902" marker-end="url(#ar)"/>
+<text class="note" x="30" y="580">Most organisations I work with are between levels 1 and 2. The valuable jump is to a governed, measured level 3.</text>
+</svg>

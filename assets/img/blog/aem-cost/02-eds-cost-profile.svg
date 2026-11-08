@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="How Edge Delivery Services changes the cost profile compared with traditional AEM as a Cloud Service. Licence stays about the same because Edge Delivery Services is part of AEM Sites. Build, run team, infrastructure and operations, and performance work are typically lower. Authoring and training can be lower with document-based authoring. Fit matters: complex server-side logic can push costs back up. Bar lengths are illustrative.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .row{font-size:15px;font-weight:700;fill:#10182B}
+  .m{font-size:12.5px;fill:#5B6478}
+  .lg{font-size:13px;font-weight:600;fill:#10182B}
+  .tag{font-size:12px;font-weight:700}
+</style>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">How Edge Delivery Services changes the cost profile</text>
+<text class="sub" x="30" y="72">Same licence family; different build and run. Bar lengths are illustrative, not measured.</text>
+
+<rect x="30" y="92" width="16" height="16" rx="4" fill="#2563EB"/><text class="lg" x="54" y="105">Traditional AEMaaCS</text>
+<rect x="230" y="92" width="16" height="16" rx="4" fill="#059669"/><text class="lg" x="254" y="105">Edge Delivery Services</text>
+
+<!-- rows: label x=30, bars start x=330, max 520 -->
+<g>
+<text class="row" x="30" y="150">Licence</text><text class="m" x="30" y="168">EDS is part of AEM Sites</text>
+<rect x="330" y="134" width="420" height="14" rx="7" fill="#2563EB"/><rect x="330" y="152" width="410" height="14" rx="7" fill="#059669"/>
+<text class="tag" x="790" y="162" fill="#5B6478">≈ similar</text>
+</g>
+<g>
+<text class="row" x="30" y="220">Build</text><text class="m" x="30" y="238">Blocks vs Java, HTL, Dispatcher</text>
+<rect x="330" y="204" width="500" height="14" rx="7" fill="#2563EB"/><rect x="330" y="222" width="320" height="14" rx="7" fill="#059669"/>
+<text class="tag" x="870" y="232" fill="#047857">lower</text>
+</g>
+<g>
+<text class="row" x="30" y="290">Run team</text><text class="m" x="30" y="308">Mostly front-end skills</text>
+<rect x="330" y="274" width="460" height="14" rx="7" fill="#2563EB"/><rect x="330" y="292" width="300" height="14" rx="7" fill="#059669"/>
+<text class="tag" x="830" y="302" fill="#047857">lower</text>
+</g>
+<g>
+<text class="row" x="30" y="360">Infrastructure and ops</text><text class="m" x="30" y="378">No publish tier or Dispatcher to tune</text>
+<rect x="330" y="344" width="300" height="14" rx="7" fill="#2563EB"/><rect x="330" y="362" width="140" height="14" rx="7" fill="#059669"/>
+<text class="tag" x="670" y="372" fill="#047857">lower</text>
+</g>
+<g>
+<text class="row" x="30" y="430">Performance work</text><text class="m" x="30" y="448">Fast by default</text>
+<rect x="330" y="414" width="260" height="14" rx="7" fill="#2563EB"/><rect x="330" y="432" width="90" height="14" rx="7" fill="#059669"/>
+<text class="tag" x="630" y="442" fill="#047857">lower</text>
+</g>
+<g>
+<text class="row" x="30" y="500">Authoring and training</text><text class="m" x="30" y="518">Docs or Universal Editor</text>
+<rect x="330" y="484" width="280" height="14" rx="7" fill="#2563EB"/><rect x="330" y="502" width="220" height="14" rx="7" fill="#059669"/>
+<text class="tag" x="650" y="512" fill="#5B6478">often lower</text>
+</g>
+
+<rect x="930" y="124" width="240" height="210" rx="12" fill="#FFF4EC" stroke="#EA580C" stroke-width="2"/>
+<text class="row" x="950" y="154">The caveat: fit</text>
+<text class="m" x="950" y="182">Complex server-side logic,</text>
+<text class="m" x="950" y="200">deep personalisation or AEM</text>
+<text class="m" x="950" y="218">features EDS doesn't support</text>
+<text class="m" x="950" y="236">push cost back into custom</text>
+<text class="m" x="950" y="254">workarounds.</text>
+<text class="m" x="950" y="286">Decide per site, not per</text>
+<text class="m" x="950" y="304">organisation.</text>
+</svg>

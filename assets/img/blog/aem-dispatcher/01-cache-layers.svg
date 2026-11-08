@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Three caches in front of AEM publish. The browser caches by Cache-Control. The Adobe-managed CDN caches by Surrogate-Control or Cache-Control from the origin and is not purged when you publish. Dispatcher caches files on disk, is invalidated by publish through .stat files, and expires files by TTL when enableTTL is on. When an author publishes, content is distributed to every publish instance, each of which flushes its own Dispatcher; the CDN copy remains until its TTL expires or it is purged.">
+<defs>
+  <marker id="d1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .pub{stroke:#059669;stroke-width:2.5;fill:none;stroke-dasharray:7 5}
+  .warn{font-size:12.5px;font-weight:700;fill:#B45309}
+</style>
+<rect width="1200" height="640" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Three caches stand in front of AEM publish</text>
+<text class="sub" x="30" y="72">Publishing clears Dispatcher. It does not clear the CDN or the browser: their TTLs decide how fast changes appear.</text>
+
+<!-- request path -->
+<text class="lbl" x="30" y="112">REQUEST PATH</text>
+<rect class="navy" x="24" y="124" width="200" height="190" rx="12"/>
+<text class="t" x="40" y="152">Browser</text>
+<text class="s" x="40" y="180">Caches by</text>
+<text class="m" x="40" y="200">Cache-Control</text>
+<text class="s" x="40" y="230">Default HTML: 5 min</text>
+<text class="s" x="40" y="250">Clientlibs: immutable,</text>
+<text class="s" x="40" y="268">30 days</text>
+
+<rect class="blue" x="262" y="124" width="250" height="190" rx="12"/>
+<text class="t" x="278" y="152">Adobe CDN (Fastly)</text>
+<text class="s" x="278" y="180">Caches by</text>
+<text class="m" x="278" y="200">Surrogate-Control</text>
+<text class="s" x="278" y="218">or Cache-Control / Expires</text>
+<text class="s" x="278" y="246">Won't cache private, no-store,</text>
+<text class="s" x="278" y="264">no-cache or Set-Cookie</text>
+<text class="warn" x="278" y="294">Not purged on publish</text>
+
+<rect class="orange" x="550" y="124" width="280" height="190" rx="12"/>
+<text class="t" x="566" y="152">Apache + Dispatcher</text>
+<text class="s" x="566" y="180">Files on disk, per publish pod</text>
+<text class="s" x="566" y="204">Sets the headers the CDN and</text>
+<text class="s" x="566" y="222">browser obey (mod_headers)</text>
+<text class="s" x="566" y="250">Invalidated by .stat files</text>
+<text class="m" x="566" y="270">/statfileslevel "2"</text>
+<text class="m" x="566" y="290">/enableTTL "1"</text>
+
+<rect class="green" x="868" y="124" width="308" height="190" rx="12"/>
+<text class="t" x="884" y="152">AEM publish</text>
+<text class="s" x="884" y="180">Renders pages, JSON, renditions</text>
+<text class="s" x="884" y="204">Blobs over 16 KB: 302 to blob</text>
+<text class="s" x="884" y="222">storage, followed by the CDN</text>
+<text class="s" x="884" y="250">Receives content from author</text>
+<text class="s" x="884" y="268">and flushes its own Dispatcher</text>
+
+<path class="arr" d="M226 219H258" marker-end="url(#d1)"/>
+<path class="arr" d="M514 219H546" marker-end="url(#d1)"/>
+<path class="arr" d="M832 219H864" marker-end="url(#d1)"/>
+
+<!-- publish path -->
+<text class="lbl" x="30" y="370">WHAT HAPPENS WHEN AN AUTHOR PUBLISHES</text>
+<rect class="violet" x="868" y="386" width="308" height="96" rx="12"/>
+<text class="t" x="884" y="414">1 · Author publishes</text>
+<text class="s" x="884" y="440">Sling Content Distribution</text>
+<text class="s" x="884" y="458">sends it to every publish</text>
+
+<rect class="orange" x="550" y="386" width="280" height="96" rx="12"/>
+<text class="t" x="566" y="414">2 · Dispatcher flushed</text>
+<text class="s" x="566" y="440">Path removed; .stat touched</text>
+<text class="s" x="566" y="458">up to statfileslevel</text>
+
+<rect class="blue" x="262" y="386" width="250" height="96" rx="12"/>
+<text class="t" x="278" y="414">3 · CDN still has it</text>
+<text class="s" x="278" y="440">Until its TTL ends, or a</text>
+<text class="s" x="278" y="458">purge via the purge API</text>
+
+<rect class="navy" x="24" y="386" width="200" height="96" rx="12"/>
+<text class="t" x="40" y="414">4 · Browser</text>
+<text class="s" x="40" y="440">Until its own</text>
+<text class="s" x="40" y="458">max-age ends</text>
+
+<path class="pub" d="M866 434H834" marker-end="url(#d1)"/>
+<path class="pub" d="M548 434H516" marker-end="url(#d1)"/>
+<path class="pub" d="M260 434H228" marker-end="url(#d1)"/>
+
+<rect x="24" y="512" width="1152" height="96" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="540">DESIGN RULE</text>
+<text class="s" x="44" y="566">Short CDN TTL with stale-while-revalidate for HTML (fresh within minutes, fast always), long immutable caching for versioned</text>
+<text class="s" x="44" y="586">clientlibs and image URLs, private for anything personalised. Purge the CDN only for emergencies, not as part of every publish.</text>
+</svg>

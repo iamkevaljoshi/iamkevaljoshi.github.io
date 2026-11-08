@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="AEM go-live cutover timeline from fourteen days before to fourteen days after launch. T-14: release candidate tagged, code freeze, load test. T-10: user acceptance testing on a production-like subdomain. T-7: content freeze, release deployed to production, security and accessibility sign-off. T-3: DNS TTLs lowered, cutover and rollback rehearsed. T-1: final content top-up and go/no-go meeting. T-0: DNS or CDN switch with no new deployments, smoke tests, sitemap submitted. T+3: hypercare daily checks, content freeze lifted when stable. T+14: hypercare review, TTLs raised, lessons learnt.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .band{font-size:12px;font-weight:700;letter-spacing:.06em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .stem{stroke:#94A3B8;stroke-width:1.5;stroke-dasharray:4 4}
+</style>
+<rect width="1200" height="560" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The cutover timeline</text>
+<text class="sub" x="30" y="72">Freeze and rehearse before, change nothing on the day, watch closely after.</text>
+
+<!-- axis and phase bands -->
+<line x1="60" y1="284" x2="1140" y2="284" stroke="#10182B" stroke-width="2"/>
+<rect x="60" y="296" width="484" height="26" rx="13" fill="#DBE6FF"/>
+<text class="band" x="76" y="313" fill="#1E3A8A">FREEZE, REHEARSE, VERIFY</text>
+<rect x="550" y="296" width="100" height="26" rx="13" fill="#FFD9BF"/>
+<text class="band" x="600" y="313" fill="#9A3412" text-anchor="middle">CUTOVER</text>
+<rect x="656" y="296" width="484" height="26" rx="13" fill="#CFF3E2"/>
+<text class="band" x="672" y="313" fill="#065F46">HYPERCARE</text>
+
+<!-- stems -->
+<line class="stem" x1="60" y1="250" x2="60" y2="284"/>
+<line class="stem" x1="214" y1="324" x2="214" y2="340"/>
+<line class="stem" x1="330" y1="250" x2="330" y2="284"/>
+<line class="stem" x1="484" y1="324" x2="484" y2="340"/>
+<line class="stem" x1="561" y1="250" x2="561" y2="284"/>
+<line class="stem" x1="600" y1="324" x2="600" y2="340"/>
+<line class="stem" x1="716" y1="250" x2="716" y2="284"/>
+<line class="stem" x1="1140" y1="324" x2="1140" y2="340"/>
+
+<!-- dots -->
+<g fill="#10182B">
+  <circle cx="60" cy="284" r="5"/><circle cx="214" cy="284" r="5"/><circle cx="330" cy="284" r="5"/><circle cx="484" cy="284" r="5"/>
+  <circle cx="561" cy="284" r="5"/><circle cx="716" cy="284" r="5"/><circle cx="1140" cy="284" r="5"/>
+</g>
+<circle cx="600" cy="284" r="9" fill="#EA580C" stroke="#fff" stroke-width="3"/>
+
+<!-- above: T-14, T-7, T-1, T+3 -->
+<rect class="blue" x="32" y="104" width="172" height="146" rx="12"/>
+<text class="lbl" x="48" y="128">T-14 DAYS</text>
+<text class="t" x="48" y="152">Code freeze</text>
+<text class="s" x="48" y="178">Release candidate</text>
+<text class="s" x="48" y="196">tagged. Blockers only.</text>
+<text class="s" x="48" y="222">Load test on stage.</text>
+
+<rect class="blue" x="248" y="104" width="172" height="146" rx="12"/>
+<text class="lbl" x="264" y="128">T-7 DAYS</text>
+<text class="t" x="264" y="152">Content freeze</text>
+<text class="s" x="264" y="178">Release deployed to</text>
+<text class="s" x="264" y="196">production, not live.</text>
+<text class="s" x="264" y="222">Security and a11y OK.</text>
+
+<rect class="violet" x="440" y="104" width="172" height="146" rx="12"/>
+<text class="lbl" x="456" y="128">T-1 DAY</text>
+<text class="t" x="456" y="152">Go / no-go</text>
+<text class="s" x="456" y="178">Final content top-up</text>
+<text class="s" x="456" y="196">and verification.</text>
+<text class="s" x="456" y="222">Decide on evidence.</text>
+
+<rect class="green" x="632" y="104" width="172" height="146" rx="12"/>
+<text class="lbl" x="648" y="128">T+1 TO T+3</text>
+<text class="t" x="648" y="152">Hypercare</text>
+<text class="s" x="648" y="178">Errors, 404s, tags,</text>
+<text class="s" x="648" y="196">conversions: daily.</text>
+<text class="s" x="648" y="222">Lift freeze when calm.</text>
+
+<!-- below: T-10, T-3, T-0, T+14 -->
+<rect class="blue" x="128" y="340" width="172" height="146" rx="12"/>
+<text class="lbl" x="144" y="364">T-10 DAYS</text>
+<text class="t" x="144" y="388">UAT rehearsal</text>
+<text class="s" x="144" y="414">Redirects, caching,</text>
+<text class="s" x="144" y="432">forms, integrations,</text>
+<text class="s" x="144" y="450">tags and consent.</text>
+
+<rect class="blue" x="320" y="340" width="172" height="146" rx="12"/>
+<text class="lbl" x="336" y="364">T-3 DAYS</text>
+<text class="t" x="336" y="388">Lower DNS TTLs</text>
+<text class="s" x="336" y="414">To about 300 seconds.</text>
+<text class="s" x="336" y="432">Rehearse cutover</text>
+<text class="s" x="336" y="450">and rollback.</text>
+
+<rect class="orange" x="512" y="340" width="176" height="146" rx="12"/>
+<text class="lbl" x="528" y="364">T-0 · LAUNCH</text>
+<text class="t" x="528" y="388">Switch DNS or CDN</text>
+<text class="s" x="528" y="414">No new deployments,</text>
+<text class="s" x="528" y="432">no content changes.</text>
+<text class="s" x="528" y="450">Smoke test, sitemap.</text>
+
+<rect class="navy" x="968" y="340" width="200" height="146" rx="12"/>
+<text class="lbl" x="984" y="364">T+14 DAYS</text>
+<text class="t" x="984" y="388">Hypercare review</text>
+<text class="s" x="984" y="414">Raise TTLs again.</text>
+<text class="s" x="984" y="432">Write down lessons;</text>
+<text class="s" x="984" y="450">update the checklist.</text>
+
+<text class="sub" x="30" y="530">There's no rollback button in Cloud Manager: keep the previous release tag and the old platform ready until T+14.</text>
+</svg>

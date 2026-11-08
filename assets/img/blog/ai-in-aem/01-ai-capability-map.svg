@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-label="Map of AI capabilities in AEM in November 2026 across six stages. Create: Generate Variations usable, Experience Production Agent conditional, Content Create limited availability, AI translation usable. Assets: smart tags and AI-generated metadata usable, Content Advisor discovery and Content Optimization conditional, Content Hub with Firefly usable with entitlements. Govern: Governance Agent conditional. Optimise: Sites Optimizer usable with early access parts. Be found by AI: LLM Optimizer usable, Brand Visibility and LLM Apps announced. Build and run: local AI tools usable, Development Agent and Experience Modernization Agent conditional, CX Enterprise Coworker announced.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:14.5px;font-weight:700;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .s{font-size:12.5px;fill:#10182B}
+  .col{fill:#FFFFFF;stroke:#C9D1E0;stroke-width:1.5}
+  .u{fill:#ECFDF5;stroke:#059669;stroke-width:1.5}
+  .c{fill:#FFF4EC;stroke:#EA580C;stroke-width:1.5}
+  .a{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:1.5;stroke-dasharray:5 4}
+  .lg{font-size:12.5px;fill:#10182B}
+</style>
+<rect width="1200" height="660" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">AI in AEM, November 2026: what exists, and in what state</text>
+<text class="sub" x="30" y="72">Based on Adobe documentation and announcements. Statuses change monthly: check before you budget.</text>
+
+<!-- columns -->
+<rect class="col" x="24" y="96" width="184" height="470" rx="12"/><text class="lbl" x="38" y="122">1 · CREATE</text>
+<rect class="col" x="220" y="96" width="184" height="470" rx="12"/><text class="lbl" x="234" y="122">2 · ASSETS</text>
+<rect class="col" x="416" y="96" width="184" height="470" rx="12"/><text class="lbl" x="430" y="122">3 · GOVERN</text>
+<rect class="col" x="612" y="96" width="184" height="470" rx="12"/><text class="lbl" x="626" y="122">4 · OPTIMISE</text>
+<rect class="col" x="808" y="96" width="184" height="470" rx="12"/><text class="lbl" x="822" y="122">5 · BE FOUND BY AI</text>
+<rect class="col" x="1004" y="96" width="172" height="470" rx="12"/><text class="lbl" x="1018" y="122">6 · BUILD AND RUN</text>
+
+<!-- create -->
+<rect class="u" x="36" y="138" width="160" height="62" rx="9"/><text class="t" x="48" y="162">Generate</text><text class="t" x="48" y="181">Variations</text>
+<rect class="c" x="36" y="210" width="160" height="62" rx="9"/><text class="t" x="48" y="234">Experience</text><text class="t" x="48" y="253">Production Agent</text>
+<rect class="c" x="36" y="282" width="160" height="62" rx="9"/><text class="t" x="48" y="306">Content Create</text><text class="s" x="48" y="326">limited availability</text>
+<rect class="u" x="36" y="354" width="160" height="62" rx="9"/><text class="t" x="48" y="378">AI translation</text><text class="s" x="48" y="398">Azure OpenAI</text>
+
+<!-- assets -->
+<rect class="u" x="232" y="138" width="160" height="62" rx="9"/><text class="t" x="244" y="162">Smart tags +</text><text class="t" x="244" y="181">AI metadata</text>
+<rect class="c" x="232" y="210" width="160" height="62" rx="9"/><text class="t" x="244" y="234">Content Advisor</text><text class="s" x="244" y="254">discovery</text>
+<rect class="c" x="232" y="282" width="160" height="62" rx="9"/><text class="t" x="244" y="306">Content</text><text class="t" x="244" y="325">Optimization</text>
+<rect class="u" x="232" y="354" width="160" height="62" rx="9"/><text class="t" x="244" y="378">Content Hub</text><text class="s" x="244" y="398">with Firefly</text>
+
+<!-- govern -->
+<rect class="c" x="428" y="138" width="160" height="62" rx="9"/><text class="t" x="440" y="162">Governance</text><text class="t" x="440" y="181">Agent</text>
+<text class="s" x="428" y="228">Brand validation,</text>
+<text class="s" x="428" y="246">permission audits.</text>
+<text class="s" x="428" y="276">Works only as well</text>
+<text class="s" x="428" y="294">as your written brand</text>
+<text class="s" x="428" y="312">rules and approval</text>
+<text class="s" x="428" y="330">metadata.</text>
+
+<!-- optimise -->
+<rect class="u" x="624" y="138" width="160" height="62" rx="9"/><text class="t" x="636" y="162">Sites Optimizer</text><text class="s" x="636" y="182">parts in early access</text>
+<rect class="u" x="624" y="210" width="160" height="62" rx="9"/><text class="t" x="636" y="234">Site Health</text><text class="t" x="636" y="253">Monitor (GA)</text>
+<rect class="u" x="624" y="282" width="160" height="62" rx="9"/><text class="t" x="636" y="306">Preflight in</text><text class="t" x="636" y="325">the editors</text>
+
+<!-- found by ai -->
+<rect class="u" x="820" y="138" width="160" height="62" rx="9"/><text class="t" x="832" y="162">LLM Optimizer</text><text class="s" x="832" y="182">GA since Oct 2025</text>
+<rect class="a" x="820" y="210" width="160" height="62" rx="9"/><text class="t" x="832" y="234">Brand Visibility</text><text class="s" x="832" y="254">announced Jun 2026</text>
+<rect class="a" x="820" y="282" width="160" height="62" rx="9"/><text class="t" x="832" y="306">LLM Apps</text><text class="s" x="832" y="326">"will enable"</text>
+
+<!-- build and run -->
+<rect class="u" x="1014" y="138" width="152" height="62" rx="9"/><text class="t" x="1026" y="162">AGENTS.md,</text><text class="s" x="1026" y="182">skills, MCP servers</text>
+<rect class="c" x="1014" y="210" width="152" height="62" rx="9"/><text class="t" x="1026" y="234">Development</text><text class="t" x="1026" y="253">Agent</text>
+<rect class="c" x="1014" y="282" width="152" height="62" rx="9"/><text class="t" x="1026" y="306">Modernization</text><text class="t" x="1026" y="325">Agent</text>
+<rect class="a" x="1014" y="354" width="152" height="62" rx="9"/><text class="t" x="1026" y="378">CX Enterprise</text><text class="t" x="1026" y="397">Coworker</text>
+
+<!-- legend -->
+<rect class="u" x="30" y="590" width="22" height="16" rx="4"/><text class="lg" x="60" y="603">Usable: documented, licence permitting</text>
+<rect class="c" x="520" y="590" width="22" height="16" rx="4"/><text class="lg" x="550" y="603">Conditional: Agentic SKU, phased trial, limited or early access</text>
+<rect class="a" x="30" y="620" width="22" height="16" rx="4"/><text class="lg" x="60" y="633">Announced: no general availability date</text>
+<text class="lg" x="520" y="633">Agents need AEM as a Cloud Service or Edge Delivery Services</text>
+</svg>

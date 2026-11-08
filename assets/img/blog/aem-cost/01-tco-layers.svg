@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Illustrative three-year cost of an AEM program as stacked layers. Above the waterline is the licence, which most business cases focus on. Below it are build, migration, the run team, and hidden costs such as content migration, integrations, training, content request overage and a second CDN. Proportions are illustrative, not a benchmark.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:17px;font-weight:700;fill:#10182B}
+  .s{font-size:13px;fill:#10182B}
+  .m{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .w{font-size:12px;font-weight:700;fill:#2563EB;letter-spacing:.06em}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .red{fill:#FEF2F2;stroke:#DC2626;stroke-width:2}
+</style>
+<rect width="1200" height="620" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Where the money goes over three years</text>
+<text class="sub" x="30" y="72">The licence is the part everyone sees. Proportions below are illustrative, not a benchmark.</text>
+
+<!-- waterline -->
+<line x1="30" y1="200" x2="1170" y2="200" stroke="#2563EB" stroke-width="2" stroke-dasharray="8 6"/>
+<text class="w" x="900" y="192">WHAT MOST BUSINESS CASES SEE</text>
+<text class="w" x="900" y="222">WHAT THEY OFTEN MISS</text>
+
+<rect class="blue" x="250" y="100" width="560" height="90" rx="12"/>
+<text class="lbl" x="272" y="128">LICENCE</text>
+<text class="t" x="272" y="152">AEM Sites (content requests) + add-ons</text>
+<text class="m" x="272" y="174">Assets, Dynamic Media, Forms, Extended Security, environments</text>
+
+<rect class="green" x="200" y="236" width="660" height="78" rx="12"/>
+<text class="lbl" x="222" y="262">BUILD</text>
+<text class="t" x="222" y="286">Components or blocks, templates, integrations, testing</text>
+<text class="m" x="222" y="304">Usually the biggest single number in year one</text>
+
+<rect class="violet" x="170" y="326" width="720" height="70" rx="12"/>
+<text class="lbl" x="192" y="352">MIGRATION</text>
+<text class="t" x="192" y="376">Code refactoring, content transfer, parallel running</text>
+
+<rect class="orange" x="140" y="408" width="780" height="78" rx="12"/>
+<text class="lbl" x="162" y="434">RUN TEAM</text>
+<text class="t" x="162" y="458">Product owner, developers, QA, DevOps, support, monitoring</text>
+<text class="m" x="162" y="476">Continuous regression replaces upgrade projects; the team doesn't disappear</text>
+
+<rect class="red" x="110" y="498" width="840" height="86" rx="12"/>
+<text class="lbl" x="132" y="524">HIDDEN COSTS</text>
+<text class="s" x="132" y="548">Content migration and clean-up · integrations nobody listed · authoring training</text>
+<text class="s" x="132" y="570">Content request overage · a second CDN · extra environments · multi-site governance</text>
+</svg>

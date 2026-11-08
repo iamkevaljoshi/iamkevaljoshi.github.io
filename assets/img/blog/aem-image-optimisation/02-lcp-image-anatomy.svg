@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="The four parts of Largest Contentful Paint for an image, with target shares from web.dev. Time to first byte, about 40 percent: fix with CDN caching and Dispatcher. Resource load delay, under 10 percent: put the image in the HTML, never lazy-load it, keep it out of CSS. Resource load duration, about 40 percent: right size, AVIF or WebP, sensible quality, same origin. Element render delay, under 10 percent: avoid render-blocking CSS and JavaScript and hidden containers. Good LCP is 2.5 seconds or less at the 75th percentile.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:700;fill:#10182B}
+  .pct{font-size:13px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .goal{stroke:#059669;stroke-width:2;stroke-dasharray:6 5}
+  .g{font-size:12.5px;font-weight:700;fill:#047857}
+</style>
+<rect width="1200" height="520" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Anatomy of an LCP image</text>
+<text class="sub" x="30" y="72">The four parts of Largest Contentful Paint, with web.dev's target shares. Images affect three of them.</text>
+
+<text class="lbl" x="30" y="112">TIMELINE</text>
+<rect class="navy" x="30" y="124" width="418" height="56" rx="8"/>
+<text class="t" x="44" y="149">Time to first byte</text>
+<text class="pct" x="44" y="170">≈ 40%</text>
+<rect class="orange" x="452" y="124" width="122" height="56" rx="8"/>
+<text class="t" x="466" y="149">Load delay</text>
+<text class="pct" x="466" y="170">&lt; 10%</text>
+<rect class="blue" x="578" y="124" width="440" height="56" rx="8"/>
+<text class="t" x="592" y="149">Resource load duration</text>
+<text class="pct" x="592" y="170">≈ 40%</text>
+<rect class="violet" x="1022" y="124" width="148" height="56" rx="8"/>
+<text class="t" x="1034" y="149">Render delay</text>
+<text class="pct" x="1034" y="170">&lt; 10%</text>
+<line class="goal" x1="1170" y1="110" x2="1170" y2="200"/>
+<text class="g" x="1010" y="216">LCP ≤ 2.5 s at p75</text>
+
+<text class="lbl" x="30" y="258">WHAT FIXES EACH PART</text>
+<rect class="navy" x="30" y="270" width="270" height="200" rx="12"/>
+<text class="t" x="46" y="298">Time to first byte</text>
+<text class="s" x="46" y="324">Cache HTML at the CDN</text>
+<text class="s" x="46" y="344">Sensible Dispatcher TTLs</text>
+<text class="s" x="46" y="364">Not an image problem,</text>
+<text class="s" x="46" y="384">but it caps every gain</text>
+
+<rect class="orange" x="316" y="270" width="270" height="200" rx="12"/>
+<text class="t" x="332" y="298">Resource load delay</text>
+<text class="s" x="332" y="324">Image in the HTML</text>
+<text class="s" x="332" y="344">Never lazy-load the hero</text>
+<text class="s" x="332" y="364">Not in a CSS background</text>
+<text class="s" x="332" y="384">One hero, not two</text>
+<text class="s" x="332" y="404">fetchpriority on AEM Sites;</text>
+<text class="s" x="332" y="424">EDS eager phase instead</text>
+
+<rect class="blue" x="602" y="270" width="270" height="200" rx="12"/>
+<text class="t" x="618" y="298">Resource load duration</text>
+<text class="s" x="618" y="324">Right size: srcset + sizes</text>
+<text class="s" x="618" y="344">AVIF or WebP</text>
+<text class="s" x="618" y="364">Quality around 75–82</text>
+<text class="s" x="618" y="384">Same origin, CDN-cached</text>
+<text class="s" x="618" y="404">Smart Imaging DPR and</text>
+<text class="s" x="618" y="424">bandwidth optimisation</text>
+
+<rect class="violet" x="888" y="270" width="282" height="200" rx="12"/>
+<text class="t" x="904" y="298">Element render delay</text>
+<text class="s" x="904" y="324">No render-blocking CSS/JS</text>
+<text class="s" x="904" y="344">Don't hide the hero until</text>
+<text class="s" x="904" y="364">a script or carousel runs</text>
+<text class="s" x="904" y="384">width and height set, so</text>
+<text class="s" x="904" y="404">no layout shift either</text>
+</svg>
