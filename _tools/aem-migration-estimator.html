@@ -1,0 +1,157 @@
+---
+title: AEM as a Cloud Service migration estimator
+seo_title: "AEM as a Cloud Service Migration Effort Estimator (BPA + Sitemap)"
+description: "Free AEMaaCS migration effort estimator: upload your Best Practices Analyzer CSV, analyse your site's sitemap and pages, and get development, QA and total effort with a timeline."
+lede: "Upload your Best Practices Analyzer (BPA) report and point it at your website. You'll get an effort estimate for code refactoring, content migration and QA, plus a timeline for your team size, with every assumption visible and editable."
+summary: "Estimate an AEM 6.x to AEM as a Cloud Service migration from your BPA report and live site: refactoring, content migration, QA effort, total person-days and a timeline. Every rate is editable."
+category: Migration
+icon: estimate
+order: 6
+added: 2026-11-09 12:00:00 +0530
+tags: [AEMaaCS, BPA, Estimation, QA]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-estimator.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: Where do I get the BPA report?
+    a: "Install the Best Practices Analyzer package on your AEM 6.x author (ideally a recent copy of production), open it from Tools > Operations > Best Practices Analyzer, generate the report and choose Export to CSV. The file is usually called results.csv. The same report can be uploaded to Cloud Acceleration Manager."
+  - q: Is my BPA report uploaded anywhere?
+    a: "No. The CSV is read and analysed in your browser and never leaves your device. The website analysis fetches public pages through Jina Reader, the same way the SEO and accessibility tools on this site do."
+  - q: How accurate is the estimate?
+    a: "Treat it as a well-reasoned starting point, typically within ±25% for teams that have done AEM migrations before. Adobe doesn't publish an effort model, and its own Cloud Acceleration Manager notes that complexity isn't the same as effort. The rates here come from my experience on migrations; adjust them to your team's velocity and record why. The biggest unknowns BPA can't see are integrations, custom business logic and content quality."
+  - q: Why do large finding counts not scale linearly?
+    a: "Because they're rarely fixed one by one. Five hundred repository-structure findings are usually solved with a handful of scripts or one restructuring pass. Each bucket has a full rate up to a threshold, then a much lower bulk rate. You can change both."
+  - q: What does the website analysis add?
+    a: "BPA sees code and repository, not the experience. The sitemap gives page count and locales; sampled pages reveal real templates (from AEM's template meta tag), components, forms and third-party integrations. Those drive the QA estimate, which is usually underestimated in migrations."
+  - q: Can I save or share the estimate?
+    a: "Export it as CSV for your plan or proposal, or print the page to PDF. Your effort rates are remembered in this browser so the next estimate uses them."
+---
+<div class="me-tool">
+  <section class="me-step" aria-labelledby="me-s1">
+    <h2 class="me-h" id="me-s1"><span class="me-n">1</span> Best Practices Analyzer report</h2>
+    <label class="io-drop me-drop" id="meBpaDrop" for="meBpaFile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+      <strong>Drop your BPA CSV here, or click to choose</strong>
+      <span class="muted">Usually results.csv · read in your browser, never uploaded</span>
+      <input id="meBpaFile" type="file" accept=".csv,text/csv">
+    </label>
+    <p class="me-alt muted">No report yet? <button type="button" class="pc-link" id="meSample">Try it with a sample report</button> or skip this step and enter the numbers below.</p>
+    <p class="pc-error" id="meBpaError" role="alert"></p>
+    <div id="meBpaOut" hidden></div>
+  </section>
+
+  <section class="me-step" aria-labelledby="me-s2">
+    <h2 class="me-h" id="me-s2"><span class="me-n">2</span> Website analysis</h2>
+    <form id="meSite" class="pc-form au-form" novalidate>
+      <div class="au-url-row">
+        <label class="pc-field">
+          <span>Website domain</span>
+          <input name="meUrl" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://www.example.com/">
+        </label>
+        <button class="btn solid" id="meGo" type="submit">Analyse site</button>
+      </div>
+      <div class="pc-opts">
+        <label class="pc-field pc-inline">
+          <span>Pages to sample</span>
+          <select name="meSampleN">
+            <option value="10">10 pages (fastest)</option>
+            <option value="20" selected>20 pages</option>
+            <option value="40">40 pages (needs a Jina key)</option>
+          </select>
+        </label>
+      </div>
+      <details class="pc-adv">
+        <summary>Settings</summary>
+        <div class="pc-adv-grid">
+          <label class="pc-field">
+            <span>Jina Reader API key <small>optional: raises rate limits for larger samples. <a href="https://jina.ai/reader/" target="_blank" rel="noopener">Get a free key</a></small></span>
+            <input name="auKey" type="password" autocomplete="off" spellcheck="false" placeholder="jina_…">
+          </label>
+          <label class="pc-check"><input name="auRemember" type="checkbox"> Remember the key in this browser</label>
+        </div>
+      </details>
+      <p class="pc-error" id="meSiteError" role="alert"></p>
+      <p class="pc-note muted">Reads robots.txt and XML sitemaps, then samples pages across the site's sections. Pages are fetched through Jina Reader as served, without running their scripts.</p>
+    </form>
+    <ol class="pc-steps" id="meSteps" aria-live="polite" hidden></ol>
+    <div id="meSiteOut" hidden></div>
+  </section>
+
+  <section class="me-step" aria-labelledby="me-s3">
+    <h2 class="me-h" id="me-s3"><span class="me-n">3</span> Scope, team and assumptions</h2>
+    <p class="muted me-intro">Filled in from steps 1 and 2 where possible. Check every number: you know things the tools can't see.</p>
+    <form id="meInputs" class="pc-form me-inputs" novalidate onsubmit="return false">
+      <fieldset class="me-fs">
+        <legend>Site and content</legend>
+        <div class="me-grid">
+          <label class="pc-field"><span>Pages</span><input name="pages" type="number" min="0" step="1" value="500"></label>
+          <label class="pc-field"><span>Locales / languages</span><input name="locales" type="number" min="1" step="1" value="1"></label>
+          <label class="pc-field"><span>Sites / domains</span><input name="sites" type="number" min="1" step="1" value="1"></label>
+          <label class="pc-field"><span>Page templates</span><input name="templates" type="number" min="1" step="1" value="8"></label>
+          <label class="pc-field"><span>Components in use</span><input name="components" type="number" min="1" step="1" value="30"></label>
+          <label class="pc-field"><span>Forms</span><input name="forms" type="number" min="0" step="1" value="2"></label>
+          <label class="pc-field"><span>Integrations to re-test <small>front end and back end</small></span><input name="integrations" type="number" min="0" step="1" value="4"></label>
+          <label class="pc-field"><span>Assets in DAM</span><input name="assets" type="number" min="0" step="1" value="5000"></label>
+          <label class="pc-field"><span>Repository size (GB)</span><input name="repoGB" type="number" min="0" step="1" value="50"></label>
+        </div>
+      </fieldset>
+      <fieldset class="me-fs">
+        <legend>Team</legend>
+        <div class="me-grid">
+          <label class="pc-field"><span>AEM developers</span><input name="devs" type="number" min="1" step="1" value="3"></label>
+          <label class="pc-field"><span>QA engineers</span><input name="qas" type="number" min="1" step="1" value="2"></label>
+          <label class="pc-field"><span>Focus factor (%) <small>time spent on project work</small></span><input name="focus" type="number" min="40" max="100" step="5" value="80"></label>
+        </div>
+      </fieldset>
+      <fieldset class="me-fs">
+        <legend>Approach</legend>
+        <div class="me-grid">
+          <label class="pc-field"><span>Test cycles (SIT + regression)</span><input name="cycles" type="number" min="1" max="5" step="1" value="2"></label>
+          <label class="pc-field"><span>Content migration rehearsals</span><input name="rehearsals" type="number" min="1" max="5" step="1" value="2"></label>
+          <label class="pc-field"><span>Hypercare (weeks)</span><input name="hypercare" type="number" min="0" max="8" step="1" value="2"></label>
+        </div>
+        <div class="me-checks">
+          <label class="pc-check"><input name="perf" type="checkbox" checked> Performance testing</label>
+          <label class="pc-check"><input name="sec" type="checkbox" checked> Security testing</label>
+          <label class="pc-check"><input name="a11y" type="checkbox" checked> Accessibility testing</label>
+          <label class="pc-check"><input name="auto" type="checkbox"> Build regression test automation</label>
+        </div>
+      </fieldset>
+      <fieldset class="me-fs">
+        <legend>Overheads</legend>
+        <div class="me-grid">
+          <label class="pc-field"><span>Project management (%)</span><input name="pm" type="number" min="0" max="40" step="1" value="12"></label>
+          <label class="pc-field"><span>Architecture and tech lead (%)</span><input name="arch" type="number" min="0" max="40" step="1" value="10"></label>
+          <label class="pc-field"><span>Contingency (%)</span><input name="cont" type="number" min="0" max="60" step="5" value="20"></label>
+        </div>
+      </fieldset>
+      <details class="pc-adv me-rates-wrap">
+        <summary>Effort rates for BPA findings (editable)</summary>
+        <p class="muted me-small">Person-days per unique finding up to the threshold, then the bulk rate, plus any fixed effort. Saved in this browser. <button type="button" class="pc-link" id="meRatesReset">Reset to defaults</button></p>
+        <div class="pc-table-wrap"><table class="pc-table me-rates" id="meRates"></table></div>
+      </details>
+    </form>
+  </section>
+
+  <section class="me-step me-result" id="meResult" aria-labelledby="me-s4" aria-live="polite">
+    <h2 class="me-h" id="me-s4"><span class="me-n">4</span> Estimate</h2>
+    <div id="meResultOut"></div>
+  </section>
+</div>
+
+<section class="pc-about">
+  <h2>How the estimate works</h2>
+  <div class="pc-about-grid">
+    <div><h3>Code refactoring from BPA</h3><p>Findings are de-duplicated and grouped into about 20 refactoring buckets, such as static templates to editable templates, Classic UI dialogs, Oak indexes, replication agents and asset workflows. Each bucket has a per-item rate up to a threshold and a bulk rate beyond it.</p></div>
+    <div><h3>Platform and content</h3><p>Cloud Manager, repository restructuring and Dispatcher conversion scale with the number of sites. Content migration scales with repository size, asset count and the number of Content Transfer Tool rehearsals.</p></div>
+    <div><h3>QA from the live site</h3><p>Test design and execution scale with templates, components, locales, forms and integrations, multiplied by test cycles. Migration validation samples pages, and non-functional testing is added when selected.</p></div>
+  </div>
+  <h2>Getting a good estimate</h2>
+  <ul class="list">
+    <li><strong>Run BPA on a recent copy of production,</strong> not a stale development instance, so content counts and findings are real.</li>
+    <li><strong>Add the integrations you can't see.</strong> Back-end connections such as search, PIM, CRM, SSO and translation never show up in page HTML, and each needs re-pointing and testing.</li>
+    <li><strong>Calibrate the rates once.</strong> After your first migration, compare actuals with this model and save your own rates. That's what turns an estimate into a forecast.</li>
+    <li><strong>Read the method:</strong> my posts on <a href="{{ '/blog/2026/11/how-to-estimate-an-aem-project/' | relative_url }}">estimating AEM projects</a> and the <a href="{{ '/blog/2026/11/aem-on-premise-and-managed-services-to-aem-as-a-cloud-service-migration/' | relative_url }}">AEMaaCS migration playbook</a> explain the reasoning behind these numbers.</li>
+  </ul>
+</section>

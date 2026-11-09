@@ -45,13 +45,14 @@
   async function jina(url, format, o) {
     o = o || {};
     var render = format === 'html' && !!o.key && !o.noRender;
-    var hd = { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Return-Format': format === 'text' ? 'text' : 'html', 'X-Timeout': '40' };
+    var ms = o.timeout || 90000;   // optional per-call budget (ms); other tools keep the 90 s default
+    var hd = { 'Content-Type': 'application/json', Accept: 'application/json', 'X-Return-Format': format === 'text' ? 'text' : 'html', 'X-Timeout': String(Math.min(40, Math.max(5, Math.round(ms / 1000) - 5))) };
     if (format === 'raw') hd['X-Engine'] = 'direct';
     if (render) hd['X-Engine'] = 'browser';
     if (o.noCache !== false) hd['X-No-Cache'] = 'true';
     if (o.key) hd.Authorization = 'Bearer ' + o.key;
     var res;
-    try { res = await fetchT(JINA, { method: 'POST', headers: hd, body: JSON.stringify({ url: url }) }, 90000); }
+    try { res = await fetchT(JINA, { method: 'POST', headers: hd, body: JSON.stringify({ url: url }) }, ms); }
     catch (e) { throw new Error(e.name === 'AbortError' ? 'Timed out fetching ' + url : 'Network error fetching ' + url); }
     var j = await res.json().catch(function () { return {}; });
     if (render && (res.status === 401 || res.status === 402)) return jina(url, format, Object.assign({}, o, { noRender: true }));
