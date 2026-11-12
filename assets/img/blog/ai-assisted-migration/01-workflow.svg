@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="The AI-assisted migration workflow. BPA findings come from a CSV export, from Cloud Acceleration Manager through the AEM MCP server, or from files you name. The migration skill first writes a read-only runbook, then works on one pattern per session in batches of five, handing each change to the code-assessment skill. After every batch it stops; a developer reviews, tests and commits, then replies continue. Validation on the local Cloud SDK is in beta. Cloud Manager pipelines deploy. Outside the loop and still manual: repository structure, content transfer, integrations, users and permissions, and regression, performance and user acceptance testing.">
+<defs>
+  <marker id="w1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .out{fill:#FEF2F2;stroke:#DC2626;stroke-width:2;stroke-dasharray:7 5}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .loop{stroke:#6D5BD0;stroke-width:2;fill:none;stroke-dasharray:6 4}
+  .note{font-size:12.5px;font-weight:700;fill:#6D5BD0}
+</style>
+<rect width="1200" height="640" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">How the AEM Cloud Migration skill works</text>
+<text class="sub" x="30" y="72">One pattern per session, five findings per batch, a human review before every next step.</text>
+
+<!-- sources -->
+<text class="lbl" x="30" y="108">1 · FINDINGS</text>
+<rect class="navy" x="30" y="120" width="200" height="62" rx="10"/>
+<text class="t" x="46" y="146">BPA CSV</text><text class="s" x="46" y="167">results.csv export</text>
+<rect class="navy" x="30" y="194" width="200" height="62" rx="10"/>
+<text class="t" x="46" y="220">CAM via MCP</text><text class="s" x="46" y="241">you confirm the project</text>
+<rect class="navy" x="30" y="268" width="200" height="62" rx="10"/>
+<text class="t" x="46" y="294">Named files</text><text class="s" x="46" y="315">manual, no BPA</text>
+
+<!-- migration skill -->
+<text class="lbl" x="270" y="108">2 · MIGRATION SKILL</text>
+<rect class="blue" x="270" y="120" width="250" height="210" rx="12"/>
+<text class="t" x="288" y="148">Runbook first</text>
+<text class="m" x="288" y="170">migration-runbook.md</text>
+<text class="s" x="288" y="190">Read-only plan: patterns,</text>
+<text class="s" x="288" y="208">files, starter prompts.</text>
+<line x1="288" y1="226" x2="502" y2="226" stroke="#C9D1E0"/>
+<text class="t" x="288" y="252">Then one pattern</text>
+<text class="s" x="288" y="274">scheduler · replication · lui</text>
+<text class="s" x="288" y="292">osgiConfig · templates</text>
+<text class="s" x="288" y="310">dispatcher · oakIndex (beta)</text>
+
+<!-- code-assessment -->
+<text class="lbl" x="560" y="108">3 · CODE-ASSESSMENT SKILL</text>
+<rect class="violet" x="560" y="120" width="250" height="210" rx="12"/>
+<text class="t" x="578" y="148">Batch of 5 findings</text>
+<text class="s" x="578" y="172">Reads the pattern's rules</text>
+<text class="s" x="578" y="190">before touching code.</text>
+<text class="s" x="578" y="216">Transforms, compiles,</text>
+<text class="s" x="578" y="234">reports what changed.</text>
+<text class="t" x="578" y="272">Then stops.</text>
+<text class="s" x="578" y="294">Never continues on</text>
+<text class="s" x="578" y="312">its own.</text>
+
+<!-- human -->
+<text class="lbl" x="850" y="108">4 · YOUR TEAM</text>
+<rect class="green" x="850" y="120" width="320" height="210" rx="12"/>
+<text class="t" x="868" y="148">Review, test, commit</text>
+<text class="s" x="868" y="172">Diff review by someone who knows</text>
+<text class="s" x="868" y="190">the AEM pattern. Unit and functional</text>
+<text class="s" x="868" y="208">tests. One pattern per commit.</text>
+<text class="t" x="868" y="246">Validate (beta)</text>
+<text class="s" x="868" y="268">Local Cloud SDK via Quickstart MCP.</text>
+<text class="s" x="868" y="286">No business logic, no unit tests:</text>
+<text class="s" x="868" y="304">a signal, not proof.</text>
+
+<path class="arr" d="M232 225H266" marker-end="url(#w1)"/>
+<path class="arr" d="M522 225H556" marker-end="url(#w1)"/>
+<path class="arr" d="M812 225H846" marker-end="url(#w1)"/>
+<path class="loop" d="M1010 332V372H685V336" marker-end="url(#w1)"/>
+<text class="note" x="740" y="392">"continue": next batch of five</text>
+
+<!-- deploy -->
+<rect class="navy" x="850" y="412" width="320" height="58" rx="10"/>
+<text class="t" x="868" y="437">Cloud Manager pipelines</text>
+<text class="s" x="868" y="457">Code quality gates, then dev → stage → prod</text>
+<path class="arr" d="M1150 332V408" marker-end="url(#w1)"/>
+
+<!-- out of scope -->
+<rect class="out" x="30" y="412" width="790" height="196" rx="12"/>
+<text class="lbl" x="50" y="440">OUTSIDE THE LOOP: STILL YOUR TEAM'S WORK</text>
+<text class="t" x="50" y="472">Repository structure</text><text class="s" x="50" y="492">Refactoring Tools, /conf and /var</text>
+<text class="t" x="300" y="472">Content transfer</text><text class="s" x="300" y="492">CTT rehearsals and top-up</text>
+<text class="t" x="550" y="472">Integrations</text><text class="s" x="550" y="492">Egress IPs, OAuth, secrets</text>
+<text class="t" x="50" y="536">Users and permissions</text><text class="s" x="50" y="556">Adobe IMS, groups, ACLs</text>
+<text class="t" x="300" y="536">Testing</text><text class="s" x="300" y="556">Regression, performance, UAT</text>
+<text class="t" x="550" y="536">Redesign decisions</text><text class="s" x="550" y="556">Reverse replication, Communities</text>
+<text class="s" x="50" y="592">In my experience these are more than half of a migration's effort.</text>
+</svg>

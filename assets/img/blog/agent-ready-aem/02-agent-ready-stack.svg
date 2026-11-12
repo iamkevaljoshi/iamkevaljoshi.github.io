@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="The agent-ready stack on AEM in four layers. Structured content: Content Fragment Models with typed fields and validity dates, one source of truth. Delivery: pages as semantic HTML with Schema.org JSON-LD on AEM Sites or Edge Delivery Services, and content as data through the Content Fragment Delivery OpenAPI or GraphQL persisted queries, read-only and CDN cached. Agent interfaces: llms.txt and sitemaps, an optional NLWeb or MCP endpoint over the content API, and WebMCP form attributes. Controls running across all layers: moderation of user-generated content against prompt injection, CDN rate limits and traffic filters, authentication and confirmation for consequential actions, and CDN log measurement of agent traffic.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:15px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+</style>
+<rect width="1200" height="640" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The agent-ready stack on AEM</text>
+<text class="sub" x="30" y="72">Build from the bottom up. The top layer changes fastest; the bottom layer lasts.</text>
+
+<!-- layer 3: agent interfaces -->
+<text class="lbl" x="30" y="112">3 · AGENT INTERFACES</text>
+<rect class="violet" x="30" y="122" width="270" height="92" rx="12"/>
+<text class="t" x="48" y="150">Discovery</text>
+<text class="m" x="48" y="174">robots.txt · sitemaps</text>
+<text class="m" x="48" y="194">llms.txt</text>
+<rect class="violet" x="316" y="122" width="270" height="92" rx="12"/>
+<text class="t" x="334" y="150">Query endpoint (optional)</text>
+<text class="s" x="334" y="174">NLWeb or an MCP server</text>
+<text class="s" x="334" y="194">over the content API</text>
+<rect class="violet" x="602" y="122" width="270" height="92" rx="12"/>
+<text class="t" x="620" y="150">Actions (experimental)</text>
+<text class="s" x="620" y="174">WebMCP: toolname and</text>
+<text class="s" x="620" y="194">tooldescription on forms</text>
+
+<!-- layer 2: delivery -->
+<text class="lbl" x="30" y="248">2 · DELIVERY</text>
+<rect class="blue" x="30" y="258" width="413" height="112" rx="12"/>
+<text class="t" x="48" y="286">Pages for people and agents</text>
+<text class="s" x="48" y="310">Semantic, accessible HTML on AEM Sites or EDS</text>
+<text class="s" x="48" y="330">Schema.org JSON-LD generated from content</text>
+<text class="s" x="48" y="350">Stable canonical URLs</text>
+<rect class="blue" x="459" y="258" width="413" height="112" rx="12"/>
+<text class="t" x="477" y="286">Content as data</text>
+<text class="s" x="477" y="310">Content Fragment Delivery OpenAPI (REST, JSON)</text>
+<text class="s" x="477" y="330">or GraphQL persisted queries</text>
+<text class="s" x="477" y="350">Read-only, cached at the CDN</text>
+
+<!-- layer 1: content -->
+<text class="lbl" x="30" y="404">1 · STRUCTURED CONTENT</text>
+<rect class="green" x="30" y="414" width="842" height="112" rx="12"/>
+<text class="t" x="48" y="442">Content Fragment Models: facts as typed fields</text>
+<text class="s" x="48" y="466">Products, rates, locations, events, FAQs · units and currencies · valid-from and valid-until dates</text>
+<text class="s" x="48" y="486">One source of truth feeds the page, the JSON-LD and the API, so every channel gives the same answer</text>
+<text class="s" x="48" y="506">Modelled for meaning, not layout: "interest rate", not "teaser text 2"</text>
+
+<!-- controls column -->
+<rect class="orange" x="896" y="122" width="274" height="404" rx="12"/>
+<text class="lbl" x="916" y="150">CONTROLS ACROSS LAYERS</text>
+<text class="t" x="916" y="182">Prompt injection</text>
+<text class="s" x="916" y="204">Moderate and separate UGC;</text>
+<text class="s" x="916" y="222">no hidden instructions</text>
+<text class="t" x="916" y="262">Rate limits</text>
+<text class="s" x="916" y="284">cdn.yaml traffic filters</text>
+<text class="s" x="916" y="302">on APIs, search and forms</text>
+<text class="t" x="916" y="342">Authentication</text>
+<text class="s" x="916" y="364">Same sessions as users;</text>
+<text class="s" x="916" y="382">confirm risky actions</text>
+<text class="t" x="916" y="422">Measurement</text>
+<text class="s" x="916" y="444">CDN logs by user agent;</text>
+<text class="s" x="916" y="462">agent-invoked submissions</text>
+
+<text class="sub" x="30" y="572">Layers 1 and 2 pay off today for people, search and AI answers. Layer 3 is where standards are still settling.</text>
+<text class="sub" x="30" y="596">Read-only access only: management APIs and author never sit behind an agent integration.</text>
+</svg>

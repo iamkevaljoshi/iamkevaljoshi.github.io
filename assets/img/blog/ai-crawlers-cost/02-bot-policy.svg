@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="A bot policy by purpose. Search engines: allow, they send organic traffic. AI search and answer bots such as OAI-SearchBot, Claude-SearchBot and PerplexityBot: allow, they send citations and links. User-triggered fetchers such as ChatGPT-User, Claude-User and Perplexity-User: allow, a person asked; robots.txt may not apply. Training crawlers such as GPTBot, ClaudeBot and CCBot: decide by business policy using robots.txt. Unidentified automated clients: measure, then rate-limit at the CDN. Empty user agents and abusive networks: block with traffic filters.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .red{fill:#FEF2F2;stroke:#DC2626;stroke-width:2}
+  .pill-g{fill:#059669} .pill-v{fill:#6D5BD0} .pill-o{fill:#EA580C} .pill-r{fill:#DC2626}
+  .pt{font-size:12px;font-weight:700;fill:#FFFFFF;letter-spacing:.04em}
+</style>
+<rect width="1200" height="560" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">A bot policy by purpose, not by name</text>
+<text class="sub" x="30" y="72">Allow what sends people and citations back. Decide on training. Measure and limit the rest.</text>
+
+<!-- column 1 allow -->
+<rect class="green" x="24" y="96" width="370" height="430" rx="12"/>
+<rect class="pill-g" x="44" y="114" width="78" height="24" rx="12"/><text class="pt" x="58" y="131">ALLOW</text>
+<text class="t" x="44" y="168">Search engines</text>
+<text class="m" x="44" y="190">Googlebot, Bingbot</text>
+<text class="s" x="44" y="210">Organic traffic. Not billable on AEMaaCS.</text>
+<text class="t" x="44" y="252">AI search and answer bots</text>
+<text class="m" x="44" y="274">OAI-SearchBot, Claude-SearchBot,</text>
+<text class="m" x="44" y="292">PerplexityBot</text>
+<text class="s" x="44" y="312">Citations and links in AI answers.</text>
+<text class="t" x="44" y="354">User-triggered fetchers</text>
+<text class="m" x="44" y="376">ChatGPT-User, Claude-User,</text>
+<text class="m" x="44" y="394">Perplexity-User</text>
+<text class="s" x="44" y="414">A person asked about you.</text>
+<text class="s" x="44" y="432">robots.txt may not apply.</text>
+<text class="lbl" x="44" y="500">CONTROL: CACHING, NOT BLOCKING</text>
+
+<!-- column 2 decide -->
+<rect class="violet" x="414" y="96" width="370" height="430" rx="12"/>
+<rect class="pill-v" x="434" y="114" width="80" height="24" rx="12"/><text class="pt" x="447" y="131">DECIDE</text>
+<text class="t" x="434" y="168">Training crawlers</text>
+<text class="m" x="434" y="190">GPTBot, ClaudeBot, CCBot</text>
+<text class="s" x="434" y="216">About 80% of AI crawling (Cloudflare, 2025).</text>
+<text class="s" x="434" y="236">Few or no visitors back.</text>
+<text class="s" x="434" y="270">Allow: possible presence in model</text>
+<text class="s" x="434" y="288">knowledge.</text>
+<text class="s" x="434" y="314">Block: less origin load, content</text>
+<text class="s" x="434" y="332">kept out of training sets.</text>
+<text class="s" x="434" y="368">A business decision: write it down,</text>
+<text class="s" x="434" y="386">with the reason, and review it yearly.</text>
+<text class="lbl" x="434" y="500">CONTROL: ROBOTS.TXT</text>
+
+<!-- column 3 limit / block -->
+<rect class="orange" x="804" y="96" width="372" height="250" rx="12"/>
+<rect class="pill-o" x="824" y="114" width="78" height="24" rx="12"/><text class="pt" x="839" y="131">LIMIT</text>
+<text class="t" x="824" y="168">Unidentified automated clients</text>
+<text class="s" x="824" y="192">Scrapers, SEO tools, agents with</text>
+<text class="s" x="824" y="210">browser user agents, monitors.</text>
+<text class="s" x="824" y="236">Billable content requests on AEMaaCS.</text>
+<text class="s" x="824" y="268">Measure from CDN logs, then a per-IP</text>
+<text class="s" x="824" y="286">rate limit: log first, then block.</text>
+<text class="lbl" x="824" y="326">CONTROL: CDN.YAML RATE LIMITS</text>
+
+<rect class="red" x="804" y="362" width="372" height="164" rx="12"/>
+<rect class="pill-r" x="824" y="380" width="78" height="24" rx="12"/><text class="pt" x="838" y="397">BLOCK</text>
+<text class="t" x="824" y="432">Empty user agents, abusive networks</text>
+<text class="s" x="824" y="456">No legitimate visitor sends no</text>
+<text class="s" x="824" y="474">user agent at all.</text>
+<text class="lbl" x="824" y="508">CONTROL: CDN.YAML TRAFFIC FILTERS</text>
+</svg>

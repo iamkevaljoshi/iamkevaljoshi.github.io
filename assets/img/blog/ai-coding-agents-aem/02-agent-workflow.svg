@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="The agent workflow loop on AEM. One, plan: files to touch, the content model or dialog contract, and how it will be verified. Two, small diffs: one block, component or pattern at a time. Three, verify with real tools: for Edge Delivery Services, lint, the page on localhost, screenshots and Lighthouse; for AEM as a Cloud Service, unit tests, the local SDK, the Quickstart MCP server, the Dispatcher validator and Cloud Manager gates. Four, human review. Five, learn: update the context files, which feeds the next plan.">
+<defs><marker id="w1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker></defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .mu{font-size:12.5px;fill:#5B6478}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .white{fill:#FFFFFF;stroke:#C9D1E0;stroke-width:1.5}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .warn{font-size:12.5px;font-weight:700;fill:#B45309}
+</style>
+<rect width="1200" height="560" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">A workflow that keeps agents honest</text>
+<text class="sub" x="30" y="72">The agent proposes; real tools and a human decide. Every repeated correction becomes context for next time.</text>
+<rect class="navy" x="24" y="104" width="180" height="300" rx="12"/><text class="t" x="40" y="134">1 · Plan</text><text class="s" x="40" y="164">Files to touch</text><text class="s" x="40" y="183">Content model or</text><text class="s" x="40" y="202">dialog contract</text><text class="s" x="40" y="221">How it is verified</text><text class="s" x="40" y="259">Cheapest place to</text><text class="s" x="40" y="278">fix a mistake</text>
+<rect class="blue" x="222" y="104" width="180" height="300" rx="12"/><text class="t" x="238" y="134">2 · Small diff</text><text class="s" x="238" y="164">One block, one</text><text class="s" x="238" y="183">component or one</text><text class="s" x="238" y="202">pattern at a time</text><text class="s" x="238" y="240">Adobe migration</text><text class="s" x="238" y="259">skills pause after</text><text class="s" x="238" y="278">each batch</text>
+<rect class="green" x="420" y="104" width="380" height="300" rx="12"/><text class="t" x="436" y="134">3 · Verify with real tools</text>
+<rect class="white" x="432" y="150" width="174" height="240" rx="10"/><text class="lbl" x="444" y="172">EDS</text><text class="s" x="444" y="198">npm run lint</text><text class="s" x="444" y="222">Page on localhost:3000</text><text class="s" x="444" y="246">Screenshot compare</text><text class="s" x="444" y="270">Lighthouse on preview</text><text class="s" x="444" y="294">Real content, not</text><text class="s" x="444" y="318">lorem ipsum</text>
+<rect class="white" x="614" y="150" width="174" height="240" rx="10"/><text class="lbl" x="626" y="172">AEMaaCS (JAVA)</text><text class="s" x="626" y="198">mvn test (AEM Mocks)</text><text class="s" x="626" y="222">Deploy to local SDK</text><text class="s" x="626" y="246">Quickstart MCP: logs</text><text class="s" x="626" y="270">Dispatcher validator</text><text class="s" x="626" y="294">Cloud Manager gates</text>
+<rect class="violet" x="818" y="104" width="170" height="300" rx="12"/><text class="t" x="834" y="134">4 · Review</text><text class="s" x="834" y="164">AI review as a</text><text class="s" x="834" y="183">first pass</text><text class="s" x="834" y="221">A human who knows</text><text class="s" x="834" y="240">AEM approves</text><text class="s" x="834" y="278">Whoever merges</text><text class="s" x="834" y="297">owns it</text>
+<rect class="orange" x="1006" y="104" width="170" height="300" rx="12"/><text class="t" x="1022" y="134">5 · Learn</text><text class="s" x="1022" y="164">Same correction</text><text class="s" x="1022" y="183">twice? Write it</text><text class="s" x="1022" y="202">down: a line in</text><text class="s" x="1022" y="221">AGENTS.md, an</text><text class="s" x="1022" y="240">instruction file</text><text class="s" x="1022" y="259">or a skill</text><text class="s" x="1022" y="278"></text><text class="s" x="1022" y="297">Context grows</text><text class="s" x="1022" y="316">with the team</text><path class="arr" d="M204 254H218" marker-end="url(#w1)"/>
+<path class="arr" d="M402 254H416" marker-end="url(#w1)"/>
+<path class="arr" d="M800 254H814" marker-end="url(#w1)"/>
+<path class="arr" d="M988 254H1002" marker-end="url(#w1)"/>
+<path class="arr" d="M1091 406V466H114V410" marker-end="url(#w1)"/>
+<text class="s" x="600" y="488" text-anchor="middle">The loop: each round makes the next one cheaper</text>
+<text class="warn" x="30" y="530">Loud failures (a broken block, a failing test) get caught by tools. Quiet ones (ACLs, cache rules, Dispatcher filters) need a human.</text>
+</svg>

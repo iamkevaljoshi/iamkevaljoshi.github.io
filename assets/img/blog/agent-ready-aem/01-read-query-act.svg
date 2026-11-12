@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Three levels of agent interaction with a website. Read and cite: crawlers and AI answers read pages; needs crawlable HTML, clear answers and trust; mature. Query: agents ask the site questions and get structured answers; needs structured content, Schema.org and content APIs; supported by NLWeb and MCP, early. Act: agents complete tasks such as submitting forms; needs well-defined forms and confirmations; supported by WebMCP, pre-standard. Most organisations should be solid at reading, preparing for querying and experimenting with acting.">
+<defs><marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker></defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:18px;font-weight:700;fill:#10182B}
+  .s{font-size:13px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .pill{font-size:12px;font-weight:700}
+</style>
+<rect width="1200" height="620" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">From citing to querying to acting</text>
+<text class="sub" x="30" y="72">Each level asks more of your site, and the standards behind it are less mature.</text>
+
+<rect class="green" x="30" y="100" width="356" height="420" rx="14"/>
+<text class="lbl" x="52" y="130">LEVEL 1</text>
+<text class="t" x="52" y="158">Read and cite</text>
+<text class="s" x="52" y="188">Crawlers and AI answers read pages</text>
+<text class="s" x="52" y="208">and quote or link them.</text>
+<text class="lbl" x="52" y="248">YOUR SITE NEEDS</text>
+<text class="s" x="52" y="274">• Crawl access and fast HTML</text>
+<text class="s" x="52" y="296">• Clear, self-contained answers</text>
+<text class="s" x="52" y="318">• Trust signals and authorship</text>
+<text class="s" x="52" y="340">• Stable canonical URLs</text>
+<text class="lbl" x="52" y="380">STANDARDS</text>
+<text class="m" x="52" y="404">robots.txt · sitemaps · llms.txt</text>
+<rect x="52" y="452" width="120" height="30" rx="15" fill="#059669"/>
+<text class="pill" x="112" y="472" text-anchor="middle" fill="#FFFFFF">Mature</text>
+<text class="s" x="186" y="472">Be solid here</text>
+
+<rect class="blue" x="422" y="100" width="356" height="420" rx="14"/>
+<text class="lbl" x="444" y="130">LEVEL 2</text>
+<text class="t" x="444" y="158">Query</text>
+<text class="s" x="444" y="188">Agents ask your site a question and</text>
+<text class="s" x="444" y="208">expect a structured answer.</text>
+<text class="lbl" x="444" y="248">YOUR SITE NEEDS</text>
+<text class="s" x="444" y="274">• Facts in structured content</text>
+<text class="s" x="444" y="296">• Complete Schema.org JSON-LD</text>
+<text class="s" x="444" y="318">• Read-only, cached content APIs</text>
+<text class="s" x="444" y="340">• One source of truth per fact</text>
+<text class="lbl" x="444" y="380">STANDARDS</text>
+<text class="m" x="444" y="404">MCP · NLWeb · Schema.org</text>
+<rect x="444" y="452" width="120" height="30" rx="15" fill="#2563EB"/>
+<text class="pill" x="504" y="472" text-anchor="middle" fill="#FFFFFF">Early</text>
+<text class="s" x="578" y="472">Prepare now</text>
+
+<rect class="violet" x="814" y="100" width="356" height="420" rx="14"/>
+<text class="lbl" x="836" y="130">LEVEL 3</text>
+<text class="t" x="836" y="158">Act</text>
+<text class="s" x="836" y="188">Agents complete tasks: enquiries,</text>
+<text class="s" x="836" y="208">bookings, baskets.</text>
+<text class="lbl" x="836" y="248">YOUR SITE NEEDS</text>
+<text class="s" x="836" y="274">• Labelled, single-flow forms</text>
+<text class="s" x="836" y="296">• Explicit outcomes and errors</text>
+<text class="s" x="836" y="318">• Human confirmation for risky steps</text>
+<text class="s" x="836" y="340">• Rate limits and authentication</text>
+<text class="lbl" x="836" y="380">STANDARDS</text>
+<text class="m" x="836" y="404">WebMCP (toolname, registerTool)</text>
+<rect x="836" y="452" width="140" height="30" rx="15" fill="#6D5BD0"/>
+<text class="pill" x="906" y="472" text-anchor="middle" fill="#FFFFFF">Pre-standard</text>
+<text class="s" x="990" y="472">Experiment</text>
+
+<path class="arr" d="M388 310H418" marker-end="url(#a1)"/>
+<path class="arr" d="M780 310H810" marker-end="url(#a1)"/>
+<text class="sub" x="30" y="566">The foundations overlap: structured data, semantic HTML and clear actions help every level, and people too.</text>
+</svg>

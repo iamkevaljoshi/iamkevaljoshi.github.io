@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Architecture of the browser-based tools. GitHub Pages serves only static files: the tool page, its plain JavaScript and the shared kit.js helpers. Everything runs in the visitor's browser: the page parses fetched HTML without running its scripts, a Web Worker encodes images with OffscreenCanvas, and files the visitor provides, such as images or a BPA CSV report, never leave the browser. Public pages, robots.txt and sitemaps are fetched through Jina Reader. Libraries such as axe-core and diff load from a CDN. There is no application server and no database.">
+<defs>
+  <marker id="t1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .no{fill:#FEF2F2;stroke:#DC2626;stroke-width:2;stroke-dasharray:7 5}
+  .warn{font-size:12.5px;font-weight:700;fill:#B91C1C}
+</style>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">How the tools on this site are built</text>
+<text class="sub" x="30" y="72">Static files in, all the work in the visitor's browser. No application server, no database, no uploads.</text>
+
+<!-- GitHub Pages -->
+<text class="lbl" x="30" y="112">HOSTING</text>
+<rect class="navy" x="24" y="124" width="250" height="196" rx="12"/>
+<text class="t" x="40" y="152">GitHub Pages</text>
+<text class="s" x="40" y="178">Static files only, built</text>
+<text class="s" x="40" y="197">by Jekyll on each push:</text>
+<text class="m" x="40" y="224">_tools/*.html</text>
+<text class="m" x="40" y="244">assets/js/tools/*.js</text>
+<text class="m" x="40" y="264">kit.js (shared helpers)</text>
+<text class="s" x="40" y="294">One page and one script</text>
+<text class="s" x="40" y="312">per tool. No build step.</text>
+
+<rect class="no" x="24" y="350" width="250" height="110" rx="12"/>
+<text class="t" x="40" y="380">No server</text>
+<text class="s" x="40" y="404">No application code, no</text>
+<text class="s" x="40" y="423">database, no file storage.</text>
+<text class="warn" x="40" y="446">No server to patch or scale.</text>
+
+<!-- Browser -->
+<text class="lbl" x="318" y="112">THE VISITOR'S BROWSER</text>
+<rect x="312" y="124" width="560" height="440" rx="14" fill="#FFFFFF" stroke="#10182B" stroke-width="2"/>
+
+<rect class="blue" x="332" y="144" width="250" height="150" rx="12"/>
+<text class="t" x="348" y="172">Tool page</text>
+<text class="s" x="348" y="198">Plain JavaScript, no</text>
+<text class="s" x="348" y="217">framework. Fetched HTML is</text>
+<text class="s" x="348" y="236">parsed with DOMParser:</text>
+<text class="s" x="348" y="255">its scripts never run, and</text>
+<text class="s" x="348" y="274">it's shown as text only.</text>
+
+<rect class="violet" x="602" y="144" width="250" height="150" rx="12"/>
+<text class="t" x="618" y="172">Web Worker</text>
+<text class="s" x="618" y="198">Image optimiser: decode,</text>
+<text class="s" x="618" y="217">resize and encode with</text>
+<text class="m" x="618" y="238">OffscreenCanvas</text>
+<text class="s" x="618" y="262">Keeps the page responsive;</text>
+<text class="s" x="618" y="281">falls back to the page.</text>
+
+<rect class="green" x="332" y="314" width="520" height="110" rx="12"/>
+<text class="t" x="348" y="342">Your files stay here</text>
+<text class="s" x="348" y="368">Images for the optimiser, the Best Practices Analyzer CSV for the migration</text>
+<text class="s" x="348" y="387">estimator. Read with the File API, processed in memory, never uploaded.</text>
+<text class="s" x="348" y="406">Downloads (WebP files, ZIP, CSV export) are created in the browser too.</text>
+
+<rect class="navy" x="332" y="444" width="520" height="100" rx="12"/>
+<text class="t" x="348" y="472">Small, honest outputs</text>
+<text class="s" x="348" y="498">Scores, findings, estimates and snippets, each with how it was worked out.</text>
+<text class="s" x="348" y="517">Assumptions and rates visible and editable, so a person makes the call.</text>
+
+<path class="arr" d="M276 222H328" marker-end="url(#t1)"/>
+
+<!-- External services -->
+<text class="lbl" x="918" y="112">FETCHED ON DEMAND</text>
+<rect class="orange" x="912" y="124" width="264" height="196" rx="12"/>
+<text class="t" x="928" y="152">Jina Reader</text>
+<text class="s" x="928" y="178">Fetches public pages,</text>
+<text class="s" x="928" y="197">robots.txt and sitemaps</text>
+<text class="s" x="928" y="216">that the browser can't</text>
+<text class="s" x="928" y="235">read directly (CORS).</text>
+<text class="s" x="928" y="264">Optional free API key for</text>
+<text class="s" x="928" y="283">rendering and rate limits.</text>
+<text class="m" x="928" y="306">kit.jina(url, format)</text>
+
+<rect class="navy" x="912" y="350" width="264" height="110" rx="12"/>
+<text class="t" x="928" y="378">Libraries from a CDN</text>
+<text class="s" x="928" y="404">axe-core for accessibility,</text>
+<text class="s" x="928" y="423">diff for text comparison.</text>
+<text class="s" x="928" y="442">Pinned versions.</text>
+
+<path class="arr" d="M910 222H876" marker-end="url(#t1)"/>
+<path class="arr" d="M910 405H876" marker-end="url(#t1)"/>
+</svg>

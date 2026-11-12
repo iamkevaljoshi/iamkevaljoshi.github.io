@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Illustrative effect of AI-assisted refactoring on migration effort by area, not Adobe figures. Large reductions of about 40 to 60 percent for developer guideline fixes, OSGi configuration, replication code and Classic UI dialogs. Moderate reductions of about 20 to 40 percent for incompatible APIs, Oak indexes in beta, Dispatcher conversion and static templates. Little or no change for repository structure, reverse replication, integrations, content migration and QA. Most migration effort sits in the areas with little change.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .s{font-size:13px;fill:#10182B}
+  .v{font-size:12.5px;font-weight:700;fill:#10182B}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .track{fill:#E6E9F0}
+  .big{fill:#059669} .mid{fill:#2563EB} .none{fill:#94A3B8}
+  .grid{stroke:#C9D1E0;stroke-width:1;stroke-dasharray:3 4}
+</style>
+<rect width="1200" height="620" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Where AI-assisted refactoring saves effort</text>
+<text class="sub" x="30" y="72">Expected reduction per area. Illustrative working assumptions, not Adobe figures: replace them with your own actuals.</text>
+
+<text class="lbl" x="30" y="108">AREA</text>
+<text class="lbl" x="400" y="108">EXPECTED REDUCTION</text>
+<line class="grid" x1="400" y1="118" x2="400" y2="566"/>
+<line class="grid" x1="580" y1="118" x2="580" y2="566"/>
+<line class="grid" x1="760" y1="118" x2="760" y2="566"/>
+<line class="grid" x1="940" y1="118" x2="940" y2="566"/>
+<text class="lbl" x="395" y="586">0%</text><text class="lbl" x="570" y="586">25%</text><text class="lbl" x="750" y="586">50%</text><text class="lbl" x="930" y="586">75%</text>
+
+<!-- rows: y step 34; bar width = pct * 7.2 -->
+<text class="s" x="30" y="140">Developer guideline fixes (DG)</text><rect class="track" x="400" y="128" width="720" height="16" rx="8"/><rect class="big" x="400" y="128" width="396" height="16" rx="8"/><text class="v" x="806" y="141">40–60%</text>
+<text class="s" x="30" y="174">OSGi configuration and run modes</text><rect class="track" x="400" y="162" width="720" height="16" rx="8"/><rect class="big" x="400" y="162" width="360" height="16" rx="8"/><text class="v" x="770" y="175">≈50%</text>
+<text class="s" x="30" y="208">Replication code</text><rect class="track" x="400" y="196" width="720" height="16" rx="8"/><rect class="big" x="400" y="196" width="360" height="16" rx="8"/><text class="v" x="770" y="209">≈50%</text>
+<text class="s" x="30" y="242">Classic UI dialogs and widgets</text><rect class="track" x="400" y="230" width="720" height="16" rx="8"/><rect class="big" x="400" y="230" width="360" height="16" rx="8"/><text class="v" x="770" y="243">40–60%</text>
+<text class="s" x="30" y="276">Incompatible APIs (OU, NCC, IOI)</text><rect class="track" x="400" y="264" width="720" height="16" rx="8"/><rect class="mid" x="400" y="264" width="240" height="16" rx="8"/><text class="v" x="650" y="277">≈33%</text>
+<text class="s" x="30" y="310">Dispatcher conversion</text><rect class="track" x="400" y="298" width="720" height="16" rx="8"/><rect class="mid" x="400" y="298" width="240" height="16" rx="8"/><text class="v" x="650" y="311">≈33%</text>
+<text class="s" x="30" y="344">Oak indexes (beta)</text><rect class="track" x="400" y="332" width="720" height="16" rx="8"/><rect class="mid" x="400" y="332" width="216" height="16" rx="8"/><text class="v" x="626" y="345">20–40%</text>
+<text class="s" x="30" y="378">Static → editable templates</text><rect class="track" x="400" y="366" width="720" height="16" rx="8"/><rect class="mid" x="400" y="366" width="180" height="16" rx="8"/><text class="v" x="590" y="379">15–35%</text>
+<text class="s" x="30" y="412">Repository structure (URS, CAV)</text><rect class="track" x="400" y="400" width="720" height="16" rx="8"/><rect class="none" x="400" y="400" width="10" height="16" rx="5"/><text class="v" x="420" y="413">out of scope</text>
+<text class="s" x="30" y="446">Reverse replication, overlays</text><rect class="track" x="400" y="434" width="720" height="16" rx="8"/><rect class="none" x="400" y="434" width="10" height="16" rx="5"/><text class="v" x="420" y="447">redesign</text>
+<text class="s" x="30" y="480">Integrations</text><rect class="track" x="400" y="468" width="720" height="16" rx="8"/><rect class="none" x="400" y="468" width="10" height="16" rx="5"/><text class="v" x="420" y="481">≈0%</text>
+<text class="s" x="30" y="514">Content migration (CTT)</text><rect class="track" x="400" y="502" width="720" height="16" rx="8"/><rect class="none" x="400" y="502" width="10" height="16" rx="5"/><text class="v" x="420" y="515">≈0%</text>
+<text class="s" x="30" y="548">QA, UAT, cutover, hypercare</text><rect class="track" x="400" y="536" width="720" height="16" rx="8"/><rect class="none" x="400" y="536" width="10" height="16" rx="5"/><text class="v" x="420" y="549">≈0%</text>
+
+<text class="sub" x="30" y="610">Net effect on total migration effort: about 5–15%, because most effort sits in the bottom five rows. Ranges include review and rework time.</text>
+</svg>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="How a bot request flows through AEM as a Cloud Service. Requests from people, search and AI search bots, training crawlers, user-triggered fetchers and unidentified bots reach the Adobe-managed CDN, which classifies well-known bots. Well-known search engines and AI crawlers are excluded from billable content requests; unidentified automated traffic is billable. The CDN cache then serves hits; misses go to Dispatcher and then AEM publish. Crawlers fetch long-tail pages that are rarely cached, so they create most of the misses and origin load.">
+<defs>
+  <marker id="b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .red{fill:#FEF2F2;stroke:#DC2626;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .miss{stroke:#DC2626;stroke-width:2;fill:none;stroke-dasharray:6 4}
+  .ok{font-size:12.5px;font-weight:700;fill:#047857}
+  .bad{font-size:12.5px;font-weight:700;fill:#B91C1C}
+</style>
+<rect width="1200" height="620" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Where a bot request costs you on AEM as a Cloud Service</text>
+<text class="sub" x="30" y="72">Classification decides the licence impact. The cache decides the capacity impact. They are separate questions.</text>
+
+<!-- incoming -->
+<text class="lbl" x="30" y="108">INCOMING</text>
+<rect class="navy" x="24" y="120" width="230" height="44" rx="10"/><text class="s" x="40" y="147">People</text>
+<rect class="green" x="24" y="172" width="230" height="44" rx="10"/><text class="s" x="40" y="199">Search and AI search bots</text>
+<rect class="violet" x="24" y="224" width="230" height="44" rx="10"/><text class="s" x="40" y="251">Training crawlers</text>
+<rect class="blue" x="24" y="276" width="230" height="44" rx="10"/><text class="s" x="40" y="303">User-triggered fetchers</text>
+<rect class="red" x="24" y="328" width="230" height="44" rx="10"/><text class="s" x="40" y="355">Unidentified bots and agents</text>
+
+<path class="arr" d="M256 246H300" marker-end="url(#b1)"/>
+
+<!-- step 1 classify -->
+<rect class="blue" x="304" y="120" width="250" height="252" rx="12"/>
+<text class="lbl" x="322" y="146">1 · ADOBE CDN (FASTLY)</text>
+<text class="t" x="322" y="170">Classify the client</text>
+<text class="m" x="322" y="196">reqProperty: botName</text>
+<text class="ok" x="322" y="230">Not billable:</text>
+<text class="s" x="322" y="250">well-known search engines</text>
+<text class="s" x="322" y="268">and recognised AI crawlers</text>
+<text class="bad" x="322" y="300">Billable content requests:</text>
+<text class="s" x="322" y="320">unidentified bots, agents with</text>
+<text class="s" x="322" y="338">browser user agents, monitors,</text>
+<text class="s" x="322" y="356">user agent lost behind your CDN</text>
+
+<path class="arr" d="M556 246H600" marker-end="url(#b1)"/>
+
+<!-- step 2 cache -->
+<rect class="navy" x="604" y="120" width="190" height="252" rx="12"/>
+<text class="lbl" x="620" y="146">2 · CDN CACHE</text>
+<text class="t" x="620" y="170">Cache lookup</text>
+<text class="s" x="620" y="198">Key = full URL</text>
+<text class="ok" x="620" y="232">HIT: served at edge</text>
+<text class="s" x="620" y="252">Popular pages people</text>
+<text class="s" x="620" y="270">visit stay warm</text>
+<text class="bad" x="620" y="304">MISS: goes to origin</text>
+<text class="s" x="620" y="324">Long-tail pages that</text>
+<text class="s" x="620" y="342">crawlers walk</text>
+
+<path class="miss" d="M796 330H840" marker-end="url(#b1)"/>
+
+<!-- origin -->
+<rect class="orange" x="844" y="120" width="150" height="252" rx="12"/>
+<text class="lbl" x="860" y="146">3 · DISPATCHER</text>
+<text class="t" x="860" y="170">File cache</text>
+<text class="s" x="860" y="198">Another miss for</text>
+<text class="s" x="860" y="216">rarely visited</text>
+<text class="s" x="860" y="234">pages</text>
+
+<path class="miss" d="M996 330H1028" marker-end="url(#b1)"/>
+
+<rect class="orange" x="1032" y="120" width="144" height="252" rx="12"/>
+<text class="lbl" x="1048" y="146">4 · AEM PUBLISH</text>
+<text class="t" x="1048" y="170">Renders</text>
+<text class="s" x="1048" y="198">CPU and time</text>
+<text class="s" x="1048" y="216">per page; people</text>
+<text class="s" x="1048" y="234">queue behind</text><text class="s" x="1048" y="252">crawlers</text>
+
+<!-- bottom summary -->
+<rect x="24" y="404" width="560" height="170" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="432">LICENCE QUESTION</text>
+<text class="t" x="44" y="458">Is this request billable?</text>
+<text class="s" x="44" y="486">Depends on recognition, not on whether it is AI.</text>
+<text class="s" x="44" y="506">Fix: log bot_name, rate-limit unidentified clients,</text>
+<text class="s" x="44" y="526">block empty user agents, forward User-Agent from</text>
+<text class="s" x="44" y="546">your own CDN, move monitors to the health URL.</text>
+
+<rect x="604" y="404" width="572" height="170" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="624" y="432">CAPACITY QUESTION</text>
+<text class="t" x="624" y="458">Does this request reach the origin?</text>
+<text class="s" x="624" y="486">Applies to every bot, billable or not.</text>
+<text class="s" x="624" y="506">Fix: stale-while-revalidate on HTML, strip junk query</text>
+<text class="s" x="624" y="526">parameters, real 404s, honest sitemaps, robots.txt</text>
+<text class="s" x="624" y="546">policy for training crawlers.</text>
+<text class="sub" x="30" y="602">Edge Delivery Services: same licence question; no Dispatcher or publish tier, so capacity is rarely the issue.</text>
+</svg>
