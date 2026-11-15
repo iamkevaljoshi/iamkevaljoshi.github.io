@@ -10,6 +10,8 @@
       "@type": "Person",
       "@id": "{{ home }}#person",
       "name": {{ p.name | jsonify }},
+      "givenName": {{ p.name | split: ' ' | first | jsonify }},
+      "familyName": {{ p.name | split: ' ' | last | jsonify }},
       "url": "{{ home }}",
       "image": "{{ person_image }}",
       "jobTitle": {{ p.title | jsonify }},
@@ -19,7 +21,13 @@
       {%- endunless %}
       "address": { "@type": "PostalAddress", "addressLocality": {{ p.city | jsonify }}, "addressRegion": {{ p.region | jsonify }}, "addressCountry": {{ p.country | jsonify }} },
       "homeLocation": { "@type": "Place", "name": {{ p.location | jsonify }} },
-      "worksFor": { "@type": "Organization", "name": {{ p.employer.name | jsonify }}, "url": {{ p.employer.url | jsonify }} },
+      "worksFor": { "@id": "{{ home }}#employer" },
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Solutions Architect, Adobe Experience Manager (AEM)",
+        "occupationLocation": { "@type": "City", "name": {{ p.city | jsonify }} },
+        "skills": {{ p.knows_about | join: ', ' | jsonify }}
+      },
       "alumniOf": [
         {%- assign degrees = p.education | where: "degree", true -%}
         {%- for e in degrees %}
@@ -44,6 +52,13 @@
       "sameAs": [{{ p.linkedin | jsonify }}, {{ p.github | jsonify }}]
     },
     {
+      "@type": "Organization",
+      "@id": "{{ home }}#employer",
+      "name": {{ p.employer.name | jsonify }},
+      "alternateName": "DEPT",
+      "url": {{ p.employer.url | jsonify }}
+    },
+    {
       "@type": "WebSite",
       "@id": "{{ home }}#website",
       "url": "{{ home }}",
@@ -62,9 +77,9 @@
       "description": {{ page.description | default: page.excerpt | strip_html | normalize_whitespace | truncate: 200 | jsonify }},
       "datePublished": "{{ page.date | date_to_xmlschema }}",
       "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
-      "author": { "@id": "{{ home }}#person" },
+      "author": { "@type": "Person", "@id": "{{ home }}#person", "name": {{ p.name | jsonify }}, "url": "{{ '/about/' | absolute_url }}", "jobTitle": {{ p.title | jsonify }} },
       "publisher": { "@id": "{{ home }}#person" },
-      "image": "{{ '/assets/img/og.png' | absolute_url }}",
+      "image": "{{ page.image | default: '/assets/img/og.png' | absolute_url }}",
       {%- if page.ai_summary %}
       "abstract": {{ page.ai_summary | jsonify }},
       {%- endif %}

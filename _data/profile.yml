@@ -29,7 +29,7 @@ employer: { name: "DEPT®", url: "https://www.deptagency.com" }
 summary: "Keval Joshi is a Mumbai-based Solutions Architect at DEPT® with 12+ years in software engineering, specialising in enterprise Adobe Experience Manager (AEM) platforms, AEM as a Cloud Service migrations and digital experience architecture. He is an Adobe-certified AEM Architect and AEM as a Cloud Service Migration Expert."
 
 tagline: "Solutions Architect for enterprise Adobe Experience Manager platforms."
-intro: "I design and deliver AEM-based digital experience platforms for enterprise brands, from AEM as a Cloud Service migrations to integration architecture, with clear trade-offs and platforms teams can actually run."
+intro: "I'm an Adobe-certified AEM Architect. I design and deliver AEM-based digital experience platforms for enterprise brands, from AEM as a Cloud Service migrations to integration architecture, with clear trade-offs and platforms teams can actually run."
 
 knows_about:
   - Adobe Experience Manager
@@ -43,6 +43,18 @@ knows_about:
   - System integration
   - Cloud migration
   - Scaled Agile Framework
+  - Adobe Experience Manager architecture
+  - AEM as a Cloud Service migration
+  - Universal Editor
+  - Dispatcher and CDN caching
+  - Java Content Repository (JCR)
+  - Apache Jackrabbit Oak
+  - MySQL
+  - PostgreSQL
+  - Oracle Database
+  - MongoDB
+  - Technical SEO
+  - Generative engine optimisation (GEO)
 
 about:
   - "Most of my career has been spent on enterprise web and CMS platforms built on Adobe Experience Manager: first as an engineer, then as an architect at Tekno Point, and now at DEPT®, where I translate business requirements into technical architecture, implementation plans and integration designs for enterprise clients."
@@ -183,7 +195,7 @@ skills:
   - group: Delivery
     items: ["SAFe Agile", "ITIL", "[Estimation]", "[Mentoring]"]
   - group: Engineering
-    items: ["[Language]", "[Framework]", "[Databases]", "[Testing]"]
+    items: ["[Language]", "[Framework]", "MySQL", "PostgreSQL", "Oracle Database", "MongoDB", "JCR / Apache Jackrabbit Oak", "[Testing]"]
 
 # Case studies live in _work/ as Markdown files (one page each). See README.md.
 
@@ -197,5 +209,13 @@ faq:
     a: "Adobe Certified Expert: AEM as a Cloud Service Migration; Adobe Certified Professional: AEM Digital Librarian; Adobe AEM 6 Architect; Adobe AEM 6 Developer; Certified SAFe® 6 Agilist; and ITIL V3 Foundation."
   - q: "How much experience does Keval Joshi have?"
     a: "More than 12 years in software engineering since 2014, including over seven years as a solutions architect at Tekno Point and DEPT®."
+  - q: "Which company does Keval Joshi work for?"
+    a: "Keval Joshi has been a Solutions Architect at DEPT®, the digital agency, since April 2024, working from Mumbai on Adobe Experience Manager platforms for enterprise clients. Before DEPT® he was a Software Solutions Architect at Tekno Point from 2019 to 2024."
+  - q: "Is Keval Joshi a certified AEM Architect?"
+    a: "Yes. Keval Joshi holds the Adobe AEM 6 Architect certification and the Adobe Certified Expert: AEM as a Cloud Service Migration credential, as well as Adobe AEM 6 Developer and AEM Digital Librarian certifications."
+  - q: "What AEM work does Keval Joshi do?"
+    a: "AEM as a Cloud Service migrations from AEM 6.5 and Managed Services, new AEM Sites and Edge Delivery Services builds, Universal Editor and authoring design, Dispatcher and CDN configuration, integration architecture, estimation and independent architecture reviews."
+  - q: "What does Keval Joshi write about?"
+    a: "Practical articles on AEM as a Cloud Service, Edge Delivery Services, solution architecture, technical SEO and generative engine optimisation (GEO), personalisation, and databases including the JCR, Oak, MySQL, PostgreSQL, Oracle and MongoDB."
   - q: "Where is Keval Joshi based?"
     a: "Mumbai, Maharashtra, India."
