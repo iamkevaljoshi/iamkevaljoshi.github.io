@@ -4,7 +4,7 @@ title: "Caching in front of databases: Redis, CDNs, invalidation and stampedes (
 seo_title: "Caching in Front of Databases: Redis, CDN, Invalidation"
 description: "Caching in front of databases: cache-aside and write-through with Redis, invalidation, stampede protection, CDN caching for APIs and lessons from AEM Dispatcher."
 ai_summary: "Caching in front of a database trades freshness for speed and resilience, so the design work is in deciding what may be stale and for how long. The post covers the layers (browser, CDN, application memory, Redis or Valkey, the database's own buffer cache), the patterns (cache-aside, read-through, write-through, write-behind, refresh-ahead), invalidation by TTL, delete-on-write, versioned keys and change data capture, the race that leaves stale data after a delete, and stampede protection with locks, jitter, probabilistic early refresh and stale-while-revalidate. It explains CDN caching for API responses with surrogate keys, Redis operational choices such as eviction policy and licensing, and maps each idea to AEM Dispatcher's statfile invalidation, grace period and serve-stale-on-error."
-date: 2026-11-15 14:00:00 +0530
+date: 2026-11-15 13:20:00 +0530
 category: databases
 tags: [Caching, Redis, CDN, Performance, AEM, Dispatcher]
 ---
