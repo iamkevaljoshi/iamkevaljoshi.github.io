@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Where each engine keeps old row versions for MVCC. PostgreSQL keeps old row versions in the table itself, marked with xmin and xmax, and VACUUM removes dead versions; long transactions cause bloat. MySQL InnoDB updates rows in place and rebuilds older versions from undo logs, which the purge thread cleans; long transactions grow the history list. Oracle updates blocks in place and rebuilds read-consistent blocks from the undo tablespace; if undo is overwritten a long query fails with ORA-01555 snapshot too old. MongoDB WiredTiger and Oak both give each reader a snapshot: WiredTiger keeps history in its cache, which is why transactions are time-limited, and an Oak session sees a repository revision until it refreshes, with conflicting saves rejected.">
+<defs>
+  <marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .warn{font-size:12.5px;font-weight:700;fill:#B45309}
+</style>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">MVCC everywhere, but old versions live in different places</text>
+<text class="sub" x="30" y="72">Readers don't block writers in any of these engines. What differs is where history is kept, and what a long transaction costs you.</text>
+
+<text class="lbl" x="30" y="112">OLD VERSIONS IN THE TABLE</text>
+<rect class="blue" x="24" y="124" width="360" height="200" rx="12"/>
+<text class="t" x="40" y="152">PostgreSQL</text>
+<text class="s" x="40" y="178">UPDATE writes a new row version in the</text>
+<text class="s" x="40" y="196">heap; the old one stays, marked dead</text>
+<text class="m" x="40" y="222">row v1 xmin=100 xmax=205</text>
+<text class="m" x="40" y="242">row v2 xmin=205 xmax=0</text>
+<text class="s" x="40" y="270">VACUUM removes versions no snapshot needs</text>
+<text class="warn" x="40" y="304">Long transaction: table and index bloat</text>
+
+<text class="lbl" x="420" y="112">UPDATE IN PLACE, HISTORY IN UNDO</text>
+<rect class="orange" x="414" y="124" width="360" height="200" rx="12"/>
+<text class="t" x="430" y="152">MySQL InnoDB</text>
+<text class="s" x="430" y="178">Row updated in the clustered index;</text>
+<text class="s" x="430" y="196">old values written to undo logs</text>
+<text class="m" x="430" y="222">row (current) -&gt; undo -&gt; undo</text>
+<text class="s" x="430" y="250">Readers rebuild their version by</text>
+<text class="s" x="430" y="268">walking the undo chain; purge cleans up</text>
+<text class="warn" x="430" y="304">Long transaction: history list grows</text>
+
+<rect class="violet" x="804" y="124" width="372" height="200" rx="12"/>
+<text class="t" x="820" y="152">Oracle Database</text>
+<text class="s" x="820" y="178">Block updated in place; before-images</text>
+<text class="s" x="820" y="196">kept in the undo tablespace</text>
+<text class="m" x="820" y="222">UNDO_RETENTION</text>
+<text class="s" x="820" y="250">Queries rebuild read-consistent blocks</text>
+<text class="s" x="820" y="268">as of their start SCN</text>
+<text class="warn" x="820" y="304">Undo overwritten: ORA-01555</text>
+
+<text class="lbl" x="30" y="370">SNAPSHOT PER SESSION OR TRANSACTION</text>
+<rect class="green" x="24" y="382" width="560" height="180" rx="12"/>
+<text class="t" x="40" y="410">MongoDB (WiredTiger)</text>
+<text class="s" x="40" y="436">Each operation or transaction reads a point-in-time snapshot.</text>
+<text class="s" x="40" y="456">History needed by open snapshots is pinned in the cache.</text>
+<text class="m" x="40" y="482">transactionLifetimeLimitSeconds = 60</text>
+<text class="s" x="40" y="510">Concurrent writes to the same document: write conflict,</text>
+<text class="s" x="40" y="528">labelled TransientTransactionError, so retry</text>
+<text class="warn" x="40" y="548">Long transaction: cache pressure, so it is time-limited</text>
+
+<rect class="navy" x="616" y="382" width="560" height="180" rx="12"/>
+<text class="t" x="632" y="410">Oak (AEM's JCR)</text>
+<text class="s" x="632" y="436">A session sees one repository revision until it refreshes.</text>
+<text class="s" x="632" y="456">Changes are transient until save(), which commits them atomically.</text>
+<text class="m" x="632" y="482">session.save()  /  resolver.commit()</text>
+<text class="s" x="632" y="510">A save that conflicts with a newer revision fails</text>
+<text class="s" x="632" y="528">(OakState0001); refresh and retry</text>
+<text class="warn" x="632" y="548">Long-lived session: stale reads and conflicts</text>
+</svg>

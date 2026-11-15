@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Embed or reference in MongoDB: a decision flow. Ask four questions in order. Is the related data read together with the parent? If not, reference it in its own collection. Is it bounded? If not, store the parent id on the child in its own collection and keep a subset of the latest items in the parent. Is it owned by the parent rather than shared? If it is shared, reference it and copy only stable display fields, the extended reference pattern. Does it change often and independently? If so, keep the volatile part in its own collection. If all four answers favour it, embed the data in the parent document, where a single write is atomic.">
+<defs>
+  <marker id="e1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .yes{stroke:#059669;stroke-width:2.5;fill:none}
+  .no{font-size:12px;font-weight:700;fill:#B45309}
+  .ok{font-size:12px;font-weight:700;fill:#047857}
+</style>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Embed or reference? Ask four questions in order</text>
+<text class="sub" x="30" y="72">Any answer that points away from embedding sends the data to its own collection. Only data that passes all four belongs inside the parent.</text>
+
+<text class="lbl" x="30" y="112">QUESTIONS</text>
+<rect class="blue" x="24" y="124" width="255" height="110" rx="12"/>
+<text class="t" x="40" y="152">1 · Read together?</text>
+<text class="s" x="40" y="178">Is it shown or used with the</text>
+<text class="s" x="40" y="196">parent on most reads?</text>
+
+<rect class="blue" x="311" y="124" width="255" height="110" rx="12"/>
+<text class="t" x="327" y="152">2 · Bounded?</text>
+<text class="s" x="327" y="178">Is there a small, known upper</text>
+<text class="s" x="327" y="196">limit on how many there are?</text>
+
+<rect class="blue" x="598" y="124" width="255" height="110" rx="12"/>
+<text class="t" x="614" y="152">3 · Owned?</text>
+<text class="s" x="614" y="178">Does it belong to this parent</text>
+<text class="s" x="614" y="196">only, rather than being shared?</text>
+
+<rect class="blue" x="885" y="124" width="255" height="110" rx="12"/>
+<text class="t" x="901" y="152">4 · Stable?</text>
+<text class="s" x="901" y="178">Does it change rarely, or only</text>
+<text class="s" x="901" y="196">together with the parent?</text>
+
+<path class="yes" d="M281 179H307" marker-end="url(#e1)"/>
+<path class="yes" d="M568 179H594" marker-end="url(#e1)"/>
+<path class="yes" d="M855 179H881" marker-end="url(#e1)"/>
+<text class="ok" x="283" y="170">yes</text>
+<text class="ok" x="570" y="170">yes</text>
+<text class="ok" x="857" y="170">yes</text>
+
+<path class="arr" d="M151 236V296" marker-end="url(#e1)"/>
+<path class="arr" d="M438 236V296" marker-end="url(#e1)"/>
+<path class="arr" d="M725 236V296" marker-end="url(#e1)"/>
+<path class="arr" d="M1012 236V296" marker-end="url(#e1)"/>
+<text class="no" x="160" y="272">no</text>
+<text class="no" x="447" y="272">no</text>
+<text class="no" x="734" y="272">no</text>
+<text class="no" x="1021" y="272">no</text>
+
+<text class="lbl" x="30" y="290">OUTCOMES</text>
+<rect class="orange" x="24" y="300" width="255" height="130" rx="12"/>
+<text class="t" x="40" y="328">Reference</text>
+<text class="s" x="40" y="354">Own collection, looked up</text>
+<text class="s" x="40" y="372">only when needed</text>
+<text class="m" x="40" y="404">authorId</text>
+
+<rect class="orange" x="311" y="300" width="255" height="130" rx="12"/>
+<text class="t" x="327" y="328">Child collection + subset</text>
+<text class="s" x="327" y="354">Parent id on the child, indexed;</text>
+<text class="s" x="327" y="372">latest N copied into the parent</text>
+<text class="m" x="327" y="404">comments.postId</text>
+
+<rect class="orange" x="598" y="300" width="255" height="130" rx="12"/>
+<text class="t" x="614" y="328">Extended reference</text>
+<text class="s" x="614" y="354">Store the id and copy only the</text>
+<text class="s" x="614" y="372">stable fields you display</text>
+<text class="m" x="614" y="404">author: { _id, name }</text>
+
+<rect class="orange" x="885" y="300" width="255" height="130" rx="12"/>
+<text class="t" x="901" y="328">Split the volatile part</text>
+<text class="s" x="901" y="354">Stock, prices and counters live</text>
+<text class="s" x="901" y="372">in their own documents</text>
+<text class="m" x="901" y="404">inventory.sku</text>
+
+<path class="yes" d="M1142 179H1166V470" marker-end="url(#e1)"/>
+<text class="ok" x="1146" y="170">yes</text>
+
+<rect class="green" x="24" y="476" width="1152" height="100" rx="12"/>
+<text class="t" x="44" y="506">Embed in the parent document</text>
+<text class="s" x="44" y="532">Order lines, addresses, product variants. One read serves the screen and one write is atomic, with no transaction needed.</text>
+<text class="s" x="44" y="552">Still cap it: put maxItems on the array in the $jsonSchema validator.</text>
+</svg>

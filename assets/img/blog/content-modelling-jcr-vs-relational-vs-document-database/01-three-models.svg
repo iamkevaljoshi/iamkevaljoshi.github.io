@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="The same domain of articles, authors and products modelled three ways. Relational: separate article, author and product tables linked by article_author and article_product join tables, with a separate article_i18n table for languages; data is normalised and joined at read time. Document: one article document with localised fields in an i18n map, an embedded author summary and an array of product IDs; data is shaped for the read and shared fields are duplicated. JCR: a tree under /content/dam/mysite with parallel en and de language folders, articles bucketed by year and month, and the article's authors property holding the path of an author Content Fragment; content is organised by location and governance.">
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .inner{fill:#FFFFFF;stroke:#C9D1E0;stroke-width:1.5}
+  .lnk{stroke:#5B6478;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+</style>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">One domain, three models</text>
+<text class="sub" x="30" y="72">Articles, authors and products: normalised and joined, shaped for the read, or organised by location and governance.</text>
+
+<!-- Relational -->
+<rect class="blue" x="24" y="96" width="370" height="400" rx="12"/>
+<text class="lbl" x="44" y="124">RELATIONAL (POSTGRESQL)</text>
+<rect class="inner" x="44" y="140" width="150" height="60" rx="8"/>
+<text class="t" x="58" y="164">article</text>
+<text class="m" x="58" y="186">article_id, slug</text>
+<rect class="inner" x="224" y="140" width="150" height="60" rx="8"/>
+<text class="t" x="238" y="164">author</text>
+<text class="m" x="238" y="186">author_id, name</text>
+<rect class="inner" x="134" y="226" width="150" height="44" rx="8"/>
+<text class="m" x="148" y="253">article_author</text>
+<path class="lnk" d="M119 200V248H134"/>
+<path class="lnk" d="M299 200V248H284"/>
+<rect class="inner" x="44" y="296" width="150" height="44" rx="8"/>
+<text class="m" x="58" y="323">article_i18n</text>
+<rect class="inner" x="224" y="296" width="150" height="44" rx="8"/>
+<text class="m" x="238" y="323">article_product</text>
+<rect class="inner" x="224" y="362" width="150" height="44" rx="8"/>
+<text class="t" x="238" y="390">product</text>
+<path class="lnk" d="M299 340V362"/>
+<text class="s" x="44" y="440">Every fact once. Foreign keys protect</text>
+<text class="s" x="44" y="458">integrity. Joins at read time.</text>
+<text class="s" x="44" y="476">New field = migration.</text>
+
+<!-- Document -->
+<rect class="green" x="415" y="96" width="370" height="400" rx="12"/>
+<text class="lbl" x="435" y="124">DOCUMENT (MONGODB)</text>
+<rect class="inner" x="435" y="140" width="330" height="266" rx="8"/>
+<text class="t" x="451" y="164">articles</text>
+<text class="m" x="451" y="190">_id: "winter-running-guide"</text>
+<text class="m" x="451" y="212">i18n:</text>
+<text class="m" x="471" y="232">en: { title, body[ ] }</text>
+<text class="m" x="471" y="252">de: { title, body[ ] }</text>
+<text class="m" x="451" y="276">authors: [</text>
+<text class="m" x="471" y="296">{ authorId, name, photo }</text>
+<text class="m" x="451" y="316">]  ← duplicated summary</text>
+<text class="m" x="451" y="342">productIds: [ "SKU-4411" ]</text>
+<text class="m" x="451" y="362">  ← reference, not copy</text>
+<text class="m" x="451" y="388">categoryIds: [ ... ]</text>
+<text class="s" x="435" y="440">One read renders the page. Shared</text>
+<text class="s" x="435" y="458">fields are copied, so changes fan out.</text>
+<text class="s" x="435" y="476">16 MB limit per document.</text>
+
+<!-- JCR -->
+<rect class="orange" x="806" y="96" width="370" height="400" rx="12"/>
+<text class="lbl" x="826" y="124">JCR (AEM CONTENT FRAGMENTS)</text>
+<rect class="inner" x="826" y="140" width="330" height="266" rx="8"/>
+<text class="m" x="842" y="166">/content/dam/mysite/</text>
+<text class="m" x="862" y="190">en/</text>
+<text class="m" x="882" y="212">authors/priya-shah</text>
+<text class="m" x="882" y="234">articles/2026/11/</text>
+<text class="m" x="902" y="256">winter-running-guide</text>
+<text class="m" x="922" y="280">authors = [ path ]</text>
+<text class="m" x="922" y="300">products = [ SKU ]</text>
+<text class="m" x="922" y="320">cq:tags = [ ... ]</text>
+<text class="m" x="862" y="350">de/  ← parallel language tree</text>
+<text class="m" x="882" y="372">authors/  articles/</text>
+<path class="lnk" d="M918 274C880 260 860 230 876 216"/>
+<text class="s" x="826" y="440">The path is the identity. ACLs,</text>
+<text class="s" x="826" y="458">translation and publishing follow</text>
+<text class="s" x="826" y="476">the tree. Versions and workflow built in.</text>
+
+<rect x="24" y="516" width="1152" height="64" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="542">DESIGN RULE</text>
+<text class="s" x="44" y="564">Model each kind of data where its writer and read pattern fit: editorial content in the JCR, transactions in SQL, read-as-a-unit aggregates in documents.</text>
+</svg>

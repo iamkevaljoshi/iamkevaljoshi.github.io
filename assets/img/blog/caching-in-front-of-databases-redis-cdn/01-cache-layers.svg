@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Five caching layers in front of a database, from the user inwards. Browser: shared by one user, invalidated only by max-age. CDN: shared by everyone at a point of presence, invalidated by s-maxage TTL, purge or surrogate keys; in AEM this is the Adobe-managed CDN. Application memory: one process, nanoseconds, TTL and size limit; in AEM, Sling Model or OSGi service caches. Redis or Valkey: all application instances, about a millisecond, invalidated by TTL, delete after commit or versioned keys; in AEM, Dispatcher with its stat files. Database buffer cache: pages not results, automatic; in AEM, Oak caches. The further out a layer is, the cheaper a hit and the harder it is to invalidate.">
+<defs>
+  <marker id="c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .aem{font-size:12.5px;font-weight:700;fill:#B45309}
+</style>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Five places a read can be answered before the database</text>
+<text class="sub" x="30" y="72">Outer layers are cheaper per hit and harder to invalidate. Decide staleness per data type, then pick the layer.</text>
+
+<text class="lbl" x="30" y="112">REQUEST PATH</text>
+
+<rect class="navy" x="24" y="124" width="212" height="250" rx="12"/>
+<text class="t" x="40" y="152">Browser</text>
+<text class="s" x="40" y="178">Shared by: one user</text>
+<text class="s" x="40" y="202">Invalidate: wait for</text>
+<text class="m" x="40" y="222">max-age</text>
+<text class="s" x="40" y="246">Cannot be purged</text>
+<text class="aem" x="40" y="350">AEM: same</text>
+
+<rect class="blue" x="258" y="124" width="212" height="250" rx="12"/>
+<text class="t" x="274" y="152">CDN</text>
+<text class="s" x="274" y="178">Shared by: everyone</text>
+<text class="s" x="274" y="196">at a point of presence</text>
+<text class="s" x="274" y="222">Invalidate:</text>
+<text class="m" x="274" y="242">s-maxage</text>
+<text class="s" x="274" y="262">purge, surrogate keys</text>
+<text class="m" x="274" y="286">stale-while-revalidate</text>
+<text class="aem" x="274" y="350">AEM: Adobe CDN</text>
+
+<rect class="violet" x="492" y="124" width="212" height="250" rx="12"/>
+<text class="t" x="508" y="152">App memory</text>
+<text class="s" x="508" y="178">Shared by: one process</text>
+<text class="s" x="508" y="202">Nanoseconds</text>
+<text class="s" x="508" y="226">Invalidate: TTL, size</text>
+<text class="s" x="508" y="244">limit, local events</text>
+<text class="s" x="508" y="268">Single-flight per key</text>
+<text class="aem" x="508" y="340">AEM: Sling Model and</text>
+<text class="aem" x="508" y="358">OSGi service caches</text>
+
+<rect class="orange" x="726" y="124" width="212" height="250" rx="12"/>
+<text class="t" x="742" y="152">Redis / Valkey</text>
+<text class="s" x="742" y="178">Shared by: all instances</text>
+<text class="s" x="742" y="202">About a millisecond</text>
+<text class="s" x="742" y="226">Invalidate: TTL, delete</text>
+<text class="s" x="742" y="244">after commit, versioned</text>
+<text class="s" x="742" y="262">keys, CDC</text>
+<text class="aem" x="742" y="340">AEM: Dispatcher and</text>
+<text class="aem" x="742" y="358">its .stat files</text>
+
+<rect class="green" x="960" y="124" width="216" height="250" rx="12"/>
+<text class="t" x="976" y="152">Database</text>
+<text class="s" x="976" y="178">Buffer cache: pages,</text>
+<text class="s" x="976" y="196">not query results</text>
+<text class="s" x="976" y="222">Automatic</text>
+<text class="s" x="976" y="246">Fix indexes here first</text>
+<text class="aem" x="976" y="350">AEM: Oak caches</text>
+
+<path class="arr" d="M238 249H254" marker-end="url(#c1)"/>
+<path class="arr" d="M472 249H488" marker-end="url(#c1)"/>
+<path class="arr" d="M706 249H722" marker-end="url(#c1)"/>
+<path class="arr" d="M940 249H956" marker-end="url(#c1)"/>
+
+<rect x="24" y="400" width="1152" height="80" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="426">EVERY LAYER</text>
+<text class="s" x="44" y="450">A TTL on every entry. User or tenant in the key for anything personalised, or keep it out of shared layers.</text>
+<text class="s" x="44" y="468">The application must still work, more slowly, when any cache is empty or unavailable.</text>
+
+<rect x="24" y="496" width="1152" height="80" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="522">STAMPEDE DEFENCES</text>
+<text class="s" x="44" y="546">Jittered TTLs, single-flight locks, serve stale while revalidating, probabilistic early refresh, warm-up after deploys.</text>
+<text class="s" x="44" y="564">Dispatcher equivalents: /gracePeriod and /serveStaleOnError.</text>
+</svg>

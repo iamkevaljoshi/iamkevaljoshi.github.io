@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="The same author and article data shown as relational tables and as a JCR tree. On the left, an authors table with columns id, name and email, and an articles table with an author_id foreign key. On the right, a JCR tree where /content/dam/acme/authors is the parent node, each author is a node with name and email properties, and an article page's jcr:content node stores authorPath as a path string. Table maps to parent node, row to node, column to property, primary key to path, and foreign key to a path string with no integrity check.">
+<defs>
+  <marker id="r1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .ref{stroke:#EA580C;stroke-width:2.5;fill:none;stroke-dasharray:7 5}
+  .warn{font-size:12.5px;font-weight:700;fill:#B45309}
+  .grid{stroke:#C9D1E0;stroke-width:1}
+</style>
+<rect width="1200" height="600" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">The same data as rows and as nodes</text>
+<text class="sub" x="30" y="72">A node is roughly a row and a path roughly a primary key, but the tree carries meaning and references are unchecked strings.</text>
+
+<!-- relational side -->
+<text class="lbl" x="30" y="112">RELATIONAL</text>
+<rect class="navy" x="24" y="124" width="520" height="150" rx="12"/>
+<text class="t" x="40" y="152">authors</text>
+<text class="m" x="40" y="182">id (PK)</text><text class="m" x="150" y="182">name</text><text class="m" x="320" y="182">email</text>
+<line class="grid" x1="40" y1="192" x2="528" y2="192"/>
+<text class="m" x="40" y="214">42</text><text class="s" x="150" y="214">Keval Joshi</text><text class="s" x="320" y="214">keval@example.com</text>
+<text class="m" x="40" y="242">43</text><text class="s" x="150" y="242">A. N. Other</text><text class="s" x="320" y="242">other@example.com</text>
+
+<rect class="navy" x="24" y="300" width="520" height="130" rx="12"/>
+<text class="t" x="40" y="328">articles</text>
+<text class="m" x="40" y="358">id (PK)</text><text class="m" x="150" y="358">title</text><text class="m" x="360" y="358">author_id (FK)</text>
+<line class="grid" x1="40" y1="368" x2="528" y2="368"/>
+<text class="m" x="40" y="392">7</text><text class="s" x="150" y="392">Indexing basics</text><text class="m" x="360" y="392">42</text>
+<text class="s" x="40" y="418">FK enforced: author 42 can't be deleted while referenced</text>
+
+<!-- JCR side -->
+<text class="lbl" x="620" y="112">JCR (OAK)</text>
+<rect class="blue" x="614" y="124" width="562" height="150" rx="12"/>
+<text class="m" x="630" y="152">/content/dam/acme/authors</text>
+<text class="s" x="900" y="152">parent node ≈ table</text>
+<text class="m" x="650" y="182">└ keval-joshi</text>
+<text class="s" x="900" y="182">node ≈ row, path ≈ key</text>
+<text class="m" x="680" y="208">name = "Keval Joshi"</text>
+<text class="s" x="900" y="208">property ≈ column</text>
+<text class="m" x="680" y="232">email = "keval@example.com"</text>
+<text class="m" x="650" y="258">└ a-n-other</text>
+
+<rect class="green" x="614" y="300" width="562" height="130" rx="12"/>
+<text class="m" x="630" y="328">/content/acme/en/articles/indexing-basics</text>
+<text class="m" x="650" y="356">└ jcr:content</text>
+<text class="m" x="680" y="382">jcr:title = "Indexing basics"</text>
+<text class="m" x="680" y="408">authorPath = "/content/dam/acme/authors/keval-joshi"</text>
+
+<path class="ref" d="M1170 404C1196 404 1196 182 1080 182" marker-end="url(#r1)"/>
+<path class="arr" d="M546 200H610" marker-end="url(#r1)"/>
+<path class="arr" d="M546 365H610" marker-end="url(#r1)"/>
+
+<rect x="24" y="460" width="1152" height="112" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="488">WHERE THE ANALOGY BREAKS</text>
+<text class="warn" x="44" y="514">authorPath is a plain string.</text>
+<text class="s" x="250" y="514">Delete or move the author node and nothing stops you; the article keeps a dangling path.</text>
+<text class="s" x="44" y="540">The path also encodes the hierarchy: rename a folder and every descendant's "primary key" changes. Use stable IDs for</text>
+<text class="s" x="44" y="560">external systems, read by path inside AEM, and validate references in code.</text>
+</svg>

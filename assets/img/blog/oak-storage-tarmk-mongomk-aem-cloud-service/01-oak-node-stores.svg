@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Oak's two node stores compared. The Segment Node Store, TarMK, writes immutable segments into tar files on local disk and belongs to exactly one AEM instance; it is fast and simple and needs revision cleanup and compaction. The Document Node Store, MongoMK or RDBMK, stores each node as a document in MongoDB or a relational database shared by several author instances, coordinated by leases and background reads; it adds network latency and needs revision garbage collection. Both reference large binaries in a separate data store. On AEM as a Cloud Service, author pods share one Adobe-operated repository on cloud storage, each publish instance has its own repository, and Adobe runs cleanup while customers own version, audit log and workflow purge.">
+<defs>
+  <marker id="o1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .warn{font-size:12.5px;font-weight:700;fill:#B45309}
+</style>
+<rect width="1200" height="620" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Two ways Oak persists the content tree</text>
+<text class="sub" x="30" y="72">The node store holds nodes and revisions. Large binaries live in a separate data store in every design.</text>
+
+<!-- TarMK -->
+<text class="lbl" x="30" y="112">SEGMENT NODE STORE (TARMK)</text>
+<rect class="navy" x="24" y="124" width="360" height="300" rx="12"/>
+<rect class="orange" x="44" y="144" width="320" height="62" rx="10"/>
+<text class="t" x="60" y="170">One AEM instance</text>
+<text class="s" x="60" y="192">The only writer to its store</text>
+<path class="arr" d="M204 208V236" marker-end="url(#o1)"/>
+<rect class="blue" x="44" y="240" width="320" height="96" rx="10"/>
+<text class="t" x="60" y="266">Tar files on local disk</text>
+<text class="s" x="60" y="288">Immutable segments, append-only</text>
+<text class="m" x="60" y="310">repository/segmentstore</text>
+<text class="s" x="44" y="364">Fast local reads and writes</text>
+<text class="s" x="44" y="384">HA: publish farm, cold standby author</text>
+<text class="warn" x="44" y="408">Needs revision cleanup + compaction</text>
+
+<!-- Document -->
+<text class="lbl" x="420" y="112">DOCUMENT NODE STORE (MONGOMK / RDBMK)</text>
+<rect class="navy" x="414" y="124" width="380" height="300" rx="12"/>
+<rect class="orange" x="434" y="144" width="104" height="62" rx="10"/>
+<text class="t" x="450" y="172">Author</text>
+<text class="s" x="450" y="192">id 1</text>
+<rect class="orange" x="552" y="144" width="104" height="62" rx="10"/>
+<text class="t" x="568" y="172">Author</text>
+<text class="s" x="568" y="192">id 2</text>
+<rect class="orange" x="670" y="144" width="104" height="62" rx="10"/>
+<text class="t" x="686" y="172">Author</text>
+<text class="s" x="686" y="192">id 3</text>
+<path class="arr" d="M486 208V236" marker-end="url(#o1)"/>
+<path class="arr" d="M604 208V236" marker-end="url(#o1)"/>
+<path class="arr" d="M722 208V236" marker-end="url(#o1)"/>
+<rect class="green" x="434" y="240" width="340" height="96" rx="10"/>
+<text class="t" x="450" y="266">MongoDB replica set or RDBMS</text>
+<text class="s" x="450" y="288">One document per node, with revisions</text>
+<text class="s" x="450" y="310">Leases, ~1 s background reads</text>
+<text class="s" x="434" y="364">Horizontal author scaling, shared state</text>
+<text class="s" x="434" y="384">Network round trip on every cache miss</text>
+<text class="warn" x="434" y="408">Needs revision garbage collection</text>
+
+<!-- AEMaaCS -->
+<text class="lbl" x="830" y="112">AEM AS A CLOUD SERVICE</text>
+<rect class="navy" x="824" y="124" width="352" height="300" rx="12"/>
+<rect class="violet" x="844" y="144" width="312" height="96" rx="10"/>
+<text class="t" x="860" y="170">Author pods</text>
+<text class="s" x="860" y="192">Share one Oak repository on</text>
+<text class="s" x="860" y="210">cloud storage, run by Adobe</text>
+<rect class="violet" x="844" y="254" width="312" height="82" rx="10"/>
+<text class="t" x="860" y="280">Publish instances</text>
+<text class="s" x="860" y="302">Each has its own repository</text>
+<text class="s" x="860" y="320">of published content</text>
+<text class="s" x="844" y="364">Adobe owns cleanup, data store GC,</text>
+<text class="s" x="844" y="384">backups and storage sizing</text>
+<text class="warn" x="844" y="408">You own purges and what you write</text>
+
+<!-- data store -->
+<rect x="24" y="452" width="1152" height="62" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="478">DATA STORE (ALL DESIGNS)</text>
+<text class="s" x="44" y="500">Binaries by content hash: file system, Amazon S3 or Azure Blob. Deleting an asset frees space only after data store garbage collection.</text>
+
+<rect x="24" y="530" width="1152" height="66" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="556">RULE OF THUMB</text>
+<text class="s" x="44" y="580">TarMK for every publish and for most authors. MongoMK only at Adobe's very high authoring thresholds. On AEMaaCS, focus on content hygiene.</text>
+</svg>

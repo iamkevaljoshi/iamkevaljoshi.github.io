@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="RAG over CMS content in two paths. Indexing path: an AEM publish or unpublish event triggers a worker that fetches rendered HTML or Content Fragment JSON, chunks it by component and heading with page context, embeds each chunk, and upserts or deletes chunks with metadata such as path, site, locale, tags and audience in a vector store such as pgvector, Atlas Vector Search or a dedicated vector database. Query path: the user's question is embedded, hybrid retrieval runs keyword and vector search with site, locale and permission filters, results are fused with reciprocal rank fusion and reranked, and the top chunks go to the language model with citations.">
+<defs>
+  <marker id="r1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+</style>
+<rect width="1200" height="560" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">RAG over CMS content: the store is one box of many</text>
+<text class="sub" x="30" y="72">Answer quality is decided by chunking, metadata, freshness and hybrid retrieval more than by the vector engine.</text>
+
+<text class="lbl" x="30" y="112">INDEXING PATH (ON PUBLISH)</text>
+<rect class="violet" x="24" y="124" width="200" height="130" rx="12"/>
+<text class="t" x="40" y="152">AEM event</text>
+<text class="s" x="40" y="178">Publish, unpublish,</text>
+<text class="s" x="40" y="196">delete (AEM Eventing)</text>
+<text class="s" x="40" y="224">Weekly reconciliation</text>
+<text class="s" x="40" y="242">catches missed events</text>
+
+<rect class="orange" x="262" y="124" width="250" height="130" rx="12"/>
+<text class="t" x="278" y="152">Fetch and chunk</text>
+<text class="s" x="278" y="178">Rendered HTML or fragment JSON</text>
+<text class="s" x="278" y="196">Split by component and heading</text>
+<text class="s" x="278" y="214">Prepend page and section title</text>
+<text class="s" x="278" y="232">Drop nav, footer, boilerplate</text>
+
+<rect class="blue" x="550" y="124" width="250" height="130" rx="12"/>
+<text class="t" x="566" y="152">Embed</text>
+<text class="s" x="566" y="178">Only chunks whose text hash</text>
+<text class="s" x="566" y="196">changed</text>
+<text class="s" x="566" y="224">Store model name with vector</text>
+
+<rect class="green" x="838" y="124" width="338" height="130" rx="12"/>
+<text class="t" x="854" y="152">Vector store</text>
+<text class="s" x="854" y="178">pgvector, Atlas Vector Search or</text>
+<text class="s" x="854" y="196">a dedicated vector database</text>
+<text class="m" x="854" y="222">path site locale tags audience</text>
+<text class="s" x="854" y="242">Upsert on publish, delete on unpublish</text>
+
+<path class="arr" d="M226 189H258" marker-end="url(#r1)"/>
+<path class="arr" d="M514 189H546" marker-end="url(#r1)"/>
+<path class="arr" d="M802 189H834" marker-end="url(#r1)"/>
+
+<text class="lbl" x="30" y="300">QUERY PATH</text>
+<rect class="navy" x="24" y="312" width="200" height="130" rx="12"/>
+<text class="t" x="40" y="340">Question</text>
+<text class="s" x="40" y="366">Embedded with the</text>
+<text class="s" x="40" y="384">same model</text>
+<text class="s" x="40" y="412">Site, locale, user's</text>
+<text class="s" x="40" y="430">groups known</text>
+
+<rect class="green" x="262" y="312" width="250" height="130" rx="12"/>
+<text class="t" x="278" y="340">Hybrid retrieval</text>
+<text class="s" x="278" y="366">Keyword search + vector search</text>
+<text class="s" x="278" y="384">Filtered by site, locale and</text>
+<text class="s" x="278" y="402">permissions in the query</text>
+
+<rect class="blue" x="550" y="312" width="250" height="130" rx="12"/>
+<text class="t" x="566" y="340">Fuse and rerank</text>
+<text class="s" x="566" y="366">Reciprocal rank fusion</text>
+<text class="s" x="566" y="384">Cross-encoder rerank of the</text>
+<text class="s" x="566" y="402">top 20 to 50</text>
+
+<rect class="violet" x="838" y="312" width="338" height="130" rx="12"/>
+<text class="t" x="854" y="340">Language model</text>
+<text class="s" x="854" y="366">Top chunks plus question</text>
+<text class="s" x="854" y="384">Answer with citations to the</text>
+<text class="s" x="854" y="402">source page URLs</text>
+
+<path class="arr" d="M226 377H258" marker-end="url(#r1)"/>
+<path class="arr" d="M514 377H546" marker-end="url(#r1)"/>
+<path class="arr" d="M802 377H834" marker-end="url(#r1)"/>
+
+<rect x="24" y="468" width="1152" height="72" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="494">DESIGN RULE</text>
+<text class="s" x="44" y="518">The CMS is the source of truth. The vector index is a derived projection: rebuildable, event-driven, and filtered like the content it came from.</text>
+</svg>

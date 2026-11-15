@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="Where connection pools sit. Each application instance, such as a Spring Boot pod with HikariCP, an AEM publish instance with the JDBC Connections Pool, or a Node.js service with the MongoDB driver, keeps its own small pool. Many instances can open hundreds of client connections. An optional proxy pool such as PgBouncer, ProxySQL, MySQL Router or RDS Proxy multiplexes them onto a few server connections at transaction boundaries, unless session state pins them. The database has a hard connection limit and performs best with active sessions close to its CPU and I/O capacity. Total connections equal instances times pool size.">
+<defs>
+  <marker id="p1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5B6478"/></marker>
+</defs>
+<style>
+  text{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .h{font-size:22px;font-weight:700;fill:#10182B}
+  .sub{font-size:14px;fill:#5B6478}
+  .t{font-size:16px;font-weight:700;fill:#10182B}
+  .s{font-size:12.5px;fill:#10182B}
+  .m{font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;fill:#1E3A8A}
+  .lbl{font-size:11px;font-weight:700;fill:#5B6478;letter-spacing:.08em}
+  .navy{fill:#EEF0F6;stroke:#10182B;stroke-width:2}
+  .blue{fill:#EFF4FF;stroke:#2563EB;stroke-width:2}
+  .green{fill:#ECFDF5;stroke:#059669;stroke-width:2}
+  .orange{fill:#FFF4EC;stroke:#EA580C;stroke-width:2}
+  .violet{fill:#F3F0FF;stroke:#6D5BD0;stroke-width:2}
+  .arr{stroke:#5B6478;stroke-width:2;fill:none}
+  .warn{font-size:12.5px;font-weight:700;fill:#B45309}
+</style>
+<rect width="1200" height="560" rx="16" fill="#F7F8FB"/>
+<text class="h" x="30" y="48">Three places a connection can be pooled</text>
+<text class="sub" x="30" y="72">Every layer multiplies or divides the number of connections the database finally sees.</text>
+
+<text class="lbl" x="30" y="112">1 · APPLICATION POOLS (ONE PER INSTANCE)</text>
+<rect class="orange" x="24" y="124" width="330" height="76" rx="12"/>
+<text class="t" x="40" y="152">Spring Boot pod × 12</text>
+<text class="m" x="40" y="176">HikariCP maximumPoolSize 8</text>
+<rect class="violet" x="24" y="214" width="330" height="76" rx="12"/>
+<text class="t" x="40" y="242">AEM publish × autoscaled</text>
+<text class="m" x="40" y="266">JdbcPoolService pool.size 5</text>
+<rect class="green" x="24" y="304" width="330" height="76" rx="12"/>
+<text class="t" x="40" y="332">Node.js service × 6</text>
+<text class="m" x="40" y="356">MongoClient maxPoolSize 20</text>
+
+<path class="arr" d="M356 162H446" marker-end="url(#p1)"/>
+<path class="arr" d="M356 252H446" marker-end="url(#p1)"/>
+<path class="arr" d="M356 342H446" marker-end="url(#p1)"/>
+<text class="s" x="364" y="300">many client</text>
+<text class="s" x="364" y="316">connections</text>
+
+<text class="lbl" x="456" y="112">2 · PROXY POOL (OPTIONAL)</text>
+<rect class="blue" x="450" y="124" width="320" height="256" rx="12"/>
+<text class="t" x="466" y="152">PgBouncer · ProxySQL</text>
+<text class="t" x="466" y="174">MySQL Router · RDS Proxy</text>
+<text class="s" x="466" y="206">Accepts thousands of cheap</text>
+<text class="s" x="466" y="224">client connections</text>
+<text class="s" x="466" y="252">Hands out a server connection</text>
+<text class="s" x="466" y="270">per transaction, not per session</text>
+<text class="m" x="466" y="300">pool_mode = transaction</text>
+<text class="warn" x="466" y="332">Session state (SET, temp tables,</text>
+<text class="warn" x="466" y="350">locks) pins or breaks sharing</text>
+
+<path class="arr" d="M772 252H862" marker-end="url(#p1)"/>
+<text class="s" x="780" y="236">few server</text>
+<text class="s" x="780" y="284">connections</text>
+
+<text class="lbl" x="872" y="112">3 · DATABASE</text>
+<rect class="navy" x="866" y="124" width="310" height="256" rx="12"/>
+<text class="t" x="882" y="152">PostgreSQL · MySQL</text>
+<text class="t" x="882" y="174">Oracle · MongoDB</text>
+<text class="s" x="882" y="206">Hard limit, for example</text>
+<text class="m" x="882" y="226">max_connections = 100</text>
+<text class="s" x="882" y="258">Best throughput when active</text>
+<text class="s" x="882" y="276">sessions ≈ cores and I/O capacity</text>
+<text class="warn" x="882" y="332">Extra sessions wait inside</text>
+<text class="warn" x="882" y="350">the database, expensively</text>
+
+<rect x="24" y="410" width="1152" height="126" rx="12" fill="#FFFFFF" stroke="#C9D1E0"/>
+<text class="lbl" x="44" y="438">COUNT THE FLEET</text>
+<text class="m" x="44" y="466">total = instances × pool size     12 × 8 = 96 · 6 × 20 = 120 · publish scale-out × 5 = ?</text>
+<text class="s" x="44" y="496">Plan with maximum autoscaling, not today's instance count. If the total doesn't fit the database, shrink the pools or add a proxy.</text>
+<text class="s" x="44" y="518">A bigger pool never fixes slow queries: it moves the queue from the application, where waiting is cheap, into the database.</text>
+</svg>
