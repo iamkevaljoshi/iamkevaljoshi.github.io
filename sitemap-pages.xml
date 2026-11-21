@@ -1,0 +1,25 @@
+---
+layout: null
+sitemap: false
+permalink: /sitemap-pages.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ '/' | absolute_url }}</loc><lastmod>{{ site.time | date_to_xmlschema }}</lastmod></url>
+{%- for pg in site.pages -%}
+  {%- if pg.sitemap == false or pg.url == '/' or pg.url contains '.xml' or pg.url contains '.json' or pg.url contains '.txt' or pg.url contains '404' or pg.layout == nil -%}{%- continue -%}{%- endif %}
+  <url><loc>{{ pg.url | replace: 'index.html', '' | absolute_url }}</loc><lastmod>{{ pg.last_modified_at | default: site.time | date_to_xmlschema }}</lastmod></url>
+{%- endfor -%}
+{%- for p in site.posts %}
+  <url><loc>{{ p.url | absolute_url }}</loc><lastmod>{{ p.last_modified_at | default: p.date | date_to_xmlschema }}</lastmod></url>
+{%- endfor -%}
+{%- for c in site.tools %}
+  <url><loc>{{ c.url | absolute_url }}</loc><lastmod>{{ site.time | date_to_xmlschema }}</lastmod></url>
+{%- endfor -%}
+{%- for c in site.topics %}
+  <url><loc>{{ c.url | absolute_url }}</loc><lastmod>{{ site.time | date_to_xmlschema }}</lastmod></url>
+{%- endfor -%}
+{%- for c in site.work %}{% if c.published != false %}
+  <url><loc>{{ c.url | absolute_url }}</loc><lastmod>{{ site.time | date_to_xmlschema }}</lastmod></url>
+{%- endif %}{%- endfor %}
+</urlset>
