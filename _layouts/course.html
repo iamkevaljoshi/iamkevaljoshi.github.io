@@ -1,0 +1,64 @@
+---
+layout: default
+---
+{%- assign p = site.data.profile -%}
+{%- assign track = site.data.courses[page.track] -%}
+{%- assign lessons = site.learn | where: 'track', page.track | sort: 'order' -%}
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow"><a class="crumb" href="{{ '/learn/' | relative_url }}">Learn</a> / Course</p>
+    <h1 data-split>{{ track.title }}</h1>
+    <p class="lede">{{ track.lede }}</p>
+  </div>
+</section>
+<section class="block tight">
+  <div class="wrap" data-learn="course" data-track="{{ page.track }}" data-total="{{ track.lessons.size }}">
+    <div class="ln-summary">
+      <div>
+        <p><strong>Who it's for:</strong> {{ track.audience }}</p>
+        <p><strong>You'll be able to:</strong> {{ track.outcome }}</p>
+      </div>
+      <div>
+        <div class="ln-bar" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="{{ track.lessons.size }}" aria-valuenow="0" id="lnBar"><span id="lnBarFill"></span></div>
+        <p class="ln-bar-note muted" id="lnBarNote">Not started</p>
+        <a class="btn solid" id="lnStart" href="{{ lessons.first.url | relative_url }}">Start lesson 1</a>
+        <button type="button" class="pc-link ln-reset" id="lnReset">Reset my progress</button>
+      </div>
+    </div>
+
+    {%- for lv in track.levels %}
+    {%- assign lv_lessons = lessons | where: 'level', lv.n -%}
+    <section class="ln-level" aria-labelledby="lv{{ lv.n }}">
+      <h2 id="lv{{ lv.n }}"><span class="ln-lv-n">Level {{ lv.n }}</span> {{ lv.title }} <span class="ln-lv-count muted" data-level="{{ lv.n }}"></span></h2>
+      <p class="muted">{{ lv.goal }}</p>
+      <ol class="ln-list">
+        {%- for l in lv_lessons %}
+        <li class="ln-item{% if l.kind == 'project' %} is-project{% endif %}" data-slug="{{ page.track }}/{{ l.slug }}" data-level="{{ lv.n }}">
+          <span class="ln-check" aria-hidden="true"></span>
+          <a href="{{ l.url | relative_url }}"><span class="ln-num">{{ l.order }}</span> {{ l.title }}</a>
+          <span class="ln-item-meta muted">{% if l.kind == 'project' %}Project · {% endif %}{{ l.minutes }} min<span class="ln-score" data-score></span></span>
+        </li>
+        {%- else %}
+        <li class="ln-item ln-soon"><span class="ln-check" aria-hidden="true"></span><span class="muted">Lessons for this level are being written.</span></li>
+        {%- endfor %}
+      </ol>
+    </section>
+    {%- endfor %}
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": {{ track.title | jsonify }},
+  "description": {{ track.lede | jsonify }},
+  "url": "{{ page.url | absolute_url }}",
+  "isAccessibleForFree": true,
+  "inLanguage": "{{ site.lang }}",
+  "provider": { "@type": "Person", "name": {{ p.name | jsonify }}, "url": "{{ '/about/' | absolute_url }}" },
+  "educationalLevel": "Beginner to Advanced",
+  "teaches": {{ track.outcome | jsonify }},
+  "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "Online", "courseWorkload": "PT{{ track.lessons.size | times: 10 }}M" }
+}
+</script>
+<script src="{{ '/assets/js/learn.js' | relative_url }}" defer></script>

@@ -1,0 +1,119 @@
+---
+layout: default
+---
+{%- assign p = site.data.profile -%}
+{%- assign track = site.data.courses[page.track] -%}
+{%- assign lessons = site.learn | where: 'track', page.track | sort: 'order' -%}
+{%- assign total = track.lessons.size -%}{%- assign present = lessons.size -%}
+{%- assign lvl = track.levels | where: 'n', page.level | first -%}
+{%- assign prev = nil -%}{%- assign next = nil -%}
+{%- for l in lessons -%}
+  {%- if l.order == page.order -%}
+    {%- assign idx = forloop.index0 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign prev_i = idx | minus: 1 -%}{%- assign next_i = idx | plus: 1 -%}
+{%- if idx > 0 -%}{%- assign prev = lessons[prev_i] -%}{%- endif -%}
+{%- if next_i < present -%}{%- assign next = lessons[next_i] -%}{%- endif -%}
+{%- assign level_lessons = lessons | where: 'level', page.level -%}
+<section class="page-head ln-head">
+  <div class="wrap narrow">
+    <p class="eyebrow"><a class="crumb" href="{{ '/learn/' | relative_url }}">Learn</a> / <a class="crumb" href="{{ '/learn/' | append: page.track | append: '/' | relative_url }}">{{ track.short }}</a> / Level {{ page.level }}</p>
+    <h1 data-split>{{ page.title }}</h1>
+    <p class="ln-meta muted">
+      <span>Lesson {{ page.order }} of {{ total }}</span><span>Level {{ page.level }}: {{ lvl.title }}</span><span>{{ page.minutes }} min</span>{% if page.kind == 'project' %}<span class="ln-tag">Project</span>{% endif %}
+      <span class="ln-done-flag" id="lnDoneFlag" hidden>Completed</span>
+    </p>
+    <div class="ln-bar" role="progressbar" aria-label="Course progress" aria-valuemin="0" aria-valuemax="{{ total }}" aria-valuenow="0" id="lnBar"><span id="lnBarFill"></span></div>
+    <p class="ln-bar-note muted" id="lnBarNote">{{ total }} lessons in this course. Your progress is saved in this browser.</p>
+  </div>
+</section>
+<section class="block tight">
+  <div class="wrap narrow ln-page" data-learn="lesson" data-track="{{ page.track }}" data-slug="{{ page.track }}/{{ page.slug }}" data-total="{{ total }}">
+    {%- if page.outcome %}
+    <aside class="ln-outcome" aria-label="What you will learn">
+      <h2>What you'll learn</h2>
+      <p>{{ page.outcome }}</p>
+      {%- if page.prereq %}<p class="muted"><strong>Before you start:</strong> {{ page.prereq }}</p>{% endif %}
+    </aside>
+    {%- endif %}
+
+    <div class="prose ln-body">
+      {{ content }}
+    </div>
+
+    {%- if page.terms.size > 0 %}
+    <section class="ln-terms" aria-labelledby="ln-terms-h">
+      <h2 id="ln-terms-h">Key terms</h2>
+      <dl>
+        {%- for t in page.terms %}<div><dt>{{ t.t }}</dt><dd>{{ t.d }}</dd></div>{% endfor %}
+      </dl>
+    </section>
+    {%- endif %}
+
+    {%- if page.mistake %}
+    <aside class="ln-mistake" aria-labelledby="ln-mistake-h">
+      <h2 id="ln-mistake-h">Common mistake</h2>
+      <p>{{ page.mistake }}</p>
+    </aside>
+    {%- endif %}
+
+    {%- if page.try_it.size > 0 %}
+    <section class="ln-try" aria-labelledby="ln-try-h">
+      <h2 id="ln-try-h">{% if page.kind == 'project' %}Do the project{% else %}Try it{% endif %}</h2>
+      <p class="muted">Tick each step as you go. Your ticks are saved in this browser.</p>
+      <ol class="ln-steps">
+        {%- for s in page.try_it %}
+        <li><label><input type="checkbox" data-step="{{ forloop.index0 }}"> <span>{{ s | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span></label></li>
+        {%- endfor %}
+      </ol>
+    </section>
+    {%- endif %}
+
+    {%- if page.quiz.size > 0 %}
+    <section class="ln-quiz" aria-labelledby="ln-quiz-h" id="lnQuiz">
+      <h2 id="ln-quiz-h">Check your understanding</h2>
+      <p class="muted">{{ page.quiz.size }} questions. Answer each one, then check it. You need {{ page.quiz.size | times: 3 | divided_by: 4.0 | ceil }} correct to complete the lesson, and you can retry as often as you like.</p>
+      <div id="lnQuizBody" data-needed="{{ page.quiz.size | times: 3 | divided_by: 4.0 | ceil }}"></div>
+      <noscript><p>The quiz needs JavaScript. The answers are in the lesson text.</p></noscript>
+      <script type="application/json" id="lnQuizData">{{ page.quiz | jsonify | replace: '<', '<' }}</script>
+    </section>
+    {%- endif %}
+
+    <div class="ln-complete">
+      <button type="button" class="btn ghost" id="lnComplete" aria-pressed="false">Mark lesson as complete</button>
+    </div>
+
+    {%- if page.go_deeper.size > 0 %}
+    <section class="ln-deeper" aria-labelledby="ln-deeper-h">
+      <h2 id="ln-deeper-h">Go deeper</h2>
+      <ul>
+        {%- for g in page.go_deeper %}<li><a href="{{ g.url | relative_url }}">{{ g.title }}</a>{% if g.why %} <span class="muted">: {{ g.why }}</span>{% endif %}</li>{% endfor %}
+      </ul>
+    </section>
+    {%- endif %}
+
+    <nav class="ln-nav" aria-label="Lesson navigation">
+      {%- if prev %}<a class="ln-prev" href="{{ prev.url | relative_url }}"><span class="muted">Previous</span><strong>{{ prev.title }}</strong></a>{% else %}<a class="ln-prev" href="{{ '/learn/' | append: page.track | append: '/' | relative_url }}"><span class="muted">Course</span><strong>All lessons</strong></a>{% endif %}
+      {%- if next %}<a class="ln-next" href="{{ next.url | relative_url }}" id="lnNext"><span class="muted">Up next</span><strong>{{ next.title }}</strong></a>{% else %}<a class="ln-next" href="{{ '/learn/' | append: page.track | append: '/' | relative_url }}" id="lnNext"><span class="muted">Finished the course</span><strong>See your progress</strong></a>{% endif %}
+    </nav>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LearningResource",
+  "name": {{ page.title | jsonify }},
+  "description": {{ page.description | default: page.outcome | jsonify }},
+  "url": "{{ page.url | absolute_url }}",
+  "learningResourceType": "{% if page.kind == 'project' %}Exercise{% else %}Lesson{% endif %}",
+  "educationalLevel": "{% if page.level <= 2 %}Beginner{% elsif page.level <= 4 %}Intermediate{% else %}Advanced{% endif %}",
+  "teaches": {{ page.outcome | jsonify }},
+  "timeRequired": "PT{{ page.minutes }}M",
+  "inLanguage": "{{ site.lang }}",
+  "isAccessibleForFree": true,
+  "isPartOf": { "@type": "Course", "name": {{ track.title | jsonify }}, "url": "{{ '/learn/' | append: page.track | append: '/' | absolute_url }}" },
+  "author": { "@type": "Person", "name": {{ p.name | jsonify }}, "url": "{{ '/about/' | absolute_url }}" }
+}
+</script>
+<script src="{{ '/assets/js/learn.js' | relative_url }}" defer></script>

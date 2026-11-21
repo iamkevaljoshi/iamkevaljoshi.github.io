@@ -1,0 +1,101 @@
+# Course outline: the single source of truth for the Learn section.
+# Each lesson file lives at _learn/<track>/<slug>.md and must match its slug, level and order here.
+aem:
+  title: "AEM as a Cloud Service: zero to hero"
+  short: "AEM as a Cloud Service"
+  icon: cloud
+  lede: "A guided path from 'what is AEM?' to planning a migration. Forty short lessons, a quiz after each one and a small project at the end of every level."
+  audience: "Developers, architects, testers and delivery leads who are new to AEM, or who use it daily and want the mental models behind it."
+  outcome: "You can explain how AEM as a Cloud Service works end to end, build and deploy components, tune delivery, and plan a migration."
+  levels:
+    - { n: 1, title: "Foundations", goal: "Understand what AEM is, how content is stored and how a request is served, then run it locally." }
+    - { n: 2, title: "Building pages", goal: "Build components, templates and pages the way real AEM projects do." }
+    - { n: 3, title: "Content and data", goal: "Model content once and deliver it to pages, channels and APIs." }
+    - { n: 4, title: "Delivery", goal: "Make it fast, cached, secure and findable: Dispatcher, CDN, indexes, performance and SEO." }
+    - { n: 5, title: "Operations", goal: "Ship, configure, observe and secure the platform with Cloud Manager." }
+    - { n: 6, title: "Architecture and migration", goal: "Choose the right architecture, estimate honestly and migrate safely." }
+  lessons:
+    - { order: 1, level: 1, slug: what-is-aem, title: "What AEM is, and what problem it solves", minutes: 8 }
+    - { order: 2, level: 1, slug: author-publish-preview, title: "Author, publish and preview: the three tiers", minutes: 8 }
+    - { order: 3, level: 1, slug: jcr-nodes-properties-paths, title: "The JCR: nodes, properties and paths", minutes: 9 }
+    - { order: 4, level: 1, slug: sling-url-to-response, title: "Sling: how a URL becomes a response", minutes: 9 }
+    - { order: 5, level: 1, slug: project-structure, title: "Project structure: core, ui.apps, ui.content and ui.config", minutes: 9 }
+    - { order: 6, level: 1, slug: local-setup-sdk-maven, title: "Local setup: the SDK, Maven and your first run", minutes: 10 }
+    - { order: 7, level: 1, slug: project-hello-component, title: "Project: deploy a hello-world component locally", minutes: 15, kind: project }
+    - { order: 8, level: 2, slug: htl-basics, title: "HTL basics: writing markup that is secure by default", minutes: 9 }
+    - { order: 9, level: 2, slug: sling-models, title: "Sling Models: where component logic belongs", minutes: 9 }
+    - { order: 10, level: 2, slug: components-and-dialogs, title: "Components and dialogs", minutes: 9 }
+    - { order: 11, level: 2, slug: client-libraries, title: "Client libraries: delivering CSS and JavaScript", minutes: 8 }
+    - { order: 12, level: 2, slug: templates-and-policies, title: "Editable templates and content policies", minutes: 9 }
+    - { order: 13, level: 2, slug: layout-container-and-responsive-grid, title: "The Layout Container and the responsive grid", minutes: 8 }
+    - { order: 14, level: 2, slug: core-components, title: "Core Components: use, proxy and extend", minutes: 9 }
+    - { order: 15, level: 2, slug: project-page-template, title: "Project: build a page template with three components", minutes: 20, kind: project }
+    - { order: 16, level: 3, slug: content-fragments-and-models, title: "Content Fragments and Content Fragment Models", minutes: 9 }
+    - { order: 17, level: 3, slug: experience-fragments, title: "Experience Fragments", minutes: 8 }
+    - { order: 18, level: 3, slug: graphql-persisted-queries, title: "GraphQL and persisted queries", minutes: 10 }
+    - { order: 19, level: 3, slug: dam-assets-renditions, title: "The DAM: assets, metadata and renditions", minutes: 9 }
+    - { order: 20, level: 3, slug: multi-site-language-copies, title: "Multi-site and language copies", minutes: 10 }
+    - { order: 21, level: 3, slug: project-headless-feed, title: "Project: a headless content feed", minutes: 20, kind: project }
+    - { order: 22, level: 4, slug: dispatcher-mental-model, title: "Dispatcher: the mental model", minutes: 9 }
+    - { order: 23, level: 4, slug: dispatcher-filters-caching-invalidation, title: "Dispatcher filters, caching and invalidation", minutes: 10 }
+    - { order: 24, level: 4, slug: cdn-and-cdn-yaml, title: "The CDN and cdn.yaml", minutes: 9 }
+    - { order: 25, level: 4, slug: performance-core-web-vitals, title: "Performance and Core Web Vitals on AEM", minutes: 9 }
+    - { order: 26, level: 4, slug: oak-indexes-and-queries, title: "Oak indexes and queries", minutes: 10 }
+    - { order: 27, level: 4, slug: seo-and-accessibility, title: "SEO and accessibility on AEM", minutes: 9 }
+    - { order: 28, level: 4, slug: project-harden-dispatcher, title: "Project: harden and tune a Dispatcher configuration", minutes: 20, kind: project }
+    - { order: 29, level: 5, slug: cloud-manager-pipelines, title: "Cloud Manager pipelines and quality gates", minutes: 10 }
+    - { order: 30, level: 5, slug: environments-and-deployment-flow, title: "Environments and the deployment flow", minutes: 9 }
+    - { order: 31, level: 5, slug: config-secrets-run-modes, title: "Configuration, secrets and run modes", minutes: 9 }
+    - { order: 32, level: 5, slug: logging-and-debugging, title: "Logging and debugging on Cloud Service", minutes: 9 }
+    - { order: 33, level: 5, slug: security-and-permissions, title: "Security and permissions", minutes: 9 }
+    - { order: 34, level: 5, slug: project-ship-through-pipeline, title: "Project: ship a change through a pipeline", minutes: 20, kind: project }
+    - { order: 35, level: 6, slug: choosing-an-architecture, title: "Choosing an architecture: AEM, Edge Delivery Services or headless", minutes: 10 }
+    - { order: 36, level: 6, slug: bpa-and-repository-modernizer, title: "Best Practices Analyzer and Repository Modernizer", minutes: 9 }
+    - { order: 37, level: 6, slug: estimation-and-planning, title: "Estimation and planning", minutes: 9 }
+    - { order: 38, level: 6, slug: migration-playbook-cutover, title: "The migration playbook and cutover", minutes: 10 }
+    - { order: 39, level: 6, slug: go-live-checklist, title: "The go-live checklist", minutes: 9 }
+    - { order: 40, level: 6, slug: capstone-plan-a-migration, title: "Capstone: plan a migration end to end", minutes: 30, kind: project }
+eds:
+  title: "Edge Delivery Services: zero to hero"
+  short: "Edge Delivery Services"
+  icon: bolt
+  lede: "A guided path from your first published page to a launched, monitored site on AEM Edge Delivery Services. Thirty short lessons, a quiz after each one and a project at the end of every level."
+  audience: "Front-end developers, AEM developers, authors and architects who want to build fast sites on Edge Delivery Services."
+  outcome: "You can build and publish blocks, keep Lighthouse at 100, structure content and indexes, and launch a real site."
+  levels:
+    - { n: 1, title: "Foundations", goal: "Understand how a document becomes a page, and publish your first one." }
+    - { n: 2, title: "Blocks", goal: "Build, style and reuse blocks that authors can use with confidence." }
+    - { n: 3, title: "Performance", goal: "Understand the loading model and keep the score high after launch." }
+    - { n: 4, title: "Content and structure", goal: "Organise content, indexing, sitemaps, languages and many sites." }
+    - { n: 5, title: "Advanced", goal: "Use Universal Editor, forms, experimentation and edge logic, then ship a real site." }
+  lessons:
+    - { order: 1, level: 1, slug: what-is-eds, title: "What Edge Delivery Services is, and how it differs from AEM as a Cloud Service", minutes: 8 }
+    - { order: 2, level: 1, slug: document-to-browser, title: "How a page gets from a document to the browser", minutes: 9 }
+    - { order: 3, level: 1, slug: repo-github-app-content-source, title: "The code repository, the GitHub app and the content source", minutes: 9 }
+    - { order: 4, level: 1, slug: authoring-docs-and-sheets, title: "Authoring in documents and spreadsheets", minutes: 8 }
+    - { order: 5, level: 1, slug: local-dev-aem-up, title: "Local development with the AEM CLI", minutes: 9 }
+    - { order: 6, level: 1, slug: project-first-published-page, title: "Project: a published page from a document", minutes: 15, kind: project }
+    - { order: 7, level: 2, slug: anatomy-of-a-block, title: "The anatomy of a block", minutes: 9 }
+    - { order: 8, level: 2, slug: decoration-js-css, title: "Decoration: block JavaScript and CSS", minutes: 10 }
+    - { order: 9, level: 2, slug: variants-section-metadata, title: "Variants and section metadata", minutes: 8 }
+    - { order: 10, level: 2, slug: fonts-icons-images, title: "Fonts, icons and images", minutes: 9 }
+    - { order: 11, level: 2, slug: block-collection-reuse, title: "The Block Collection and reuse", minutes: 8 }
+    - { order: 12, level: 2, slug: responsive-blocks, title: "Responsive design in blocks", minutes: 8 }
+    - { order: 13, level: 2, slug: accessible-blocks, title: "Accessibility in blocks", minutes: 9 }
+    - { order: 14, level: 2, slug: project-three-blocks, title: "Project: build three custom blocks", minutes: 25, kind: project }
+    - { order: 15, level: 3, slug: three-phase-loading, title: "The three-phase loading model", minutes: 9 }
+    - { order: 16, level: 3, slug: why-100-lighthouse, title: "Why a 100 Lighthouse score is achievable", minutes: 9 }
+    - { order: 17, level: 3, slug: third-parties, title: "Third-party scripts without breaking performance", minutes: 9 }
+    - { order: 18, level: 3, slug: rum-measuring, title: "Measuring real users with RUM", minutes: 9 }
+    - { order: 19, level: 3, slug: project-fix-slow-page, title: "Project: audit a slow page and fix it", minutes: 20, kind: project }
+    - { order: 20, level: 4, slug: paths-fstab-mappings, title: "fstab, paths.json and content mappings", minutes: 9 }
+    - { order: 21, level: 4, slug: metadata-indexing-helix-query, title: "Metadata, indexing and helix-query.yaml", minutes: 10 }
+    - { order: 22, level: 4, slug: sitemaps-redirects-robots, title: "Sitemaps, redirects and robots.txt", minutes: 9 }
+    - { order: 23, level: 4, slug: multi-language, title: "Multi-language sites", minutes: 9 }
+    - { order: 24, level: 4, slug: repoless, title: "Repoless: one codebase, many sites", minutes: 9 }
+    - { order: 25, level: 4, slug: project-blog-index-sitemap, title: "Project: a blog with an index and a sitemap", minutes: 25, kind: project }
+    - { order: 26, level: 5, slug: universal-editor-authoring-models, title: "Universal Editor and authoring models", minutes: 10 }
+    - { order: 27, level: 5, slug: forms-dynamic-data, title: "Forms and dynamic data", minutes: 9 }
+    - { order: 28, level: 5, slug: experimentation-personalisation, title: "Experimentation and personalisation", minutes: 9 }
+    - { order: 29, level: 5, slug: edge-workers-json2html, title: "Edge workers and JSON2HTML", minutes: 10 }
+    - { order: 30, level: 5, slug: capstone-build-launch-monitor, title: "Capstone: build, launch and monitor a small site", minutes: 30, kind: project }

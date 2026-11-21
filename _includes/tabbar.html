@@ -1,5 +1,7 @@
 {%- assign u = page.url -%}
 <nav class="tabbar" aria-label="Quick navigation">
+  <a href="{{ '/learn/' | relative_url }}" data-track="tab-learn"{% if u contains '/learn/' %} aria-current="page"{% endif %}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 5l9 4.5-9 4.5z"/><path d="M7 12v4.5c0 1 2.2 2.5 5 2.5s5-1.500 5-2.5V12"/></svg><span>Learn</span></a>
   <a href="{{ '/blog/' | relative_url }}" data-track="tab-blog"{% if u contains '/blog/' %} aria-current="page"{% endif %}>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z"/><path d="M8 13h8M8 17h5"/></svg><span>Blog</span></a>
   <a href="{{ '/work/' | relative_url }}" data-track="tab-work"{% if u contains '/work/' %} aria-current="page"{% endif %}>

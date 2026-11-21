@@ -1,0 +1,48 @@
+---
+layout: page
+title: Learn
+seo_title: "Learn AEM and Edge Delivery Services: Free Zero-to-Hero Courses"
+permalink: /learn/
+eyebrow: Learn
+lede: Two free, guided courses that take you from zero to confident on AEM as a Cloud Service and Edge Delivery Services. Short lessons, hands-on tasks and a quiz after each one.
+description: Free guided courses on Adobe Experience Manager as a Cloud Service and Edge Delivery Services, from the basics to migration and launch, with interactive quizzes and projects.
+---
+{%- assign courses = site.data.courses -%}
+<div data-learn="index">
+  <div class="ln-resume" id="lnResume" hidden>
+    <p class="muted">Welcome back</p>
+    <a class="btn solid" id="lnResumeLink" href="#">Continue where you left off</a>
+  </div>
+
+  <div class="ln-courses">
+    {%- for entry in courses %}
+    {%- assign key = entry[0] -%}{%- assign c = entry[1] -%}
+    {%- assign lessons = site.learn | where: 'track', key | sort: 'order' -%}
+    <article class="ln-course" data-track="{{ key }}">
+      <p class="eyebrow">{{ c.short }}</p>
+      <h2><a href="{{ '/learn/' | append: key | append: '/' | relative_url }}">{{ c.title }}</a></h2>
+      <p>{{ c.lede }}</p>
+      <ul class="ln-facts muted">
+        <li>{{ c.lessons.size }} lessons</li><li>{{ c.levels.size }} levels</li>
+        <li>About {% assign mins = 0 %}{% for l in c.lessons %}{% assign mins = mins | plus: l.minutes %}{% endfor %}{{ mins | divided_by: 60 }} hours</li>
+      </ul>
+      <p class="muted"><strong>Who it's for:</strong> {{ c.audience }}</p>
+      <p class="muted"><strong>You'll be able to:</strong> {{ c.outcome }}</p>
+      <div class="ln-bar" role="progressbar" aria-label="{{ c.short }} progress" aria-valuemin="0" aria-valuemax="{{ c.lessons.size }}" aria-valuenow="0"><span></span></div>
+      <p class="ln-bar-note muted" data-note>Not started</p>
+      <a class="btn solid" href="{{ '/learn/' | append: key | append: '/' | relative_url }}">Open the course</a>
+      <ol class="ln-slugs" hidden>{% for l in lessons %}<li data-slug="{{ key }}/{{ l.slug }}" data-url="{{ l.url | relative_url }}" data-title="{{ l.title | escape }}"></li>{% endfor %}</ol>
+    </article>
+    {%- endfor %}
+  </div>
+
+  <h2 class="sub">How the courses work</h2>
+  <div class="ln-how">
+    <div><h3>1. Learn one idea</h3><p>Each lesson is 8 to 10 minutes and teaches a single idea, with a real example.</p></div>
+    <div><h3>2. Try it</h3><p>A short hands-on checklist turns the idea into something you've done.</p></div>
+    <div><h3>3. Check yourself</h3><p>A quiz with explained answers shows what stuck. Retry until it does.</p></div>
+    <div><h3>4. Build something</h3><p>Every level ends with a small project that uses what you learned.</p></div>
+  </div>
+  <p class="muted ln-privacy">No account and no sign-up. Your progress and quiz results are stored only in this browser, so clearing site data resets them.</p>
+</div>
+<script src="{{ '/assets/js/learn.js' | relative_url }}" defer></script>

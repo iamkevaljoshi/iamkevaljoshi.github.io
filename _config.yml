@@ -25,6 +25,9 @@ collections:
   topics:
     output: true
     permalink: /blog/category/:name/
+  learn:
+    output: true
+    permalink: /learn/:path/
 
 defaults:
   - scope: { path: "", type: posts }
@@ -35,6 +38,8 @@ defaults:
     values: { layout: tool }
   - scope: { path: "", type: topics }
     values: { layout: category }
+  - scope: { path: "", type: learn }
+    values: { layout: lesson }
 
 plugins:
   - jekyll-feed

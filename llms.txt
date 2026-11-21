@@ -30,12 +30,18 @@ sitemap: false
 - [Work]({{ '/work/' | absolute_url }}): case studies
 - [Blog]({{ '/blog/' | absolute_url }}): technical writing
 - [Tools]({{ '/tools/' | absolute_url }}): free browser-based tools for AEM and web teams
+- [Learn]({{ '/learn/' | absolute_url }}): free zero-to-hero courses on AEM as a Cloud Service and Edge Delivery Services
 - [Contact]({{ '/contact/' | absolute_url }})
 
 ## Tools
 {%- assign tool_list = site.tools | sort: 'order' %}
 {%- for t in tool_list %}
 - [{{ t.title }}]({{ t.url | absolute_url }}): {{ t.description }}
+{%- endfor %}
+
+## Learn
+{%- for entry in site.data.courses %}
+- [{{ entry[1].title }}]({{ '/learn/' | append: entry[0] | append: '/' | absolute_url }}): {{ entry[1].lede }}
 {%- endfor %}
 
 ## Blog posts
