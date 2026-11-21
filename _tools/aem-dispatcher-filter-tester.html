@@ -1,0 +1,45 @@
+---
+title: 'AEM Dispatcher filter tester'
+seo_title: "AEM Dispatcher Filter Tester and Security Probe"
+description: "Free AEM Dispatcher filter tester: paste your /filter rules, check whether URLs are allowed or denied, see which rule decided, and run a security probe for exposed paths such as the OSGi console and JSON dumps."
+lede: 'Paste your Dispatcher /filter rules, test any URL and see which rule allowed or denied it. A built-in security probe also checks the paths that should never reach publish, such as the OSGi console, CRXDE, QueryBuilder and infinity JSON dumps.'
+summary: 'Test AEM Dispatcher filter rules against URLs, see the deciding rule and run a probe for commonly exposed paths.'
+category: Security
+icon: shield
+order: 8
+added: 2026-11-21 12:30:00 +0530
+tags: [Dispatcher, Security, AEMaaCS, AMS]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/dispatcher-tester.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: 'Are my rules sent anywhere?'
+    a: 'No. Parsing and matching happen in your browser. Nothing is uploaded or stored.'
+  - q: 'How does Dispatcher decide?'
+    a: 'Every element in a rule (method, url, path, selectors, extension, suffix, query) has to match for the rule to apply. The last matching rule wins, and a request that matches no rule is allowed. That is why a filter should begin with a deny-everything rule.'
+  - q: 'How accurate is this?'
+    a: 'It follows the documented behaviour and is good for reviewing rules and spotting gaps. It is an approximation: it reads values as a glob, or as a regular expression when they contain regex characters such as brackets, pipes or anchors, and it splits URLs into path, selectors, extension and suffix in the common way. Always confirm the final result with the Dispatcher SDK or your real environment.'
+  - q: 'What does the security probe check?'
+    a: 'A fixed list of paths that should be blocked on publish, including /system/console, /crx/de, QueryBuilder, the GQL search servlet, infinity and depth -1 JSON dumps, /etc.json, user listings and the /libs login page. It also confirms that a normal page is still allowed. A flagged path means your rules would let that request through to AEM.'
+  - q: 'Does it handle $include files?'
+    a: 'Not directly. Paste the contents of the included files into the rules box. Comments starting with # are ignored.'
+---
+<div class="kt-tool">
+  <form id="dtForm" class="pc-form" novalidate>
+    <label class="pc-field">
+      <span>Dispatcher filter rules <small>The contents of your /filter section, or just the rule blocks.</small></span>
+      <textarea name="dtRules" rows="10" spellcheck="false" placeholder='/0001 { /type "deny" /url "*" }&#10;/0002 { /type "allow" /url "/content/*" /method "GET" }'></textarea>
+    </label>
+    <label class="pc-field" style="margin-top:1rem">
+      <span>URLs to test <small>One per line. Start with a method such as POST, or leave it off for GET. Paths with query strings are fine.</small></span>
+      <textarea name="dtUrls" rows="5" spellcheck="false" placeholder="GET /content/site/en.html&#10;/content/site/en.model.json"></textarea>
+    </label>
+    <div class="kt-row">
+      <button class="btn solid" type="submit">Test rules</button>
+      <button class="pc-link" type="button" id="dtSample">Try a sample</button>
+    </div>
+  </form>
+  <div id="dtOut" hidden aria-live="polite"></div>
+</div>

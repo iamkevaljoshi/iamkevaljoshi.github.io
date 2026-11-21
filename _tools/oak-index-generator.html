@@ -1,0 +1,56 @@
+---
+title: 'Oak index generator'
+seo_title: "AEM Oak Lucene Index Generator (.content.xml and JSON)"
+description: "Free Oak index generator for AEM and AEM as a Cloud Service: describe the properties you query and get a Lucene index definition as .content.xml and JSON, with the right custom naming and a matching JCR-SQL2 query."
+lede: 'Describe the properties you query, and get an Oak Lucene index definition as .content.xml for ui.apps, with the same definition as JSON and a JCR-SQL2 query that uses it. Cloud Service custom naming is built in.'
+summary: 'Generate an Oak Lucene index definition for AEM from a list of properties, as .content.xml and JSON, with Cloud Service naming and a sample query.'
+category: Performance
+icon: database
+order: 10
+added: 2026-11-21 13:30:00 +0530
+tags: [Oak, Lucene, Indexing, AEMaaCS]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/oak-index.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: 'Is anything uploaded?'
+    a: 'No. The definition is built in your browser.'
+  - q: 'How do I list properties?'
+    a: 'One per line: the property name or relative path, then a type (string, long, date, boolean, double, decimal, name or path) and flags. Flags are eq (equality or property index), ordered (for sorting), analyzed (tokenised text), fulltext (include in full-text search, nodeScopeIndex), facet and excerpt. With no flag, eq is assumed. For example: jcr:content/articleDate date ordered.'
+  - q: 'What is the naming rule on AEM as a Cloud Service?'
+    a: 'A custom index is named with a -custom- suffix and a number, such as articleDate-custom-1. To change it later you deploy a new definition with a higher number. Tick the Cloud Service option to apply this. Customising an out-of-the-box index, for example damAssetLucene, means copying its full definition and adding to it, which this tool does not do.'
+  - q: 'Why use tags?'
+    a: 'With selectionPolicy set to tag, an index is only used by queries that name it with OPTION(INDEX TAG name). This stops the query planner picking it by accident and keeps behaviour predictable.'
+  - q: 'Should I always add an index?'
+    a: 'No. Every index costs indexing time and repository size. Check the query plan first in the Query Performance tool, and restrict includedPaths to the subtree you actually query. Prefer fixing a slow query over adding a broad index.'
+---
+<div class="kt-tool">
+  <form id="okForm" class="pc-form" novalidate>
+    <div class="kt-grid">
+      <label class="pc-field"><span>Index name</span><input name="okName" type="text" spellcheck="false" placeholder="articleDate"></label>
+      <label class="pc-field"><span>Node type to index</span><input name="okNodeType" type="text" spellcheck="false" value="cq:Page"></label>
+      <label class="pc-field"><span>Paths to include <small>Separate with spaces or commas.</small></span><input name="okPaths" type="text" spellcheck="false" placeholder="/content/my-site"></label>
+      <label class="pc-field"><span>Query tag <small>Optional. Queries must name it.</small></span><input name="okTag" type="text" spellcheck="false" placeholder="articles"></label>
+    </div>
+    <label class="pc-field" style="margin-top:1rem">
+      <span>Properties <small>One per line: name, type, flags. Example: jcr:content/articleDate date ordered</small></span>
+      <textarea name="okProps" rows="6" spellcheck="false" placeholder="jcr:content/articleDate date ordered&#10;jcr:content/category string eq"></textarea>
+    </label>
+    <div class="kt-grid" style="margin-top:1rem">
+      <label class="pc-field"><span>Indexing mode</span>
+        <select name="okAsync"><option value="nrt" selected>async + nrt (near real time)</option><option value="async">async only</option></select>
+      </label>
+      <div class="pc-field"><span>AEM as a Cloud Service</span>
+        <label class="pc-check"><input type="checkbox" name="okCloud" checked> Name as -custom-</label>
+        <label class="pc-field pc-inline"><span>Version number</span><input name="okVer" type="number" min="1" value="1" style="width:6rem"></label>
+      </div>
+    </div>
+    <div class="kt-row">
+      <button class="btn solid" type="submit">Generate index</button>
+      <button class="pc-link" type="button" id="okSample">Try a sample</button>
+    </div>
+  </form>
+  <div id="okOut" hidden aria-live="polite"></div>
+</div>

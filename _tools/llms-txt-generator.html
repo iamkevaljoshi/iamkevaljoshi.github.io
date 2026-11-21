@@ -1,0 +1,55 @@
+---
+title: 'llms.txt generator and validator'
+seo_title: "llms.txt Generator and Validator"
+description: "Free llms.txt generator and validator: build a spec-correct llms.txt from your page list, or paste an existing file to check the title, summary, sections and link format."
+lede: 'Build a correct llms.txt from a list of pages, or paste an existing one to check it. It follows the llmstxt.org format: a title, a short summary, and sections of links with notes.'
+summary: 'Generate a spec-correct llms.txt from your pages, or validate an existing file for title, summary, sections and link format.'
+category: GEO and AI search
+icon: doc
+order: 11
+added: 2026-11-21 14:00:00 +0530
+tags: [llms.txt, GEO, AI search]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/llms-txt.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: 'What is llms.txt?'
+    a: 'A plain Markdown file at the root of your site that gives AI assistants a short, curated map of your most useful pages. It starts with an H1 title and a blockquote summary, then H2 sections that hold lists of links with short notes.'
+  - q: 'Does it guarantee citations in AI answers?'
+    a: 'No. It is a proposed convention, not a standard that every AI product reads, and no major search engine has committed to using it. It is cheap to publish and useful as a clean summary of your site, but treat it as a small addition to good content and crawlability, not a ranking lever.'
+  - q: 'Is anything uploaded?'
+    a: 'No. The file is generated and checked in your browser.'
+  - q: 'How do I enter pages?'
+    a: 'One per line, as "Title | URL | note", "URL | note" or just a URL (the title is taken from the address). Start a new section with a line such as "## Services". The note after the second bar is optional.'
+  - q: 'What does the validator check?'
+    a: 'That the file starts with a single H1, has a summary blockquote, uses ## sections with "- [Title](https://url): note" list items and absolute links, has no duplicate links or empty sections, and stays a reasonable length.'
+---
+<div class="kt-tool">
+  <form id="llForm" class="pc-form" novalidate>
+    <div class="kt-tabs" role="group" aria-label="Mode">
+      <button type="button" class="btn ghost pc-sm" data-mode="make" aria-pressed="true">Generate</button>
+      <button type="button" class="btn ghost pc-sm" data-mode="check" aria-pressed="false">Validate</button>
+    </div>
+    <div data-pane="make">
+      <div class="kt-grid">
+        <label class="pc-field"><span>Site or company name</span><input name="llName" type="text" placeholder="Example Co"></label>
+        <label class="pc-field"><span>One-sentence summary</span><input name="llSummary" type="text" placeholder="What the site is and who it is for."></label>
+      </div>
+      <label class="pc-field" style="margin-top:1rem"><span>Extra details <small>Optional. A short paragraph of context.</small></span><textarea name="llDetails" rows="2"></textarea></label>
+      <label class="pc-field" style="margin-top:1rem">
+        <span>Pages <small>Start sections with ## Name. Page lines: Title | URL | note</small></span>
+        <textarea name="llPages" rows="9" spellcheck="false" placeholder="## Services&#10;AEM development | https://example.com/services/aem/ | Enterprise AEM builds"></textarea>
+      </label>
+    </div>
+    <div data-pane="check" hidden>
+      <label class="pc-field"><span>Your llms.txt</span><textarea name="llCheck" rows="12" spellcheck="false" placeholder="# Site name&#10;> Summary&#10;&#10;## Section&#10;- [Page](https://example.com/page/): note"></textarea></label>
+    </div>
+    <div class="kt-row">
+      <button class="btn solid" type="submit">Run</button>
+      <button class="pc-link" type="button" id="llSample">Try a sample</button>
+    </div>
+  </form>
+  <div id="llOut" hidden aria-live="polite"></div>
+</div>

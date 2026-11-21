@@ -1,0 +1,72 @@
+---
+title: 'Edge Delivery Services config helper'
+seo_title: "Edge Delivery Services Helper: helix-query.yaml, Redirects and Metadata Sheets"
+description: "Free helper for AEM Edge Delivery Services: generate helix-query.yaml and helix-sitemap.yaml, build a validated redirects sheet, and create a bulk metadata sheet, all in your browser."
+lede: 'Generate the configuration an Edge Delivery Services site needs: helix-query.yaml and helix-sitemap.yaml, a validated redirects sheet with chains flattened, and a bulk metadata sheet.'
+summary: 'Generate helix-query.yaml, helix-sitemap.yaml, a validated redirects sheet and a bulk metadata sheet for AEM Edge Delivery Services.'
+category: Edge Delivery Services
+icon: bolt
+order: 12
+added: 2026-11-21 14:30:00 +0530
+tags: [EDS, helix-query, Redirects, Metadata]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/redirect-map.js
+  - src: /assets/js/tools/eds-helper.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: 'Is anything uploaded?'
+    a: 'No. All three generators run in your browser.'
+  - q: 'What does helix-query.yaml do?'
+    a: 'It defines an index of your published pages: which paths to include, which properties to extract (such as title, description, image and last modified) and where to write the result, usually /query-index.json. That index powers lists, search and the generated sitemap.'
+  - q: 'How do I use the redirects output?'
+    a: 'Create a spreadsheet named redirects at the root of your content with the columns Source and Destination, paste the rows, then preview and publish it. Chains are flattened so each source goes straight to its final destination.'
+  - q: 'How does the metadata sheet work?'
+    a: 'A sheet named metadata applies page metadata by URL pattern, so you do not edit every page. Each line here is a pattern, then key=value pairs separated by semicolons. The tool produces the columns for you to paste. Patterns support wildcards.'
+  - q: 'Should I check the output?'
+    a: 'Yes. These files are generated from common conventions. Review them against the current Adobe Edge Delivery Services documentation and test on a feature branch before publishing.'
+---
+<div class="kt-tool">
+  <form id="edForm" class="pc-form" novalidate>
+    <div class="kt-tabs" role="group" aria-label="Generator">
+      <button type="button" class="btn ghost pc-sm" data-mode="index" aria-pressed="true">Query and sitemap</button>
+      <button type="button" class="btn ghost pc-sm" data-mode="redirects" aria-pressed="false">Redirects</button>
+      <button type="button" class="btn ghost pc-sm" data-mode="meta" aria-pressed="false">Metadata</button>
+    </div>
+    <div data-pane="index">
+      <div class="kt-grid">
+        <label class="pc-field"><span>Index name</span><input name="edName" type="text" value="default"></label>
+        <label class="pc-field"><span>Output file</span><input name="edTarget" type="text" value="/query-index.json"></label>
+        <label class="pc-field"><span>Live domain <small>For the sitemap file.</small></span><input name="edOrigin" type="url" placeholder="https://www.example.com"></label>
+      </div>
+      <div class="kt-grid" style="margin-top:1rem">
+        <label class="pc-field"><span>Include paths <small>One per line.</small></span><textarea name="edInclude" rows="3" spellcheck="false" placeholder="/**"></textarea></label>
+        <label class="pc-field"><span>Exclude paths <small>One per line.</small></span><textarea name="edExclude" rows="3" spellcheck="false" placeholder="/drafts/**"></textarea></label>
+      </div>
+      <fieldset class="me-fs" style="margin-top:1rem"><legend>Properties to index</legend>
+        <div class="kt-grid">
+          <label class="pc-check"><input type="checkbox" name="edProp" value="title" checked> title</label>
+          <label class="pc-check"><input type="checkbox" name="edProp" value="description" checked> description</label>
+          <label class="pc-check"><input type="checkbox" name="edProp" value="image" checked> image</label>
+          <label class="pc-check"><input type="checkbox" name="edProp" value="lastModified" checked> lastModified</label>
+          <label class="pc-check"><input type="checkbox" name="edProp" value="robots"> robots</label>
+          <label class="pc-check"><input type="checkbox" name="edProp" value="author"> author</label>
+          <label class="pc-check"><input type="checkbox" name="edProp" value="template"> template</label>
+          <label class="pc-check"><input type="checkbox" name="edProp" value="category"> category</label>
+        </div>
+      </fieldset>
+    </div>
+    <div data-pane="redirects" hidden>
+      <label class="pc-field"><span>Old and new URLs <small>One pair per line: old, new.</small></span><textarea name="edRedirects" rows="9" spellcheck="false" placeholder="/old-about, /about"></textarea></label>
+    </div>
+    <div data-pane="meta" hidden>
+      <label class="pc-field"><span>Metadata rules <small>One per line: pattern | key=value; key=value</small></span><textarea name="edMeta" rows="9" spellcheck="false" placeholder="/blog/** | template=blog; robots=index"></textarea></label>
+    </div>
+    <div class="kt-row">
+      <button class="btn solid" type="submit">Generate</button>
+      <button class="pc-link" type="button" id="edSample">Try a sample</button>
+    </div>
+  </form>
+  <div id="edOut" hidden aria-live="polite"></div>
+</div>

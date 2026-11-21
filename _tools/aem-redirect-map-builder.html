@@ -1,0 +1,51 @@
+---
+title: 'AEM redirect map builder'
+seo_title: "AEM Redirect Map Builder: Apache, Dispatcher and EDS Redirects"
+description: "Free redirect map builder for AEM migrations: paste old and new URLs, find duplicates, chains and loops, and get Apache rewrite rules, an Edge Delivery Services redirects sheet or a _redirects file."
+lede: 'Paste your old and new URLs and get clean redirect rules. It finds duplicates, chains and loops first, flattens chains to a single hop, and outputs Apache rewrite rules, an Edge Delivery Services redirects sheet or a _redirects file.'
+summary: 'Turn a list of old and new URLs into validated Apache, Dispatcher and Edge Delivery Services redirects, with duplicate, chain and loop detection.'
+category: Migration
+icon: redirect
+order: 7
+added: 2026-11-21 12:00:00 +0530
+tags: [Redirects, Dispatcher, AEMaaCS, EDS]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/redirect-map.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: 'Is my URL list uploaded anywhere?'
+    a: 'No. Everything runs in your browser, and nothing is sent to a server or stored.'
+  - q: 'What input formats work?'
+    a: 'One pair per line, separated by a comma, a tab, a space or an arrow (-> or =>). A third column can set the status code (301, 302, 303, 307 or 308). Full URLs are reduced to their path, so you can paste straight from a crawl or a spreadsheet. A header row is skipped.'
+  - q: 'Why flatten redirect chains?'
+    a: 'Every extra hop adds latency, wastes crawl budget and can lose link signals. If A redirects to B and B redirects to C, visitors and crawlers should go from A to C in one step. Turn on Flatten chains and the output does exactly that.'
+  - q: 'Where do the Apache rules go?'
+    a: 'In the Dispatcher SDK layout, rewrite rules live in conf.d/rewrites/rewrite.rules. Validate them locally with the Dispatcher SDK before you deploy through Cloud Manager. Very long lists are often better handled by the CDN or, on Edge Delivery Services, by the redirects sheet.'
+  - q: 'How are query strings handled?'
+    a: 'Rewrite rules match the path only, so a source with a query string gets a RewriteCond on the query. The Edge Delivery Services and _redirects outputs do not support query matching, so those rows are left out of the sheet.'
+---
+<div class="kt-tool">
+  <form id="rmForm" class="pc-form" novalidate>
+    <label class="pc-field">
+      <span>Old and new URLs <small>One pair per line: old, new. An optional third value sets the status code.</small></span>
+      <textarea name="rmText" rows="10" spellcheck="false" placeholder="/old/about-us.html, /about/&#10;/old/blog/post-1, https://www.example.com/blog/post-1/, 302"></textarea>
+    </label>
+    <div class="kt-grid" style="margin-top:1rem">
+      <label class="pc-field"><span>Default status</span>
+        <select name="rmStatus"><option value="301" selected>301 Moved permanently</option><option value="302">302 Found</option><option value="307">307 Temporary</option><option value="308">308 Permanent</option></select>
+      </label>
+      <div class="pc-field"><span>Options</span>
+        <label class="pc-check"><input type="checkbox" name="rmFlatten" checked> Flatten chains</label>
+        <label class="pc-check"><input type="checkbox" name="rmHtml" checked> Also match the .html version</label>
+        <label class="pc-check"><input type="checkbox" name="rmCase" checked> Ignore case</label>
+      </div>
+    </div>
+    <div class="kt-row">
+      <button class="btn solid" type="submit">Build redirects</button>
+      <button class="pc-link" type="button" id="rmSample">Try a sample</button>
+    </div>
+  </form>
+  <div id="rmOut" hidden aria-live="polite"></div>
+</div>

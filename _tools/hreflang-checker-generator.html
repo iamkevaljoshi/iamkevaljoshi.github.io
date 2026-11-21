@@ -1,0 +1,57 @@
+---
+title: 'hreflang checker and generator'
+seo_title: "hreflang Checker and Generator for Multilingual and Multi-Region Sites"
+description: "Free hreflang checker and generator: validate language and region codes, self-references, return links and x-default from a sitemap or HTML tags, or generate correct hreflang tags and a sitemap for your language copies."
+lede: 'Validate hreflang annotations from an XML sitemap or pasted link tags, or generate them for a set of language versions. It checks language and region codes, self-references, return links and x-default.'
+summary: 'Check hreflang for invalid codes, missing self-references, missing return links and x-default, or generate tags and a sitemap for language copies.'
+category: SEO
+icon: globe
+order: 9
+added: 2026-11-21 13:00:00 +0530
+tags: [hreflang, International SEO, Multi-site]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/hreflang.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: 'Is my data uploaded anywhere?'
+    a: 'No. The check runs entirely in your browser.'
+  - q: 'What does it check?'
+    a: 'That language codes are valid (for example en, fr-FR, zh-Hant-TW), that the region is uppercase, that each URL is absolute, that every page lists itself, that no language is repeated, that http and https are not mixed, that an x-default exists, and that every alternate you pasted links back (the return link rule).'
+  - q: 'What format should I paste?'
+    a: 'Either a full XML sitemap that uses xhtml:link alternates, or link tags grouped per page. For tags, put a line such as "# https://example.com/en/" before each page''s block. Return links can only be checked for pages included in your paste.'
+  - q: 'Do I need x-default?'
+    a: 'It''s recommended, not required. It tells search engines which page to show visitors whose language you don''t cover, usually a language selector or your main version.'
+  - q: 'Which is better, HTML tags or a sitemap?'
+    a: 'Either works, and you should use one method rather than both. Tags in the head are simple for a few languages. For large multi-site AEM estates, a sitemap keeps the markup out of every page and is easier to regenerate.'
+---
+<div class="kt-tool">
+  <form id="hlForm" class="pc-form" novalidate>
+    <div class="kt-tabs" role="group" aria-label="Mode">
+      <button type="button" class="btn ghost pc-sm" data-mode="check" aria-pressed="true">Check</button>
+      <button type="button" class="btn ghost pc-sm" data-mode="make" aria-pressed="false">Generate</button>
+    </div>
+    <div data-pane="check">
+      <label class="pc-field">
+        <span>Sitemap XML or link tags <small>For tags, add a line like # https://example.com/en/ before each page's block.</small></span>
+        <textarea name="hlText" rows="12" spellcheck="false" placeholder="# https://example.com/en/&#10;&lt;link rel=&quot;alternate&quot; hreflang=&quot;en&quot; href=&quot;https://example.com/en/&quot; /&gt;"></textarea>
+      </label>
+    </div>
+    <div data-pane="make" hidden>
+      <label class="pc-field">
+        <span>Language versions of one page <small>One per line: language code, then the absolute URL.</small></span>
+        <textarea name="hlRows" rows="6" spellcheck="false" placeholder="en https://example.com/en/about/&#10;fr-FR https://example.com/fr/a-propos/"></textarea>
+      </label>
+      <label class="pc-field" style="margin-top:1rem">
+        <span>x-default URL <small>Optional. A language selector or your main version.</small></span>
+        <input name="hlDefault" type="url" placeholder="https://example.com/en/about/">
+      </label>
+    </div>
+    <div class="kt-row">
+      <button class="btn solid" type="submit">Run</button>
+      <button class="pc-link" type="button" id="hlSample">Try a sample</button>
+    </div>
+  </form>
+  <div id="hlOut" hidden aria-live="polite"></div>
+</div>
