@@ -1,0 +1,52 @@
+---
+layout: page
+title: Sitemap
+seo_title: "Sitemap – Keval Joshi"
+permalink: /sitemap/
+eyebrow: Sitemap
+lede: Every page on this site in one place. This list is generated automatically, so new pages appear and removed pages disappear on the next build.
+description: Complete HTML sitemap of iamkevaljoshi.github.io, listing every page, blog post, tool, category and case study.
+---
+{%- assign main_pages = site.pages | where_exp: 'pg', "pg.layout == 'page'" | where_exp: 'pg', "pg.sitemap != false" | sort: 'title' -%}
+<h2>Main pages</h2>
+<ul>
+  <li><a href="{{ '/' | relative_url }}">Home</a></li>
+  {%- for pg in main_pages -%}
+    {%- unless pg.url == '/sitemap/' or pg.url == '/404.html' or pg.url == '/' -%}
+  <li><a href="{{ pg.url | relative_url }}">{{ pg.heading | default: pg.title }}</a></li>
+    {%- endunless -%}
+  {%- endfor -%}
+</ul>
+
+<h2>Tools</h2>
+<ul>
+  {%- assign tool_list = site.tools | sort: 'order' -%}
+  {%- for t in tool_list -%}
+  <li><a href="{{ t.url | relative_url }}">{{ t.title }}</a></li>
+  {%- endfor -%}
+</ul>
+
+{%- assign cases = site.work | where_exp: 'w', 'w.published != false' -%}
+{%- if cases.size > 0 %}
+<h2>Work</h2>
+<ul>
+  {%- for w in cases -%}
+  <li><a href="{{ w.url | relative_url }}">{{ w.title }}</a></li>
+  {%- endfor -%}
+</ul>
+{%- endif %}
+
+<h2>Blog categories</h2>
+<ul>
+  {%- assign topic_list = site.topics | sort: 'order' -%}
+  {%- for t in topic_list -%}
+  <li><a href="{{ t.url | relative_url }}">{{ t.title }}</a></li>
+  {%- endfor -%}
+</ul>
+
+<h2>Blog posts ({{ site.posts.size }})</h2>
+<ul>
+  {%- for post in site.posts -%}
+  <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a> <span class="muted">· {{ post.date | date: '%d %b %Y' }}</span></li>
+  {%- endfor -%}
+</ul>
