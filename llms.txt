@@ -30,7 +30,7 @@ sitemap: false
 - [Work]({{ '/work/' | absolute_url }}): case studies
 - [Blog]({{ '/blog/' | absolute_url }}): technical writing
 - [Tools]({{ '/tools/' | absolute_url }}): free browser-based tools for AEM and web teams
-- [Learn]({{ '/learn/' | absolute_url }}): free zero-to-hero courses on AEM as a Cloud Service and Edge Delivery Services
+- [Learn]({{ '/learn/' | absolute_url }}): free zero-to-hero courses on AEM as a Cloud Service, AEM Assets and Edge Delivery Services
 - [Contact]({{ '/contact/' | absolute_url }})
 
 ## Tools

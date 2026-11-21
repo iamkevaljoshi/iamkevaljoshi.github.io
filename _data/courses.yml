@@ -99,3 +99,55 @@ eds:
     - { order: 28, level: 5, slug: experimentation-personalisation, title: "Experimentation and personalisation", minutes: 9 }
     - { order: 29, level: 5, slug: edge-workers-json2html, title: "Edge workers and JSON2HTML", minutes: 10 }
     - { order: 30, level: 5, slug: capstone-build-launch-monitor, title: "Capstone: build, launch and monitor a small site", minutes: 30, kind: project }
+assets:
+  title: "AEM Assets and the DAM: zero to hero"
+  short: "AEM Assets"
+  icon: image
+  lede: "A guided path through AEM Assets as a Cloud Service: how a modern digital asset management system is organised, enriched, governed and delivered. Thirty-seven short lessons, a quiz after each one and a project at the end of every level."
+  audience: "Digital asset managers, content and brand teams, developers, architects and migration leads who work with, or are about to work with, AEM Assets."
+  outcome: "You can design a DAM structure and metadata model, configure processing and delivery, govern rights and access, integrate through APIs, and plan an assets migration."
+  levels:
+    - { n: 1, title: "Foundations", goal: "Understand what a DAM is, how AEM Assets as a Cloud Service is built, and how to organise, upload and find assets." }
+    - { n: 2, title: "Metadata and organisation", goal: "Make assets findable and reusable with schemas, embedded metadata, tags, collections and bulk tools." }
+    - { n: 3, title: "Processing and enrichment", goal: "Generate renditions, run processing, handle video and documents, and add intelligence with smart tags." }
+    - { n: 4, title: "Delivery", goal: "Deliver the right asset, in the right format and size, fast and safely, to sites and channels." }
+    - { n: 5, title: "Governance and rights", goal: "Control who can do what, manage approvals, expiry and rights, and keep the library clean." }
+    - { n: 6, title: "Integration, migration and scale", goal: "Connect AEM Assets to other systems, search it well, migrate into it and operate it at scale." }
+  lessons:
+    - { order: 1, level: 1, slug: what-is-aem-assets, title: "What a DAM is, and what AEM Assets adds", minutes: 8 }
+    - { order: 2, level: 1, slug: assets-architecture-cloud-service, title: "How AEM Assets as a Cloud Service is built", minutes: 10 }
+    - { order: 3, level: 1, slug: folders-structure-and-naming, title: "Folder structure and naming conventions", minutes: 8 }
+    - { order: 4, level: 1, slug: uploading-and-ingestion, title: "Uploading and ingesting assets", minutes: 9 }
+    - { order: 5, level: 1, slug: finding-and-browsing, title: "Browsing, searching and filtering", minutes: 8 }
+    - { order: 6, level: 1, slug: project-organise-a-library, title: "Project: organise a small asset library", minutes: 15, kind: project }
+    - { order: 7, level: 2, slug: metadata-schemas, title: "Metadata schemas", minutes: 9 }
+    - { order: 8, level: 2, slug: xmp-and-embedded-metadata, title: "XMP and embedded metadata", minutes: 9 }
+    - { order: 9, level: 2, slug: tags-and-taxonomy, title: "Tags and taxonomy", minutes: 9 }
+    - { order: 10, level: 2, slug: collections-and-sharing, title: "Collections and sharing", minutes: 8 }
+    - { order: 11, level: 2, slug: bulk-metadata-editing-and-import, title: "Bulk metadata editing and import", minutes: 8 }
+    - { order: 12, level: 2, slug: project-metadata-model, title: "Project: design a metadata model", minutes: 20, kind: project }
+    - { order: 13, level: 3, slug: renditions-and-processing-profiles, title: "Renditions and processing profiles", minutes: 10 }
+    - { order: 14, level: 3, slug: asset-compute-microservices, title: "Asset compute microservices", minutes: 10 }
+    - { order: 15, level: 3, slug: workflows-and-post-processing, title: "Workflows and post-processing", minutes: 9 }
+    - { order: 16, level: 3, slug: video-pdf-and-other-formats, title: "Video, PDF and other formats", minutes: 9 }
+    - { order: 17, level: 3, slug: smart-tags-and-ai-enrichment, title: "Smart tags and AI enrichment", minutes: 9 }
+    - { order: 18, level: 3, slug: project-processing-profile, title: "Project: configure a processing profile", minutes: 20, kind: project }
+    - { order: 19, level: 4, slug: delivering-assets-overview, title: "Delivering assets: the options at a glance", minutes: 9 }
+    - { order: 20, level: 4, slug: dynamic-media-basics, title: "Dynamic Media basics", minutes: 10 }
+    - { order: 21, level: 4, slug: dynamic-media-with-openapi, title: "Dynamic Media with OpenAPI", minutes: 10 }
+    - { order: 22, level: 4, slug: web-optimised-images-and-core-web-vitals, title: "Web-optimised images and Core Web Vitals", minutes: 9 }
+    - { order: 23, level: 4, slug: caching-and-cdn-for-assets, title: "Caching and the CDN for assets", minutes: 9 }
+    - { order: 24, level: 4, slug: assets-in-sites-and-eds, title: "Using assets in Sites and Edge Delivery Services", minutes: 9 }
+    - { order: 25, level: 4, slug: project-deliver-optimised-images, title: "Project: deliver optimised images", minutes: 20, kind: project }
+    - { order: 26, level: 5, slug: permissions-and-access, title: "Permissions and access control", minutes: 10 }
+    - { order: 27, level: 5, slug: expiry-and-rights-management, title: "Expiry and rights management", minutes: 9 }
+    - { order: 28, level: 5, slug: approvals-and-review, title: "Approvals and review", minutes: 9 }
+    - { order: 29, level: 5, slug: versions-and-duplicate-detection, title: "Versions and duplicate detection", minutes: 8 }
+    - { order: 30, level: 5, slug: usage-references-and-cleanup, title: "Usage, references and cleanup", minutes: 9 }
+    - { order: 31, level: 5, slug: project-governance-model, title: "Project: design a governance model", minutes: 20, kind: project }
+    - { order: 32, level: 6, slug: assets-apis, title: "The Assets APIs", minutes: 10 }
+    - { order: 33, level: 6, slug: creative-cloud-and-connected-assets, title: "Creative Cloud and Connected Assets", minutes: 9 }
+    - { order: 34, level: 6, slug: asset-search-and-custom-indexes, title: "Asset search and custom indexes", minutes: 10 }
+    - { order: 35, level: 6, slug: migrating-assets-to-cloud-service, title: "Migrating assets to Cloud Service", minutes: 10 }
+    - { order: 36, level: 6, slug: performance-scale-and-bulk-operations, title: "Performance, scale and bulk operations", minutes: 9 }
+    - { order: 37, level: 6, slug: capstone-design-a-dam, title: "Capstone: design a DAM end to end", minutes: 30, kind: project }

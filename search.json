@@ -18,7 +18,7 @@ sitemap: false
 {%- for t in site.tools %}
   {"t": {{ t.title | jsonify }}, "u": "{{ t.url | relative_url }}", "s": "Tool", "g": {{ t.tags | join: ' ' | jsonify }}, "x": {{ t.description | append: ' ' | append: t.summary | jsonify }}},
 {%- endfor %}
-  {"t": "Learn", "u": "{{ '/learn/' | relative_url }}", "s": "Page", "x": "Free guided zero-to-hero courses on AEM as a Cloud Service and Edge Delivery Services, with hands-on tasks and quizzes."},
+  {"t": "Learn", "u": "{{ '/learn/' | relative_url }}", "s": "Page", "x": "Free guided zero-to-hero courses on AEM as a Cloud Service, AEM Assets and Edge Delivery Services, with hands-on tasks and quizzes."},
 {%- for l in site.learn %}
   {"t": {{ l.title | jsonify }}, "u": "{{ l.url | relative_url }}", "s": "Lesson", "g": {{ l.track | append: ' learn lesson' | jsonify }}, "x": {{ l.description | default: l.outcome | jsonify }}},
 {%- endfor %}
