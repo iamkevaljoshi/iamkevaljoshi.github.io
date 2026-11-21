@@ -19,6 +19,9 @@ permalink: /sitemap-pages.xml
 {%- for c in site.topics %}
   <url><loc>{{ c.url | absolute_url }}</loc><lastmod>{{ site.time | date_to_xmlschema }}</lastmod></url>
 {%- endfor -%}
+{%- for c in site.learn %}
+  <url><loc>{{ c.url | absolute_url }}</loc><lastmod>{{ site.time | date_to_xmlschema }}</lastmod></url>
+{%- endfor -%}
 {%- for c in site.work %}{% if c.published != false %}
   <url><loc>{{ c.url | absolute_url }}</loc><lastmod>{{ site.time | date_to_xmlschema }}</lastmod></url>
 {%- endif %}{%- endfor %}
