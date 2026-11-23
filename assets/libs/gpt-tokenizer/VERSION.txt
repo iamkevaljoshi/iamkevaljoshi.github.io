@@ -1,0 +1,5 @@
+gpt-tokenizer 4.1.2 (MIT), ESM files for the o200k_base and cl100k_base encodings.
+Source: https://www.npmjs.com/package/gpt-tokenizer
+Only the files these two encodings import are included.
+One change: the folder esm/_virtual/_rolldown was renamed to esm/runtime (and the imports updated),
+because Jekyll does not publish folders whose names start with an underscore.

@@ -1,0 +1,45 @@
+---
+title: "Token counter"
+seo_title: "AI Token Counter for Indian Languages: GPT, Claude and Gemini"
+description: "Free token counter that works for Hindi, Marathi, Tamil, Bengali and other Indian languages. Exact OpenAI counts in your browser, exact Claude and Gemini counts with your own API key, a token viewer, cost estimates and a same-sentence comparison across 13 languages."
+lede: "Paste a prompt in any language and see how many tokens it uses, what it costs, and how much more Indian-language text needs than English. OpenAI counts are exact and run in your browser."
+summary: "Count prompt tokens for GPT, Claude and Gemini, with support for Hindi, Marathi, Tamil, Bengali and other Indian languages, a token viewer and cost estimates."
+category: AI
+icon: tokens
+order: 15
+added: 2026-11-23 22:30:00 +0530
+tags: [Tokens, LLM, Claude, GPT, Indian languages]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/tokens.js
+  - src: /assets/js/tools/tokens-ui.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: "Is my text uploaded?"
+    a: "Not for the OpenAI counts, the statistics or the token view: those run in your browser with tokenizer files hosted on this site. Text leaves your browser only when you click Count on a Claude or Gemini row, and then it goes straight from your browser to Anthropic or Google using your own key. It never passes through this site."
+  - q: "Why do models give different counts for the same text?"
+    a: "Each model family has its own tokenizer, with its own vocabulary of word pieces. The same sentence can be 20 tokens in one and 30 in another. That is why the table has one row per model, and why a count made for one model should not be used for another."
+  - q: "Why do Indian languages need more tokens than English?"
+    a: "A tokenizer learns its vocabulary from training text, and that text is mostly English. Common English words become a single token, while words in Hindi, Tamil or Bengali are often split into smaller pieces, sometimes into parts of a single letter, because these scripts use several bytes per character. More tokens means a higher cost and less room in the context window for the same meaning. Use the language comparison on this page to see the size of the gap."
+  - q: "Which OpenAI models use which tokenizer?"
+    a: "OpenAI's tiktoken uses o200k_base for GPT-4o, GPT-4.1 and the o-series, and cl100k_base for GPT-4 and GPT-3.5. For newer OpenAI models, check OpenAI's documentation for the encoding. Chat requests also add a few tokens per message for formatting, which this tool does not add to the local counts."
+  - q: "Why can't I get a Claude or Gemini count without a key?"
+    a: "Anthropic and Google do not publish their current tokenizers, so the only exact count is the one their own count endpoints return. Estimating Claude or Gemini counts with an OpenAI tokenizer is not reliable, and is least reliable for non-English text, so this tool does not show a guess. With a key, Count calls the provider's token counting endpoint, which does not generate any text."
+  - q: "Why is the Claude count a few tokens higher than the text alone?"
+    a: "The Anthropic endpoint counts a whole message, so the result includes a few tokens of message formatting on top of your text. For a long prompt the difference is negligible."
+  - q: "Is it safe to type my API key here?"
+    a: "The key is sent only to api.anthropic.com or generativelanguage.googleapis.com, and only when you click Count. A key typed into any web page is only as safe as that page and your browser, so use a key that has limited scope and a spend limit. By default the key stays in memory and disappears when you close the tab. If you tick Remember, it is stored unencrypted in this browser, and you can untick it to remove it."
+  - q: "What does the warning about NFC mean?"
+    a: "Unicode lets the same letter be stored in more than one way, for example an accented letter as one character or as a letter plus a separate accent. NFC is the standard compact form. Text in different forms looks identical but can count differently, so converting to NFC makes counts consistent."
+  - q: "How accurate are the OpenAI counts?"
+    a: "They use the o200k_base and cl100k_base encodings from the open gpt-tokenizer library. Before release I compared the counts and token ids with OpenAI's own tiktoken on text in Indian scripts, Arabic, Chinese, Japanese and Korean, emoji sequences, code and very long text, and they matched exactly."
+  - q: "What does it not cover?"
+    a: "Plain text only. It does not count images, files, tool definitions or the extra tokens a chat conversation adds, and it does not include Llama, Gemma or other open-model tokenizers yet. Prices are editable and should be checked against the provider's current price list."
+---
+<div class="kt-tool">
+  <div id="tkTool" class="tk-tool" data-libs="{{ '/assets/libs/gpt-tokenizer/' | relative_url }}">
+    <noscript><p class="pc-note">This tool needs JavaScript. Nothing is sent anywhere unless you ask for a Claude or Gemini count.</p></noscript>
+    <p class="muted">Loading the token counter…</p>
+  </div>
+</div>
