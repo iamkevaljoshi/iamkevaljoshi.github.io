@@ -1,0 +1,47 @@
+---
+title: "How an AI model answers"
+seo_title: "How an AI Model Answers: Prompt to Tokens to Probabilities, Step by Step"
+description: "Type a prompt and watch what happens to it: the request an app builds, the chat template, tokens, embeddings, layers, next-token probabilities, sampling, the generation loop and tool calls. Uses real numbers from open models, and can run a small model live in your browser."
+lede: "Type a prompt and follow it through ten stages, from the request an app builds to the token that comes back. The numbers are real: from published model sizes, pre-computed GPT-2 runs, and an optional small model running on your own device."
+summary: "Follow a prompt through an AI model in ten stages with real numbers: chat template, tokens, layers, next-token probabilities, sampling, the generation loop and tool calls."
+category: AI
+icon: flow
+order: 16
+added: 2026-11-24 10:00:00 +0530
+tags: [LLM, Tokens, Transformers, Sampling, AI]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/tokens.js
+  - src: /assets/js/tools/ai-journey.js
+  - src: /assets/js/tools/ai-live.js
+  - src: /assets/js/tools/ai-journey-ui.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: "What does this tool show?"
+    a: "The path a prompt takes through a language model, in ten stages: the request an app builds around your prompt, the chat template, tokens, embeddings, the layers, the scores for the next token, sampling, the one-token-at-a-time loop, stopping, and what happens around the model such as tools and billing. Each stage uses your own prompt where it can."
+  - q: "Is my prompt sent anywhere?"
+    a: "Not by the explanations, the token views or the examples. Those run in your browser, and the only things fetched are this site's own files. If you choose to run the model live, your browser downloads the model files from Hugging Face and the runtime from jsDelivr, then runs the model on your device. Your prompt stays in your browser."
+  - q: "Is this how Claude, ChatGPT and Gemini work?"
+    a: "The outline is the same: a request is built, turned into tokens, run through a transformer, and one token is chosen at a time. But the exact sizes, templates and system prompts of hosted models are not published, so this tool shows only open models and says so rather than inventing numbers."
+  - q: "How do I know the numbers are real?"
+    a: "The parameter counts match each model's published total. The chat templates were checked against the official ones on 26 test conversations, including tool calls and Hindi, with no differences. The GPT-2 examples were computed once with PyTorch and stored with an error below 0.00002 in any probability. The live model, run at 16-bit in the browser, matched PyTorch's full-precision output on two test prompts: the same token ids, the same top-10 order, probabilities within 0.0004, and identical generated text. The sampling settings were checked against Hugging Face's own implementation."
+  - q: "Why is the smaller live model less accurate?"
+    a: "The 8-bit and 4-bit versions store the model's weights with less precision to make the download smaller. For a model this small that changes the probabilities noticeably: in one test the top token's probability dropped from 83% in the full model to 59% at 8-bit and 34% at 4-bit. That is why the 16-bit version, which matches the full model almost exactly, is the default."
+  - q: "Why is it slow on my device?"
+    a: "The model runs on your own processor or graphics chip. A desktop with a graphics chip that supports WebGPU is fastest. On a phone or an older laptop it can take a second or more to read the prompt and a tenth of a second or more per token, and the download is 270 MB, so a computer on a good connection is recommended. Only the examples work without any download."
+  - q: "Does it show real attention patterns?"
+    a: "Not yet. The attention picture shows which tokens each token is allowed to look at, which is a fixed rule of these models, but not how much weight each one actually gets. Showing real attention weights would need a larger custom model download."
+  - q: "Why do the token counts differ from the token counter?"
+    a: "Each model has its own tokenizer. For models whose tokenizer is not loaded, this page uses OpenAI's o200k tokenizer as a stand-in and says so. When the live model is loaded, counts for SmolLM2 are exact. The token counter gives exact counts for OpenAI models and, with your own key, for Claude and Gemini."
+  - q: "Where is the model stored, and how do I remove it?"
+    a: "Your browser keeps the downloaded files in its cache so the next visit is instant. To remove them, clear this site's data in your browser settings."
+  - q: "Why these models?"
+    a: "They are open, small enough to run in a browser, and cover a range of sizes, from 124 million to 8 billion parameters, so you can see how size changes memory use and speed. GPT-2 is MIT-licensed and SmolLM2 is Apache-2.0."
+---
+<div class="kt-tool">
+  <div id="ajTool" class="aj-tool" data-data="{{ '/assets/data/ai-journey/' | relative_url }}" data-gt="{{ '/assets/libs/gpt-tokenizer/' | relative_url }}" data-tjs="{{ '/assets/libs/transformers/transformers.min.js' | relative_url }}">
+    <noscript><p class="pc-note">This tool needs JavaScript. Nothing is sent anywhere unless you choose to run the model live.</p></noscript>
+    <p class="muted">Loading…</p>
+  </div>
+</div>

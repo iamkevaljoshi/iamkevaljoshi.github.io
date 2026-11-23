@@ -592,3 +592,75 @@
 .tk-multi::after{content:attr(data-n);font-size:.62rem;font-weight:700;vertical-align:sub;margin-left:.1rem;color:var(--muted)}
 .tk-minibar{display:block;height:.35rem;border-radius:999px;background:var(--accent);margin-top:.3rem;min-width:2px}
 .tk-tbl .pc-link{font-size:.9rem}
+
+/* ---------- How an AI model answers ---------- */
+.aj-tool{display:grid;grid-template-columns:minmax(0,1fr);gap:1.5rem}
+.aj-tool>*{min-width:0}
+.aj-req select,.aj-req textarea,.aj-tool .aj-q input[type="number"],.aj-hw select,.aj-seed input,.aj-source select{width:100%;font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:.6rem;padding:.5rem .65rem;box-sizing:border-box}
+.aj-req textarea{font-family:var(--mono);font-size:.85rem}
+.aj-nav{display:flex;gap:.4rem;overflow-x:auto;padding:.25rem 0 .5rem;position:sticky;top:3.6rem;z-index:5;background:var(--bg)}
+.aj-nav a{flex:none;font-size:.82rem;padding:.3rem .7rem;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.aj-nav a:hover{border-color:var(--accent);color:var(--accent)}
+.aj-stage{border:1px solid var(--line);border-radius:1.25rem;padding:1.25rem 1.4rem;scroll-margin-top:6.5rem}
+.aj-sh{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
+.aj-sh h2{margin:0;font-size:1.35rem;max-width:none}
+.aj-n{flex:none;display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--accent);color:var(--bg);font-weight:700;font-size:.95rem}
+.aj-what{margin:0 0 1rem;max-width:62rem}
+.aj-body{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem;min-width:0}
+.aj-body h3{margin:.5rem 0 0;font-size:1.05rem}
+.aj-myth{margin-top:1.1rem;padding:.75rem 1rem;border-left:4px solid var(--gold);background:color-mix(in srgb,var(--gold) 12%,var(--bg));border-radius:.5rem;font-size:.92rem}
+.aj-callout{margin:0;padding:.75rem 1rem;border:1px solid var(--line);border-radius:.8rem;background:color-mix(in srgb,var(--accent) 8%,var(--bg))}
+.aj-stack,.aj-split{display:flex;height:1rem;border-radius:999px;overflow:hidden;background:var(--line)}
+.aj-seg,.aj-split span{display:block;min-width:3px}
+.aj-c0{background:#0B5D4E}.aj-c1{background:#B45309}.aj-c2{background:#3B63FB}.aj-c3{background:#9D2B6B}.aj-c4{background:#5B7F00}.aj-c5{background:#6B7280}
+.aj-legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;font-size:.9rem}
+.aj-template{margin:0;padding:1rem;border:1px solid var(--line);border-radius:.9rem;background:var(--surface);font-family:var(--mono);font-size:.82rem;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;max-height:26rem;overflow:auto}
+.aj-sp{background:color-mix(in srgb,var(--gold) 45%,transparent);color:inherit;border-radius:.25rem;padding:.05rem .2rem}
+.aj-spec{outline:1px dashed var(--gold)}
+.aj-ctx{height:.7rem;border-radius:999px;background:var(--line);overflow:hidden}
+.aj-ctx span{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .3s}
+.aj-emb{display:grid;gap:3px}
+.aj-er{display:flex;align-items:center;gap:3px;overflow:hidden}
+.aj-er i{flex:none}
+.aj-er i{width:.7rem;height:.7rem;border-radius:2px;background:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.aj-dots{margin-left:.4rem;font-size:.8rem;color:var(--muted);white-space:nowrap;flex:none}
+.aj-maskwrap{max-width:100%}
+.aj-mask{border-collapse:separate;border-spacing:2px;font-size:.72rem}
+.aj-mask th{font-weight:500;color:var(--muted);padding:0 .2rem;text-align:right;white-space:nowrap}
+.aj-mask thead th,.aj-mask tr:first-child th{text-align:center}
+.aj-mask td{width:1.35rem;height:1.35rem;border-radius:3px}
+.aj-yes{background:var(--accent)}.aj-no{background:var(--line);opacity:.5}
+.aj-bars{display:grid;gap:.35rem}
+.aj-bar{display:grid;grid-template-columns:minmax(4rem,9rem) minmax(0,1fr) 3.6rem;gap:.6rem;align-items:center;font-size:.9rem}
+.aj-bl{font-family:var(--mono);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.aj-bt{position:relative;height:1.1rem;border-radius:.3rem;background:color-mix(in srgb,var(--line) 55%,transparent);overflow:hidden}
+.aj-bt i{position:absolute;left:0;top:0;bottom:0;border-radius:.3rem}
+.aj-fill{background:var(--accent)}
+.aj-ghost{background:color-mix(in srgb,var(--accent) 28%,transparent)}
+.aj-on .aj-fill{background:var(--gold)}
+.aj-bv{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.aj-source{display:grid;gap:.75rem}
+.aj-chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr));gap:.5rem}
+.aj-live{border:1px dashed var(--line);border-radius:.9rem;padding:1rem}
+.aj-live p{margin:.3rem 0}
+.aj-q{display:grid;gap:.5rem;margin:.6rem 0}
+.aj-sliders{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem}
+.aj-slider input[type="range"]{width:100%;accent-color:var(--accent)}
+.aj-slider output{font-family:var(--mono);color:var(--accent)}
+.aj-seed{max-width:9rem}
+.aj-hw{align-items:end}
+.aj-hw .pc-field{min-width:12rem}
+.aj-steps{display:grid;gap:.6rem}
+.aj-step{border:1px solid var(--line);border-radius:.8rem;padding:.5rem .8rem}
+.aj-step summary{cursor:pointer;display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap;font-size:.92rem}
+.aj-step .aj-bars{margin-top:.6rem}
+.aj-sn{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.aj-st{font-family:var(--mono);overflow-wrap:anywhere}
+.aj-sp2{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums}
+.aj-new{background:color-mix(in srgb,var(--gold) 45%,transparent);color:inherit;border-radius:.25rem;padding:0 .2rem}
+.aj-out{padding:.8rem 1rem;border:1px solid var(--line);border-radius:.8rem;font-size:1.02rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.aj-steplist{display:grid;gap:.25rem;max-height:18rem;overflow:auto;border:1px solid var(--line);border-radius:.8rem;padding:.6rem .8rem;font-size:.88rem}
+.aj-row{display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap}
+.aj-list{margin:0;padding-left:1.25rem;display:grid;gap:.4rem}
+.aj-foot{font-size:.85rem}
+@media (max-width:640px){.aj-bar{grid-template-columns:minmax(3rem,6rem) minmax(0,1fr) 3.2rem}.aj-stage{padding:1rem}.aj-nav{top:3.2rem}}
