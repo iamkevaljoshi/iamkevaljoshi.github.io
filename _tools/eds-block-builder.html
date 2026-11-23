@@ -1,0 +1,40 @@
+---
+title: "EDS block builder"
+seo_title: "EDS Block Builder: Universal Editor Block Models, JavaScript and CSS Generator"
+description: "Free visual builder for AEM Edge Delivery Services blocks. Design the authoring dialog, then copy the Universal Editor model JSON, the section filter, the delivered HTML, and starter JavaScript and CSS. 20 ready-made blocks, checked with the official xwalk lint rules."
+lede: "Design a block's authoring dialog visually and get the files to copy: the Universal Editor model JSON, the section filter line, the HTML your code will receive, and starter JavaScript and CSS. Start from 20 ready-made blocks."
+summary: "Build AEM Edge Delivery Services block models visually. Get the model JSON, section filter, delivered HTML, and starter JavaScript and CSS, with 20 ready-made blocks."
+category: Edge Delivery Services
+icon: blocks
+order: 14
+added: 2026-11-23 18:00:00 +0530
+tags: [EDS, Universal Editor, xwalk, Block models]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/block-builder.js
+  - src: /assets/js/tools/block-builder-presets.js
+  - src: /assets/js/tools/block-builder-ui.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: "Is anything uploaded?"
+    a: "No. The builder runs in your browser. Your last design is saved in your browser only. A share link holds the whole design in the part of the address after the # sign, which browsers do not send to any server."
+  - q: "Which project layout does it produce?"
+    a: "The layout used by the AEM Edge Delivery Services boilerplate for Universal Editor: one _block.json file per block under blocks/, merged by npm run build:json into component-definition.json, component-models.json and component-filters.json. If your project still keeps three merged files, the Setup tab has those too."
+  - q: "How are the checks decided?"
+    a: "They follow the rules in the official eslint-plugin-xwalk package that the boilerplate runs: valid field names, no duplicate names, no orphan suffixes (such as imageAlt without image) and at most four cells per block. The blocks in this tool were also run through the boilerplate's own merge, ESLint and Stylelint."
+  - q: "What are field collapse and element grouping?"
+    a: "Both are naming conventions. Field collapse joins fields whose names end in Text, Title, Type, Alt or MimeType to the field they describe, so image and imageAlt become one picture with alt text, and link, linkText and linkType become one link. Element grouping puts fields with the same prefix before an underscore, such as content_title and content_text, into one cell. Together they keep the number of cells small."
+  - q: "How accurate is the Delivered HTML tab?"
+    a: "It is derived from the documented rules and uses sample content, so treat it as a guide. For the real thing, author a page and add .plain.html to its address. If the two differ, trust the real output and tell me through the contact page."
+  - q: "What does the tool not cover?"
+    a: "Composite multi-field containers, rich text toolbar filters, page and section metadata models, and custom components. Adobe states that custom AEM components are not necessary or recommended for Edge Delivery Services projects. An imported file that uses an unsupported field type keeps that field exactly as it was."
+  - q: "Can I use the generated JavaScript as it is?"
+    a: "It is a starting point that reads the cells in the right order and applies the pattern you chose (list, accordion, FAQ, tabs or carousel). Review it, test it with real authored content, and style it to your design. Authors can leave fields empty, so keep the checks for missing elements."
+---
+<div class="kt-tool">
+  <div id="bbTool" class="bb-tool">
+    <noscript><p class="pc-note">This builder needs JavaScript. Nothing is sent anywhere; it all runs in your browser.</p></noscript>
+    <p class="muted">Loading the builder…</p>
+  </div>
+</div>
