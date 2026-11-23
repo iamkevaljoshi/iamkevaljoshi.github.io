@@ -1,0 +1,13 @@
+---
+layout: null
+sitemap: false
+permalink: /sitemap.txt
+---
+{{ '/' | absolute_url }}
+{% for pg in site.pages %}{% if pg.sitemap == false or pg.url == '/' or pg.url contains '.xml' or pg.url contains '.json' or pg.url contains '.txt' or pg.url contains '404' or pg.layout == nil %}{% continue %}{% endif %}{{ pg.url | replace: 'index.html', '' | absolute_url }}
+{% endfor %}{% for p in site.posts %}{{ p.url | absolute_url }}
+{% endfor %}{% for c in site.tools %}{{ c.url | absolute_url }}
+{% endfor %}{% for c in site.topics %}{{ c.url | absolute_url }}
+{% endfor %}{% for c in site.learn %}{{ c.url | absolute_url }}
+{% endfor %}{% for c in site.work %}{% if c.published != false %}{{ c.url | absolute_url }}
+{% endif %}{%- endfor -%}
