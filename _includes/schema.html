@@ -156,6 +156,14 @@
         {%- elsif page.layout == 'case-study' %},
         { "@type": "ListItem", "position": 2, "name": "Work", "item": "{{ '/work/' | absolute_url }}" },
         { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ page_url }}" }
+        {%- elsif page.layout == 'course' %},
+        { "@type": "ListItem", "position": 2, "name": "Learn", "item": "{{ '/learn/' | absolute_url }}" },
+        { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ page_url }}" }
+        {%- elsif page.layout == 'lesson' %},
+        {%- assign bc_track = site.data.courses[page.track] %}
+        { "@type": "ListItem", "position": 2, "name": "Learn", "item": "{{ '/learn/' | absolute_url }}" },
+        { "@type": "ListItem", "position": 3, "name": {{ bc_track.short | jsonify }}, "item": "{{ '/learn/' | append: page.track | append: '/' | absolute_url }}" },
+        { "@type": "ListItem", "position": 4, "name": {{ page.title | jsonify }}, "item": "{{ page_url }}" }
         {%- elsif page.layout == 'tool' %},
         { "@type": "ListItem", "position": 2, "name": "Tools", "item": "{{ '/tools/' | absolute_url }}" },
         { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ page_url }}" }
