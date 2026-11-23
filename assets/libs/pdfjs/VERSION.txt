@@ -1,0 +1,2 @@
+pdfjs-dist 4.10.38 (legacy build), Apache-2.0, https://github.com/mozilla/pdf.js
+Copied unmodified. The tool loads it from this folder so a PDF check makes no third-party requests.

@@ -1,0 +1,72 @@
+---
+title: PDF accessibility checker
+seo_title: 'PDF Accessibility Checker: Tags, WCAG 2.1, PDF/UA and IS 17802 Pre-Check'
+description: 'Free in-browser PDF accessibility pre-check for statements, circulars and forms: tags, headings, alt text, tables, links, language, security and evidence export. Nothing is uploaded.'
+lede: 'Check a PDF for the problems that stop screen readers and keyboard users: no tags, missing alt text, skipped headings, untagged tables, vague links, no language and locked permissions. Your file never leaves your device, so it is safe for statements and customer documents.'
+summary: 'Pre-check a PDF against WCAG 2.1, EN 301 549 clause 10 and the Matterhorn Protocol, view its tags and reading order, and export audit evidence. Runs entirely in your browser.'
+category: Accessibility
+icon: pdf
+order: 13
+added: 2026-11-23 12:00:00 +0530
+tags: [PDF, PDF/UA, WCAG, IS 17802, Banking]
+scripts:
+  - src: /assets/js/tools/pdf-a11y.js
+  - src: /assets/js/tools/pdf-a11y-ui.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: 'Is my PDF uploaded anywhere?'
+    a: 'No. The file is read and analysed in your browser. The PDF reader library (pdf.js) and a small helper (pdf-lib) are served from this site, so analysing a file makes no network requests apart from loading those libraries from this site. The page itself loads fonts like the rest of the site. A password you enter is used only in your browser. You can confirm this in your browser''s network tab.'
+  - q: 'Does passing mean my PDF is compliant?'
+    a: 'No. This is a pre-check. It finds the problems a machine can find, such as missing tags, alternative text, language and heading structure. It cannot judge whether the reading order is right, whether alternative text is accurate, or whether colours have enough contrast. Regulators and auditors expect a professional audit that includes testing with assistive technology and, in some regimes, people with disabilities. Use this tool to fix problems early and to keep evidence.'
+  - q: 'What standards does it map to?'
+    a: 'Each result lists the WCAG 2.1 success criterion, the matching EN 301 549 clause (clause 10 applies WCAG to documents that are not web pages) and, where one exists, the Matterhorn Protocol failure condition used to test PDF/UA-1. IS 17802 is reported to align with EN 301 549, so confirm the clause numbering against your copy of the Indian standard, which you can buy from the Bureau of Indian Standards.'
+  - q: 'Which checks are automatic, and which need a person?'
+    a: 'Automatic: tagged PDF, text versus scanned image, readable characters, title, language, window title setting, encryption permissions, heading nesting, figure alternative text, table header cells, list structure, link tagging and link text, link descriptions, tab order, bookmarks, form field labels, XFA and embedded scripts. Manual: reading order, alternative text quality, colour contrast, header and footer artifacts, language of passages, keyboard use of forms, real screen-reader testing and independent PDF/UA validation. The tool gives you a checklist for these.'
+  - q: 'Why does it say a tagged table is missing when I can see one?'
+    a: 'Because the PDF has no table tags, so a screen reader sees running text. The tool looks for text laid out in aligned rows and warns when it finds that without table tags. This is a heuristic and can miss unusual layouts, so also check the tag viewer by eye.'
+  - q: 'Can it check password-protected statements?'
+    a: 'Yes. Enter the password when asked. It also checks whether the protection settings block copying for accessibility, which can stop screen readers from reading the file. Protected files whose permissions block accessibility are a common, serious failure.'
+  - q: 'How should I test bank statements that are generated for every customer?'
+    a: 'Test the template, not each statement. Generate sample statements from every template (savings, loan, credit card, with and without images and long tables), check them here, fix the generator, and re-test whenever the template changes. Keep the exported evidence with the template version.'
+  - q: 'What are its limits?'
+    a: 'It reads at most 500 pages and files up to 150 MB. It does not run a full PDF/UA validation, so use veraPDF or PAC for that. It reads the Alt entry for figures, so a figure that uses only ActualText is reported as missing alternative text. Link, table and list checks depend on the tags being present. Scanned pages with no text layer need OCR first.'
+---
+<div class="pa-tool" id="paTool" data-libs="{{ '/assets/libs/' | relative_url }}">
+  <div class="pc-form pa-form">
+    <label class="io-drop pa-drop" id="paDrop" for="paFile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 14h8M8 18h5"/></svg>
+      <strong>Drop a PDF here, or click to choose</strong>
+      <span class="muted">Checked in your browser. The file is never uploaded.</span>
+      <input id="paFile" type="file" accept=".pdf,application/pdf">
+    </label>
+    <div id="paPwWrap" class="pa-pw" hidden>
+      <label class="pc-field"><span>PDF password</span><input id="paPw" type="password" autocomplete="off" spellcheck="false"></label>
+      <button type="button" class="btn solid" id="paPwGo">Check with password</button>
+    </div>
+    <p class="pc-error" id="paErr" role="alert" hidden></p>
+    <p class="muted" id="paProg" aria-live="polite" hidden></p>
+  </div>
+  <div id="paOut" hidden aria-live="polite"></div>
+  <noscript><p class="pc-error">This tool needs JavaScript to read the PDF in your browser.</p></noscript>
+</div>
+
+<section class="pa-context" aria-labelledby="pa-ctx-h">
+  <h2 class="sub" id="pa-ctx-h">Why this matters for regulated financial entities in India</h2>
+  <p>Statements, circulars, product terms and forms are PDFs, and PDFs are where accessibility most often fails. This summary is written as of 23 November 2026 from public sources. It is not legal advice, so confirm each item on the regulator's own site.</p>
+  <ul>
+    <li><strong>The law.</strong> Section 40 of the Rights of Persons with Disabilities Act, 2016 requires accessibility standards, including for information and communication. In <em>Rajive Raturi v. Union of India</em> (Supreme Court, 8 November 2024) the Court held that the framework must be enforceable and referred to Indian standard <strong>IS 17802</strong> (Parts 1 and 2) for ICT.</li>
+    <li><strong>Banking.</strong> The Department of Financial Services, Ministry of Finance notified "Accessibility Standards and Guidelines for Banking Sector" on 2 February 2024. Summaries say it covers accessible digital documents such as e-statements. The Reserve Bank of India's Digital Banking Channels Authorisation Directions, 2025 (issued 28 November 2025, effective 1 January 2026) cross-refer to these standards. Check the exact wording on <a href="https://www.rbi.org.in" rel="noopener">rbi.org.in</a> and the DFS site.</li>
+    <li><strong>The 14 August 2025 RBI circular</strong> on digital access (issued after the Supreme Court's order of 30 April 2025 in <em>Pragya Prasun</em>) appears on RBI's lists of withdrawn circulars. Its substance may now sit in the consolidated 2025 directions, so check its current status before citing it.</li>
+    <li><strong>If you are also SEBI-regulated.</strong> SEBI's circular of 31 July 2025 is reported to cover tagged PDFs and to require an audit by IAAP-certified professionals that includes usability testing by people with disabilities.</li>
+  </ul>
+  <p>Regulators do not publish a "PDF test". In practice entities are expected to meet <strong>WCAG 2.1 AA</strong> (through IS 17802 and EN 301 549 clause 10). For PDFs the usual route is a <strong>tagged PDF that conforms to PDF/UA</strong>, checked against the <strong>Matterhorn Protocol</strong>, which defines 136 failure conditions of which 87 can be machine-checked and 47 need a person (version 1.02; later versions report slightly different counts).</p>
+
+  <h2 class="sub" id="pa-use-h">How to use the result as audit evidence</h2>
+  <ol>
+    <li>Test one PDF per template or document type, not every customer copy.</li>
+    <li>Fix the source or generator, then re-run until nothing under "Needs fixing" is left.</li>
+    <li>Work through the manual checklist, including a screen-reader pass and review by people with disabilities.</li>
+    <li>Download the evidence file. It records the file's SHA-256, the date, the tool version, every result and your checklist, so you can show what was checked and when.</li>
+    <li>Validate independently with veraPDF or PAC, then hand the lot to your accredited auditor.</li>
+  </ol>
+</section>

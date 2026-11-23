@@ -1,0 +1,2 @@
+pdf-lib 1.17.1, MIT, https://github.com/Hopding/pdf-lib
+Copied unmodified. Used only to read page-level keys such as /Tabs.
