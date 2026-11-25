@@ -250,3 +250,4 @@ If you're designing an AI feature and want a second opinion on which parts need 
 - [Built-in AI APIs](https://developer.chrome.com/docs/ai/built-in-apis) (Chrome for Developers)
 - [Gartner predicts organisations will use small task-specific AI models three times more than general-purpose LLMs by 2027](https://www.gartner.com/en/newsroom/press-releases/2025-04-09-gartner-predicts-by-2027-organizations-will-use-small-task-specific-ai-models-three-times-more-than-general-purpose-large-language-models) (Gartner)
 - [Claude models and pricing](https://docs.anthropic.com/en/docs/about-claude/models) (Anthropic)
+
