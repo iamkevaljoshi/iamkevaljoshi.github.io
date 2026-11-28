@@ -44,7 +44,50 @@
     return h('div', { class: 'me-tile' + (tone ? ' me-' + tone : '') }, h('strong', { text: String(value) }), h('span', { text: label }));
   }
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-  var api = { copy: copy, download: download, codeBlock: codeBlock, findings: findings, stat: stat, esc: esc };
+
+  /* A textarea with a line-number gutter. Tab inserts two spaces until Escape is pressed, so keyboard
+     users can still tab out. Returns { refresh, goLine(n) }. Markup: .kt-editor > pre.kt-gutter + textarea */
+  function editor(ta, gut) {
+    function refresh() {
+      var n = ta.value.split('\n').length, s = '';
+      for (var i = 1; i <= n; i++) s += i + '\n';
+      gut.textContent = s; gut.scrollTop = ta.scrollTop;
+    }
+    ta.addEventListener('input', refresh);
+    ta.addEventListener('scroll', function () { gut.scrollTop = ta.scrollTop; });
+    ta.addEventListener('focus', function () { ta.dataset.tabs = 'on'; });
+    ta.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { ta.dataset.tabs = 'off'; return; }
+      if (e.key === 'Tab' && !e.shiftKey && !e.altKey && !e.ctrlKey && !e.metaKey && ta.dataset.tabs === 'on') { e.preventDefault(); ta.setRangeText('  ', ta.selectionStart, ta.selectionEnd, 'end'); refresh(); }
+    });
+    function goLine(n) {
+      var lines = ta.value.split('\n'), start = 0;
+      for (var i = 0; i < n - 1 && i < lines.length; i++) start += lines[i].length + 1;
+      ta.focus(); ta.setSelectionRange(start, start + (lines[n - 1] || '').length);
+      var lh = parseFloat(getComputedStyle(ta).lineHeight) || 20;
+      ta.scrollTop = Math.max(0, (n - 4) * lh); gut.scrollTop = ta.scrollTop;
+      ta.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+    refresh();
+    return { refresh: refresh, goLine: goLine };
+  }
+  /* Findings with an optional clickable "Line n" button. f: {level:'error'|'warn'|'info'|'ok', line, text, detail, where} */
+  function lineFindings(list, goLine) {
+    var cls = { error: 'pc-f-critical', warn: 'pc-f-warn', info: '', ok: 'pc-f-ok' }, lbl = { error: 'Error', warn: 'Warning', info: 'Note', ok: 'OK' };
+    return h('ul', { class: 'kt-findings cd-findings' }, list.map(function (f) {
+      var ln = f.line && goLine ? h('button', { type: 'button', class: 'cd-line', text: 'Line ' + f.line, 'aria-label': 'Go to line ' + f.line }) : null;
+      if (ln) ln.addEventListener('click', function () { goLine(f.line); });
+      return h('li', { class: cls[f.level] || '' },
+        h('span', { class: 'pc-pill' + (f.level === 'info' ? ' pc-info' : ''), text: lbl[f.level] || 'Note' }), ' ', ln, ln ? ' ' : null, f.text,
+        f.detail ? h('small', { text: f.detail }) : null, f.where ? h('small', { class: 'cd-where', text: f.where }) : null);
+    }));
+  }
+  /* Read a dropped or chosen file as text; .gz files are decompressed when the browser supports it. */
+  function readFile(file) {
+    if (/\.gz$/i.test(file.name) && typeof DecompressionStream !== 'undefined') return new Response(file.stream().pipeThrough(new DecompressionStream('gzip'))).text();
+    return file.text();
+  }
+  var api = { copy: copy, download: download, codeBlock: codeBlock, findings: findings, stat: stat, esc: esc, editor: editor, lineFindings: lineFindings, readFile: readFile };
   root.KJA = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof window !== 'undefined' ? window : globalThis);

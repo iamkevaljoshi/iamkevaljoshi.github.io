@@ -1,0 +1,64 @@
+---
+title: "XML sitemap validator"
+seo_title: "XML Sitemap Validator: Check sitemap.xml, Indexes and hreflang"
+description: "Free XML sitemap validator: check sitemap.xml, sitemap indexes, sitemap.txt and .gz files for XML errors, invalid URLs, lastmod dates, duplicates, hreflang return links, image, video and news tags, AEM path leaks and URLs blocked by robots.txt."
+lede: "Paste, upload or fetch a sitemap to check it against the sitemaps.org protocol and Google's rules. Every problem comes with its line number, including the ones search engines skip without telling you."
+summary: "Validate sitemap.xml, sitemap indexes and sitemap.txt: XML errors, URLs, lastmod, duplicates, hreflang, and URLs blocked by robots.txt."
+category: SEO
+icon: sitemap
+order: 19
+added: 2026-11-28 14:00:00 +0530
+tags: [Sitemap, SEO, hreflang, AEM]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/robots-txt.js
+  - src: /assets/js/tools/sitemap-check.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: "What does it check?"
+    a: "Well-formed XML (including unescaped & characters), the root element and exact namespace, one loc per entry, absolute http(s) URLs under 2,048 characters, the 50,000-URL and 50 MB limits, duplicate and near-duplicate URLs, mixed hosts and protocols, lastmod format and future dates, changefreq and priority values, hreflang codes, self-references and return links, image, video and news required tags, and, for sitemap indexes, that entries are sitemaps rather than pages."
+  - q: "What are the AEM-specific checks?"
+    a: "It flags URLs that use internal hosts such as publish-pXXXX-eYYYY.adobeaemcloud.com, localhost or author, which usually come from a misconfigured Externalizer, and URLs that look like unmapped repository paths (/content/site/en/page.html) when your public URLs are shortened by Sling mappings or Dispatcher rewrites."
+  - q: "Can it check sitemap.txt?"
+    a: "Yes. If the file doesn't start with <, it is treated as a text sitemap: one absolute URL per line, with no comments or other text."
+  - q: "Why paste my robots.txt?"
+    a: "Optional. It lets the tool check that no URL in the sitemap is blocked for Googlebot. Listing blocked URLs sends search engines mixed signals and wastes crawl budget."
+  - q: "Why does Google ignore my lastmod?"
+    a: "Google uses lastmod only when it is consistently accurate. If every URL has the same date (often the build or publish time), dates are in the future, or the format is invalid, Google stops trusting it. The tool warns about all three."
+  - q: "Is anything uploaded?"
+    a: "Pasted and uploaded files are checked in your browser and not stored. Only the Fetch button sends the sitemap address to Jina Reader, because browsers can't read files on other sites directly. Uploading the file is the most reliable way to check a large sitemap."
+---
+<div class="kt-tool">
+  <form id="smForm" class="pc-form" novalidate>
+    <div class="kt-grid rb-fetch">
+      <label class="pc-field"><span>Sitemap URL <small>Optional. Fetches the file for you.</small></span><input name="smUrl" type="text" inputmode="url" placeholder="https://www.example.com/sitemap.xml"></label>
+      <div class="rb-fetch-btn"><button class="btn ghost" type="button" id="smFetch">Fetch sitemap</button></div>
+    </div>
+    <p class="muted kt-hint" id="smStatus" role="status"></p>
+    <div class="pc-field" style="margin-top:.75rem">
+      <span id="smLabel">Sitemap <small>XML sitemap, sitemap index or sitemap.txt. Paste it, fetch it, or upload a .xml, .txt or .xml.gz file.</small></span>
+      <div class="kt-editor">
+        <pre class="kt-gutter" id="smGutter" aria-hidden="true"></pre>
+        <textarea name="smText" rows="16" spellcheck="false" autocapitalize="off" autocomplete="off" aria-labelledby="smLabel" wrap="off" placeholder='&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#10;&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;&#10;  &lt;url&gt;&lt;loc&gt;https://www.example.com/&lt;/loc&gt;&lt;/url&gt;&#10;&lt;/urlset&gt;'></textarea>
+      </div>
+    </div>
+    <div class="kt-row">
+      <label class="pc-field cd-file"><span class="sr-only">Choose a sitemap file</span><input type="file" id="smFile" accept=".xml,.txt,.gz,application/xml,text/xml,text/plain,application/gzip"></label>
+    </div>
+    <details class="pc-adv">
+      <summary>More checks (optional)</summary>
+      <div class="pc-adv-grid">
+        <label class="pc-field"><span>Where the sitemap lives <small>Its full URL. Checks every URL is on the same host and under the same folder.</small></span><input name="smSite" type="text" inputmode="url" placeholder="https://www.example.com/sitemap.xml"></label>
+        <label class="pc-field"><span>Your robots.txt <small>Checks no sitemap URL is blocked for Googlebot.</small></span><textarea name="smRobots" rows="4" spellcheck="false" placeholder="User-agent: *&#10;Disallow: /search"></textarea></label>
+      </div>
+    </details>
+    <div class="kt-row">
+      <button class="btn solid" type="submit">Validate</button>
+      <button class="pc-link" type="button" id="smSample">Try a valid sample</button>
+      <button class="pc-link" type="button" id="smBroken">Try one with mistakes</button>
+    </div>
+  </form>
+  <div id="smOut" hidden aria-live="polite"></div>
+  <p class="muted kt-hint cd-foot">Follows the <a href="https://www.sitemaps.org/protocol.html" rel="noopener">sitemaps.org protocol</a> and Google's guides to <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" rel="noopener">building sitemaps</a> and <a href="https://developers.google.com/search/docs/specialty/international/localized-versions" rel="noopener">hreflang</a>. To check hreflang tags on live pages, use the <a href="{{ '/tools/hreflang-checker-generator/' | relative_url }}">hreflang checker</a>.</p>
+</div>

@@ -664,3 +664,33 @@
 .aj-list{margin:0;padding-left:1.25rem;display:grid;gap:.4rem}
 .aj-foot{font-size:.85rem}
 @media (max-width:640px){.aj-bar{grid-template-columns:minmax(3rem,6rem) minmax(0,1fr) 3.2rem}.aj-stage{padding:1rem}.aj-nav{top:3.2rem}}
+
+/* ---------- config validators: cdn.yaml, robots.txt, sitemap ---------- */
+.kt-editor{display:grid;grid-template-columns:auto minmax(0,1fr);border:1px solid var(--line);border-radius:.7rem;overflow:hidden;background:var(--bg)}
+.kt-editor:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.kt-gutter{margin:0;padding:.7rem .5rem .7rem .7rem;min-width:2.6rem;text-align:right;font-family:var(--mono);font-size:.82rem;line-height:1.5;color:var(--muted);background:color-mix(in srgb,var(--surface) 60%,var(--bg));border-right:1px solid var(--line);overflow:hidden;user-select:none;white-space:pre}
+.pc-form .kt-editor textarea{border:0;border-radius:0;box-shadow:none;line-height:1.5;padding:.7rem .85rem;white-space:pre;overflow-x:auto;min-height:14rem}
+.pc-form .kt-editor textarea:focus{box-shadow:none}
+.cd-file{flex:1 1 14rem}
+.cd-tiles{margin:1rem 0}
+.cd-h{margin:1.5rem 0 .25rem;font-size:1.1rem}
+.cd-line{font:inherit;font-family:var(--mono);font-size:.78rem;padding:.1rem .45rem;border:1px solid var(--line);border-radius:.4rem;background:var(--surface);color:var(--accent);cursor:pointer;white-space:nowrap}
+.cd-line:hover{border-color:var(--accent)}
+.cd-line:focus-visible,.cd-rule:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.cd-findings .cd-where{font-family:var(--mono);font-size:.75rem}
+.cd-findings .sm-ex{overflow-wrap:anywhere}
+.cd-order{margin:.5rem 0 0;padding-left:1.4rem;display:grid;gap:.7rem}
+.cd-order>li>strong{display:block;margin-bottom:.35rem}
+.cd-rules{display:flex;flex-wrap:wrap;gap:.4rem}
+.cd-rule{font:inherit;font-family:var(--mono);font-size:.8rem;padding:.2rem .6rem;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);cursor:pointer}
+.cd-rule:hover{border-color:var(--accent);color:var(--accent)}
+.cd-foot{margin-top:1.5rem}
+.rb-fetch{align-items:end}
+.rb-fetch-btn{display:flex;align-items:end}
+.rb-table td small,.rb-table th small{display:block;color:var(--muted);font-size:.8rem;font-weight:400;margin-top:.15rem;overflow-wrap:anywhere}
+.rb-table caption{text-align:left;padding:.5rem 0;font-size:.9rem}
+.pc-table.rb-table tbody th{white-space:normal}
+.rb-url{font-family:var(--mono);font-size:.82rem;overflow-wrap:anywhere}
+.rb-badge{display:inline-block;font-size:.78rem;font-weight:600;padding:.12rem .55rem;border-radius:999px}
+.rb-ok{background:var(--pc-add-bg);color:var(--pc-good)}
+.rb-no{background:var(--pc-del-bg);color:var(--pc-bad)}

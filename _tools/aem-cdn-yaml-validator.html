@@ -1,0 +1,55 @@
+---
+title: "AEM CDN config validator (cdn.yaml)"
+seo_title: "AEM cdn.yaml Validator: Check CDN Config Before You Deploy"
+description: "Free validator for the AEM as a Cloud Service CDN configuration (cdn.yaml): catches YAML syntax errors and schema mistakes in traffic filters, WAF, rate limits, request and response transformations, origin selectors, redirects, authentication and error pages, with line numbers."
+lede: "Paste your cdn.yaml before you run the config pipeline. It finds YAML syntax errors and checks every rule against Adobe's documented schema for the Adobe-managed (Fastly) CDN, with the line to fix and why."
+summary: "Check an AEMaaCS cdn.yaml for YAML syntax and schema errors in traffic filters, WAF, transformations, origin selectors, redirects and auth before you deploy."
+category: CDN
+icon: cdn
+order: 17
+added: 2026-11-28 14:00:00 +0530
+tags: [cdn.yaml, AEMaaCS, Fastly, WAF, Config pipeline]
+scripts:
+  - src: /assets/libs/yaml/yaml.min.js
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/cdn-yaml.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: "What does it check?"
+    a: "First, YAML syntax: indentation, tabs, duplicate keys, unclosed brackets and quotes, and bad escapes. Then the structure Adobe documents for kind CDN: kind, version and metadata.envTypes; every section under data; rule names; when conditions (getters, predicates, allOf and anyOf); actions and their targets; traffic filter actions, WAF flags and rate limits; origin selectors and their origins; redirect status codes and locations; authenticators and secret references; and error pages."
+  - q: "Does it catch mistakes that are valid YAML but still wrong?"
+    a: "Yes, that is most of what it does. For example: a domain condition in capitals (the CDN lower-cases domains, so it never matches), a glob written under matches or a regex under like, $1 instead of \\1 in a replacement, a rate limit outside 10 to 10000, an originName with no matching origin, an *.adobeaemcloud.com origin, a hard-coded edge key, a secret reference inside a longer string, a redirect that loops, and conditions on path that a request transformation has already rewritten."
+  - q: "Is my file sent anywhere?"
+    a: "No. The file is parsed and checked in your browser. Nothing is uploaded or stored, so it is safe to paste configs that reference secret names."
+  - q: "Does a clean result mean the deployment will succeed?"
+    a: "It means the file matches Adobe's documented schema and avoids the common mistakes. It can't see your environment: licences (WAF needs the Extended Security licence), whether secret variables exist in Cloud Manager, or features Adobe added after this tool was last updated. Always deploy to a dev environment first, and check the CDN logs."
+  - q: "Is this the Fastly VCL?"
+    a: "No. AEM as a Cloud Service runs on Fastly, but customers configure it with Adobe's declarative cdn.yaml format through the Cloud Manager config pipeline, not with VCL. Regular expressions are evaluated by Fastly with PCRE. This tool checks them with JavaScript, which catches real mistakes, and flags PCRE-only syntax for you to test in Fastly Fiddle."
+  - q: "What do Error, Warning and Note mean?"
+    a: "An error means the pipeline will likely reject the file or the rule can never work. A warning is valid syntax that probably doesn't do what you intend, or a risk such as caching personalised responses. A note is advice, such as starting WAF rules in log mode."
+  - q: "Does it check other config kinds?"
+    a: "It checks YAML syntax and the common structure (kind, version, metadata) for every kind, including LogForwarding, MaintenanceTasks, Otel, API and EdgeFunctions. The in-depth rule checks are for kind CDN."
+---
+<div class="kt-tool">
+  <form id="cdForm" class="pc-form" novalidate>
+    <div class="pc-field">
+      <span id="cdLabel">Your cdn.yaml <small>Paste the file, or choose it below. Click a line number in the results to jump to it. Press Escape to leave the editor with Tab.</small></span>
+      <div class="kt-editor">
+        <pre class="kt-gutter" id="cdGutter" aria-hidden="true"></pre>
+        <textarea name="cdYaml" rows="18" spellcheck="false" autocapitalize="off" autocomplete="off" aria-labelledby="cdLabel" wrap="off" placeholder='kind: "CDN"&#10;version: "1"&#10;data:&#10;  trafficFilters:&#10;    rules:&#10;      - name: ...'></textarea>
+      </div>
+    </div>
+    <div class="kt-row">
+      <label class="pc-field cd-file"><span class="sr-only">Choose a YAML file</span><input type="file" id="cdFile" accept=".yaml,.yml,text/yaml,text/plain"></label>
+      <label class="pc-check"><input type="checkbox" name="cdEds"> This is for an Edge Delivery Services config pipeline</label>
+    </div>
+    <div class="kt-row">
+      <button class="btn solid" type="submit">Validate</button>
+      <button class="pc-link" type="button" id="cdSample">Try a valid sample</button>
+      <button class="pc-link" type="button" id="cdBroken">Try one with mistakes</button>
+    </div>
+  </form>
+  <div id="cdOut" hidden aria-live="polite"></div>
+  <p class="muted kt-hint cd-foot">Based on Adobe's documentation for <a href="https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/cdn-configuring-traffic" rel="noopener">CDN traffic configuration</a>, <a href="https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/security/traffic-filter-rules-including-waf" rel="noopener">traffic filter and WAF rules</a>, <a href="https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/cdn-credentials-authentication" rel="noopener">CDN credentials and authentication</a> and the <a href="https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/operations/config-pipeline" rel="noopener">config pipeline</a>, as of November 2026. For patterns and the order rules run in, read <a href="{{ '/blog/2026/11/aem-cloud-service-cdn-yaml-headers-proxy-redirects/' | relative_url }}">Getting more from the AEMaaCS CDN with cdn.yaml</a>.</p>
+</div>

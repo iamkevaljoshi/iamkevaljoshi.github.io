@@ -1,0 +1,74 @@
+---
+title: "robots.txt validator and tester"
+seo_title: "robots.txt Validator and Tester for Google and AI Crawlers"
+description: "Free robots.txt validator and tester: find syntax errors with line numbers, see which group Googlebot, Bingbot, GPTBot, ClaudeBot and other crawlers obey, and test any URL to see which rule allows or blocks it."
+lede: "Paste or fetch a robots.txt to find syntax mistakes, see exactly what Google, Bing and AI crawlers may fetch, and test URLs against the rules. It follows RFC 9309 and Google's matching rules: longest match wins, and Allow wins a tie."
+summary: "Validate robots.txt line by line, see what Google, Bing and AI crawlers may fetch, and test URLs against your rules."
+category: SEO
+icon: robot
+order: 18
+added: 2026-11-28 14:00:00 +0530
+tags: [robots.txt, SEO, AI crawlers, GEO]
+scripts:
+  - src: /assets/js/tools/kit.js
+  - src: /assets/js/tools/aem-kit.js
+  - src: /assets/js/tools/robots-txt.js
+styles: [/assets/css/tools.css]
+faq:
+  - q: "What does it check?"
+    a: "Syntax (lines without a colon, typos such as Dissallow, rules before any User-agent, rules that don't start with / or *, full URLs in rules, spaces, misplaced $), unsupported directives (Noindex, and Crawl-delay for Google), sitemap lines (absolute, public host), file size against Google's 500 KiB limit, and behaviour: whether the whole site is blocked, whether specific groups silently drop your * rules, and whether Googlebot can fetch the CSS, JavaScript and images it needs to render pages, including AEM /etc.clientlibs/ and Edge Delivery Services /scripts/ and /blocks/."
+  - q: "How does a crawler decide which rules apply?"
+    a: "It looks for a group whose User-agent matches its name, ignoring case. If one exists, it uses only that group and ignores User-agent: * completely. Google also falls back from a specific crawler to its family, so Googlebot-Image uses a Googlebot group. Within the group, the rule with the longest matching path wins, and Allow wins a tie. A URL that matches no rule is allowed, and /robots.txt itself is always allowed."
+  - q: "Does blocking a page in robots.txt keep it out of Google?"
+    a: "No. robots.txt controls crawling, not indexing. A blocked page can still be indexed from links, just without a description. To keep a page out of results, allow crawling and use a noindex robots meta tag or X-Robots-Tag header."
+  - q: "How does Fetch work?"
+    a: "Browsers can't read another site's robots.txt directly, so Fetch goes through the Jina Reader service, the same one the SEO audit uses. If it fails, open your-domain/robots.txt in a new tab and paste the text."
+  - q: "Is anything uploaded?"
+    a: "Pasted text is checked in your browser and not stored. Only the Fetch button sends the robots.txt address to Jina Reader."
+  - q: "Which AI crawlers are listed?"
+    a: "Search crawlers (OAI-SearchBot, Claude-SearchBot, PerplexityBot), user-triggered fetchers (ChatGPT-User, Claude-User) and training crawlers and tokens (GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, Meta-ExternalAgent, Amazonbot, CCBot, Bytespider), plus the main search engines and link-preview bots. Some user-triggered fetchers don't follow robots.txt, so treat their row as what you asked for, not what they do."
+---
+<div class="kt-tool">
+  <form id="rbForm" class="pc-form" novalidate>
+    <div class="kt-grid rb-fetch">
+      <label class="pc-field"><span>Site address <small>Optional. Fetches /robots.txt from it.</small></span><input name="rbSite" type="text" inputmode="url" placeholder="www.example.com"></label>
+      <div class="rb-fetch-btn"><button class="btn ghost" type="button" id="rbFetch">Fetch robots.txt</button></div>
+    </div>
+    <p class="muted kt-hint" id="rbStatus" role="status"></p>
+    <div class="pc-field" style="margin-top:.75rem">
+      <span id="rbLabel">robots.txt <small>Paste the file, fetch it, or choose it below.</small></span>
+      <div class="kt-editor">
+        <pre class="kt-gutter" id="rbGutter" aria-hidden="true"></pre>
+        <textarea name="rbText" rows="14" spellcheck="false" autocapitalize="off" autocomplete="off" aria-labelledby="rbLabel" wrap="off" placeholder="User-agent: *&#10;Disallow: /search&#10;&#10;Sitemap: https://www.example.com/sitemap.xml"></textarea>
+      </div>
+    </div>
+    <div class="kt-row">
+      <label class="pc-field cd-file"><span class="sr-only">Choose a robots.txt file</span><input type="file" id="rbFile" accept=".txt,text/plain"></label>
+      <label class="pc-check"><input type="checkbox" name="rbStaging"> This is a staging or preview host</label>
+    </div>
+    <details class="pc-adv">
+      <summary>Test URLs against the rules</summary>
+      <div class="kt-grid" style="margin-top:1rem">
+        <label class="pc-field"><span>Crawler</span>
+          <select name="rbAgent">
+            <option>Googlebot</option><option>Googlebot-Image</option><option>Bingbot</option><option>Applebot</option>
+            <option>OAI-SearchBot</option><option>GPTBot</option><option>ChatGPT-User</option><option>Claude-SearchBot</option><option>ClaudeBot</option><option>Claude-User</option><option>PerplexityBot</option>
+            <option>Google-Extended</option><option>CCBot</option><option value="*">Any other crawler (*)</option><option value="custom">Other…</option>
+          </select>
+        </label>
+        <label class="pc-field" hidden><span>Crawler name</span><input name="rbCustom" type="text" placeholder="YandexBot"></label>
+      </div>
+      <label class="pc-field" style="margin-top:1rem"><span>URLs or paths <small>One per line, up to 200.</small></span>
+        <textarea name="rbUrls" rows="5" spellcheck="false" placeholder="https://www.example.com/search?q=shoes&#10;/products/shoe-1.html&#10;/etc.clientlibs/site/clientlibs/site.css"></textarea></label>
+      <div class="kt-row"><button class="btn ghost" type="button" id="rbTestBtn">Test URLs</button></div>
+      <div id="rbTests" aria-live="polite"></div>
+    </details>
+    <div class="kt-row">
+      <button class="btn solid" type="submit">Validate</button>
+      <button class="pc-link" type="button" id="rbSample">Try a valid sample</button>
+      <button class="pc-link" type="button" id="rbBroken">Try one with mistakes</button>
+    </div>
+  </form>
+  <div id="rbOut" hidden aria-live="polite"></div>
+  <p class="muted kt-hint cd-foot">Follows <a href="https://www.rfc-editor.org/rfc/rfc9309" rel="noopener">RFC 9309</a> and <a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt" rel="noopener">how Google interprets robots.txt</a>. Which AI crawlers to allow is a business decision; <a href="{{ '/blog/2026/11/llms-txt-ai-crawlers-robots-txt-what-to-allow/' | relative_url }}">this post</a> explains the options. To check a whole page or site, use the <a href="{{ '/tools/seo-audit/' | relative_url }}">SEO audit</a>.</p>
+</div>
